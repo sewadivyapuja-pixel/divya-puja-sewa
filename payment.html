@@ -28,14 +28,10 @@
 
     <div class="max-w-md mx-auto w-full bg-white rounded-xl shadow-md overflow-hidden mb-6">
         
-        <!-- HEADER -->
+        <!-- HEADER (Cleaned: No steps, no back arrow) -->
         <div class="px-5 py-4 border-b border-gray-200 flex items-center justify-between bg-white sticky top-0 z-10">
-            <div class="flex items-center space-x-3">
-                <span class="text-xl font-bold cursor-pointer" onclick="window.history.back()">←</span>
-                <div>
-                    <p class="text-[10px] text-gray-500 uppercase tracking-wider font-semibold">Step 3 of 3</p>
-                    <h1 class="text-lg font-bold text-gray-900">Payments</h1>
-                </div>
+            <div>
+                <h1 class="text-lg font-bold text-gray-900">Payments & Booking</h1>
             </div>
             <div class="flex items-center space-x-1 bg-gray-100 px-2.5 py-1 rounded text-[11px] font-medium text-gray-700">
                 <span>🔒</span>
@@ -43,14 +39,14 @@
             </div>
         </div>
 
-        <!-- TOTAL AMOUNT BANNER -->
+        <!-- PUJA & SLOT AMOUNT SUMMARY -->
         <div class="p-4 bg-gray-50 border-b border-gray-200 flex items-center justify-between">
             <div>
-                <span class="text-xs text-gray-600 block">Total Amount</span>
+                <span class="text-xs text-gray-600 block font-medium">Puja Path & Slot Charges</span>
                 <span class="text-xl font-bold text-gray-900">₹908</span>
             </div>
             <div class="text-right">
-                <span class="text-[11px] bg-green-100 text-green-700 font-semibold px-2.5 py-1 rounded-full">Vedic Verified</span>
+                <span class="text-[11px] bg-emerald-100 text-emerald-800 font-semibold px-2.5 py-1 rounded-full">Slot Confirmed</span>
             </div>
         </div>
 
@@ -84,7 +80,7 @@
                     <label class="block text-xs font-medium text-gray-600">Select App to Pay ₹908:</label>
                     <div class="space-y-2">
                         <a href="upi://pay?pa=8382909995-2@ybl&pn=DivyaPujaSewa&am=908&cu=INR" class="flex items-center justify-between p-3 border border-gray-200 rounded-lg hover:border-blue-500 transition">
-                            <span class="text-xs font-semibold text-gray-800">Google Pay / PhonePe / Paytm</span>
+                            <span class="text-xs font-semibold text-gray-800">Google Pay / PhoneTe / Paytm</span>
                             <span class="bg-yellow-400 text-black text-xs font-bold px-4 py-1.5 rounded shadow-sm">Pay ₹908</span>
                         </a>
                     </div>
@@ -123,18 +119,21 @@
             </div>
         </div>
 
-        <!-- ACCORDION SECTION 3: COD -->
+        <!-- ACCORDION SECTION 3: COAP (Cash On After Puja) -->
         <div class="border-b border-gray-200">
-            <div class="px-5 py-4 flex items-center justify-between cursor-pointer hover:bg-gray-50" onclick="toggleSection('codSection')">
+            <div class="px-5 py-4 flex items-center justify-between cursor-pointer hover:bg-gray-50" onclick="toggleSection('coapSection')">
                 <div class="flex items-center space-x-3">
-                    <span class="text-base">💵</span>
-                    <span class="font-semibold text-sm text-gray-950">Cash on Delivery (Pandit Ji ko nagad)</span>
+                    <span class="text-base">🌿</span>
+                    <div>
+                        <span class="font-semibold text-sm text-gray-950 block">COAP (Cash On After Puja)</span>
+                        <span class="text-[11px] text-gray-500 font-light">Puja aur path sampann hone ke baad nagad bhugtan</span>
+                    </div>
                 </div>
-                <span id="codArrow" class="text-gray-400 font-bold">▼</span>
+                <span id="coapArrow" class="text-gray-400 font-bold">▼</span>
             </div>
-            <div id="codSection" class="p-5 bg-gray-50 hidden">
-                <p class="text-xs text-gray-600 mb-3">Aap puja ke samay Pandit Ji ko naqad (Cash) de sakte hain.</p>
-                <button onclick="alert('COD Booking Confirmed! Pandit ji aapse sampark karenge.')" class="w-full bg-gray-900 text-white font-bold py-2.5 text-xs rounded-lg">Confirm COD Booking</button>
+            <div id="coapSection" class="p-5 bg-gray-50 hidden">
+                <p class="text-xs text-gray-600 mb-3">Aap puja / slot sampann hone ke baad Pandit Ji ko nagad (Cash) de sakte hain.</p>
+                <button onclick="alert('COAP Booking Confirmed! Pandit ji aapse sampark karenge.')" class="w-full bg-gray-900 text-white font-bold py-2.5 text-xs rounded-lg">Confirm COAP Booking</button>
             </div>
         </div>
 
@@ -151,7 +150,7 @@
             if(sec.classList.contains('hidden')) {
                 sec.classList.remove('hidden');
             } else {
-                if(sectionId !== 'upiSection') { // Keep UPI open by default or toggle
+                if(sectionId !== 'upiSection') {
                     sec.classList.add('hidden');
                 }
             }
