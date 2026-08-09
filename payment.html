@@ -26,7 +26,8 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between py-6 px-4">
 
-    <div class="max-w-md mx-auto w-full bg-white rounded-xl shadow-md overflow-hidden mb-6">
+    <!-- MAIN PAYMENT CONTAINER -->
+    <div id="paymentMainContainer" class="max-w-md mx-auto w-full bg-white rounded-xl shadow-md overflow-hidden mb-6">
         
         <!-- HEADER -->
         <div class="px-5 py-4 border-b border-gray-200 flex items-center justify-between bg-white sticky top-0 z-10">
@@ -36,17 +37,6 @@
             <div class="flex items-center space-x-1 bg-gray-100 px-2.5 py-1 rounded text-[11px] font-medium text-gray-700">
                 <span>🔒</span>
                 <span>100% Secure</span>
-            </div>
-        </div>
-
-        <!-- DYNAMIC PUJA, SLOT & ITEMS TOTAL MONEY -->
-        <div class="p-4 bg-gray-50 border-b border-gray-200 flex items-center justify-between">
-            <div>
-                <span class="text-xs text-gray-600 block font-medium">Total Puja, Slot & Vastra Cost</span>
-                <span id="totalAmountText" class="text-xl font-bold text-gray-900">₹908</span>
-            </div>
-            <div class="text-right">
-                <span class="text-[11px] bg-emerald-100 text-emerald-800 font-semibold px-2.5 py-1 rounded-full">Calculated</span>
             </div>
         </div>
 
@@ -77,13 +67,20 @@
 
                 <!-- DIRECT APP BUTTONS -->
                 <div class="space-y-2 pt-2">
-                    <label id="payLabel" class="block text-xs font-medium text-gray-600">Select App to Pay:</label>
+                    <label class="block text-xs font-medium text-gray-600">Select App to Pay:</label>
                     <div class="space-y-2">
                         <a id="upiPayBtn" href="upi://pay?pa=8382909995-2@ybl&pn=DivyaPujaSewa&cu=INR" class="flex items-center justify-between p-3 border border-gray-200 rounded-lg hover:border-blue-500 transition">
                             <span class="text-xs font-semibold text-gray-800">Google Pay / PhonePe / Paytm</span>
-                            <span id="payBtnText" class="bg-yellow-400 text-black text-xs font-bold px-4 py-1.5 rounded shadow-sm">Pay</span>
+                            <span class="bg-yellow-400 text-black text-xs font-bold px-4 py-1.5 rounded shadow-sm">Pay Now</span>
                         </a>
                     </div>
+                </div>
+
+                <!-- VERIFY & COMPLETE BOOKING BUTTON -->
+                <div class="pt-4 border-t border-gray-100">
+                    <button onclick="startCompletionProcess()" class="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3.5 text-xs rounded-lg shadow transition">
+                        Verify & Complete Booking
+                    </button>
                 </div>
             </div>
         </div>
@@ -106,7 +103,7 @@
                     <input type="text" placeholder="MM / YY" class="bg-white border border-gray-300 rounded-lg p-2.5 text-xs">
                     <input type="password" placeholder="CVV" class="bg-white border border-gray-300 rounded-lg p-2.5 text-xs">
                 </div>
-                <button onclick="alert('Card gateway is simulated. Please use UPI/QR code for instant booking.')" class="w-full bg-blue-600 text-white font-bold py-2.5 text-xs rounded-lg">Pay Now</button>
+                <button onclick="startCompletionProcess()" class="w-full bg-blue-600 text-white font-bold py-2.5 text-xs rounded-lg">Pay Now</button>
             </div>
         </div>
 
@@ -124,10 +121,32 @@
             </div>
             <div id="coapSection" class="p-5 bg-gray-50 hidden">
                 <p class="text-xs text-gray-600 mb-3">Aap puja / slot sampann hone ke baad Pandit Ji ko nagad (Cash) de sakte hain.</p>
-                <button onclick="confirmCOAP()" class="w-full bg-gray-900 text-white font-bold py-2.5 text-xs rounded-lg">Confirm COAP Booking</button>
+                <button onclick="startCompletionProcess()" class="w-full bg-gray-900 text-white font-bold py-2.5 text-xs rounded-lg">Confirm COAP Booking</button>
             </div>
         </div>
 
+    </div>
+
+    <!-- SUCCESS SCREEN & TIMER (HIDDEN INITIALLY) -->
+    <div id="successScreen" class="max-w-md mx-auto w-full bg-white rounded-xl shadow-md p-6 text-center hidden">
+        <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-3xl mx-auto mb-4">
+            ✓
+        </div>
+        <h2 class="text-xl font-bold text-gray-900 mb-1">Booking Verified Successfully!</h2>
+        <p class="text-xs text-gray-600 mb-4">Aapki payment receipt download ho rahi hai.</p>
+        
+        <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-5">
+            <p class="text-xs text-blue-800 font-medium">Home page par redirect hone mein bache hain:</p>
+            <span id="timerCount" class="text-3xl font-extrabold text-blue-600 mt-1 block">15</span>
+            <span class="text-[10px] text-blue-500 uppercase tracking-wider">Seconds</span>
+        </div>
+
+        <button onclick="downloadReceipt()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 text-xs rounded-lg shadow mb-3 transition">
+            📥 Download Receipt Manually
+        </button>
+        <button onclick="window.location.href='index.html'" class="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2.5 text-xs rounded-lg transition">
+            🏠 Return to Home Page Now
+        </button>
     </div>
 
     <!-- FOOTER INFO -->
@@ -136,41 +155,6 @@
     </div>
 
     <script>
-        // Calculate Total Amount from LocalStorage or Default
-        window.addEventListener('DOMContentLoaded', () => {
-            let totalAmount = 908; // Default fallback
-
-            // Check if items are stored in localStorage from previous booking steps
-            const storedSlotPrice = localStorage.getItem('slotPrice');
-            const storedPujaPrice = localStorage.getItem('pujaPrice');
-            const storedVastraPrice = localStorage.getItem('vastraPrice');
-            const storedTotal = localStorage.getItem('totalAmount');
-
-            if (storedTotal) {
-                totalAmount = parseInt(storedTotal);
-            } else {
-                let calculated = 0;
-                if (storedSlotPrice) calculated += parseInt(storedSlotPrice);
-                if (storedPujaPrice) calculated += parseInt(storedPujaPrice);
-                if (storedVastraPrice) calculated += parseInt(storedVastraPrice);
-                
-                if (calculated > 0) {
-                    totalAmount = calculated;
-                }
-            }
-
-            // Update UI elements with calculated total money
-            document.getElementById('totalAmountText').innerText = '₹' + totalAmount;
-            document.getElementById('payBtnText').innerText = 'Pay ₹' + totalAmount;
-            document.getElementById('payLabel').innerText = 'Select App to Pay ₹' + totalAmount + ':';
-            
-            // Update UPI deep link with exact amount
-            const upiUrl = `upi://pay?pa=8382909995-2@ybl&pn=DivyaPujaSewa&am=${totalAmount}&cu=INR`;
-            document.getElementById('qrLink.href') = upiUrl;
-            document.getElementById('upiPayBtn').setAttribute('href', upiUrl);
-            document.getElementById('qrLink').setAttribute('href', upiUrl);
-        });
-
         function toggleSection(sectionId) {
             const sec = document.getElementById(sectionId);
             if(sec.classList.contains('hidden')) {
@@ -182,9 +166,52 @@
             }
         }
 
-        function confirmCOAP() {
-            alert("COAP Booking Confirmed! Pandit ji aapse puja ke baad sampark karenge.");
-            window.location.href = "index.html";
+        function downloadReceipt() {
+            // Generate a clean text/HTML receipt file download
+            const receiptContent = `
+=========================================
+          DIVYA PUJA SEWA - RECEIPT
+=========================================
+Status: Booking Confirmed & Verified
+Date: ${new Date().toLocaleDateString()}
+Time: ${new Date().toLocaleTimeString()}
+-----------------------------------------
+Thank you for choosing Divya Puja Sewa.
+Your puja slot and services have been
+successfully booked and registered.
+-----------------------------------------
+Vedic Sanatan Sansthan - Varanasi
+=========================================
+            `;
+            const blob = new Blob([receiptContent], { type: 'text/plain;charset=utf-8' });
+            const link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+            link.download = 'Divya_Puja_Sewa_Receipt.txt';
+            link.click();
+        }
+
+        function startCompletionProcess() {
+            // Hide main payment card and show success/timer screen
+            document.getElementById('paymentMainContainer').classList.add('hidden');
+            document.getElementById('successScreen').classList.remove('hidden');
+
+            // Trigger automatic receipt download immediately
+            downloadReceipt();
+
+            // 15 Seconds Timer Logic
+            let timeLeft = 15;
+            const timerElement = document.getElementById('timerCount');
+            
+            const countdown = setInterval(() => {
+                timeLeft--;
+                timerElement.innerText = timeLeft;
+
+                if (timeLeft <= 0) {
+                    clearInterval(countdown);
+                    // Redirect to main page
+                    window.location.href = 'index.html';
+                }
+            }, 1000);
         }
     </script>
 </body>
