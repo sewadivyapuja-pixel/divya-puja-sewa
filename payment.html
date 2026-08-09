@@ -3,81 +3,169 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secure Payment Gateway - Divya Puja Sewa</title>
+    <title>Payments - Divya Puja Sewa</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        brand: {
-                            dark: '#0B0D17',
-                            card: '#15192B',
-                            border: '#2A304D',
-                            accent: '#D4AF37',
-                            accentHover: '#B59226',
-                            gold: '#F3E5AB'
-                        }
+                        brandBg: '#F1F3F6',
+                        brandBlue: '#2874F0',
+                        brandText: '#212121',
+                        brandGray: '#878787'
                     }
                 }
             }
         }
     </script>
     <style>
-        body { font-family: 'Poppins', sans-serif; background-color: #0B0D17; color: #E2E8F0; }
-        .serif-title { font-family: 'Cinzel', serif; }
-        .glow-effect { box-shadow: 0 0 30px rgba(212, 175, 55, 0.15); }
+        body { font-family: 'Poppins', sans-serif; background-color: #F1F3F6; color: #212121; }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between py-10 px-4">
+<body class="min-h-screen flex flex-col justify-between py-6 px-4">
 
-    <div class="max-w-md mx-auto w-full bg-brand-card border border-brand-border rounded-3xl p-6 md:p-8 glow-effect shadow-2xl">
-        <div class="text-center mb-6">
-            <h1 class="serif-title text-2xl font-extrabold text-brand-gold">Secure Payment Gateway</h1>
-            <p class="text-xs text-gray-400 mt-1 font-light">Scan QR Code or Choose UPI Option</p>
-        </div>
-
-        <!-- PAYMENT SESSION -->
-        <div class="bg-brand-dark/90 border border-brand-accent/40 rounded-2xl p-4 text-center mb-6">
-            <span class="text-xs text-brand-gold font-bold uppercase block tracking-wider mb-1">Scan QR to Pay</span>
-            <p class="text-xs text-gray-400">UPI ID: <span class="text-white font-mono font-bold">8382909995-2@ybl</span></p>
-        </div>
-
-        <!-- CLICKABLE QR CODE -->
-        <div class="flex flex-col items-center justify-center bg-white p-4 rounded-2xl max-w-xs mx-auto mb-6 shadow-xl">
-            <a id="qrPayLink" href="upi://pay?pa=8382909995-2@ybl&pn=DivyaPujaSewa&cu=INR" target="_blank">
-                <img src="eaf33d5e1ade1669970c41af1ace24a8.jpg" alt="UPI QR Code" class="w-52 h-52 object-contain rounded-xl hover:scale-105 transition cursor-pointer">
-            </a>
-            <p class="text-[11px] text-gray-700 font-bold mt-2 text-center">👆 Click QR or Scan with PhonePe / GPay / PayTM</p>
-        </div>
-
-        <!-- COPY UPI ID -->
-        <div class="bg-brand-dark border border-brand-border rounded-xl p-3.5 flex items-center justify-between mb-6">
-            <span class="text-xs text-gray-300 font-mono">8382909995-2@ybl</span>
-            <button onclick="navigator.clipboard.writeText('8382909995-2@ybl'); alert('UPI ID Copied Successfully!');" class="bg-brand-border text-brand-gold text-xs font-semibold px-3.5 py-2 rounded-lg hover:bg-brand-accent hover:text-black transition">
-                Copy UPI ID
-            </button>
-        </div>
-
-        <!-- DIRECT APPS OPTIONS -->
-        <div class="mb-6">
-            <p class="text-center text-xs text-gray-400 mb-3 font-light">Or Pay Directly via UPI Apps:</p>
-            <div class="grid grid-cols-3 gap-2">
-                <a href="upi://pay?pa=8382909995-2@ybl&pn=DivyaPujaSewa&cu=INR" class="bg-brand-dark border border-brand-border rounded-xl p-3 text-center text-xs text-white hover:border-brand-accent transition font-medium">PhonePe</a>
-                <a href="upi://pay?pa=8382909995-2@ybl&pn=DivyaPujaSewa&cu=INR" class="bg-brand-dark border border-brand-border rounded-xl p-3 text-center text-xs text-white hover:border-brand-accent transition font-medium">GPay</a>
-                <a href="upi://pay?pa=8382909995-2@ybl&pn=DivyaPujaSewa&cu=INR" class="bg-brand-dark border border-brand-border rounded-xl p-3 text-center text-xs text-white hover:border-brand-accent transition font-medium">PayTM</a>
+    <div class="max-w-md mx-auto w-full bg-white rounded-xl shadow-md overflow-hidden mb-6">
+        
+        <!-- HEADER -->
+        <div class="px-5 py-4 border-b border-gray-200 flex items-center justify-between bg-white sticky top-0 z-10">
+            <div class="flex items-center space-x-3">
+                <span class="text-xl font-bold cursor-pointer" onclick="window.history.back()">←</span>
+                <div>
+                    <p class="text-[10px] text-gray-500 uppercase tracking-wider font-semibold">Step 3 of 3</p>
+                    <h1 class="text-lg font-bold text-gray-900">Payments</h1>
+                </div>
+            </div>
+            <div class="flex items-center space-x-1 bg-gray-100 px-2.5 py-1 rounded text-[11px] font-medium text-gray-700">
+                <span>🔒</span>
+                <span>100% Secure</span>
             </div>
         </div>
 
-        <!-- UTR SUBMIT -->
-        <div class="border-t border-brand-border/60 pt-5">
-            <label class="block text-xs font-medium text-brand-gold mb-1">Payment ke baad UTR / Ref No. daalein *</label>
-            <input type="text" id="utrInput" placeholder="12-digit UTR number" class="w-full bg-brand-dark border border-brand-border rounded-xl p-3.5 text-xs text-white focus:outline-none focus:border-brand-accent mb-4">
-            <button onclick="alert('Thank You! Payment verification ke baad aapki booking confirm kar di jayegi.')" class="w-full bg-emerald-600 text-white font-bold py-3.5 text-xs rounded-xl hover:bg-emerald-700 transition shadow-lg">
-                Submit & Complete
-            </button>
+        <!-- TOTAL AMOUNT BANNER -->
+        <div class="p-4 bg-gray-50 border-b border-gray-200 flex items-center justify-between">
+            <div>
+                <span class="text-xs text-gray-600 block">Total Amount</span>
+                <span class="text-xl font-bold text-gray-900">₹908</span>
+            </div>
+            <div class="text-right">
+                <span class="text-[11px] bg-green-100 text-green-700 font-semibold px-2.5 py-1 rounded-full">Vedic Verified</span>
+            </div>
         </div>
+
+        <!-- ACCORDION SECTION 1: UPI -->
+        <div class="border-b border-gray-200">
+            <div class="px-5 py-4 flex items-center justify-between bg-blue-50/50 cursor-pointer border-l-4 border-blue-600" onclick="toggleSection('upiSection')">
+                <div class="flex items-center space-x-3">
+                    <span class="text-xs font-bold bg-blue-100 text-blue-700 px-2 py-1 rounded">UPI</span>
+                    <span class="font-semibold text-sm text-gray-900">Pay via UPI Apps / QR Code</span>
+                </div>
+                <span id="upiArrow" class="text-gray-500 font-bold">▲</span>
+            </div>
+
+            <div id="upiSection" class="p-5 bg-white space-y-4">
+                <!-- QR CODE BOX -->
+                <div class="flex flex-col items-center justify-center bg-gray-50 p-4 rounded-xl border border-gray-200">
+                    <a href="upi://pay?pa=8382909995-2@ybl&pn=DivyaPujaSewa&cu=INR" target="_blank">
+                        <img src="eaf33d5e1ade1669970c41af1ace24a8.jpg" alt="UPI QR" class="w-44 h-44 object-contain rounded-lg shadow-sm hover:scale-105 transition">
+                    </a>
+                    <p class="text-[11px] text-gray-600 font-medium mt-2">👆 Click QR or Scan with any App</p>
+                </div>
+
+                <!-- UPI ID & COPY -->
+                <div class="flex items-center justify-between bg-gray-50 border border-gray-200 rounded-lg p-3">
+                    <span class="text-xs font-mono font-bold text-gray-800">8382909995-2@ybl</span>
+                    <button onclick="navigator.clipboard.writeText('8382909995-2@ybl'); alert('UPI ID Copied!');" class="bg-blue-600 text-white text-xs font-semibold px-3 py-1.5 rounded hover:bg-blue-700 transition">Copy ID</button>
+                </div>
+
+                <!-- DIRECT APP BUTTONS -->
+                <div class="space-y-2 pt-2">
+                    <label class="block text-xs font-medium text-gray-600">Select App to Pay ₹908:</label>
+                    <div class="space-y-2">
+                        <a href="upi://pay?pa=8382909995-2@ybl&pn=DivyaPujaSewa&am=908&cu=INR" class="flex items-center justify-between p-3 border border-gray-200 rounded-lg hover:border-blue-500 transition">
+                            <span class="text-xs font-semibold text-gray-800">Google Pay / PhonePe / Paytm</span>
+                            <span class="bg-yellow-400 text-black text-xs font-bold px-4 py-1.5 rounded shadow-sm">Pay ₹908</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- UTR SUBMISSION -->
+                <div class="pt-3 border-t border-gray-100">
+                    <label class="block text-xs font-semibold text-gray-700 mb-1">Payment ke baad UTR / Ref No. daalein *</label>
+                    <input type="text" id="utrInput" placeholder="Enter 12-digit UTR number" class="w-full bg-gray-50 border border-gray-300 rounded-lg p-3 text-xs text-gray-900 focus:outline-none focus:border-blue-600 mb-3">
+                    <button onclick="submitPayment()" class="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 text-xs rounded-lg shadow transition">
+                        Verify & Complete Booking
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ACCORDION SECTION 2: CARDS -->
+        <div class="border-b border-gray-200">
+            <div class="px-5 py-4 flex items-center justify-between cursor-pointer hover:bg-gray-50" onclick="toggleSection('cardSection')">
+                <div class="flex items-center space-x-3">
+                    <span class="text-base">💳</span>
+                    <div>
+                        <span class="font-semibold text-sm text-gray-950 block">Credit / Debit / ATM Card</span>
+                        <span class="text-[11px] text-gray-500 font-light">Add and secure cards as per RBI guidelines</span>
+                    </div>
+                </div>
+                <span id="cardArrow" class="text-gray-400 font-bold">▼</span>
+            </div>
+            <div id="cardSection" class="p-5 bg-gray-50 hidden space-y-3">
+                <input type="text" placeholder="Card Number" class="w-full bg-white border border-gray-300 rounded-lg p-2.5 text-xs">
+                <div class="grid grid-cols-2 gap-2">
+                    <input type="text" placeholder="MM / YY" class="bg-white border border-gray-300 rounded-lg p-2.5 text-xs">
+                    <input type="password" placeholder="CVV" class="bg-white border border-gray-300 rounded-lg p-2.5 text-xs">
+                </div>
+                <button onclick="alert('Card gateway is simulated. Please use UPI/QR code for instant booking.')" class="w-full bg-blue-600 text-white font-bold py-2.5 text-xs rounded-lg">Pay ₹908</button>
+            </div>
+        </div>
+
+        <!-- ACCORDION SECTION 3: COD -->
+        <div class="border-b border-gray-200">
+            <div class="px-5 py-4 flex items-center justify-between cursor-pointer hover:bg-gray-50" onclick="toggleSection('codSection')">
+                <div class="flex items-center space-x-3">
+                    <span class="text-base">💵</span>
+                    <span class="font-semibold text-sm text-gray-950">Cash on Delivery (Pandit Ji ko nagad)</span>
+                </div>
+                <span id="codArrow" class="text-gray-400 font-bold">▼</span>
+            </div>
+            <div id="codSection" class="p-5 bg-gray-50 hidden">
+                <p class="text-xs text-gray-600 mb-3">Aap puja ke samay Pandit Ji ko naqad (Cash) de sakte hain.</p>
+                <button onclick="alert('COD Booking Confirmed! Pandit ji aapse sampark karenge.')" class="w-full bg-gray-900 text-white font-bold py-2.5 text-xs rounded-lg">Confirm COD Booking</button>
+            </div>
+        </div>
+
     </div>
+
+    <!-- FOOTER INFO -->
+    <div class="text-center text-[11px] text-gray-500 pb-4">
+        <p>Divya Puja Sewa Secure Payments • Powered by Vedic Gateway</p>
+    </div>
+
+    <script>
+        function toggleSection(sectionId) {
+            const sec = document.getElementById(sectionId);
+            if(sec.classList.contains('hidden')) {
+                sec.classList.remove('hidden');
+            } else {
+                if(sectionId !== 'upiSection') { // Keep UPI open by default or toggle
+                    sec.classList.add('hidden');
+                }
+            }
+        }
+
+        function submitPayment() {
+            const utr = document.getElementById("utrInput").value;
+            if(!utr) {
+                alert("Kripya payment ke baad UTR / Reference Number zaroor daalein!");
+                return;
+            }
+            alert("Thank You! UTR number mil gaya hai. Aapki booking confirm ki ja rahi hai.");
+            window.location.href = "index.html";
+        }
+    </script>
 </body>
 </html>
