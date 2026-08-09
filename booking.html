@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Booking - Divya Puja Sewa</title>
+    <title>Puja & Shadi Booking - Divya Puja Sewa</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
@@ -28,50 +27,53 @@
     <style>
         body { font-family: 'Poppins', sans-serif; background-color: #0B0D17; color: #E2E8F0; }
         .serif-title { font-family: 'Cinzel', serif; }
+        .glow-effect { box-shadow: 0 0 30px rgba(212, 175, 55, 0.15); }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between py-8 px-4">
+<body class="min-h-screen flex flex-col justify-between py-10 px-4">
 
-    <div class="max-w-2xl mx-auto w-full bg-brand-card border border-brand-border rounded-2xl p-6 md:p-8">
-        <!-- HEADER -->
+    <div class="max-w-2xl mx-auto w-full bg-brand-card border border-brand-border rounded-3xl p-6 md:p-10 glow-effect shadow-2xl">
         <div class="text-center mb-8">
-            <h1 class="serif-title text-2xl md:text-3xl font-bold text-brand-gold">Divya Puja Sewa</h1>
-            <p class="text-xs text-gray-400 mt-1">Puja Booking & Registration Form</p>
+            <h1 class="serif-title text-3xl font-extrabold text-brand-gold">🛕 Puja & Shadi Booking</h1>
+            <p class="text-xs text-gray-400 mt-2 font-light">Sampurna Vedic Vidhi-Vidhan ke liye apni details bharein</p>
         </div>
 
-        <!-- BOOKING FORM -->
         <form onsubmit="handleBookingSubmit(event)" class="space-y-4">
             <div>
                 <label class="block text-xs font-medium text-gray-300 mb-1">Aapka Poora Naam *</label>
-                <input type="text" id="bName" required placeholder="Naam likhein" class="w-full bg-brand-dark border border-brand-border rounded-lg p-3 text-xs text-white focus:outline-none focus:border-brand-accent">
+                <input type="text" id="bName" required placeholder="Naam likhein" class="w-full bg-brand-dark border border-brand-border rounded-xl p-3.5 text-xs text-white focus:outline-none focus:border-brand-accent">
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                     <label class="block text-xs font-medium text-gray-300 mb-1">Mobile / WhatsApp Number *</label>
-                    <input type="tel" id="bPhone" required placeholder="10-digit number" class="w-full bg-brand-dark border border-brand-border rounded-lg p-3 text-xs text-white focus:outline-none focus:border-brand-accent">
+                    <input type="tel" id="bPhone" required placeholder="10-digit number" class="w-full bg-brand-dark border border-brand-border rounded-xl p-3.5 text-xs text-white focus:outline-none focus:border-brand-accent">
                 </div>
                 <div>
-                    <label class="block text-xs font-medium text-gray-300 mb-1">Puja Date *</label>
-                    <input type="date" id="bDate" required class="w-full bg-brand-dark border border-brand-border rounded-lg p-3 text-xs text-white focus:outline-none focus:border-brand-accent">
+                    <label class="block text-xs font-medium text-gray-300 mb-1">Puja / Shadi Ki Tithi (Date) *</label>
+                    <input type="date" id="bDate" required class="w-full bg-brand-dark border border-brand-border rounded-xl p-3.5 text-xs text-white focus:outline-none focus:border-brand-accent">
                 </div>
             </div>
 
             <div>
-                <label class="block text-xs font-medium text-gray-300 mb-1">Poora Pata (Address) *</label>
-                <input type="text" id="bAddress" required placeholder="Ghar ka pata, City, Pin" class="w-full bg-brand-dark border border-brand-border rounded-lg p-3 text-xs text-white focus:outline-none focus:border-brand-accent">
+                <label class="block text-xs font-medium text-gray-300 mb-1">Anushthan / Puja Ka Naam *</label>
+                <input type="text" id="bService" required placeholder="Jaise: Satyanarayan Puja, Vivah Sanskar, etc." class="w-full bg-brand-dark border border-brand-border rounded-xl p-3.5 text-xs text-white focus:outline-none focus:border-brand-accent">
             </div>
 
-            <!-- TERMS & CONDITIONS -->
+            <div>
+                <label class="block text-xs font-medium text-gray-300 mb-1">Poora Pata (Address) *</label>
+                <input type="text" id="bAddress" required placeholder="Ghar ka pata, City, Pin Code" class="w-full bg-brand-dark border border-brand-border rounded-xl p-3.5 text-xs text-white focus:outline-none focus:border-brand-accent">
+            </div>
+
             <div class="flex items-start gap-2 pt-2">
-                <input type="checkbox" id="termsChk" onchange="togglePayBtn()" class="mt-1 accent-brand-accent cursor-pointer">
-                <label for="termsChk" class="text-xs text-gray-300 cursor-pointer">
-                    Main sabhi <span class="text-brand-gold underline">Terms & Conditions</span> aur Sewa Niyam se sehamat hoon.
+                <input type="checkbox" id="termsChk" required class="mt-1 accent-brand-accent cursor-pointer">
+                <label for="termsChk" class="text-xs text-gray-300 cursor-pointer font-light">
+                    Main sabhi <span class="text-brand-gold underline">Terms & Conditions</span> se sehamat hoon.
                 </label>
             </div>
 
-            <button type="submit" id="submitPayBtn" disabled class="w-full bg-gray-600 text-gray-300 font-bold py-3 text-xs rounded-lg cursor-not-allowed transition mt-6">
-                Accept Terms to Open Payment Gateway
+            <button type="submit" class="w-full bg-brand-accent text-black font-bold py-3.5 text-xs rounded-xl hover:bg-brand-accentHover transition shadow-lg mt-4">
+                Proceed to Payment Gateway
             </button>
         </form>
     </div>
@@ -81,43 +83,34 @@
         const TELEGRAM_CHAT_ID = "8814734919";
         const WHATSAPP_NUMBERS = ["919555674448", "919935179756"];
 
-        function togglePayBtn() {
-            const chk = document.getElementById("termsChk");
-            const btn = document.getElementById("submitPayBtn");
-            if(chk.checked) {
-                btn.disabled = false;
-                btn.className = "w-full bg-brand-accent text-black font-bold py-3 text-xs rounded-lg hover:bg-brand-accentHover transition cursor-pointer mt-6";
-                btn.innerText = "Proceed to Payment Gateway (New Tab) ➔";
-            } else {
-                btn.disabled = true;
-                btn.className = "w-full bg-gray-600 text-gray-300 font-bold py-3 text-xs rounded-lg cursor-not-allowed transition mt-6";
-                btn.innerText = "Accept Terms to Open Payment Gateway";
-            }
-        }
-
         function handleBookingSubmit(e) {
             e.preventDefault();
             
             const name = document.getElementById("bName").value;
             const phone = document.getElementById("bPhone").value;
             const date = document.getElementById("bDate").value;
+            const service = document.getElementById("bService").value;
             const address = document.getElementById("bAddress").value;
 
-            // 1. Send info to Telegram
-            const msg = `🙏 NEW BOOKING FORM SUBMITTED!\n-----------------------------------\nName: ${name}\nPhone: ${phone}\nDate: ${date}\nAddress: ${address}`;
+            // Telegram Notification
+            const telegramMsg = `🛕 NEW PUJA/SHADI BOOKING!\n-----------------------------------\nService: ${service}\nName: ${name}\nPhone: ${phone}\nDate: ${date}\nAddress: ${address}`;
             
             fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: msg })
-            }).catch(err => console.log(err));
+                body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: telegramMsg })
+            }).catch(e => console.log(e));
 
-            // 2. Open Payment Page in New Tab
+            alert("Thank You! Aapki enquiry mil gayi hai please wait");
+
+            // Open Payment Gateway in New Tab
             window.open('payment.html', '_blank');
 
-            // 3. Open WhatsApp
-            const waMsg = `🙏 *PUJA BOOKING DETAILS*%0A-----------------------------------%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Date:* ${date}%0A*Address:* ${address}`;
+            // Open WhatsApp
+            const waMsg = `🛕 *PUJA / SHADI BOOKING*%0A-----------------------------------%0A*Service:* ${service}%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Date:* ${date}%0A*Address:* ${address}`;
             window.open(`https://wa.me/${WHATSAPP_NUMBERS[0]}?text=${waMsg}`, '_blank');
+            
+            e.target.reset();
         }
     </script>
 </body>
