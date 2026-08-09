@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kundali - Divya Puja Sewa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0B0D17',
+                            card: '#15192B',
+                            border: '#2A304D',
+                            accent: '#D4AF37',
+                            accentHover: '#B59226',
+                            gold: '#F3E5AB'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background-color: #0B0D17; color: #E2E8F0; }
+        .serif-title { font-family: 'Cinzel', serif; }
+        .glow-effect { box-shadow: 0 0 30px rgba(212, 175, 55, 0.15); }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between py-10 px-4">
+
+    <div class="max-w-2xl mx-auto w-full bg-brand-card border border-brand-border rounded-3xl p-6 md:p-10 glow-effect shadow-2xl">
+        <div class="text-center mb-8">
+            <h1 class="serif-title text-3xl font-extrabold text-brand-gold">🔮 Kundali</h1>
+            <p class="text-xs text-gray-400 mt-2 font-light">Kundali vishleshana ke liye apni janam details bharein</p>
+        </div>
+
+        <form onsubmit="handleKundaliSubmit(event)" class="space-y-4">
+            <div class="flex gap-4 mb-4 justify-center">
+                <label class="flex items-center text-xs text-gray-300 cursor-pointer bg-brand-dark px-4 py-2.5 rounded-xl border border-brand-border">
+                    <input type="radio" name="kundaliPlan" value="Basic (₹251)" checked class="mr-2 accent-brand-accent"> Basic Consultation (₹251)
+                </label>
+                <label class="flex items-center text-xs text-gray-300 cursor-pointer bg-brand-dark px-4 py-2.5 rounded-xl border border-brand-border">
+                    <input type="radio" name="kundaliPlan" value="Detailed (₹501)" class="mr-2 accent-brand-accent"> Detailed Paramarsh (₹501)
+                </label>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-medium text-gray-300 mb-1">Naam *</label>
+                    <input type="text" id="kName" required placeholder="Jatak ka naam" class="w-full bg-brand-dark border border-brand-border rounded-xl p-3.5 text-xs text-white focus:outline-none focus:border-brand-accent">
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-gray-300 mb-1">Phone Number *</label>
+                    <input type="tel" id="kPhone" required placeholder="Mobile number" class="w-full bg-brand-dark border border-brand-border rounded-xl p-3.5 text-xs text-white focus:outline-none focus:border-brand-accent">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div>
+                    <label class="block text-xs font-medium text-gray-300 mb-1">Janam Tithi *</label>
+                    <input type="date" id="kDob" required class="w-full bg-brand-dark border border-brand-border rounded-xl p-3.5 text-xs text-white focus:outline-none focus:border-brand-accent">
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-gray-300 mb-1">Janam Samay *</label>
+                    <input type="time" id="kTime" required class="w-full bg-brand-dark border border-brand-border rounded-xl p-3.5 text-xs text-white focus:outline-none focus:border-brand-accent">
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-gray-300 mb-1">Janam Sthan *</label>
+                    <input type="text" id="kPlace" required placeholder="City, State" class="w-full bg-brand-dark border border-brand-border rounded-xl p-3.5 text-xs text-white focus:outline-none focus:border-brand-accent">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-medium text-gray-300 mb-1">Pita Ka Naam</label>
+                    <input type="text" id="kFather" placeholder="Father Name" class="w-full bg-brand-dark border border-brand-border rounded-xl p-3.5 text-xs text-white focus:outline-none focus:border-brand-accent">
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-gray-300 mb-1">Mata Ka Naam</label>
+                    <input type="text" id="kMother" placeholder="Mother Name" class="w-full bg-brand-dark border border-brand-border rounded-xl p-3.5 text-xs text-white focus:outline-none focus:border-brand-accent">
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-xs font-medium text-gray-300 mb-1">Pata (Address) *</label>
+                <input type="text" id="kAddress" required placeholder="Poora Pata" class="w-full bg-brand-dark border border-brand-border rounded-xl p-3.5 text-xs text-white focus:outline-none focus:border-brand-accent">
+            </div>
+
+            <div class="flex items-start gap-2 pt-2">
+                <input type="checkbox" id="termsChk" required class="mt-1 accent-brand-accent cursor-pointer">
+                <label for="termsChk" class="text-xs text-gray-300 cursor-pointer font-light">
+                    Main sabhi <span class="text-brand-gold underline">Terms & Conditions</span> se sehamat hoon.
+                </label>
+            </div>
+
+            <button type="submit" class="w-full bg-brand-accent text-black font-bold py-3.5 text-xs rounded-xl hover:bg-brand-accentHover transition shadow-lg mt-4">
+                Proceed to Payment Gateway
+            </button>
+        </form>
+    </div>
+
+    <script>
+        const TELEGRAM_BOT_TOKEN = "8989054970:AAG-NMCyPNoNhpnOwG1j_naEfNy4N0tYyN8";
+        const TELEGRAM_CHAT_ID = "8814734919";
+        const WHATSAPP_NUMBERS = ["919555674448", "919935179756"];
+
+        document.addEventListener("DOMContentLoaded", function() {
+            if(document.getElementById("kDob")){
+                document.getElementById("kDob").value = new Date().toISOString().split("T")[0];
+            }
+        });
+
+        function handleKundaliSubmit(e) {
+            e.preventDefault();
+            const plan = document.querySelector('input[name="kundaliPlan"]:checked').value;
+            const name = document.getElementById("kName").value;
+            const phone = document.getElementById("kPhone").value;
+            const dob = document.getElementById("kDob").value;
+            const time = document.getElementById("kTime").value;
+            const place = document.getElementById("kPlace").value;
+            const father = document.getElementById("kFather").value || "N/A";
+            const mother = document.getElementById("kMother").value || "N/A";
+            const address = document.getElementById("kAddress").value;
+
+            const telegramMsg = `🔮 KUNDALI BOOKING!\n-----------------------------------\nPlan: ${plan}\nName: ${name}\nPhone: ${phone}\nDOB: ${dob}\nTime: ${time}\nPlace: ${place}\nFather: ${father}\nMother: ${mother}\nAddress: ${address}`;
+            
+            fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: telegramMsg })
+            }).catch(e => console.log(e));
+
+            alert("Thank You! Aapki enquiry mil gayi hai please wait");
+
+            window.open('payment.html', '_blank');
+
+            const waMsg = `🔮 *KUNDALI BOOKING*%0A-----------------------------------%0A*Plan:* ${plan}%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*DOB:* ${dob}%0A*Time:* ${time}%0A*Place:* ${place}%0A*Address:* ${address}`;
+            window.open(`https://wa.me/${WHATSAPP_NUMBERS[0]}?text=${waMsg}`, '_blank');
+            
+            e.target.reset();
+        }
+    </script>
+</body>
+</html>
