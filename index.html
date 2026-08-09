@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="hi" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divya Puja Sewa - Vedic Pujas, Panchang & Kundali Consultation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0a0908',
+                            card: '#141210',
+                            accent: '#d9532f',
+                            accentHover: '#b84020',
+                            gold: '#d4af37',
+                            border: '#26221f'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #0a0908; color: #e5e5e5; font-family: 'Plus Jakarta Sans', sans-serif; }
+        .serif-title { font-family: 'Cormorant Garamond', serif; }
+        .arch-card { border-top-left-radius: 120px; border-top-right-radius: 120px; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+    <nav class="sticky top-0 z-50 bg-[#0a0908]/90 backdrop-blur-md border-b border-brand-border/50 px-4 lg:px-12 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+            <i data-lucide="flame" class="text-brand-accent w-6 h-6"></i>
+            <span class="serif-title text-xl lg:text-2xl font-bold tracking-wide text-white">Divya Puja Sewa</span>
+        </div>
+
+        <div class="hidden md:flex items-center gap-6 text-sm text-gray-300 font-medium">
+            <a href="#pujas" class="hover:text-brand-accent transition">Services Catalog</a>
+            <a href="#kundali-section" class="hover:text-brand-gold transition text-brand-gold font-semibold">Kundali Paramarsh</a>
+            <a href="#panchang-section" class="hover:text-brand-gold transition text-brand-gold font-semibold">Live Panchang</a>
+            <a href="#enquiry-section" class="hover:text-brand-accent transition">Enquiry</a>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <a href="booking.html" target="_blank" class="bg-brand-gold hover:bg-yellow-600 text-black text-xs font-bold px-4 py-2 rounded transition shadow-md">Book Puja Now</a>
+        </div>
+    </nav>
+
+    <section class="relative px-4 lg:px-12 py-16 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div>
+            <span class="text-xs font-semibold tracking-widest text-brand-gold uppercase block mb-3">Pujas • Hawans • Jaap • Path • Kundali</span>
+            <h1 class="serif-title text-4xl sm:text-5xl lg:text-6xl text-white font-normal leading-tight mb-6">
+                Vedic Rituals & Kundali, <br><span class="italic text-brand-accent">with complete authenticity</span>
+            </h1>
+            <p class="text-gray-400 text-sm md:text-base leading-relaxed mb-8 max-w-lg">
+                Book online Kundali consultation, Hawans, Jaap, and Pujas at your home by verified Varanasi Pandits.
+            </p>
+            <div class="flex flex-wrap gap-4">
+                <a href="booking.html" target="_blank" class="bg-brand-gold hover:bg-yellow-600 text-black text-sm font-bold px-6 py-3 rounded-md transition flex items-center gap-2">
+                    Open Official Booking Form <i data-lucide="external-link" class="w-4 h-4"></i>
+                </a>
+                <a href="#kundali-section" class="border border-brand-border hover:border-gray-500 text-gray-300 hover:text-white text-sm font-semibold px-6 py-3 rounded-md transition">
+                    Kundali Paramarsh
+                </a>
+            </div>
+        </div>
+
+        <div class="relative flex justify-center">
+            <div class="relative w-full max-w-md h-[380px] bg-brand-card border border-brand-border arch-card overflow-hidden shadow-2xl flex items-end justify-center group">
+                <img src="https://images.unsplash.com/photo-1608985929606-2d334579c162?q=80&w=800&auto=format&fit=crop" alt="Lord Krishna" class="w-full h-full object-cover opacity-80">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                <div class="absolute bottom-6 text-center z-10">
+                    <span class="text-brand-gold text-xs font-semibold tracking-widest block uppercase mb-1">जय श्री कृष्ण</span>
+                    <h3 class="serif-title text-2xl text-white font-semibold">Bhagwan Krishna</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pujas" class="px-4 lg:px-12 py-16 max-w-7xl mx-auto border-t border-brand-border/50">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+            <div>
+                <span class="text-xs font-semibold tracking-widest text-brand-gold uppercase block mb-2">Complete Vedic Catalog • सेवाएं</span>
+                <h2 class="serif-title text-3xl md:text-4xl text-white">Puja, Hawan, Jaap <span class="italic text-brand-accent">& Path</span></h2>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="pujas-container"></div>
+    </section>
+
+    <section id="kundali-section" class="bg-[#0f0d0b] border-t border-brand-border px-4 lg:px-12 py-16">
+        <div class="max-w-4xl mx-auto bg-brand-card border-2 border-brand-accent p-6 md:p-10 rounded-2xl shadow-2xl space-y-6">
+            <div class="text-center space-y-2">
+                <span class="bg-brand-accent/20 border border-brand-accent text-brand-accent text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">OFFICIAL KUNDALI CONSULTATION</span>
+                <h2 class="serif-title text-3xl md:text-4xl text-white font-bold">जन्म कुंडली परामर्श एवं विश्लेषण</h2>
+                <p class="text-xs text-gray-400">अपनी संपूर्ण जन्म जानकारी भरें और ज्योतिषीय मार्गदर्शन प्राप्त करें।</p>
+            </div>
+
+            <form onsubmit="handleKundaliSubmit(event)" class="space-y-4">
+                
+                <div class="space-y-2">
+                    <label class="block text-xs font-bold text-brand-gold uppercase tracking-wider">Select Kundali Plan *</label>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <label class="flex items-start gap-3 p-4 bg-[#0a0908] border border-brand-border rounded-xl cursor-pointer hover:border-brand-gold transition">
+                            <input type="radio" name="kundaliPlan" value="Normal Kundali Reading (₹499)" checked class="accent-brand-gold w-4 h-4 mt-1">
+                            <div>
+                                <p class="text-sm font-bold text-white">Normal Kundali Reading — ₹499</p>
+                                <p class="text-[11px] text-gray-400 mt-1 leading-relaxed">इसमें आपकी नॉर्मल कुंडली देखी जाएगी और जो भी ग्रह खराब या दोष होंगे, उनके बारे में विस्तार से बताया जाएगा।</p>
+                            </div>
+                        </label>
+
+                        <label class="flex items-start gap-3 p-4 bg-[#0a0908] border border-brand-border rounded-xl cursor-pointer hover:border-brand-gold transition">
+                            <input type="radio" name="kundaliPlan" value="Full Kundali Creation + Online PDF (₹999)" class="accent-brand-gold w-4 h-4 mt-1">
+                            <div>
+                                <p class="text-sm font-bold text-white">Full Kundali + Online PDF — ₹999</p>
+                                <p class="text-[11px] text-gray-400 mt-1 leading-relaxed">इसमें आपकी पूरी कुंडली बनाई जाएगी और साथ में उसकी पूरी डिजिटल **Online PDF** भेजी जाएगी।</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                    <div>
+                        <label class="block text-xs text-gray-300 uppercase mb-1">Full Name *</label>
+                        <input type="text" id="kName" required placeholder="Aapka Naam" class="w-full bg-[#0a0908] border border-brand-border rounded px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-accent">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-gray-300 uppercase mb-1">WhatsApp Phone Number *</label>
+                        <input type="tel" id="kPhone" required placeholder="+91 9876543210" class="w-full bg-[#0a0908] border border-brand-border rounded px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-accent">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div>
+                        <label class="block text-xs text-gray-300 uppercase mb-1">Date of Birth (DOB) *</label>
+                        <input type="date" id="kDob" required class="w-full bg-[#0a0908] border border-brand-border rounded px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-accent">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-gray-300 uppercase mb-1">Exact Birth Time *</label>
+                        <input type="time" id="kTime" required class="w-full bg-[#0a0908] border border-brand-border rounded px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-accent">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-gray-300 uppercase mb-1">Birth Place / City *</label>
+                        <input type="text" id="kPlace" required placeholder="e.g. Varanasi, UP" class="w-full bg-[#0a0908] border border-brand-border rounded px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-accent">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs text-gray-300 uppercase mb-1">Father's Name</label>
+                        <input type="text" id="kFather" placeholder="Pita Ji Ka Naam" class="w-full bg-[#0a0908] border border-brand-border rounded px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-accent">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-gray-300 uppercase mb-1">Mother's Name</label>
+                        <input type="text" id="kMother" placeholder="Mata Ji Ka Naam" class="w-full bg-[#0a0908] border border-brand-border rounded px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-accent">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs text-gray-300 uppercase mb-1">Current Address *</label>
+                    <textarea id="kAddress" required rows="2" placeholder="Full Address with City & Pincode" class="w-full bg-[#0a0908] border border-brand-border rounded px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-accent"></textarea>
+                </div>
+
+                <button type="submit" class="w-full bg-brand-accent hover:bg-brand-accentHover text-white font-extrabold py-3.5 rounded-lg transition uppercase text-xs tracking-wider shadow-lg flex items-center justify-center gap-2">
+                    <i data-lucide="sparkles" class="w-4 h-4"></i> Submit & Book Kundali Paramarsh
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <section id="enquiry-section" class="bg-[#080706] border-t border-brand-border px-4 lg:px-12 py-16">
+        <div class="max-w-3xl mx-auto space-y-6">
+            <div class="text-center space-y-1">
+                <span class="text-xs text-brand-gold uppercase tracking-widest font-bold block">Got Questions?</span>
+                <h2 class="serif-title text-3xl text-white font-bold">General Enquiry Form</h2>
+            </div>
+
+            <form onsubmit="handleGeneralEnquiry(event)" class="bg-brand-card border border-brand-border p-6 md:p-8 rounded-2xl space-y-4 shadow-xl">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs text-gray-300 uppercase mb-1">Your Name *</label>
+                        <input type="text" id="eqName" required placeholder="Aapka Naam" class="w-full bg-[#0a0908] border border-brand-border rounded px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-gold">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-gray-300 uppercase mb-1">Phone Number *</label>
+                        <input type="tel" id="eqPhone" required placeholder="+91 9876543210" class="w-full bg-[#0a0908] border border-brand-border rounded px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-gold">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs text-gray-300 uppercase mb-1">Your Message / Question *</label>
+                    <textarea id="eqMsg" required rows="3" placeholder="Aapko kya jaankari chahiye?" class="w-full bg-[#0a0908] border border-brand-border rounded px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-gold"></textarea>
+                </div>
+
+                <button type="submit" class="w-full bg-brand-gold hover:bg-yellow-600 text-black font-extrabold py-3.5 rounded-lg transition uppercase text-xs tracking-wider shadow-lg flex items-center justify-center gap-2">
+                    <i data-lucide="send" class="w-4 h-4"></i> Send Enquiry Message
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        // TELEGRAM BOT SETTINGS
+        const TELEGRAM_BOT_TOKEN = "8989054970:AAG-NMCyPNoNhpnOwG1j_naEfNy4N0tYyN8";
+        const TELEGRAM_CHAT_ID = "8814734919"; // SET UP DONE!
+
+        const WHATSAPP_NUMBERS = ["919555674448", "919935179756"];
+
+        const PUJAS_DATA = [
+            { id: "satyanarayan", titleHi: "सत्यनारायण पूजा", titleEn: "Satyanarayan Puja", category: "Puja", description: "Sacred worship of Lord Vishnu invoking prosperity.", price: 5100, image: "https://images.unsplash.com/photo-1609357605129-26f69add5d6e?q=80&w=800&auto=format&fit=crop" },
+            { id: "grihapravesh", titleHi: "गृह प्रवेश पूजा", titleEn: "Griha Pravesh Puja", category: "Puja", description: "Housewarming ritual to purify a new home.", price: 11000, image: "https://images.unsplash.com/photo-1545232979-fbf58800e12f?q=80&w=800&auto=format&fit=crop" },
+            { id: "rudrabhisheka", titleHi: "रुद्राभिषेक", titleEn: "Rudrabhisheka", category: "Puja", description: "The abhisheka of Lord Shiva with sacred offerings.", price: 7100, image: "https://images.unsplash.com/photo-1617653202545-931490e8d7e7?q=80&w=800&auto=format&fit=crop" },
+            { id: "navgraha", titleHi: "नवग्रह शांति हवन", titleEn: "Navgraha Shanti Hawan", category: "Hawan", description: "A fire ritual pacifying the nine planets.", price: 9100, image: "https://images.unsplash.com/photo-1514533450685-4493e01d1fdc?q=80&w=800&auto=format&fit=crop" },
+            { id: "mahamrityunjaya", titleHi: "महामृत्युंजय जाप", titleEn: "Mahamrityunjaya Jaap", category: "Jaap", description: "Powerful Shiv mantra chanting for health.", price: 21000, image: "https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=800&auto=format&fit=crop" },
+            { id: "sundarkand", titleHi: "सुंदरकांड / अखंड रामायण पाठ", titleEn: "Sundarkand / Akhand Ramayan Path", category: "Path", description: "Devotional recitation of Sundarkand.", price: 8500, image: "https://images.unsplash.com/photo-1608985929606-2d334579c162?q=80&w=800&auto=format&fit=crop" }
+        ];
+
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("kDob").value = new Date().toISOString().split("T")[0];
+
+            const container = document.getElementById("pujas-container");
+            container.innerHTML = PUJAS_DATA.map(item => `
+                <div class="bg-brand-card border border-brand-border rounded-xl overflow-hidden flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="${item.image}" alt="${item.titleEn}" class="w-full h-full object-cover">
+                            <span class="absolute top-3 left-3 bg-brand-gold text-black text-[10px] font-extrabold uppercase px-2 py-0.5 rounded">${item.category}</span>
+                        </div>
+                        <div class="p-5">
+                            <span class="text-brand-gold text-xs font-semibold block">${item.titleHi}</span>
+                            <h3 class="serif-title text-2xl font-bold text-white mb-2">${item.titleEn}</h3>
+                            <p class="text-xs text-gray-400 leading-relaxed mb-4">${item.description}</p>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0 flex items-center justify-between border-t border-brand-border/40 mt-2">
+                        <div>
+                            <span class="text-[9px] text-gray-500 uppercase block">Starting</span>
+                            <span class="serif-title text-xl font-bold text-white">₹${item.price.toLocaleString('en-IN')}</span>
+                        </div>
+                        <a href="booking.html?service=${item.id}" target="_blank" class="bg-brand-accent text-white text-xs font-semibold px-4 py-2 rounded hover:bg-brand-accentHover transition">Book Now</a>
+                    </div>
+                </div>
+            `).join('');
+            lucide.createIcons();
+        });
+
+        // TELEGRAM NOTIFICATION FUNCTION
+        function sendTelegramNotification(msg) {
+            fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: TELEGRAM_CHAT_ID,
+                    text: msg
+                })
+            }).catch(e => console.log(e));
+        }
+
+        // HANDLE KUNDALI FORM SUBMIT
+        function handleKundaliSubmit(e) {
+            e.preventDefault();
+            const plan = document.querySelector('input[name="kundaliPlan"]:checked').value;
+            const name = document.getElementById("kName").value;
+            const phone = document.getElementById("kPhone").value;
+            const dob = document.getElementById("kDob").value;
+            const time = document.getElementById("kTime").value;
+            const place = document.getElementById("kPlace").value;
+            const father = document.getElementById("kFather").value || "N/A";
+            const mother = document.getElementById("kMother").value || "N/A";
+            const address = document.getElementById("kAddress").value;
+
+            // TELEGRAM ALERT FOR KUNDALI
+            const telegramMsg = `🔮 KUNDALI CONSULTATION BOOKING!\n-----------------------------------\nPlan Selected: ${plan}\nName: ${name}\nPhone: ${phone}\nDOB: ${dob}\nBirth Time: ${time}\nBirth Place: ${place}\nFather: ${father}\nMother: ${mother}\nAddress: ${address}`;
+            
+            sendTelegramNotification(telegramMsg);
+
+            // WHATSAPP OPEN IN NEW TAB
+            const waMsg = `🔮 *KUNDALI CONSULTATION BOOKING*%0A-----------------------------------%0A*Plan Selected:* ${plan}%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*DOB:* ${dob}%0A*Birth Time:* ${time}%0A*Birth Place:* ${place}%0A*Address:* ${address}`;
+
+            WHATSAPP_NUMBERS.forEach(num => {
+                window.open(`https://wa.me/${num}?text=${waMsg}`, '_blank');
+            });
+        }
+
+        // HANDLE GENERAL ENQUIRY
+        function handleGeneralEnquiry(e) {
+            e.preventDefault();
+            const name = document.getElementById("eqName").value;
+            const phone = document.getElementById("eqPhone").value;
+            const msgText = document.getElementById("eqMsg").value;
+
+            const telegramMsg = `📩 NEW GENERAL WEBSITE ENQUIRY!\n-----------------------------------\nName: ${name}\nPhone: ${phone}\nMessage: ${msgText}`;
+
+            sendTelegramNotification(telegramMsg);
+
+            const waMsg = `📩 *NEW WEBSITE ENQUIRY*%0A-----------------------------------%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Message:* ${msgText}`;
+
+            WHATSAPP_NUMBERS.forEach(num => {
+                window.open(`https://wa.me/${num}?text=${waMsg}`, '_blank');
+            });
+        }
+    </script>
+</body>
+</html>
