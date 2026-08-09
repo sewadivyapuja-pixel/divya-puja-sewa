@@ -28,90 +28,115 @@
     <style>
         body { font-family: 'Poppins', sans-serif; background-color: #0B0D17; color: #E2E8F0; }
         .serif-title { font-family: 'Cinzel', serif; }
+        .glow-effect { box-shadow: 0 0 25px rgba(212, 175, 55, 0.15); }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between">
+<body class="min-h-screen flex flex-col justify-between selection:bg-brand-accent selection:text-black">
 
     <!-- HEADER / NAVBAR -->
-    <header class="border-b border-brand-border bg-brand-dark/90 sticky top-0 z-50 backdrop-blur">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between flex-wrap gap-3">
+    <header class="border-b border-brand-border bg-brand-dark/95 sticky top-0 z-50 backdrop-blur-md">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
             <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 rounded-full bg-brand-accent/20 border border-brand-accent flex items-center justify-center text-brand-accent font-bold text-xl">
+                <div class="w-11 h-11 rounded-2xl bg-brand-accent/10 border border-brand-accent/40 flex items-center justify-center text-brand-accent font-bold text-2xl glow-effect">
                     🪔
                 </div>
                 <div>
-                    <h1 class="serif-title text-xl font-bold text-brand-gold tracking-wide">दिव्य पूजा सेवा</h1>
-                    <p class="text-[10px] text-gray-400">Divya Puja Sewa • Vedic Sanatan Sansthan</p>
+                    <h1 class="serif-title text-xl font-extrabold text-brand-gold tracking-wide">दिव्य पूजा सेवा</h1>
+                    <p class="text-[10px] text-gray-400 font-medium">Divya Puja Sewa • Vedic Sanatan Sansthan</p>
                 </div>
             </div>
 
-            <!-- MENU & TOP BUTTONS -->
-            <div class="flex items-center space-x-2">
-                <a href="#panchang" class="text-xs text-brand-gold hover:underline px-2 hidden sm:inline-block">Panchang</a>
-                <a href="kundali.html" target="_blank" class="bg-brand-border text-brand-gold text-xs font-semibold px-3 py-2 rounded-lg hover:bg-brand-accent hover:text-black transition">
-                    🔮 Kundali Form
+            <div class="flex items-center space-x-2 md:space-x-3">
+                <a href="kundali.html" target="_blank" class="bg-brand-card border border-brand-accent/50 text-brand-gold text-xs font-bold px-4 py-2 rounded-full hover:bg-brand-accent hover:text-black transition shadow-lg">
+                    🔮 Kundali
                 </a>
-                <a href="booking.html" target="_blank" class="bg-brand-border text-brand-gold text-xs font-semibold px-3 py-2 rounded-lg hover:bg-brand-accent hover:text-black transition">
-                    🛕 Puja Booking
+                <a href="booking.html" target="_blank" class="bg-brand-card border border-brand-accent/50 text-brand-gold text-xs font-bold px-4 py-2 rounded-full hover:bg-brand-accent hover:text-black transition shadow-lg">
+                    🛕 Booking
                 </a>
-                <a href="#enquiry" class="bg-brand-accent text-black text-xs font-bold px-3 py-2 rounded-full hover:bg-brand-accentHover transition">
-                    Enquiry
+                <a href="#enquiry" class="bg-brand-accent text-black text-xs font-extrabold px-4.5 py-2 rounded-full hover:bg-brand-accentHover transition shadow-lg">
+                    Enquiry Karein
                 </a>
             </div>
         </div>
     </header>
 
     <!-- HERO SECTION -->
-    <section class="py-12 px-4 text-center max-w-4xl mx-auto">
-        <span class="inline-block px-3 py-1 bg-brand-accent/10 border border-brand-accent/30 rounded-full text-brand-gold text-xs mb-4">
-            ✨ Shuddh Vedic Evam Shastrokta Vidhi
+    <section class="py-16 px-4 text-center max-w-4xl mx-auto relative">
+        <div class="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-brand-accent/10 via-transparent to-transparent blur-3xl"></div>
+        <span class="inline-block px-4 py-1.5 bg-brand-accent/10 border border-brand-accent/30 rounded-full text-brand-gold text-xs font-semibold mb-6 tracking-wider uppercase glow-effect">
+            ✨ Shuddh Vedic Evam Shastrokta Vidhi 8K Experience
         </span>
-        <h2 class="serif-title text-3xl md:text-5xl font-extrabold text-white leading-tight mb-4">
-            Ghar Baithe Karwayein Shuddh <span class="text-brand-accent">Vedic Puja</span> & Paramarsh
+        <h2 class="serif-title text-4xl md:text-6xl font-extrabold text-white leading-tight mb-6">
+            Ghar Baithe Karwayein Shuddh <span class="text-brand-accent">Vedic Puja</span>, Vivah & Paramarsh
         </h2>
-        <p class="text-sm md:text-base text-gray-400 mb-8 max-w-2xl mx-auto">
-            Experienced Vedic Pandits dwaara Sampurna Vidhi-Vidhan ke saath Puja, Hawan, Anushthan evam Kundali Visleshana.
+        <p class="text-sm md:text-base text-gray-400 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
+            Experienced Vedic Pandits dwaara Sampurna Vidhi-Vidhan ke saath Puja, Hawan, Anushthan, Vivah Sanskar evam Kundali Visleshana.
         </p>
 
-        <!-- FAST ACTION BUTTONS -->
+        <!-- TOP QUICK BUTTONS -->
         <div class="flex justify-center gap-4 flex-wrap">
-            <a href="kundali.html" target="_blank" class="bg-brand-card border border-brand-accent text-brand-gold font-bold px-6 py-3 rounded-xl text-xs hover:bg-brand-accent hover:text-black transition flex items-center gap-2">
-                🔮 Kundali Paramarsh Karein (New Tab)
+            <a href="kundali.html" target="_blank" class="bg-brand-card border border-brand-accent text-brand-gold font-bold px-7 py-3.5 rounded-xl text-xs hover:bg-brand-accent hover:text-black transition shadow-xl flex items-center gap-2">
+                🔮 Kundali Paramarsh Karein
             </a>
-            <a href="booking.html" target="_blank" class="bg-brand-accent text-black font-bold px-6 py-3 rounded-xl text-xs hover:bg-brand-accentHover transition flex items-center gap-2">
-                🛕 Puja Booking Karein (New Tab)
+            <a href="booking.html" target="_blank" class="bg-brand-accent text-black font-bold px-7 py-3.5 rounded-xl text-xs hover:bg-brand-accentHover transition shadow-xl flex items-center gap-2">
+                🛕 Puja & Vivah Booking
             </a>
+        </div>
+    </section>
+
+    <!-- CATEGORY FILTER BUTTONS -->
+    <section class="max-w-6xl mx-auto px-4 mb-8">
+        <div class="flex justify-center items-center gap-2 md:gap-3 flex-wrap">
+            <button onclick="filterCategory('All')" class="cat-btn bg-brand-accent text-black text-xs font-bold px-5 py-2 rounded-full transition shadow-md">Sabhi (All)</button>
+            <button onclick="filterCategory('Puja')" class="cat-btn bg-brand-card border border-brand-border text-gray-300 text-xs font-medium px-5 py-2 rounded-full hover:border-brand-accent transition">Puja</button>
+            <button onclick="filterCategory('Hawan')" class="cat-btn bg-brand-card border border-brand-border text-gray-300 text-xs font-medium px-5 py-2 rounded-full hover:border-brand-accent transition">Hawan</button>
+            <button onclick="filterCategory('Jaap')" class="cat-btn bg-brand-card border border-brand-border text-gray-300 text-xs font-medium px-5 py-2 rounded-full hover:border-brand-accent transition">Jaap</button>
+            <button onclick="filterCategory('Path')" class="cat-btn bg-brand-card border border-brand-border text-gray-300 text-xs font-medium px-5 py-2 rounded-full hover:border-brand-accent transition">Path</button>
+            <button onclick="filterCategory('Vivah')" class="cat-btn bg-brand-card border border-brand-border text-gray-300 text-xs font-medium px-5 py-2 rounded-full hover:border-brand-accent transition">Vivah Sanskar</button>
         </div>
     </section>
 
     <!-- PUJA SERVICES SECTION -->
-    <section class="max-w-6xl mx-auto px-4 py-8">
-        <h3 class="serif-title text-2xl font-bold text-white mb-6 border-l-4 border-brand-accent pl-3">Humari Pramukh Puja Sewayein</h3>
-        <div id="pujas-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Dynamic Pujas -->
+    <section class="max-w-6xl mx-auto px-4 py-4 mb-12">
+        <div id="pujas-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </section>
+
+    <!-- DEDICATED SECTIONS FOR SHADI & KUNDALI BUTTONS (ABOVE GENERAL ENQUIRY) -->
+    <section class="max-w-xl mx-auto px-4 mb-8 w-full">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <a href="booking.html" target="_blank" class="bg-brand-card border border-brand-accent/60 rounded-2xl p-5 text-center hover:bg-brand-accent hover:text-black transition shadow-xl group">
+                <span class="text-2xl block mb-1">💍</span>
+                <h4 class="serif-title font-bold text-sm text-brand-gold group-hover:text-black">Shadi / Vivah Puja Booking</h4>
+                <p class="text-[10px] text-gray-400 group-hover:text-black/80 mt-1">Click to open booking form in new tab</p>
+            </a>
+            <a href="kundali.html" target="_blank" class="bg-brand-card border border-brand-accent/60 rounded-2xl p-5 text-center hover:bg-brand-accent hover:text-black transition shadow-xl group">
+                <span class="text-2xl block mb-1">🔮</span>
+                <h4 class="serif-title font-bold text-sm text-brand-gold group-hover:text-black">Kundali Paramarsh</h4>
+                <p class="text-[10px] text-gray-400 group-hover:text-black/80 mt-1">Click to open kundali form in new tab</p>
+            </a>
         </div>
     </section>
 
     <!-- GENERAL ENQUIRY SECTION -->
-    <section id="enquiry" class="max-w-xl mx-auto px-4 py-12 w-full">
-        <div class="bg-brand-card border border-brand-border rounded-2xl p-6">
-            <h3 class="serif-title text-xl font-bold text-brand-gold mb-2">📩 General Enquiry</h3>
-            <p class="text-xs text-gray-400 mb-6">Koi bhi sawal ya jankari ke liye sandesh bhejein.</p>
+    <section id="enquiry" class="max-w-xl mx-auto px-4 py-6 mb-12 w-full">
+        <div class="bg-brand-card border border-brand-border rounded-3xl p-8 glow-effect shadow-2xl">
+            <h3 class="serif-title text-2xl font-bold text-brand-gold mb-2">📩 General Enquiry</h3>
+            <p class="text-xs text-gray-400 mb-6 font-light">Koi bhi sawal ya jankari ke liye sandesh bhejein.</p>
             
             <form onsubmit="handleGeneralEnquiry(event)" class="space-y-4">
                 <div>
                     <label class="block text-xs font-medium text-gray-300 mb-1">Aapka Naam *</label>
-                    <input type="text" id="eqName" required placeholder="Aapka Poora Naam" class="w-full bg-brand-dark border border-brand-border rounded-lg p-3 text-xs text-white focus:outline-none focus:border-brand-accent">
+                    <input type="text" id="eqName" required placeholder="Aapka Poora Naam" class="w-full bg-brand-dark border border-brand-border rounded-xl p-3.5 text-xs text-white focus:outline-none focus:border-brand-accent transition">
                 </div>
                 <div>
                     <label class="block text-xs font-medium text-gray-300 mb-1">Mobile / WhatsApp Number *</label>
-                    <input type="tel" id="eqPhone" required placeholder="10 Digit Mobile Number" class="w-full bg-brand-dark border border-brand-border rounded-lg p-3 text-xs text-white focus:outline-none focus:border-brand-accent">
+                    <input type="tel" id="eqPhone" required placeholder="10 Digit Mobile Number" class="w-full bg-brand-dark border border-brand-border rounded-xl p-3.5 text-xs text-white focus:outline-none focus:border-brand-accent transition">
                 </div>
                 <div>
                     <label class="block text-xs font-medium text-gray-300 mb-1">Aapka Sawaal / Sandesh *</label>
-                    <textarea id="eqMsg" rows="4" required placeholder="Kipya apna sawal yahan likhein..." class="w-full bg-brand-dark border border-brand-border rounded-lg p-3 text-xs text-white focus:outline-none focus:border-brand-accent"></textarea>
+                    <textarea id="eqMsg" rows="4" required placeholder="Kipya apna sawal yahan likhein..." class="w-full bg-brand-dark border border-brand-border rounded-xl p-3.5 text-xs text-white focus:outline-none focus:border-brand-accent transition"></textarea>
                 </div>
-                <button type="submit" class="w-full bg-brand-accent text-black font-bold py-3 text-xs rounded-lg hover:bg-brand-accentHover transition">
+                <button type="submit" class="w-full bg-brand-accent text-black font-bold py-3.5 text-xs rounded-xl hover:bg-brand-accentHover transition shadow-lg">
                     Send Enquiry Message
                 </button>
             </form>
@@ -119,8 +144,8 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="border-t border-brand-border bg-brand-dark py-6 text-center text-xs text-gray-500">
-        <p>© 2026 Divya Puja Sewa. All Rights Reserved.</p>
+    <footer class="border-t border-brand-border bg-brand-dark py-8 text-center text-xs text-gray-500">
+        <p>© 2026 Divya Puja Sewa. All Rights Reserved. 8K Ultra Vedic Experience.</p>
     </footer>
 
     <!-- JAVASCRIPT -->
@@ -130,40 +155,53 @@
         const WHATSAPP_NUMBERS = ["919555674448", "919935179756"];
 
         const PUJAS_DATA = [
-            { id: "satyanarayan", titleHi: "सत्यनारायण पूजा", titleEn: "Satyanarayan Puja", category: "Puja", description: "Sacred worship of Lord Vishnu invoking prosperity.", price: 5100, image: "https://images.unsplash.com/photo-1609357605129-26f69add5d6e?q=80&w=800&auto=format&fit=crop" },
-            { id: "grihapravesh", titleHi: "गृह प्रवेश पूजा", titleEn: "Griha Pravesh Puja", category: "Puja", description: "Housewarming ritual to purify a new home.", price: 11000, image: "https://images.unsplash.com/photo-1545232979-fbf58800e12f?q=80&w=800&auto=format&fit=crop" },
-            { id: "rudrabhisheka", titleHi: "रुद्राभिषेक", titleEn: "Rudrabhisheka", category: "Puja", description: "The abhisheka of Lord Shiva with sacred offerings.", price: 7100, image: "https://images.unsplash.com/photo-1617653202545-931490e8d7e7?q=80&w=800&auto=format&fit=crop" },
-            { id: "navgraha", titleHi: "नवग्रह शांति हवन", titleEn: "Navgraha Shanti Hawan", category: "Hawan", description: "A fire ritual pacifying the nine planets.", price: 9100, image: "https://images.unsplash.com/photo-1514533450685-4493e01d1fdc?q=80&w=800&auto=format&fit=crop" },
-            { id: "mahamrityunjaya", titleHi: "महामृत्युंजय जाप", titleEn: "Mahamrityunjaya Jaap", category: "Jaap", description: "Powerful Shiv mantra chanting for health.", price: 21000, image: "https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=800&auto=format&fit=crop" },
-            { id: "sundarkand", titleHi: "सुंदरकांड / अखंड रामायण पाठ", titleEn: "Sundarkand / Akhand Ramayan Path", category: "Path", description: "Devotional recitation of Sundarkand.", price: 8500, image: "https://images.unsplash.com/photo-1608985929606-2d334579c162?q=80&w=800&auto=format&fit=crop" }
+            { id: "satyanarayan", titleHi: "सत्यनारायण पूजा", titleEn: "Satyanarayan Puja", category: "Puja", description: "Sacred worship of Lord Vishnu invoking prosperity and peace.", price: 5100, image: "https://images.unsplash.com/photo-1609357605129-26f69add5d6e?q=80&w=800&auto=format&fit=crop" },
+            { id: "vivah", titleHi: "विवाह संस्कार / शादी पूजा", titleEn: "Vivah Sanskar Puja", category: "Vivah", description: "Complete Vedic marriage rituals performed by expert pandits.", price: 21000, image: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=800&auto=format&fit=crop" },
+            { id: "grihapravesh", titleHi: "गृह प्रवेश पूजा", titleEn: "Griha Pravesh Puja", category: "Puja", description: "Housewarming ritual to purify a new home with positive energies.", price: 11000, image: "https://images.unsplash.com/photo-1545232979-fbf58800e12f?q=80&w=800&auto=format&fit=crop" },
+            { id: "rudrabhisheka", titleHi: "रुद्राभिषेक", titleEn: "Rudrabhisheka", category: "Puja", description: "The sacred abhisheka of Lord Shiva with holy offerings.", price: 7100, image: "https://images.unsplash.com/photo-1617653202545-931490e8d7e7?q=80&w=800&auto=format&fit=crop" },
+            { id: "navgraha", titleHi: "नवग्रह शांति हवन", titleEn: "Navgraha Shanti Hawan", category: "Hawan", description: "A divine fire ritual pacifying the nine planetary influences.", price: 9100, image: "https://images.unsplash.com/photo-1514533450685-4493e01d1fdc?q=80&w=800&auto=format&fit=crop" },
+            { id: "mahamrityunjaya", titleHi: "महामृत्युंजय जाप", titleEn: "Mahamrityunjaya Jaap", category: "Jaap", description: "Powerful Shiv mantra chanting for health, longevity and protection.", price: 21000, image: "https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=800&auto=format&fit=crop" },
+            { id: "sundarkand", titleHi: "सुंदरकांड / अखंड रामायण पाठ", titleEn: "Sundarkand / Akhand Ramayan Path", category: "Path", description: "Devotional recitation of Sundarkand for divine grace and strength.", price: 8500, image: "https://images.unsplash.com/photo-1608985929606-2d334579c162?q=80&w=800&auto=format&fit=crop" }
         ];
 
-        document.addEventListener("DOMContentLoaded", function() {
+        function renderPujas(filter = 'All') {
             const container = document.getElementById("pujas-container");
-            if(container){
-                container.innerHTML = PUJAS_DATA.map(item => `
-                    <div class="bg-brand-card border border-brand-border rounded-xl overflow-hidden flex flex-col justify-between">
-                        <div>
-                            <div class="relative h-48 overflow-hidden">
-                                <img src="${item.image}" alt="${item.titleEn}" class="w-full h-full object-cover">
-                                <span class="absolute top-3 left-3 bg-brand-gold text-black text-[10px] font-extrabold uppercase px-2 py-0.5 rounded">${item.category}</span>
-                            </div>
-                            <div class="p-5">
-                                <span class="text-brand-gold text-xs font-semibold block">${item.titleHi}</span>
-                                <h3 class="serif-title text-2xl font-bold text-white mb-2">${item.titleEn}</h3>
-                                <p class="text-xs text-gray-400 leading-relaxed mb-4">${item.description}</p>
-                            </div>
+            const filtered = filter === 'All' ? PUJAS_DATA : PUJAS_DATA.filter(item => item.category === filter);
+            
+            container.innerHTML = filtered.map(item => `
+                <div class="bg-brand-card border border-brand-border rounded-2xl overflow-hidden flex flex-col justify-between shadow-xl hover:border-brand-accent/50 transition duration-300">
+                    <div>
+                        <div class="relative h-52 overflow-hidden">
+                            <img src="${item.image}" alt="${item.titleEn}" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                            <span class="absolute top-3 left-3 bg-brand-accent text-black text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-md shadow">${item.category}</span>
                         </div>
-                        <div class="p-5 pt-0 flex items-center justify-between border-t border-brand-border/40 mt-2">
-                            <div>
-                                <span class="text-[9px] text-gray-500 uppercase block">Starting</span>
-                                <span class="serif-title text-xl font-bold text-white">₹${item.price.toLocaleString('en-IN')}</span>
-                            </div>
-                            <a href="booking.html" target="_blank" class="bg-brand-accent text-white text-xs font-semibold px-4 py-2 rounded hover:bg-brand-accentHover transition">Book Now</a>
+                        <div class="p-6">
+                            <span class="text-brand-gold text-xs font-semibold block mb-1">${item.titleHi}</span>
+                            <h3 class="serif-title text-2xl font-bold text-white mb-2">${item.titleEn}</h3>
+                            <p class="text-xs text-gray-400 leading-relaxed font-light mb-4">${item.description}</p>
                         </div>
                     </div>
-                `).join('');
-            }
+                    <div class="p-6 pt-0 flex items-center justify-between border-t border-brand-border/40 mt-2">
+                        <div>
+                            <span class="text-[9px] text-gray-500 uppercase block tracking-wider">Starting</span>
+                            <span class="serif-title text-xl font-bold text-white">₹${item.price.toLocaleString('en-IN')}</span>
+                        </div>
+                        <a href="booking.html" target="_blank" class="bg-brand-accent text-black text-xs font-bold px-5 py-2.5 rounded-xl hover:bg-brand-accentHover transition shadow-md">Book Now</a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterCategory(cat) {
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.className = "cat-btn bg-brand-card border border-brand-border text-gray-300 text-xs font-medium px-5 py-2 rounded-full hover:border-brand-accent transition";
+            });
+            event.target.className = "cat-btn active-cat bg-brand-accent text-black text-xs font-bold px-5 py-2 rounded-full transition shadow-md";
+            renderPujas(cat);
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            renderPujas('All');
         });
 
         function handleGeneralEnquiry(e) {
