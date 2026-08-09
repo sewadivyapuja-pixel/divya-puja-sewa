@@ -53,12 +53,12 @@
 
         <!-- ACCORDION SECTION 1: UPI -->
         <div class="border-b border-gray-200">
-            <div class="px-5 py-4 flex items-center justify-between bg-blue-50/50 cursor-pointer border-l-4 border-blue-600" onclick="toggleSection('upiSection')">
+            <div class="px-5 py-4 flex items-center justify-between bg-blue-50/50 cursor-pointer border-l-4 border-blue-600" onclick="toggleSection('upiSection', 'upiArrow')">
                 <div class="flex items-center space-x-3">
                     <span class="text-xs font-bold bg-blue-100 text-blue-700 px-2 py-1 rounded">UPI</span>
                     <span class="font-semibold text-sm text-gray-900">Pay via UPI Apps / QR Code</span>
                 </div>
-                <span id="upiArrow" class="text-gray-500 font-bold">▲</span>
+                <span id="upiArrow" class="text-gray-500 font-bold text-base transition-transform duration-200">▲</span>
             </div>
 
             <div id="upiSection" class="p-5 bg-white space-y-4">
@@ -98,7 +98,7 @@
 
         <!-- ACCORDION SECTION 2: CARDS -->
         <div class="border-b border-gray-200">
-            <div class="px-5 py-4 flex items-center justify-between cursor-pointer hover:bg-gray-50" onclick="toggleSection('cardSection')">
+            <div class="px-5 py-4 flex items-center justify-between cursor-pointer hover:bg-gray-50" onclick="toggleSection('cardSection', 'cardArrow')">
                 <div class="flex items-center space-x-3">
                     <span class="text-base">💳</span>
                     <div>
@@ -106,7 +106,7 @@
                         <span class="text-[11px] text-gray-500 font-light">Add and secure cards as per RBI guidelines</span>
                     </div>
                 </div>
-                <span id="cardArrow" class="text-gray-400 font-bold">▼</span>
+                <span id="cardArrow" class="text-gray-400 font-bold text-base transition-transform duration-200">▼</span>
             </div>
             <div id="cardSection" class="p-5 bg-gray-50 hidden space-y-3">
                 <input type="text" placeholder="Card Number" class="w-full bg-white border border-gray-300 rounded-lg p-2.5 text-xs">
@@ -120,7 +120,7 @@
 
         <!-- ACCORDION SECTION 3: COAP (Cash On After Puja) -->
         <div class="border-b border-gray-200">
-            <div class="px-5 py-4 flex items-center justify-between cursor-pointer hover:bg-gray-50" onclick="toggleSection('coapSection')">
+            <div class="px-5 py-4 flex items-center justify-between cursor-pointer hover:bg-gray-50" onclick="toggleSection('coapSection', 'coapArrow')">
                 <div class="flex items-center space-x-3">
                     <span class="text-base">🌿</span>
                     <div>
@@ -128,7 +128,7 @@
                         <span class="text-[11px] text-gray-500 font-light">Puja aur path sampann hone ke baad nagad bhugtan</span>
                     </div>
                 </div>
-                <span id="coapArrow" class="text-gray-400 font-bold">▼</span>
+                <span id="coapArrow" class="text-gray-400 font-bold text-base transition-transform duration-200">▼</span>
             </div>
             <div id="coapSection" class="p-5 bg-gray-50 hidden">
                 <p class="text-xs text-gray-600 mb-3">Aap puja / slot sampann hone ke baad Pandit Ji ko nagad (Cash) de sakte hain.</p>
@@ -180,14 +180,16 @@
             document.getElementById('upiPayBtn').setAttribute('href', upiUrl);
         });
 
-        function toggleSection(sectionId) {
+        function toggleSection(sectionId, arrowId) {
             const sec = document.getElementById(sectionId);
+            const arrow = document.getElementById(arrowId);
+            
             if(sec.classList.contains('hidden')) {
                 sec.classList.remove('hidden');
+                arrow.innerText = '▲';
             } else {
-                if(sectionId !== 'upiSection') {
-                    sec.classList.add('hidden');
-                }
+                sec.classList.add('hidden');
+                arrow.innerText = '▼';
             }
         }
 
@@ -226,7 +228,7 @@ Vedic Sanatan Sansthan - Varanasi
 
             downloadReceipt();
 
-            let timeLeft = 10;
+            let timeLeft = 15;
             const timerElement = document.getElementById('timerCount');
             
             const countdown = setInterval(() => {
