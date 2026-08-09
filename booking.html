@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Booking & Payment Gateway - Divya Puja Sewa</title>
+    <title>Booking - Divya Puja Sewa</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -36,178 +36,88 @@
         <!-- HEADER -->
         <div class="text-center mb-8">
             <h1 class="serif-title text-2xl md:text-3xl font-bold text-brand-gold">Divya Puja Sewa</h1>
-            <p class="text-xs text-gray-400 mt-1">Puja Booking & Secure Payment Portal</p>
+            <p class="text-xs text-gray-400 mt-1">Puja Booking & Registration Form</p>
         </div>
 
-        <!-- 1. BOOKING FORM SECTION -->
-        <div id="bookingFormSection">
-            <form onsubmit="handleBookingSubmit(event)" class="space-y-4">
+        <!-- BOOKING FORM -->
+        <form onsubmit="handleBookingSubmit(event)" class="space-y-4">
+            <div>
+                <label class="block text-xs font-medium text-gray-300 mb-1">Aapka Poora Naam *</label>
+                <input type="text" id="bName" required placeholder="Naam likhein" class="w-full bg-brand-dark border border-brand-border rounded-lg p-3 text-xs text-white focus:outline-none focus:border-brand-accent">
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                    <label class="block text-xs font-medium text-gray-300 mb-1">Aapka Poora Naam *</label>
-                    <input type="text" id="bName" required placeholder="Naam likhein" class="w-full bg-brand-dark border border-brand-border rounded-lg p-3 text-xs text-white focus:outline-none focus:border-brand-accent">
+                    <label class="block text-xs font-medium text-gray-300 mb-1">Mobile / WhatsApp Number *</label>
+                    <input type="tel" id="bPhone" required placeholder="10-digit number" class="w-full bg-brand-dark border border-brand-border rounded-lg p-3 text-xs text-white focus:outline-none focus:border-brand-accent">
                 </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs font-medium text-gray-300 mb-1">Mobile / WhatsApp Number *</label>
-                        <input type="tel" id="bPhone" required placeholder="10-digit number" class="w-full bg-brand-dark border border-brand-border rounded-lg p-3 text-xs text-white focus:outline-none focus:border-brand-accent">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-medium text-gray-300 mb-1">Puja Date *</label>
-                        <input type="date" id="bDate" required class="w-full bg-brand-dark border border-brand-border rounded-lg p-3 text-xs text-white focus:outline-none focus:border-brand-accent">
-                    </div>
-                </div>
-
                 <div>
-                    <label class="block text-xs font-medium text-gray-300 mb-1">Poora Pata (Address) *</label>
-                    <input type="text" id="bAddress" required placeholder="Ghar ka pata, City, Pin" class="w-full bg-brand-dark border border-brand-border rounded-lg p-3 text-xs text-white focus:outline-none focus:border-brand-accent">
-                </div>
-
-                <!-- TERMS & CONDITIONS CHECKBOX -->
-                <div class="flex items-start gap-2 pt-2">
-                    <input type="checkbox" id="termsChk" onchange="togglePayBtn()" class="mt-1 accent-brand-accent cursor-pointer">
-                    <label for="termsChk" class="text-xs text-gray-300 cursor-pointer">
-                        Main sabhi <span class="text-brand-gold underline">Terms & Conditions</span> aur Sewa Niyam se sehamat hoon.
-                    </label>
-                </div>
-
-                <button type="submit" id="submitPayBtn" disabled class="w-full bg-gray-600 text-gray-300 font-bold py-3 text-xs rounded-lg cursor-not-allowed transition mt-6">
-                    Accept Terms to Proceed Payment
-                </button>
-            </form>
-        </div>
-
-        <!-- 2. PAYMENT GATEWAY SECTION (SHOWS IN NEW TAB / SCREEN) -->
-        <div id="paymentSection" class="hidden border-t border-brand-border pt-6">
-            <div class="bg-brand-dark/80 border border-brand-accent/40 rounded-xl p-5 text-center mb-6">
-                <span class="text-xs text-brand-gold font-bold uppercase block tracking-wider mb-1">Scan QR Code or Choose Payment Method</span>
-                <p class="text-xs text-gray-400">Scan & Pay via Any UPI App</p>
-            </div>
-
-            <!-- CLICKABLE QR CODE -->
-            <div class="flex flex-col items-center justify-center bg-white p-4 rounded-xl max-w-xs mx-auto mb-6 shadow-lg">
-                <a id="qrPayLink" href="#" target="_blank" title="Click to Pay directly via UPI App">
-                    <img src="eaf33d5e1ade1669970c41af1ace24a8.jpg" alt="UPI QR Code" class="w-56 h-56 object-contain rounded-lg hover:scale-105 transition cursor-pointer">
-                </a>
-                <p class="text-[11px] text-gray-700 font-bold mt-2 text-center">👆 Click QR or Scan with PhonePe / GPay / PayTM</p>
-            </div>
-
-            <!-- COPY UPI ID -->
-            <div class="bg-brand-dark border border-brand-border rounded-lg p-3 flex items-center justify-between mb-6 max-w-md mx-auto">
-                <span class="text-xs text-gray-300 font-mono" id="upiId">8382909995-2@ybl</span>
-                <button onclick="copyUPI()" class="bg-brand-border text-brand-gold text-xs font-semibold px-3 py-1.5 rounded hover:bg-brand-accent hover:text-black transition">
-                    Copy UPI ID
-                </button>
-            </div>
-
-            <!-- DIRECT APP BUTTONS -->
-            <div class="mb-6">
-                <p class="text-center text-xs text-gray-400 mb-3">Or Pay Directly via UPI Apps:</p>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-md mx-auto">
-                    <a id="gpayBtn" href="#" target="_blank" class="bg-brand-dark border border-brand-border rounded-lg p-2.5 text-center text-xs text-white hover:border-brand-accent transition">
-                        🟣 PhonePe / GPay
-                    </a>
-                    <a id="paytmBtn" href="#" target="_blank" class="bg-brand-dark border border-brand-border rounded-lg p-2.5 text-center text-xs text-white hover:border-brand-accent transition">
-                        🔷 PayTM
-                    </a>
-                    <a id="bhimBtn" href="#" target="_blank" class="bg-brand-dark border border-brand-border rounded-lg p-2.5 text-center text-xs text-white hover:border-brand-accent transition">
-                        🟠 BHIM UPI
-                    </a>
-                    <a id="otherBtn" href="#" target="_blank" class="bg-brand-dark border border-brand-border rounded-lg p-2.5 text-center text-xs text-white hover:border-brand-accent transition">
-                        📱 Any App
-                    </a>
+                    <label class="block text-xs font-medium text-gray-300 mb-1">Puja Date *</label>
+                    <input type="date" id="bDate" required class="w-full bg-brand-dark border border-brand-border rounded-lg p-3 text-xs text-white focus:outline-none focus:border-brand-accent">
                 </div>
             </div>
 
-            <!-- TRANSACTION SUBMIT FORM -->
-            <div class="border-t border-brand-border/60 pt-5">
-                <label class="block text-xs font-medium text-brand-gold mb-1">Payment karne ke baad UTR / Ref No. daalein *</label>
-                <input type="text" id="utrNo" placeholder="12-digit UTR / Ref No." class="w-full bg-brand-dark border border-brand-border rounded-lg p-3 text-xs text-white focus:outline-none focus:border-brand-accent mb-3">
-                
-                <button onclick="confirmFinalPayment()" class="w-full bg-emerald-600 text-white font-bold py-3 text-xs rounded-lg hover:bg-emerald-700 transition">
-                    Submit Payment & Confirm Booking
-                </button>
+            <div>
+                <label class="block text-xs font-medium text-gray-300 mb-1">Poora Pata (Address) *</label>
+                <input type="text" id="bAddress" required placeholder="Ghar ka pata, City, Pin" class="w-full bg-brand-dark border border-brand-border rounded-lg p-3 text-xs text-white focus:outline-none focus:border-brand-accent">
             </div>
-        </div>
+
+            <!-- TERMS & CONDITIONS -->
+            <div class="flex items-start gap-2 pt-2">
+                <input type="checkbox" id="termsChk" onchange="togglePayBtn()" class="mt-1 accent-brand-accent cursor-pointer">
+                <label for="termsChk" class="text-xs text-gray-300 cursor-pointer">
+                    Main sabhi <span class="text-brand-gold underline">Terms & Conditions</span> aur Sewa Niyam se sehamat hoon.
+                </label>
+            </div>
+
+            <button type="submit" id="submitPayBtn" disabled class="w-full bg-gray-600 text-gray-300 font-bold py-3 text-xs rounded-lg cursor-not-allowed transition mt-6">
+                Accept Terms to Open Payment Gateway
+            </button>
+        </form>
     </div>
 
     <script>
         const TELEGRAM_BOT_TOKEN = "8989054970:AAG-NMCyPNoNhpnOwG1j_naEfNy4N0tYyN8";
         const TELEGRAM_CHAT_ID = "8814734919";
         const WHATSAPP_NUMBERS = ["919555674448", "919935179756"];
-        const UPI_ADDRESS = "8382909995-2@ybl";
 
-        let currentBookingData = {};
-
-        // CHECKBOX TOGGLE
         function togglePayBtn() {
             const chk = document.getElementById("termsChk");
             const btn = document.getElementById("submitPayBtn");
             if(chk.checked) {
                 btn.disabled = false;
                 btn.className = "w-full bg-brand-accent text-black font-bold py-3 text-xs rounded-lg hover:bg-brand-accentHover transition cursor-pointer mt-6";
-                btn.innerText = "Proceed to Payment Gateway ➔";
+                btn.innerText = "Proceed to Payment Gateway (New Tab) ➔";
             } else {
                 btn.disabled = true;
                 btn.className = "w-full bg-gray-600 text-gray-300 font-bold py-3 text-xs rounded-lg cursor-not-allowed transition mt-6";
-                btn.innerText = "Accept Terms to Proceed Payment";
+                btn.innerText = "Accept Terms to Open Payment Gateway";
             }
         }
 
-        function copyUPI() {
-            navigator.clipboard.writeText(UPI_ADDRESS);
-            alert("UPI ID copied: " + UPI_ADDRESS);
-        }
-
-        // HANDLE FORM SUBMIT & OPEN PAYMENT
         function handleBookingSubmit(e) {
             e.preventDefault();
             
-            currentBookingData = {
-                name: document.getElementById("bName").value,
-                phone: document.getElementById("bPhone").value,
-                date: document.getElementById("bDate").value,
-                address: document.getElementById("bAddress").value
-            };
+            const name = document.getElementById("bName").value;
+            const phone = document.getElementById("bPhone").value;
+            const date = document.getElementById("bDate").value;
+            const address = document.getElementById("bAddress").value;
 
-            const upiLink = `upi://pay?pa=${UPI_ADDRESS}&pn=DivyaPujaSewa&cu=INR`;
-            
-            // Set links for QR and Buttons
-            document.getElementById("qrPayLink").href = upiLink;
-            document.getElementById("gpayBtn").href = upiLink;
-            document.getElementById("paytmBtn").href = upiLink;
-            document.getElementById("bhimBtn").href = upiLink;
-            document.getElementById("otherBtn").href = upiLink;
-
-            // Open in New Tab view
-            document.getElementById("bookingFormSection").classList.add("hidden");
-            document.getElementById("paymentSection").classList.remove("hidden");
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // CONFIRM PAYMENT & SEND ALERTS
-        function confirmFinalPayment() {
-            const utr = document.getElementById("utrNo").value;
-            if(!utr) {
-                alert("Kripya payment karne ke baad UTR/Transaction ID zaroor darj karein.");
-                return;
-            }
-
-            // Telegram Alert
-            const msg = `🙏 NEW PUJA BOOKING & PAYMENT!\n-----------------------------------\nName: ${currentBookingData.name}\nPhone: ${currentBookingData.phone}\nDate: ${currentBookingData.date}\nAddress: ${currentBookingData.address}\nUTR/Txn ID: ${utr}`;
+            // 1. Send info to Telegram
+            const msg = `🙏 NEW BOOKING FORM SUBMITTED!\n-----------------------------------\nName: ${name}\nPhone: ${phone}\nDate: ${date}\nAddress: ${address}`;
             
             fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: msg })
-            });
+            }).catch(err => console.log(err));
 
-            // WhatsApp Open
-            const waMsg = `🙏 *PUJA BOOKING PAYMENT CONFIRMATION*%0A-----------------------------------%0A*Name:* ${currentBookingData.name}%0A*Phone:* ${currentBookingData.phone}%0A*Date:* ${currentBookingData.date}%0A*Address:* ${currentBookingData.address}%0A*UTR/Txn ID:* ${utr}`;
-            
+            // 2. Open Payment Page in New Tab
+            window.open('payment.html', '_blank');
+
+            // 3. Open WhatsApp
+            const waMsg = `🙏 *PUJA BOOKING DETAILS*%0A-----------------------------------%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Date:* ${date}%0A*Address:* ${address}`;
             window.open(`https://wa.me/${WHATSAPP_NUMBERS[0]}?text=${waMsg}`, '_blank');
-
-            alert("Thank You! Aapka payment detail bhej diya gaya hai. Hum aapko jald hi confirm karenge.");
         }
     </script>
 </body>
