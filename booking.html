@@ -1,320 +1,182 @@
 <!DOCTYPE html>
-<html lang="hi" class="dark">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Official Booking & Payment - Divya Puja Sewa</title>
+    <title>Booking & Payment - Divya Puja Sewa</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
-
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
                         brand: {
-                            dark: '#0a0908',
-                            card: '#141210',
-                            accent: '#d9532f',
-                            accentHover: '#b84020',
-                            gold: '#d4af37',
-                            border: '#26221f'
+                            dark: '#0B0D17',
+                            card: '#15192B',
+                            border: '#2A304D',
+                            accent: '#D4AF37',
+                            accentHover: '#B59226',
+                            gold: '#F3E5AB'
                         }
-                    },
-                    fontFamily: {
-                        serif: ['"Cormorant Garamond"', 'serif'],
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif']
                     }
                 }
             }
         }
     </script>
     <style>
-        body { background-color: #0a0908; color: #e5e5e5; font-family: 'Plus Jakarta Sans', sans-serif; }
-        .serif-title { font-family: 'Cormorant Garamond', serif; }
+        body { font-family: 'Poppins', sans-serif; background-color: #0B0D17; color: #E2E8F0; }
+        .serif-title { font-family: 'Cinzel', serif; }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between py-10 px-4 sm:px-6">
+<body class="min-h-screen flex flex-col justify-between py-8 px-4">
 
-    <div class="max-w-4xl mx-auto w-full space-y-6">
-        <div class="flex items-center justify-between">
-            <a href="index.html" class="inline-flex items-center gap-2 text-xs font-semibold text-gray-400 hover:text-brand-gold transition">
-                <i data-lucide="arrow-left" class="w-4 h-4"></i> Back to Main Website
-            </a>
-            <span class="serif-title text-xl font-bold text-white">Divya Puja Sewa</span>
+    <div class="max-w-2xl mx-auto w-full bg-brand-card border border-brand-border rounded-2xl p-6 md:p-8">
+        <!-- HEADER -->
+        <div class="text-center mb-8">
+            <h1 class="serif-title text-2xl md:text-3xl font-bold text-brand-gold">Divya Puja Sewa</h1>
+            <p class="text-xs text-gray-400 mt-1">Puja Booking & Secure Payment Gateway</p>
         </div>
 
-        <div class="bg-gradient-to-r from-[#171410] via-brand-card to-[#171410] border-2 border-brand-gold rounded-2xl p-6 md:p-10 shadow-2xl space-y-6">
-            <div class="text-center mb-6">
-                <span class="bg-brand-gold text-black text-[10px] font-extrabold uppercase px-3 py-1 rounded-full tracking-wider">OFFICIAL BOOKING PORTAL</span>
-                <h1 class="serif-title text-3xl md:text-5xl text-white font-bold mt-2">Book Your Puja, Jaap & Path</h1>
-                <p class="text-xs text-gray-400 mt-1">₹99 Slot Fee Mandatory + Choose Advance or COAP</p>
+        <!-- BOOKING FORM -->
+        <form id="bookingForm" onsubmit="handleBookingSubmit(event)" class="space-y-4">
+            <div>
+                <label class="block text-xs font-medium text-gray-300 mb-1">Aapka Poora Naam *</label>
+                <input type="text" id="bName" required placeholder="Naam likhein" class="w-full bg-brand-dark border border-brand-border rounded-lg p-3 text-xs text-white focus:outline-none focus:border-brand-accent">
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-medium text-gray-300 mb-1">Mobile / WhatsApp Number *</label>
+                    <input type="tel" id="bPhone" required placeholder="10-digit number" class="w-full bg-brand-dark border border-brand-border rounded-lg p-3 text-xs text-white focus:outline-none focus:border-brand-accent">
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-gray-300 mb-1">Puja Date *</label>
+                    <input type="date" id="bDate" required class="w-full bg-brand-dark border border-brand-border rounded-lg p-3 text-xs text-white focus:outline-none focus:border-brand-accent">
+                </div>
             </div>
 
-            <form id="pujaBookingForm" onsubmit="handleFormSubmit(event)" class="space-y-6">
-                
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs font-semibold text-gray-300 uppercase mb-1">Full Name *</label>
-                        <input type="text" id="custName" required placeholder="Aapka Poora Naam" class="w-full bg-[#0a0908] border border-brand-border rounded px-4 py-3 text-xs text-white focus:outline-none focus:border-brand-gold">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-gray-300 uppercase mb-1">WhatsApp Phone *</label>
-                        <input type="tel" id="custPhone" required placeholder="+91 9876543210" class="w-full bg-[#0a0908] border border-brand-border rounded px-4 py-3 text-xs text-white focus:outline-none focus:border-brand-gold">
-                    </div>
-                </div>
+            <div>
+                <label class="block text-xs font-medium text-gray-300 mb-1">Poora Pata (Address) *</label>
+                <input type="text" id="bAddress" required placeholder="Ghar ka pata, City, Pin" class="w-full bg-brand-dark border border-brand-border rounded-lg p-3 text-xs text-white focus:outline-none focus:border-brand-accent">
+            </div>
 
-                <div class="space-y-3">
-                    <label class="block text-xs font-semibold text-gray-300 uppercase">Select Service (Category) *</label>
-                    <div class="flex flex-wrap gap-2 mb-2">
-                        <button type="button" onclick="filterServices('All')" class="cat-btn bg-brand-gold text-black text-[11px] font-bold px-3 py-1 rounded">All Services</button>
-                        <button type="button" onclick="filterServices('Puja')" class="cat-btn bg-[#0a0908] text-gray-400 text-[11px] font-medium px-3 py-1 rounded border border-brand-border">Puja</button>
-                        <button type="button" onclick="filterServices('Hawan')" class="cat-btn bg-[#0a0908] text-gray-400 text-[11px] font-medium px-3 py-1 rounded border border-brand-border">Hawan</button>
-                        <button type="button" onclick="filterServices('Jaap')" class="cat-btn bg-[#0a0908] text-gray-400 text-[11px] font-medium px-3 py-1 rounded border border-brand-border">Jaap</button>
-                        <button type="button" onclick="filterServices('Path')" class="cat-btn bg-[#0a0908] text-gray-400 text-[11px] font-medium px-3 py-1 rounded border border-brand-border">Path</button>
-                    </div>
+            <button type="submit" class="w-full bg-brand-accent text-black font-bold py-3 text-xs rounded-lg hover:bg-brand-accentHover transition mt-6">
+                Proceed to Payment Gate
+            </button>
+        </form>
 
-                    <select id="selectedPujaSelect" onchange="calculatePrices()" class="w-full bg-[#0a0908] border border-brand-border rounded px-4 py-3 text-xs text-white focus:outline-none focus:border-brand-gold"></select>
-                </div>
+        <!-- PAYMENT GATEWAY SECTION (Hidden Initially) -->
+        <div id="paymentSection" class="hidden mt-8 border-t border-brand-border pt-6">
+            <div class="bg-brand-dark/80 border border-brand-accent/40 rounded-xl p-5 text-center mb-6">
+                <span class="text-xs text-brand-gold font-bold uppercase block tracking-wider mb-1">Scan QR or Choose Payment Method</span>
+                <p class="text-xs text-gray-400">Total Amount to Pay: <span class="text-white font-bold text-base" id="payAmount">₹5,100</span></p>
+            </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs font-semibold text-gray-300 uppercase mb-1">Select Date *</label>
-                        <input type="date" id="custDate" required class="w-full bg-[#0a0908] border border-brand-border rounded px-4 py-3 text-xs text-white focus:outline-none focus:border-brand-gold">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-gray-300 uppercase mb-1">Preferred Time Slot *</label>
-                        <select id="custTimeRange" onchange="handleTimeChange()" class="w-full bg-[#0a0908] border border-brand-border rounded px-4 py-3 text-xs text-white focus:outline-none focus:border-brand-gold">
-                            <option value="10:00 AM - 12:00 PM (2 Hours Slot)">10:00 AM - 12:00 PM (2 Hours Slot)</option>
-                            <option value="06:00 AM - 08:00 AM (Morning Slot)">06:00 AM - 08:00 AM (Morning Slot)</option>
-                            <option value="04:00 PM - 06:00 PM (Evening Slot)">04:00 PM - 06:00 PM (Evening Slot)</option>
-                            <option value="CUSTOM">Custom Time (Apna Custom Samay)</option>
-                        </select>
-                    </div>
-                </div>
+            <!-- OPTION 1: QR CODE -->
+            <div class="flex flex-col items-center justify-center bg-white p-4 rounded-xl max-w-xs mx-auto mb-6">
+                <img src="eaf33d5e1ade1669970c41af1ace24a8.jpg" alt="UPI QR Code" class="w-56 h-56 object-contain rounded-lg">
+                <p class="text-[10px] text-gray-600 font-semibold mt-2">Scan with PhonePe / GPay / PayTM</p>
+            </div>
 
-                <div id="customTimeBox" class="hidden">
-                    <label class="block text-xs text-brand-gold uppercase mb-1">Apna Custom Time Likhien</label>
-                    <input type="text" id="custCustomTime" placeholder="e.g. 7:30 AM to 9:30 AM" class="w-full bg-[#0a0908] border border-brand-border rounded px-4 py-3 text-xs text-white focus:outline-none focus:border-brand-gold">
-                </div>
-
-                <div>
-                    <label class="block text-xs font-semibold text-gray-300 uppercase mb-1">Full Address *</label>
-                    <textarea id="custAddress" required rows="2" placeholder="House No, Landmark, City, Pincode" class="w-full bg-[#0a0908] border border-brand-border rounded px-4 py-3 text-xs text-white focus:outline-none focus:border-brand-gold"></textarea>
-                </div>
-
-                <div class="space-y-3 pt-2">
-                    <label class="block text-xs font-bold text-brand-gold uppercase tracking-wider">Select Payment Option *</label>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <label class="flex items-start gap-3 p-3.5 bg-[#0a0908] border border-brand-border rounded-lg cursor-pointer hover:border-brand-accent transition-all">
-                            <input type="radio" name="paymentOption" value="COAP" checked onchange="calculatePrices()" class="accent-brand-accent w-4 h-4 mt-1">
-                            <div>
-                                <p class="text-xs font-bold text-white">₹99 Slot Booking + COAP</p>
-                                <p class="text-[10px] text-gray-400 mt-0.5">Pay ₹99 now. Balance Cash On After Puja.</p>
-                            </div>
-                        </label>
-
-                        <label class="flex items-start gap-3 p-3.5 bg-[#0a0908] border border-brand-border rounded-lg cursor-pointer hover:border-brand-accent transition-all">
-                            <input type="radio" name="paymentOption" value="ADVANCE" onchange="calculatePrices()" class="accent-brand-accent w-4 h-4 mt-1">
-                            <div>
-                                <p class="text-xs font-bold text-white">₹99 Slot + 40% Advance Online</p>
-                                <p class="text-[10px] text-gray-400 mt-0.5">Pay ₹99 slot fee + 40% advance together now via UPI.</p>
-                            </div>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="bg-[#0e0c0b] border border-brand-border rounded-xl p-5 space-y-2">
-                    <div class="flex justify-between items-center pb-2 border-b border-brand-border/40">
-                        <span class="text-xs text-gray-400">Total Ritual Price:</span>
-                        <span class="serif-title text-lg text-white font-bold" id="lbl-total-price">₹0</span>
-                    </div>
-                    <div class="flex justify-between items-center text-xs">
-                        <span class="text-brand-gold font-bold">Pay Now Online Today:</span>
-                        <span class="serif-title text-2xl text-brand-gold font-bold" id="lbl-pay-now">₹99</span>
-                    </div>
-                    <div class="flex justify-between items-center text-[11px] text-gray-400 pt-1 border-t border-brand-border/20">
-                        <span>Balance Payable After Puja:</span>
-                        <span class="font-bold text-gray-300" id="lbl-balance">₹0</span>
-                    </div>
-                </div>
-
-                <div class="bg-red-950/20 border border-red-800/40 p-4 rounded-lg">
-                    <label class="flex items-start gap-3 cursor-pointer">
-                        <input type="checkbox" id="tcCheck" onchange="togglePaymentGateway()" class="accent-brand-accent w-5 h-5 mt-0.5">
-                        <span class="text-xs text-gray-300 leading-relaxed">
-                            I accept terms. <strong class="text-red-400 uppercase font-black tracking-wide">Slot booking money (₹99) is STRICTLY NON-REFUNDABLE</strong> under any circumstances.
-                        </span>
-                    </label>
-                </div>
-
-                <div id="paymentGatewayBlock" class="hidden bg-[#0a0908] border-2 border-brand-gold p-6 rounded-xl text-center space-y-4 relative overflow-hidden">
-                    <div class="bg-brand-gold/10 border border-brand-gold/30 rounded-lg p-2 flex items-center justify-center gap-2">
-                        <i data-lucide="clock" class="w-4 h-4 text-brand-gold animate-spin"></i>
-                        <span class="text-xs text-brand-gold font-bold uppercase">Payment Session Expires In: <span id="timer" class="text-white text-sm font-mono font-extrabold">10:00</span></span>
-                    </div>
-
-                    <div id="qrContent" class="space-y-3">
-                        <p class="text-xs text-gray-300">Scan QR Code or copy UPI ID to pay <strong id="qrPayAmount" class="text-brand-gold text-sm">₹99</strong></p>
-                        <div class="w-48 h-48 mx-auto bg-white p-2 rounded-lg shadow-xl flex items-center justify-center">
-                           <img src="AccountQRCodeIndian Bank - 4274_LIGHT_THEME.png" alt="UPI QR Code" ...> class="w-full h-full object-contain">
-                        </div>
-                        <div class="bg-[#141210] p-3 rounded-lg border border-brand-border inline-block max-w-xs w-full">
-                            <span class="text-[10px] text-gray-500 block uppercase font-bold">UPI ID (Tap to Copy)</span>
-                            <p class="text-xs text-brand-gold font-mono font-bold select-all mt-0.5" onclick="copyUPI()">8382909995-2@ybl</p>
-                        </div>
-                    </div>
-
-                    <div id="expiredContent" class="hidden py-6 space-y-2">
-                        <p class="text-sm font-bold text-red-500 uppercase">Payment Session Expired!</p>
-                        <button type="button" onclick="start10MinTimer()" class="bg-brand-gold text-black text-xs font-bold px-4 py-2 rounded">Restart Session</button>
-                    </div>
-                </div>
-
-                <button type="submit" id="btnSubmitBooking" disabled class="w-full bg-gray-700 text-gray-400 cursor-not-allowed font-extrabold py-4 rounded-lg transition uppercase text-xs tracking-wider shadow-lg flex items-center justify-center gap-2">
-                    <i data-lucide="lock" class="w-4 h-4"></i> Accept T&C First To Pay & Confirm
+            <!-- OPTION 2: UPI ID COPY -->
+            <div class="bg-brand-dark border border-brand-border rounded-lg p-3 flex items-center justify-between mb-6 max-w-md mx-auto">
+                <span class="text-xs text-gray-300 font-mono" id="upiId">8382909995-2@ybl</span>
+                <button onclick="copyUPI()" class="bg-brand-border text-brand-gold text-xs font-semibold px-3 py-1.5 rounded hover:bg-brand-accent hover:text-black transition">
+                    Copy UPI ID
                 </button>
-            </form>
+            </div>
+
+            <!-- OPTION 3: DIRECT APP BUTTONS -->
+            <div class="mb-6">
+                <p class="text-center text-xs text-gray-400 mb-3">Or Pay Directly via Apps:</p>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-md mx-auto">
+                    <a id="gpayBtn" href="#" target="_blank" class="bg-brand-card border border-brand-border rounded-lg p-2.5 text-center text-xs text-white hover:border-brand-accent transition flex items-center justify-center gap-1.5">
+                        <span>🔵</span> GPay
+                    </a>
+                    <a id="phonepeBtn" href="#" target="_blank" class="bg-brand-card border border-brand-border rounded-lg p-2.5 text-center text-xs text-white hover:border-brand-accent transition flex items-center justify-center gap-1.5">
+                        <span>🟣</span> PhonePe
+                    </a>
+                    <a id="paytmBtn" href="#" target="_blank" class="bg-brand-card border border-brand-border rounded-lg p-2.5 text-center text-xs text-white hover:border-brand-accent transition flex items-center justify-center gap-1.5">
+                        <span>🔷</span> PayTM
+                    </a>
+                    <a id="bhimBtn" href="#" target="_blank" class="bg-brand-card border border-brand-border rounded-lg p-2.5 text-center text-xs text-white hover:border-brand-accent transition flex items-center justify-center gap-1.5">
+                        <span>🟠</span> BHIM UPI
+                    </a>
+                </div>
+            </div>
+
+            <!-- TRANSACTION SUBMIT -->
+            <div class="border-t border-brand-border/60 pt-5">
+                <label class="block text-xs font-medium text-brand-gold mb-1">Payment karne ke baad UTR / Transaction ID daalein *</label>
+                <input type="text" id="utrNo" placeholder="12-digit UTR / Ref No." class="w-full bg-brand-dark border border-brand-border rounded-lg p-3 text-xs text-white focus:outline-none focus:border-brand-accent mb-3">
+                
+                <button onclick="confirmFinalPayment()" class="w-full bg-emerald-600 text-white font-bold py-3 text-xs rounded-lg hover:bg-emerald-700 transition">
+                    Submit Payment & Confirm Booking
+                </button>
+            </div>
         </div>
     </div>
 
     <script>
-        // AAPKA TELEGRAM BOT INTEGRATION
         const TELEGRAM_BOT_TOKEN = "8989054970:AAG-NMCyPNoNhpnOwG1j_naEfNy4N0tYyN8";
-        const TELEGRAM_CHAT_ID = "8814734919"; // SET UP DONE!
-
+        const TELEGRAM_CHAT_ID = "8814734919";
         const WHATSAPP_NUMBERS = ["919555674448", "919935179756"];
-        const SITE_CONFIG = { advancePercent: 0.40, slotFee: 99 };
+        const UPI_ADDRESS = "8382909995-2@ybl";
 
-        const PUJAS_DATA = [
-            { id: "satyanarayan", titleEn: "Satyanarayan Puja", category: "Puja", price: 5100 },
-            { id: "grihapravesh", titleEn: "Griha Pravesh Puja", category: "Puja", price: 11000 },
-            { id: "rudrabhisheka", titleEn: "Rudrabhisheka", category: "Puja", price: 7100 },
-            { id: "navgraha", titleEn: "Navgraha Shanti Hawan", category: "Hawan", price: 9100 },
-            { id: "mahamrityunjaya", titleEn: "Mahamrityunjaya Jaap", category: "Jaap", price: 21000 },
-            { id: "sundarkand", titleEn: "Sundarkand / Akhand Ramayan Path", category: "Path", price: 8500 }
-        ];
+        let currentBookingData = {};
 
-        let countdownInterval = null;
-
-        document.addEventListener("DOMContentLoaded", function() {
-            document.getElementById("custDate").value = new Date().toISOString().split("T")[0];
-            populateBookingSelect(PUJAS_DATA);
-            calculatePrices();
-            lucide.createIcons();
-        });
-
-        function populateBookingSelect(data) {
-            const select = document.getElementById("selectedPujaSelect");
-            select.innerHTML = data.map(p => `<option value="${p.id}">[${p.category}] ${p.titleEn} — ₹${p.price.toLocaleString('en-IN')}</option>`).join('');
+        function copyUPI() {
+            navigator.clipboard.writeText(UPI_ADDRESS);
+            alert("UPI ID copied: " + UPI_ADDRESS);
         }
 
-        function calculatePrices() {
-            const selectedId = document.getElementById("selectedPujaSelect").value;
-            const item = PUJAS_DATA.find(p => p.id === selectedId) || PUJAS_DATA[0];
-            const payOption = document.querySelector('input[name="paymentOption"]:checked').value;
+        function handleBookingSubmit(e) {
+            e.preventDefault();
+            
+            currentBookingData = {
+                name: document.getElementById("bName").value,
+                phone: document.getElementById("bPhone").value,
+                date: document.getElementById("bDate").value,
+                address: document.getElementById("bAddress").value
+            };
 
-            let payNow = 99;
-            let balance = item.price - 99;
+            // Setup UPI Intent Links
+            const upiLink = `upi://pay?pa=${UPI_ADDRESS}&pn=DivyaPujaSewa&cu=INR`;
+            document.getElementById("gpayBtn").href = upiLink;
+            document.getElementById("phonepeBtn").href = upiLink;
+            document.getElementById("paytmBtn").href = upiLink;
+            document.getElementById("bhimBtn").href = upiLink;
 
-            if (payOption === "ADVANCE") {
-                const advanceAmount = Math.round(item.price * SITE_CONFIG.advancePercent);
-                payNow = SITE_CONFIG.slotFee + advanceAmount;
-                balance = item.price - payNow;
+            // Hide Form & Show Payment Options
+            document.getElementById("bookingForm").classList.add("hidden");
+            document.getElementById("paymentSection").classList.remove("hidden");
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function confirmFinalPayment() {
+            const utr = document.getElementById("utrNo").value;
+            if(!utr) {
+                alert("Kripya payment karne ke baad UTR/Transaction ID zaroor darj karein.");
+                return;
             }
 
-            document.getElementById("lbl-total-price").innerText = `₹${item.price.toLocaleString('en-IN')}`;
-            document.getElementById("lbl-pay-now").innerText = `₹${payNow.toLocaleString('en-IN')}`;
-            document.getElementById("lbl-balance").innerText = `₹${Math.max(0, balance).toLocaleString('en-IN')}`;
-            document.getElementById("qrPayAmount").innerText = `₹${payNow.toLocaleString('en-IN')}`;
-        }
-
-        function togglePaymentGateway() {
-            const checked = document.getElementById("tcCheck").checked;
-            const gateway = document.getElementById("paymentGatewayBlock");
-            const btn = document.getElementById("btnSubmitBooking");
-
-            if (checked) {
-                gateway.classList.remove("hidden");
-                btn.removeAttribute("disabled");
-                btn.classList.remove("bg-gray-700", "text-gray-400", "cursor-not-allowed");
-                btn.classList.add("bg-brand-accent", "hover:bg-brand-accentHover", "text-white");
-                btn.innerHTML = `<i data-lucide="check-circle" class="w-4 h-4"></i> Complete Booking & Send Alert`;
-                start10MinTimer();
-            } else {
-                gateway.classList.add("hidden");
-                btn.setAttribute("disabled", "true");
-                btn.classList.add("bg-gray-700", "text-gray-400", "cursor-not-allowed");
-                btn.classList.remove("bg-brand-accent", "hover:bg-brand-accentHover", "text-white");
-                clearInterval(countdownInterval);
-            }
-            lucide.createIcons();
-        }
-
-        function start10MinTimer() {
-            clearInterval(countdownInterval);
-            document.getElementById("qrContent").classList.remove("hidden");
-            document.getElementById("expiredContent").classList.add("hidden");
-
-            let duration = 10 * 60;
-            const display = document.getElementById("timer");
-
-            countdownInterval = setInterval(() => {
-                let minutes = parseInt(duration / 60, 10);
-                let seconds = parseInt(duration % 60, 10);
-                minutes = minutes < 10 ? "0" + minutes : minutes;
-                seconds = seconds < 10 ? "0" + seconds : seconds;
-                display.textContent = minutes + ":" + seconds;
-
-                if (--duration < 0) {
-                    clearInterval(countdownInterval);
-                    document.getElementById("qrContent").classList.add("hidden");
-                    document.getElementById("expiredContent").classList.remove("hidden");
-                }
-            }, 1000);
-        }
-
-        // TELEGRAM NOTIFICATION TRIGGER FUNCTION
-        function sendTelegramNotification(msg) {
+            // Send to Telegram
+            const msg = `🙏 NEW PUJA BOOKING & PAYMENT!\n-----------------------------------\nName: ${currentBookingData.name}\nPhone: ${currentBookingData.phone}\nDate: ${currentBookingData.date}\nAddress: ${currentBookingData.address}\nUTR/Txn ID: ${utr}`;
+            
             fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    chat_id: TELEGRAM_CHAT_ID,
-                    text: msg
-                })
-            }).catch(e => console.log(e));
-        }
-
-        function handleFormSubmit(e) {
-            e.preventDefault();
-
-            const name = document.getElementById("custName").value;
-            const phone = document.getElementById("custPhone").value;
-            const selectedId = document.getElementById("selectedPujaSelect").value;
-            const item = PUJAS_DATA.find(p => p.id === selectedId);
-            const date = document.getElementById("custDate").value;
-            let time = document.getElementById("custTimeRange").value;
-            if (time === "CUSTOM") time = document.getElementById("custCustomTime").value;
-            const address = document.getElementById("custAddress").value;
-            const payOption = document.querySelector('input[name="paymentOption"]:checked').value;
-            const payNowText = document.getElementById("lbl-pay-now").innerText;
-            const balanceText = document.getElementById("lbl-balance").innerText;
-
-            // 1. INSTANT TELEGRAM NOTIFICATION TO YOUR PHONE
-            const telegramMsg = `🚨 NEW PUJA BOOKING ALERT!\n-----------------------------------\nName: ${name}\nPhone: ${phone}\nService: ${item.titleEn}\nTotal Cost: ₹${item.price}\nPlan Selected: ${payOption}\nAmount Paid Today: ${payNowText}\nBalance Left: ${balanceText}\nScheduled Date: ${date}\nTime Slot: ${time}\nAddress: ${address}`;
-            
-            sendTelegramNotification(telegramMsg);
-
-            // 2. WHATSAPP REDIRECT IN NEW TAB
-            const waMsg = `🧾 *DIVYA PUJA SEWA - BOOKING RECEIPT*%0A-----------------------------------%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Service:* ${item.titleEn}%0A*Total Cost:* ₹${item.price}%0A*Paid Online:* ${payNowText}%0A*Date:* ${date}%0A*Time:* ${time}%0A*Address:* ${address}`;
-            
-            WHATSAPP_NUMBERS.forEach(num => {
-                window.open(`https://wa.me/${num}?text=${waMsg}`, '_blank');
+                body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: msg })
             });
+
+            // Open WhatsApp with details
+            const waMsg = `🙏 *PUJA BOOKING PAYMENT CONFIRMATION*%0A-----------------------------------%0A*Name:* ${currentBookingData.name}%0A*Phone:* ${currentBookingData.phone}%0A*Date:* ${currentBookingData.date}%0A*Address:* ${currentBookingData.address}%0A*UTR/Txn ID:* ${utr}`;
+            
+            window.open(`https://wa.me/${WHATSAPP_NUMBERS[0]}?text=${waMsg}`, '_blank');
+
+            alert("Thank You! Aapka payment detail bhej diya gaya hai. Hum aapko jald hi confirm karenge.");
         }
     </script>
 </body>
