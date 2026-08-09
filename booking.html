@@ -45,19 +45,40 @@
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- MOBILE NUMBER WITH COUNTRY CODE -->
                 <div>
                     <label class="block text-xs font-medium text-gray-300 mb-1">Mobile / WhatsApp Number *</label>
-                    <input type="tel" id="bPhone" required placeholder="10-digit number" class="w-full bg-brand-dark border border-brand-border rounded-xl p-3.5 text-xs text-white focus:outline-none focus:border-brand-accent">
+                    <div class="flex gap-2">
+                        <select id="countryCode" class="bg-brand-dark border border-brand-border rounded-xl p-3.5 text-xs text-brand-gold font-semibold focus:outline-none focus:border-brand-accent" onchange="updatePhoneLimit()">
+                            <option value="+91">🇮🇳 +91 (India)</option>
+                            <option value="+1">🇺🇸 +1 (USA)</option>
+                            <option value="+44">🇬🇧 +44 (UK)</option>
+                            <option value="+971">🇦🇪 +971 (UAE)</option>
+                        </select>
+                        <input type="tel" id="bPhone" required maxlength="10" placeholder="10 digit number" oninput="validatePhone(this)" class="w-full bg-brand-dark border border-brand-border rounded-xl p-3.5 text-xs text-white focus:outline-none focus:border-brand-accent">
+                    </div>
                 </div>
+
+                <!-- INTERACTIVE CALENDAR DATE PICKER -->
                 <div>
                     <label class="block text-xs font-medium text-gray-300 mb-1">Puja / Shadi Ki Tithi (Date) *</label>
-                    <input type="date" id="bDate" required class="w-full bg-brand-dark border border-brand-border rounded-xl p-3.5 text-xs text-white focus:outline-none focus:border-brand-accent">
+                    <input type="date" id="bDate" required class="w-full bg-brand-dark border border-brand-border rounded-xl p-3.5 text-xs text-white focus:outline-none focus:border-brand-accent cursor-pointer">
                 </div>
             </div>
 
+            <!-- ANUSHTHAN / PUJA SELECTOR WITH AUTOMATIC PRICE -->
             <div>
-                <label class="block text-xs font-medium text-gray-300 mb-1">Anushthan / Puja Ka Naam *</label>
-                <input type="text" id="bService" required placeholder="Jaise: Satyanarayan Puja, Vivah Sanskar, etc." class="w-full bg-brand-dark border border-brand-border rounded-xl p-3.5 text-xs text-white focus:outline-none focus:border-brand-accent">
+                <label class="block text-xs font-medium text-gray-300 mb-1">Anushthan / Puja Ka Naam & Price *</label>
+                <select id="bService" required onchange="updateServicePrice()" class="w-full bg-brand-dark border border-brand-border rounded-xl p-3.5 text-xs text-white focus:outline-none focus:border-brand-accent">
+                    <option value="" disabled selected>-- Puja ya Anushthan Chunein --</option>
+                    <option value="Satyanarayan Puja" data-price="501">Satyanarayan Puja - ₹501</option>
+                    <option value="Vivah Sanskar / Shadi" data-price="2100">Vivah Sanskar / Shadi - ₹2100</option>
+                    <option value="Rudrabhishek" data-price="1100">Rudrabhishek - ₹1100</option>
+                    <option value="Maha Mrityunjaya Jap" data-price="1500">Maha Mrityunjaya Jap - ₹1500</option>
+                    <option value="Navgrah Shanti Puja" data-price="1200">Navgrah Shanti Puja - ₹1200</option>
+                    <option value="Baglamukhi Anushthan" data-price="2500">Baglamukhi Anushthan - ₹2500</option>
+                </select>
+                <p id="priceDisplay" class="text-[11px] text-brand-gold mt-1.5 font-medium">Chuni gayi puja ka mulya: ₹0</p>
             </div>
 
             <div>
@@ -65,11 +86,15 @@
                 <input type="text" id="bAddress" required placeholder="Ghar ka pata, City, Pin Code" class="w-full bg-brand-dark border border-brand-border rounded-xl p-3.5 text-xs text-white focus:outline-none focus:border-brand-accent">
             </div>
 
-            <div class="flex items-start gap-2 pt-2">
-                <input type="checkbox" id="termsChk" required class="mt-1 accent-brand-accent cursor-pointer">
-                <label for="termsChk" class="text-xs text-gray-300 cursor-pointer font-light">
-                    Main sabhi <span class="text-brand-gold underline">Terms & Conditions</span> se sehamat hoon.
-                </label>
+            <!-- TERMS & CONDITIONS (NON-REFUNDABLE NOTICE) -->
+            <div class="bg-brand-dark/50 border border-brand-border rounded-xl p-3.5 space-y-2">
+                <div class="flex items-start gap-2">
+                    <input type="checkbox" id="termsChk" required class="mt-1 accent-brand-accent cursor-pointer">
+                    <label for="termsChk" class="text-xs text-gray-300 cursor-pointer font-light">
+                        Main sabhi <span class="text-brand-gold underline">Terms & Conditions</span> se sehamat hoon.
+                    </label>
+                </div>
+                <p class="text-[11px] text-amber-400/90 font-medium pl-5">⚠️ Note: Slot booking ka paisa refundable nahi hai (Non-refundable policy).</p>
             </div>
 
             <button type="submit" class="w-full bg-brand-accent text-black font-bold py-3.5 text-xs rounded-xl hover:bg-brand-accentHover transition shadow-lg mt-4">
@@ -83,17 +108,56 @@
         const TELEGRAM_CHAT_ID = "8814734919";
         const WHATSAPP_NUMBERS = ["919555674448", "919935179756"];
 
+        // Update price on selection
+        function updateServicePrice() {
+            const select = document.getElementById('bService');
+            const selectedOption = select.options[select.selectedIndex];
+            const price = selectedOption.getAttribute('data-price') || 0;
+            
+            document.getElementById('priceDisplay').innerText = `Chuni gayi puja ka mulya: ₹${price}`;
+            
+            // Store price in localStorage for payment page calculation
+            localStorage.setItem('pujaPrice', price);
+            localStorage.setItem('slotPrice', 100); // Standard slot base charge
+            localStorage.setItem('totalAmount', parseInt(price) + 100);
+        }
+
+        // Validate Phone Number Length based on country code
+        function validatePhone(input) {
+            const country = document.getElementById('countryCode').value;
+            let value = input.value.replace(/\D/g, ''); // Remove non-digits
+            
+            if (country === '+91') {
+                if (value.length > 10) value = value.slice(0, 10);
+            }
+            input.value = value;
+        }
+
+        function updatePhoneLimit() {
+            const input = document.getElementById('bPhone');
+            input.value = '';
+        }
+
         function handleBookingSubmit(e) {
             e.preventDefault();
             
             const name = document.getElementById("bName").value;
-            const phone = document.getElementById("bPhone").value;
+            const countryCode = document.getElementById("countryCode").value;
+            const phone = countryCode + " " + document.getElementById("bPhone").value;
             const date = document.getElementById("bDate").value;
-            const service = document.getElementById("bService").value;
+            const serviceSelect = document.getElementById("bService");
+            const service = serviceSelect.value;
+            const price = serviceSelect.options[serviceSelect.selectedIndex].getAttribute('data-price');
             const address = document.getElementById("bAddress").value;
 
+            // Save details to localStorage
+            localStorage.setItem('bookingName', name);
+            localStorage.setItem('bookingPhone', phone);
+            localStorage.setItem('bookingDate', date);
+            localStorage.setItem('bookingService', service);
+
             // Telegram Notification
-            const telegramMsg = `🛕 NEW PUJA/SHADI BOOKING!\n-----------------------------------\nService: ${service}\nName: ${name}\nPhone: ${phone}\nDate: ${date}\nAddress: ${address}`;
+            const telegramMsg = `🛕 NEW PUJA/SHADI BOOKING!\n-----------------------------------\nService: ${service} (₹${price})\nName: ${name}\nPhone: ${phone}\nDate: ${date}\nAddress: ${address}\nPolicy: Non-Refundable Slot`;
             
             fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
                 method: 'POST',
@@ -101,16 +165,17 @@
                 body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: telegramMsg })
             }).catch(e => console.log(e));
 
-            alert("Thank You! Aapki enquiry mil gayi hai please wait");
+            alert("Thank You! Anushthan slot lock ho gaya hai. Ab payment page par jayein.");
 
             // Open Payment Gateway in New Tab
             window.open('payment.html', '_blank');
 
             // Open WhatsApp
-            const waMsg = `🛕 *PUJA / SHADI BOOKING*%0A-----------------------------------%0A*Service:* ${service}%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Date:* ${date}%0A*Address:* ${address}`;
+            const waMsg = `🛕 *PUJA / SHADI BOOKING*%0A-----------------------------------%0A*Service:* ${service} (₹${price})%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Date:* ${date}%0A*Address:* ${address}%0A*Note:* Non-Refundable Slot`;
             window.open(`https://wa.me/${WHATSAPP_NUMBERS[0]}?text=${waMsg}`, '_blank');
             
             e.target.reset();
+            document.getElementById('priceDisplay').innerText = `Chuni gayi puja ka mulya: ₹0`;
         }
     </script>
 </body>
