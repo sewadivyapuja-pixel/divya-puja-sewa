@@ -27,50 +27,54 @@
     <style>
         body { font-family: 'Poppins', sans-serif; background-color: #0B0D17; color: #E2E8F0; }
         .serif-title { font-family: 'Cinzel', serif; }
+        .glow-effect { box-shadow: 0 0 30px rgba(212, 175, 55, 0.15); }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between py-8 px-4">
+<body class="min-h-screen flex flex-col justify-between py-10 px-4">
 
-    <div class="max-w-md mx-auto w-full bg-brand-card border border-brand-border rounded-2xl p-6 shadow-xl">
+    <div class="max-w-md mx-auto w-full bg-brand-card border border-brand-border rounded-3xl p-6 md:p-8 glow-effect shadow-2xl">
         <div class="text-center mb-6">
-            <h1 class="serif-title text-2xl font-bold text-brand-gold">Secure Payment</h1>
-            <p class="text-xs text-gray-400 mt-1">Scan QR Code or Choose UPI Option</p>
+            <h1 class="serif-title text-2xl font-extrabold text-brand-gold">Secure Payment Gateway</h1>
+            <p class="text-xs text-gray-400 mt-1 font-light">Scan QR Code or Choose UPI Option</p>
         </div>
 
         <!-- PAYMENT SESSION -->
-        <div class="bg-brand-dark/80 border border-brand-accent/40 rounded-xl p-4 text-center mb-6">
+        <div class="bg-brand-dark/90 border border-brand-accent/40 rounded-2xl p-4 text-center mb-6">
             <span class="text-xs text-brand-gold font-bold uppercase block tracking-wider mb-1">Scan QR to Pay</span>
-            <p class="text-xs text-gray-400">UPI ID: <span class="text-white font-mono">8382909995-2@ybl</span></p>
+            <p class="text-xs text-gray-400">UPI ID: <span class="text-white font-mono font-bold">8382909995-2@ybl</span></p>
         </div>
 
         <!-- CLICKABLE QR CODE -->
-        <div class="flex flex-col items-center justify-center bg-white p-4 rounded-xl max-w-xs mx-auto mb-6 shadow">
+        <div class="flex flex-col items-center justify-center bg-white p-4 rounded-2xl max-w-xs mx-auto mb-6 shadow-xl">
             <a id="qrPayLink" href="upi://pay?pa=8382909995-2@ybl&pn=DivyaPujaSewa&cu=INR" target="_blank">
-                <img src="eaf33d5e1ade1669970c41af1ace24a8.jpg" alt="UPI QR Code" class="w-52 h-52 object-contain rounded-lg hover:scale-105 transition cursor-pointer">
+                <img src="eaf33d5e1ade1669970c41af1ace24a8.jpg" alt="UPI QR Code" class="w-52 h-52 object-contain rounded-xl hover:scale-105 transition cursor-pointer">
             </a>
-            <p class="text-[10px] text-gray-700 font-bold mt-2 text-center">👆 Click QR or Scan with PhonePe / GPay / PayTM</p>
+            <p class="text-[11px] text-gray-700 font-bold mt-2 text-center">👆 Click QR or Scan with PhonePe / GPay / PayTM</p>
         </div>
 
         <!-- COPY UPI ID -->
-        <div class="bg-brand-dark border border-brand-border rounded-lg p-3 flex items-center justify-between mb-6">
+        <div class="bg-brand-dark border border-brand-border rounded-xl p-3.5 flex items-center justify-between mb-6">
             <span class="text-xs text-gray-300 font-mono">8382909995-2@ybl</span>
-            <button onclick="navigator.clipboard.writeText('8382909995-2@ybl'); alert('UPI ID Copied!');" class="bg-brand-border text-brand-gold text-xs font-semibold px-3 py-1.5 rounded hover:bg-brand-accent hover:text-black transition">
+            <button onclick="navigator.clipboard.writeText('8382909995-2@ybl'); alert('UPI ID Copied Successfully!');" class="bg-brand-border text-brand-gold text-xs font-semibold px-3.5 py-2 rounded-lg hover:bg-brand-accent hover:text-black transition">
                 Copy UPI ID
             </button>
         </div>
 
-        <!-- DIRECT APPS -->
-        <div class="mb-6 grid grid-cols-3 gap-2">
-            <a href="upi://pay?pa=8382909995-2@ybl&pn=DivyaPujaSewa&cu=INR" class="bg-brand-dark border border-brand-border rounded-lg p-2.5 text-center text-xs text-white hover:border-brand-accent transition">PhonePe</a>
-            <a href="upi://pay?pa=8382909995-2@ybl&pn=DivyaPujaSewa&cu=INR" class="bg-brand-dark border border-brand-border rounded-lg p-2.5 text-center text-xs text-white hover:border-brand-accent transition">GPay</a>
-            <a href="upi://pay?pa=8382909995-2@ybl&pn=DivyaPujaSewa&cu=INR" class="bg-brand-dark border border-brand-border rounded-lg p-2.5 text-center text-xs text-white hover:border-brand-accent transition">PayTM</a>
+        <!-- DIRECT APPS OPTIONS -->
+        <div class="mb-6">
+            <p class="text-center text-xs text-gray-400 mb-3 font-light">Or Pay Directly via UPI Apps:</p>
+            <div class="grid grid-cols-3 gap-2">
+                <a href="upi://pay?pa=8382909995-2@ybl&pn=DivyaPujaSewa&cu=INR" class="bg-brand-dark border border-brand-border rounded-xl p-3 text-center text-xs text-white hover:border-brand-accent transition font-medium">PhonePe</a>
+                <a href="upi://pay?pa=8382909995-2@ybl&pn=DivyaPujaSewa&cu=INR" class="bg-brand-dark border border-brand-border rounded-xl p-3 text-center text-xs text-white hover:border-brand-accent transition font-medium">GPay</a>
+                <a href="upi://pay?pa=8382909995-2@ybl&pn=DivyaPujaSewa&cu=INR" class="bg-brand-dark border border-brand-border rounded-xl p-3 text-center text-xs text-white hover:border-brand-accent transition font-medium">PayTM</a>
+            </div>
         </div>
 
         <!-- UTR SUBMIT -->
-        <div class="border-t border-brand-border/60 pt-4">
+        <div class="border-t border-brand-border/60 pt-5">
             <label class="block text-xs font-medium text-brand-gold mb-1">Payment ke baad UTR / Ref No. daalein *</label>
-            <input type="text" id="utrInput" placeholder="12-digit UTR number" class="w-full bg-brand-dark border border-brand-border rounded-lg p-3 text-xs text-white focus:outline-none focus:border-brand-accent mb-3">
-            <button onclick="alert('Thank You! Payment verification ke baad aapki booking confirm kar di jayegi.')" class="w-full bg-emerald-600 text-white font-bold py-3 text-xs rounded-lg hover:bg-emerald-700 transition">
+            <input type="text" id="utrInput" placeholder="12-digit UTR number" class="w-full bg-brand-dark border border-brand-border rounded-xl p-3.5 text-xs text-white focus:outline-none focus:border-brand-accent mb-4">
+            <button onclick="alert('Thank You! Payment verification ke baad aapki booking confirm kar di jayegi.')" class="w-full bg-emerald-600 text-white font-bold py-3.5 text-xs rounded-xl hover:bg-emerald-700 transition shadow-lg">
                 Submit & Complete
             </button>
         </div>
