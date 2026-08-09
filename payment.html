@@ -166,7 +166,6 @@
     </div>
 
     <script>
-        // Load Dynamic Amount from LocalStorage
         window.addEventListener('DOMContentLoaded', () => {
             const totalAmount = localStorage.getItem('totalAmount') || 501;
             const serviceName = localStorage.getItem('bookingService') || 'Puja Path & Slot';
@@ -225,10 +224,8 @@ Vedic Sanatan Sansthan - Varanasi
             document.getElementById('paymentMainContainer').classList.add('hidden');
             document.getElementById('successScreen').classList.remove('hidden');
 
-            // Trigger receipt download automatically
             downloadReceipt();
 
-            // 15 Seconds Timer Logic
             let timeLeft = 15;
             const timerElement = document.getElementById('timerCount');
             
