@@ -31,7 +31,6 @@
     </script>
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; transition: background-color 0.5s ease, color 0.5s ease; }
-        
         .serif-title { font-family: 'Cinzel', serif; }
         .ultra-glow { box-shadow: 0 0 60px rgba(var(--theme-rgb), 0.15); }
         .hover-card-effect { transition: all 0.3s ease; }
@@ -159,20 +158,22 @@
     </main>
 
     <footer class="border-t py-6 text-center text-[11px] mt-12 border-gray-800">
-        <p id="footer-text" class="opacity-70">Divya Puja Sewa • Vedic Sanatan Sansthan Varanasi (Random Dynamic Theme Mode)</p>
+        <p id="footer-text" class="opacity-70">Divya Puja Sewa • Vedic Sanatan Sansthan Varanasi (Multi-Color Dynamic Theme Mode)</p>
     </footer>
 
     <script>
-        // Professional Color Themes Array (Har refresh par inme se ek naya color select hoga)
+        // Unlimited Multi-Color Professional Themes (Har refresh par ek naya vibrant professional color aayega)
         const professionalThemes = [
             { name: "Royal Gold", color: "#D4AF37", rgb: "212, 175, 55", bg: "#0B0D17", card: "#15192B", border: "#2A304D", text: "#E2E8F0" },
             { name: "Emerald Mystic", color: "#10B981", rgb: "16, 185, 129", bg: "#061A14", card: "#0E2921", border: "#1B4D3E", text: "#E2E8F0" },
             { name: "Ruby Divine", color: "#EF4444", rgb: "239, 68, 68", bg: "#1A0909", card: "#2B1212", border: "#4D2222", text: "#E2E8F0" },
             { name: "Royal Sapphire", color: "#3B82F6", rgb: "59, 130, 246", bg: "#090F1A", card: "#121C2B", border: "#22354D", text: "#E2E8F0" },
-            { name: "Antique Bronze", color: "#D97706", rgb: "217, 119, 6", bg: "#171007", card: "#291D0E", border: "#4D361A", text: "#E2E8F0" }
+            { name: "Antique Bronze", color: "#D97706", rgb: "217, 119, 6", bg: "#171007", card: "#291D0E", border: "#4D361A", text: "#E2E8F0" },
+            { name: "Vibrant Violet", color: "#8B5CF6", rgb: "139, 92, 246", bg: "#10091A", card: "#1D122B", border: "#35224D", text: "#E2E8F0" },
+            { name: "Electric Cyan", color: "#06B6D4", rgb: "6, 182, 212", bg: "#06161A", card: "#0E252B", border: "#1B444D", text: "#E2E8F0" },
+            { name: "Sunset Pink", color: "#EC4899", rgb: "236, 72, 153", bg: "#1A0914", card: "#2B1221", border: "#4D223A", text: "#E2E8F0" }
         ];
 
-        // Random Theme Selector on every page refresh
         function applyRandomTheme() {
             const randomTheme = professionalThemes[Math.floor(Math.random() * professionalThemes.length)];
             
@@ -197,7 +198,6 @@
             document.getElementById('consultCard').style.backgroundColor = randomTheme.card;
             document.getElementById('consultCard').style.borderColor = randomTheme.border;
 
-            // Apply card and border colors to all puja boxes
             document.querySelectorAll('.puja-box').forEach(box => {
                 box.style.backgroundColor = randomTheme.bg;
                 box.style.borderColor = randomTheme.border;
@@ -209,7 +209,10 @@
 
         const TELEGRAM_BOT_TOKEN = "8989054970:AAG-NMCyPNoNhpnOwG1j_naEfNy4N0tYyN8";
         const TELEGRAM_CHAT_ID = "8814734919";
-        const ADMIN_WHATSAPP = "919555674448";
+        
+        // Both WhatsApp Numbers added
+        const ADMIN_WHATSAPP_1 = "919935179756";
+        const ADMIN_WHATSAPP_2 = "918382909995";
 
         let currentLang = 'hi';
 
@@ -228,7 +231,7 @@
                 consultTitle: "Pandit Ji se Samadhan Paye Tatkal",
                 consultDesc: "Apne man me uth rahe kisi bhi sawal ya samasya ke liye seedha baat karein.",
                 consultBtn: "Tatkal Sampark Karein",
-                footer: "Divya Puja Sewa • Vedic Sanatan Sansthan Varanasi (Random Dynamic Theme Mode)"
+                footer: "Divya Puja Sewa • Vedic Sanatan Sansthan Varanasi (Multi-Color Dynamic Theme Mode)"
             },
             en: {
                 navPujas: "Pujas & Chants", navContact: "Contact",
@@ -244,7 +247,7 @@
                 consultTitle: "Instant Consultation with Pandit Ji",
                 consultDesc: "Get immediate spiritual guidance and answers for any life problems over phone.",
                 consultBtn: "Contact Instantly",
-                footer: "Divya Puja Sewa • Vedic Sanatan Sansthan Varanasi (Random Dynamic Theme Mode)"
+                footer: "Divya Puja Sewa • Vedic Sanatan Sansthan Varanasi (Multi-Color Dynamic Theme Mode)"
             }
         };
 
@@ -278,6 +281,7 @@
 
             const telegramMsg = `🚨 NEW DIRECT ENQUIRY / BOOKING!\n-----------------------------------\n🛕 Seva / Jaap: ${serviceName}\n📍 Mode: Direct (No Payment Required)\n⏰ Status: Instant Alert`;
             
+            // Send to Telegram
             fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -285,7 +289,11 @@
             }).catch(e => console.log("Telegram Error:", e));
 
             const waMsg = `🚨 *NEW DIRECT ENQUIRY / BOOKING*%0A-----------------------------------%0A*Seva / Jaap:* ${serviceName}%0A*Mode:* Direct (No Payment Required)%0A*Status:* Instant Alert`;
-            window.open(`https://wa.me/${ADMIN_WHATSAPP}?text=${waMsg}`, '_blank');
+            
+            // Open WhatsApp 1
+            window.open(`https://wa.me/${ADMIN_WHATSAPP_1}?text=${waMsg}`, '_blank');
+            // Open WhatsApp 2
+            window.open(`https://wa.me/${ADMIN_WHATSAPP_2}?text=${waMsg}`, '_blank');
 
             window.location.href = 'booking.html';
         }
