@@ -61,15 +61,10 @@
     <audio autoplay src="aapke_audio_ka_link_ya_path.mp3"></audio>
     <!-- ======================================================= -->
 
-    <!-- 1. EKDAM TOP PAR LIVE DATE & TIME -->
-    <div id="live-datetime" class="w-full bg-[#1c2541] text-amber-300 text-center py-2 text-xs font-bold border-b border-[#222638] tracking-wide">
-        <span id="datetime-display"></span>
-    </div>
-
-    <!-- TOP HEADER NAVBAR WITH 3-LINE MENU & THEME SELECTOR -->
+    <!-- TOP HEADER NAVBAR WITH 3-LINE MENU, LOGO, LIVE DATE-TIME & THEME SELECTOR -->
     <header id="headerBox" class="w-full border-b border-[#222638] bg-[#0A0B10]/90 backdrop-blur-md sticky top-0 z-50 px-6 py-4">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
-            <div class="flex items-center gap-4">
+            <div class="flex items-center gap-6">
                 <!-- 3-Line Hamburger Menu Button -->
                 <div class="relative">
                     <button onclick="toggleHamburgerMenu()" class="text-amber-400 text-xl p-1 rounded-lg border border-[#222638] bg-[#12141C] focus:outline-none hover:border-amber-400 transition flex items-center justify-center w-9 h-9">
@@ -102,13 +97,19 @@
                 <a href="#" class="flex items-center gap-2 font-serif font-bold text-base tracking-wide" style="color: var(--theme-color, #D4AF37);">
                     <span>🔥</span> <span id="nav-logo-text">Divya Puja Sewa</span>
                 </a>
-            </div>
 
-            <nav class="hidden md:flex items-center gap-6 text-xs font-medium text-gray-300">
-                <a href="#all-pujas" id="nav-pujas" class="hover:opacity-80 transition">Pujas & Jaap</a>
-                <a href="#contact-section" id="nav-contact" class="hover:opacity-80 transition">Contact</a>
-                <a href="#reviews-section" id="nav-reviews" class="hover:opacity-80 transition">Reviews</a>
-            </nav>
+                <!-- LIVE DATE & TIME PLACED RIGHT BESIDE THE LOGO (MIDDLE OF HEADER) -->
+                <div id="live-datetime" class="hidden lg:flex items-center text-amber-300 text-xs font-semibold bg-[#12141C] border border-[#222638] px-3 py-1.5 rounded-xl tracking-wide">
+                    <span id="datetime-display"></span>
+                </div>
+
+                <!-- NAVIGATION LINKS -->
+                <nav class="hidden md:flex items-center gap-6 text-xs font-medium text-gray-300 pl-4 border-l border-[#222638]">
+                    <a href="#all-pujas" id="nav-pujas" class="hover:opacity-80 transition">Pujas & Jaap</a>
+                    <a href="#contact-section" id="nav-contact" class="hover:opacity-80 transition">Contact</a>
+                    <a href="#reviews-section" id="nav-reviews" class="hover:opacity-80 transition">Reviews</a>
+                </nav>
+            </div>
 
             <div class="flex items-center gap-3">
                 <select id="themeSelector" onchange="changeTheme(this.value)" class="text-xs bg-[#12141C] border border-[#222638] px-2.5 py-2 rounded-xl text-gray-300 outline-none cursor-pointer">
@@ -164,13 +165,45 @@
                     </div>
                 </div>
 
-                <!-- LEFT ALIGNED MOVING NOTIFICATION BAR (MARQUEE) -->
-                <div class="w-full mt-4">
-                    <div class="theme-card border border-[#222638] rounded-xl py-2 px-3 overflow-hidden bg-[#12141C]">
+                <!-- 3 WIDGETS SIDE-BY-SIDE UNDER KRISHNA IMAGE: CONTRACTOR REVIEW + HINDU PANCHANG + MOVING NOTIFICATION BAR -->
+                <div class="w-full mt-4 flex items-center gap-2">
+                    
+                    <!-- 1. PUJAS CONTRACTOR REVIEW WIDGET (LEFT SIDE) -->
+                    <div class="theme-card border border-amber-500/40 rounded-xl p-3 bg-[#12141C] shrink-0 w-40 shadow-lg text-left">
+                        <div class="flex items-center justify-between border-b border-[#222638] pb-1.5 mb-1.5">
+                            <span id="contractor-rev-title" class="text-[10px] font-bold uppercase tracking-wider text-amber-400">⭐ Contractor Review</span>
+                        </div>
+                        <div class="space-y-1">
+                            <div class="text-[10px] text-amber-300 font-bold">⭐⭐⭐⭐⭐ 4.9/5</div>
+                            <p id="contractor-rev-desc" class="text-[9px] text-gray-300 leading-tight">Verified Pandit & Seva Contractors</p>
+                        </div>
+                    </div>
+
+                    <!-- 2. HINDU PANCHANG CALENDAR WIDGET (MIDDLE) -->
+                    <div class="theme-card border border-amber-500/40 rounded-xl p-3 bg-[#12141C] shrink-0 w-44 shadow-lg text-left">
+                        <div class="flex items-center justify-between border-b border-[#222638] pb-1.5 mb-1.5">
+                            <span id="panchang-title" class="text-[10px] font-bold uppercase tracking-wider text-amber-400">🛕 Hindu Panchang</span>
+                            <span id="panchang-month-name" class="text-[10px] text-gray-300 font-semibold">Bhadrapada</span>
+                        </div>
+                        <div class="space-y-1">
+                            <div class="flex items-center justify-between text-[10px]">
+                                <span class="text-gray-400" id="tithi-label-1">Tithi:</span>
+                                <span id="current-hindu-tithi" class="font-bold text-amber-300">Ekadashi</span>
+                            </div>
+                            <div class="flex items-center justify-between text-[10px]">
+                                <span class="text-gray-400" id="tithi-label-2">Festival:</span>
+                                <span id="next-hindu-festival" class="font-bold text-amber-300">Purnima</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. MOVING NOTIFICATION BAR (MARQUEE) (RIGHT) -->
+                    <div class="theme-card border border-[#222638] rounded-xl py-4 px-3 overflow-hidden bg-[#12141C] grow shadow-lg">
                         <marquee id="marquee-text" behavior="scroll" direction="left" scrollamount="5" class="text-xs font-semibold text-amber-400 text-left">
                             🛕 Sabhi prakar ki Puja evam Jaap ke liye niche diye gaye option par click karein. Bina payment ke seedha booking karein! All India Pandit Seva Available.
                         </marquee>
                     </div>
+
                 </div>
             </div>
 
@@ -227,15 +260,9 @@
 
         <!-- 3 SECONDS AUTO-CHANGING POSTS / CAROUSEL SECTION (VIDEO & IMAGE) -->
         <div class="border border-amber-500/30 rounded-2xl p-6 bg-[#12141C] shadow-2xl space-y-4">
-            <div class="flex items-center justify-between">
-                <div>
-                    <span class="text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider bg-amber-500/20 text-amber-400">Live Posts & Media</span>
-                    <h3 class="serif-title text-base font-bold mt-1 text-amber-400">✨ Divya Anushthan & Darshan Updates</h3>
-                </div>
-                <div class="flex gap-1.5">
-                    <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
-                    <span class="text-[10px] text-gray-400">Auto-changes every 3s</span>
-                </div>
+            <div>
+                <span id="post-media-badge" class="text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider bg-amber-500/20 text-amber-400">Post's & Media</span>
+                <h3 class="serif-title text-base font-bold mt-1 text-amber-400">✨ Divya Anushthan & Darshan Updates</h3>
             </div>
 
             <!-- Carousel Frame -->
@@ -495,7 +522,6 @@
                 container.appendChild(slide);
             });
 
-            // Start 3 second interval
             setInterval(nextSlide, 3000);
         }
 
@@ -608,6 +634,12 @@
                 btnBookPuja: "पूजा बुक करें ↗",
                 btnExplore: "सभी पूजा और जाप देखें",
                 krishnaLabel: "जय श्री कृष्ण",
+                contractorRevTitle: "⭐ कॉन्ट्रैक्टर रिव्यू",
+                contractorRevDesc: "सत्यापित पंडित एवं सेवा ठेकेदार",
+                panchangTitle: "🛕 हिंदू पंचांग",
+                panchangMonth: "भाद्रपद मास",
+                tithiLabel1: "तिथि:",
+                tithiLabel2: "त्योहार:",
                 secTitle1: "🌿 सभी प्रकार की पूजाएं एवं जाप",
                 secDesc1: "किसी भी पूजा या जाप पर टैप करें, डिटेल अपने आप भर जाएगी और तुरंत अलर्ट चला जाएगा:",
                 subTitle1: "1. प्रमुख पूजाएं",
@@ -620,6 +652,7 @@
                 consultTitle: "पंडित जी से समाधान पाएं तत्काल",
                 consultDesc: "अपने मन में उठ रहे किसी भी सवाल या समस्या के लिए सीधा बात करें।",
                 consultBtn: "तत्काल संपर्क करें",
+                postMediaBadge: "Post's & Media",
                 contactTopTag: "संपर्क करें",
                 contactMainHeading: 'कोई सवाल है या मन में कोई <span class="italic font-normal" style="color: var(--theme-color, #D4AF37);">कस्टम पूजा</span> है?',
                 contactSubDesc: "हमारे विद्वान पंडितों की टीम ऑल इंडिया किसी भी अवसर पर सही अनुष्ठान, मुहूर्त और सामग्री के बारे में आपका मार्गदर्शन करने में प्रसन्न है।",
@@ -660,6 +693,12 @@
                 btnBookPuja: "Book a Puja ↗",
                 btnExplore: "Explore All Pujas & Jaap",
                 krishnaLabel: "जय श्री कृष्ण",
+                contractorRevTitle: "⭐ Contractor Review",
+                contractorRevDesc: "Verified Pandit & Seva Contractors",
+                panchangTitle: "🛕 Hindu Panchang",
+                panchangMonth: "Bhadrapada Month",
+                tithiLabel1: "Tithi:",
+                tithiLabel2: "Festival:",
                 secTitle1: "🌿 Sabhi Prakar ki Pujayein evam Jaap",
                 secDesc1: "Kisi bhi Puja ya Jaap par tap karein, detail apne aap bhar jayegi aur turant alert chala jayega:",
                 subTitle1: "1. Pramukh Pujayein",
@@ -672,6 +711,7 @@
                 consultTitle: "Pandit Ji se Samadhan Paye Tatkal",
                 consultDesc: "Apne man me uth rahe kisi bhi sawal ya samasya ke liye seedha baat karein.",
                 consultBtn: "Tatkal Sampark Karein",
+                postMediaBadge: "Post's & Media",
                 contactTopTag: "GET IN TOUCH · संपर्क",
                 contactMainHeading: 'Have a question or a <span class="italic font-normal" style="color: var(--theme-color, #D4AF37);">custom puja</span> in mind?',
                 contactSubDesc: "Our team of learned pandits is happy to guide you through the right ritual, muhurat and samagri for any occasion across All India.",
@@ -717,6 +757,14 @@
             document.getElementById('btn-book-puja').innerHTML = t.btnBookPuja;
             document.getElementById('btn-explore').innerText = t.btnExplore;
             document.getElementById('krishna-text-label').innerText = t.krishnaLabel;
+            
+            document.getElementById('contractor-rev-title').innerText = t.contractorRevTitle;
+            document.getElementById('contractor-rev-desc').innerText = t.contractorRevDesc;
+            document.getElementById('panchang-title').innerText = t.panchangTitle;
+            document.getElementById('panchang-month-name').innerText = t.panchangMonth;
+            document.getElementById('tithi-label-1').innerText = t.tithiLabel1;
+            document.getElementById('tithi-label-2').innerText = t.tithiLabel2;
+
             document.getElementById('sec-title-1').innerText = t.secTitle1;
             document.getElementById('sec-desc-1').innerText = t.secDesc1;
             document.getElementById('sub-title-1').innerText = t.subTitle1;
@@ -729,6 +777,7 @@
             document.getElementById('consult-title').innerText = t.consultTitle;
             document.getElementById('consult-desc').innerText = t.consultDesc;
             document.getElementById('consult-btn').innerText = t.consultBtn;
+            document.getElementById('post-media-badge').innerText = t.postMediaBadge;
             document.getElementById('contact-top-tag').innerText = t.contactTopTag;
             document.getElementById('contact-main-heading').innerHTML = t.contactMainHeading;
             document.getElementById('contact-sub-desc').innerText = t.contactSubDesc;
@@ -756,6 +805,7 @@
             document.getElementById('footer-text').innerText = t.footerText;
 
             updateDateTime();
+            updatePanchang();
         }
 
         function toHindiDigits(str) {
@@ -787,8 +837,26 @@
             document.getElementById('datetime-display').innerText = formattedDate;
         }
 
+        function updatePanchang() {
+            const tithisHi = ["एकादशी (Ekadashi)", "पूर्णिमा (Purnima)", "अमावस्या (Amavasya)", "चतुर्थी (Chaturthi)", "प्रदोष (Pradosh)", "नवरात्रि (Navratri Special)"];
+            const tithisEn = ["Ekadashi", "Purnima", "Amavasya", "Chaturthi", "Pradosh", "Navratri Special"];
+            
+            const dayNum = new Date().getDate();
+            const index = dayNum % tithisHi.length;
+            const nextIndex = (index + 1) % tithisHi.length;
+
+            if(currentLang === 'hi') {
+                document.getElementById('current-hindu-tithi').innerText = tithisHi[index];
+                document.getElementById('next-hindu-festival').innerText = tithisHi[nextIndex];
+            } else {
+                document.getElementById('current-hindu-tithi').innerText = tithisEn[index];
+                document.getElementById('next-hindu-festival').innerText = tithisEn[nextIndex];
+            }
+        }
+
         setInterval(updateDateTime, 1000);
         updateDateTime();
+        updatePanchang();
 
         function autoFillAndBook(serviceName) {
             localStorage.setItem('bookingService', serviceName);
