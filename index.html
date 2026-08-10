@@ -36,16 +36,27 @@
     <!-- TOP HEADER NAVBAR -->
     <header id="headerBox" class="header-bg w-full border-b backdrop-blur-md sticky top-0 z-50 px-6 py-4">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
-            <!-- Logo -->
-            <a href="#" class="flex items-center gap-2 text-amber-600 font-serif font-bold text-base tracking-wide">
-                <span>🔥</span> <span id="logo-text">Divya Puja Sewa</span>
-            </a>
+            <div class="flex items-center gap-4">
+                <!-- 3-Line Hamburger Menu Button -->
+                <div class="relative">
+                    <button onclick="toggleHamburgerMenu()" class="text-amber-500 text-lg p-2 rounded-xl border border-amber-500/30 custom-card focus:outline-none hover:border-amber-500 transition flex items-center justify-center">
+                        ☰
+                    </button>
+                    <!-- Dropdown Content (Pujas & Contact moved here) -->
+                    <div id="hamburgerDropdown" class="hidden absolute left-0 mt-2 w-64 custom-card border rounded-2xl shadow-2xl p-4 z-50 text-xs space-y-3">
+                        <div class="font-bold border-b border-amber-500/20 pb-2 text-amber-600">🧭 Navigation</div>
+                        <div class="space-y-2">
+                            <a href="#all-pujas" onclick="toggleHamburgerMenu()" class="block p-2 rounded hover:bg-amber-500/10 transition font-semibold" id="nav-pujas">Pujas & Jaap</a>
+                            <a href="#" onclick="toggleHamburgerMenu()" class="block p-2 rounded hover:bg-amber-500/10 transition font-semibold" id="nav-contact">Contact</a>
+                        </div>
+                    </div>
+                </div>
 
-            <!-- Nav Links -->
-            <nav class="hidden md:flex items-center gap-8 text-xs font-medium">
-                <a href="#all-pujas" id="nav-pujas" class="hover:text-amber-500 transition">Pujas & Jaap</a>
-                <a href="#" id="nav-contact" class="hover:text-amber-500 transition">Contact</a>
-            </nav>
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-2 text-amber-600 font-serif font-bold text-base tracking-wide">
+                    <span>🔥</span> <span id="logo-text">Divya Puja Sewa</span>
+                </a>
+            </div>
 
             <!-- Right Actions -->
             <div class="flex items-center gap-3">
@@ -112,7 +123,7 @@
 
         </div>
 
-        <!-- ALL TYPES OF PUJAS & JAAP SECTION -->
+        <!-- ALL TYPES OF PUJAS & JAAP SECTION (Placed below Krishna image container area) -->
         <div id="all-pujas" class="custom-card border rounded-2xl p-6 space-y-6">
             <div>
                 <h3 id="sec-title-1" class="serif-title text-base font-bold text-amber-600">🌿 Sabhi Prakar ki Pujayein evam Jaap</h3>
@@ -205,6 +216,11 @@
                 footer: "Divya Puja Sewa • Vedic Sanatan Sansthan Varanasi (Direct Booking Mode)"
             }
         };
+
+        function toggleHamburgerMenu() {
+            const dropdown = document.getElementById('hamburgerDropdown');
+            dropdown.classList.toggle('hidden');
+        }
 
         function toggleTheme() {
             const root = document.getElementById('htmlRoot');
