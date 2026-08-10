@@ -18,15 +18,6 @@
         }
         .custom-input { background: transparent; border: none; border-bottom: 1px solid rgba(255, 255, 255, 0.2); border-radius: 0; padding: 10px 0; color: inherit; outline: none; width: 100%; font-size: 14px; transition: border-color 0.3s; }
         .custom-input:focus { border-bottom-color: var(--theme-primary); }
-
-        /* Google Translate Styling Adjustments */
-        .goog-te-banner-frame { display: none !important; }
-        .goog-logo-link { display: none !important; }
-        .goog-te-gadget { color: transparent !important; font-size: 0px; }
-        .goog-te-gadget span { display: none !important; }
-        .goog-te-combo { background-color: transparent !important; color: #D4AF37 !important; border: 1px solid rgba(212, 175, 55, 0.4) !important; padding: 6px 10px !important; border-radius: 10px !important; font-size: 12px !important; font-weight: 600 !important; outline: none !important; cursor: pointer; }
-        .goog-te-combo option { background-color: #0A0B10 !important; color: white !important; }
-        body { top: 0px !important; }
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between" onload="initPageSetup()">
@@ -43,12 +34,12 @@
                     <!-- Dropdown Shortcuts List with Full Names -->
                     <div id="hamburgerDropdown" class="hidden absolute left-0 mt-2 w-72 custom-card border rounded-2xl shadow-2xl p-4 z-50 text-xs space-y-3 max-h-[80vh] overflow-y-auto">
                         <div class="font-bold border-b border-amber-500/20 pb-2 text-amber-600 flex justify-between items-center">
-                            <span>🧭 Quick Shortcuts</span>
+                            <span id="m-shortcut-title">🧭 Quick Shortcuts</span>
                             <span onclick="toggleHamburgerMenu()" class="cursor-pointer text-sm">✕</span>
                         </div>
                         <div class="space-y-1">
-                            <a href="#all-pujas" onclick="toggleHamburgerMenu()" class="block p-2 rounded hover:bg-amber-500/10 transition font-semibold">🌿 All Pujas & Jaap Overview</a>
-                            <div class="text-[10px] uppercase font-bold text-amber-600 pt-2 pb-1">Pramukh Pujayein</div>
+                            <a href="#all-pujas" onclick="toggleHamburgerMenu()" class="block p-2 rounded hover:bg-amber-500/10 transition font-semibold" id="m-overview">🌿 All Pujas & Jaap Overview</a>
+                            <div class="text-[10px] uppercase font-bold text-amber-600 pt-2 pb-1" id="m-sec1">Pramukh Pujayein</div>
                             <a href="#all-pujas" onclick="autoFillAndBook('Rudrabhishek Puja')" class="block p-1.5 pl-3 rounded hover:bg-amber-500/10 transition">🕉️ Rudrabhishek Puja</a>
                             <a href="#all-pujas" onclick="autoFillAndBook('Hawan & Yagya')" class="block p-1.5 pl-3 rounded hover:bg-amber-500/10 transition">🔥 Hawan & Yagya</a>
                             <a href="#all-pujas" onclick="autoFillAndBook('Satyanarayan Katha')" class="block p-1.5 pl-3 rounded hover:bg-amber-500/10 transition">✨ Satyanarayan Katha</a>
@@ -58,15 +49,15 @@
                             <a href="#all-pujas" onclick="autoFillAndBook('Mundan & Janeu Sanskar')" class="block p-1.5 pl-3 rounded hover:bg-amber-500/10 transition">✂️ Mundan & Janeu Sanskar</a>
                             <a href="#all-pujas" onclick="autoFillAndBook('Kundali Milan & Vichar')" class="block p-1.5 pl-3 rounded hover:bg-amber-500/10 transition">📜 Kundali Milan & Vichar</a>
                             
-                            <div class="text-[10px] uppercase font-bold text-amber-600 pt-2 pb-1">Pramukh Jaap Anushthan</div>
+                            <div class="text-[10px] uppercase font-bold text-amber-600 pt-2 pb-1" id="m-sec2">Pramukh Jaap Anushthan</div>
                             <a href="#all-pujas" onclick="autoFillAndBook('Maha Mrityunjaya Jaap')" class="block p-1.5 pl-3 rounded hover:bg-amber-500/10 transition">📿 Maha Mrityunjaya Jaap</a>
                             <a href="#all-pujas" onclick="autoFillAndBook('Gayatri Mantra Jaap')" class="block p-1.5 pl-3 rounded hover:bg-amber-500/10 transition">📿 Gayatri Mantra Jaap</a>
                             <a href="#all-pujas" onclick="autoFillAndBook('Mahamrityunjaya Anushthan')" class="block p-1.5 pl-3 rounded hover:bg-amber-500/10 transition">🕉️ Mahamrityunjaya Anushthan</a>
                             <a href="#all-pujas" onclick="autoFillAndBook('Baglamukhi Anushthan')" class="block p-1.5 pl-3 rounded hover:bg-amber-500/10 transition">⚔️ Baglamukhi Anushthan</a>
                             
                             <div class="border-t border-amber-500/20 pt-2 mt-2 space-y-1">
-                                <a href="#contact-section" onclick="toggleHamburgerMenu()" class="block p-2 rounded hover:bg-amber-500/10 transition font-semibold">📞 Contact & Inquiry</a>
-                                <a href="#reviews-section" onclick="toggleHamburgerMenu()" class="block p-2 rounded hover:bg-amber-500/10 transition font-semibold">⭐ Devotees Reviews</a>
+                                <a href="#contact-section" onclick="toggleHamburgerMenu()" class="block p-2 rounded hover:bg-amber-500/10 transition font-semibold" id="m-contact">📞 Contact & Inquiry</a>
+                                <a href="#reviews-section" onclick="toggleHamburgerMenu()" class="block p-2 rounded hover:bg-amber-500/10 transition font-semibold" id="m-reviews">⭐ Devotees Reviews</a>
                             </div>
                         </div>
                     </div>
@@ -84,10 +75,13 @@
                 <span id="timeDisplay" class="text-[11px] opacity-90">00:00:00 AM</span>
             </div>
 
-            <!-- Right Actions: Google Translate Widget, Theme & Book Now -->
+            <!-- Right Actions: Language Switcher, Theme & Book Now -->
             <div class="flex items-center gap-2 sm:gap-3">
-                <!-- Google Translate Dropdown (Pure 100% Hindi/English Translation) -->
-                <div id="google_translate_element"></div>
+                <!-- Pure Hindi / English Language Dropdown -->
+                <select id="langSelect" onchange="changeLanguage(this.value)" class="text-xs border border-amber-500/40 rounded-xl px-3 py-2 bg-transparent font-semibold text-amber-500 focus:outline-none cursor-pointer">
+                    <option value="hi" class="bg-gray-900 text-white">🇮🇳 हिन्दी</option>
+                    <option value="en" class="bg-gray-900 text-white">🇬🇧 English</option>
+                </select>
 
                 <!-- Theme Toggle Button -->
                 <button onclick="toggleThemeMode()" id="themeModeBtn" class="text-xs border px-3 py-2 rounded-xl transition border-amber-500/40 hover:border-amber-500 text-amber-500 font-semibold">
@@ -105,22 +99,22 @@
 
             <!-- LEFT SIDE: TEXT & BUTTONS -->
             <div class="lg:col-span-7 space-y-6 text-left">
-                <p id="hero-tag" class="text-[11px] tracking-widest text-amber-500 font-semibold uppercase font-serif">VEDIC PUJAS • HAWANS • JAAP • KUNDALI</p>
+                <p id="hero-tag" class="text-[11px] tracking-widest text-amber-500 font-semibold uppercase font-serif">वैदिक पूजा • हवन • जाप • कुंडली</p>
                 
                 <h1 id="hero-heading" class="serif-title text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1]">
-                    Sacred rituals, performed with <span class="italic font-normal">pure devotion</span>
+                    पवित्र अनुष्ठान, पूर्ण श्रद्धा के साथ संपन्न किए जाते हैं।
                 </h1>
 
                 <p id="hero-desc" class="text-xs md:text-sm font-light leading-relaxed">
-                    Book authentic Pujas, Hawans, Jaap and Kundali rituals at your home, led by learned pandits. Direct booking without payment.
+                    अपने घर पर ही विद्वान पंडितों द्वारा संचालित प्रामाणिक पूजा, हवन, जाप और कुंडली अनुष्ठान बुक करें। बिना किसी भुगतान के सीधे बुकिंग करें।
                 </p>
 
                 <div class="flex flex-wrap items-center gap-4 pt-2">
                     <a href="booking.html" id="btn-book-puja" class="bg-amber-600 hover:bg-amber-700 text-white font-medium text-xs px-6 py-3.5 rounded-xl transition shadow-lg flex items-center gap-2">
-                        Book a Puja <span>↗</span>
+                        पूजा बुक करें <span>↗</span>
                     </a>
                     <a href="#all-pujas" id="btn-explore" class="custom-card border text-xs font-medium px-6 py-3.5 rounded-xl transition">
-                        Explore All Pujas & Jaap
+                        सभी पूजा एवं जाप देखें
                     </a>
                 </div>
             </div>
@@ -142,7 +136,7 @@
         <div class="w-full">
             <div class="custom-card border rounded-xl py-2 px-3 overflow-hidden whitespace-nowrap shadow-md">
                 <marquee id="marquee-text" behavior="scroll" direction="left" scrollamount="5" class="text-xs text-amber-500 font-semibold">
-                    🛕 Sabhi prakar ki Puja evam Jaap ke liye niche diye gaye option par click karein. Bina payment ke seedha booking karein!
+                    🛕 सभी प्रकार की पूजा एवं जाप के लिए नीचे दिए गए विकल्प पर क्लिक करें। बिना ऑनलाइन भुगतान के सीधे बुकिंग करें!
                 </marquee>
             </div>
         </div>
@@ -150,31 +144,31 @@
         <!-- ALL TYPES OF PUJAS & JAAP SECTION -->
         <div id="all-pujas" class="custom-card border rounded-2xl p-6 space-y-6">
             <div>
-                <h3 id="sec-title-1" class="serif-title text-base font-bold text-amber-500">🌿 Sabhi Prakar ki Pujayein evam Jaap</h3>
-                <p id="sec-desc-1" class="text-xs mt-1">Kisi bhi Puja ya Jaap par tap karein, detail apne aap bhar jayegi aur turant alert chala jayega:</p>
+                <h3 id="sec-title-1" class="serif-title text-base font-bold text-amber-500">🌿 सभी प्रकार की पूजाएं एवं जाप</h3>
+                <p id="sec-desc-1" class="text-xs mt-1">किसी भी पूजा या जाप पर टैप करें, विवरण अपने आप भर जाएगा और तुरंत अलर्ट चला जाएगा:</p>
             </div>
 
             <div class="space-y-3">
-                <span id="sub-title-1" class="text-[11px] font-bold text-amber-500 uppercase tracking-wider block">1. Pramukh Pujayein</span>
+                <span id="sub-title-1" class="text-[11px] font-bold text-amber-500 uppercase tracking-wider block">1. प्रमुख पूजाएं</span>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
-                    <div onclick="autoFillAndBook('Rudrabhishek Puja')" class="custom-card p-3 rounded-xl border hover-card-effect cursor-pointer flex items-center gap-2"><span>🕉️</span> <span class="p-name">Rudrabhishek Puja</span></div>
-                    <div onclick="autoFillAndBook('Hawan & Yagya')" class="custom-card p-3 rounded-xl border hover-card-effect cursor-pointer flex items-center gap-2"><span>🔥</span> <span class="p-name">Hawan & Yagya</span></div>
-                    <div onclick="autoFillAndBook('Satyanarayan Katha')" class="custom-card p-3 rounded-xl border hover-card-effect cursor-pointer flex items-center gap-2"><span>✨</span> <span class="p-name">Satyanarayan Katha</span></div>
-                    <div onclick="autoFillAndBook('Navgrah Shanti Puja')" class="custom-card p-3 rounded-xl border hover-card-effect cursor-pointer flex items-center gap-2"><span>🪐</span> <span class="p-name">Navgrah Shanti</span></div>
-                    <div onclick="autoFillAndBook('Vivah Sanskar (Shadi)')" class="custom-card p-3 rounded-xl border hover-card-effect cursor-pointer flex items-center gap-2"><span>🛕</span> <span class="p-name">Vivah Sanskar (Shadi)</span></div>
-                    <div onclick="autoFillAndBook('Maha Lakshmi Puja')" class="custom-card p-3 rounded-xl border hover-card-effect cursor-pointer flex items-center gap-2"><span>🪷</span> <span class="p-name">Maha Lakshmi Puja</span></div>
-                    <div onclick="autoFillAndBook('Mundan & Janeu Sanskar')" class="custom-card p-3 rounded-xl border hover-card-effect cursor-pointer flex items-center gap-2"><span>✂️</span> <span class="p-name">Mundan / Janeu</span></div>
-                    <div onclick="autoFillAndBook('Kundali Milan & Vichar')" class="custom-card p-3 rounded-xl border hover-card-effect cursor-pointer flex items-center gap-2"><span>📜</span> <span class="p-name">Kundali Vichar</span></div>
+                    <div onclick="autoFillAndBook('Rudrabhishek Puja')" class="custom-card p-3 rounded-xl border hover-card-effect cursor-pointer flex items-center gap-2"><span>🕉️</span> <span class="p-name">रुद्राभिषेक पूजा</span></div>
+                    <div onclick="autoFillAndBook('Hawan & Yagya')" class="custom-card p-3 rounded-xl border hover-card-effect cursor-pointer flex items-center gap-2"><span>🔥</span> <span class="p-name">हवन एवं यज्ञ</span></div>
+                    <div onclick="autoFillAndBook('Satyanarayan Katha')" class="custom-card p-3 rounded-xl border hover-card-effect cursor-pointer flex items-center gap-2"><span>✨</span> <span class="p-name">सत्यनारायण कथा</span></div>
+                    <div onclick="autoFillAndBook('Navgrah Shanti Puja')" class="custom-card p-3 rounded-xl border hover-card-effect cursor-pointer flex items-center gap-2"><span>🪐</span> <span class="p-name">नवग्रह शांति पूजा</span></div>
+                    <div onclick="autoFillAndBook('Vivah Sanskar (Shadi)')" class="custom-card p-3 rounded-xl border hover-card-effect cursor-pointer flex items-center gap-2"><span>🛕</span> <span class="p-name">विवाह संस्कार (शादी)</span></div>
+                    <div onclick="autoFillAndBook('Maha Lakshmi Puja')" class="custom-card p-3 rounded-xl border hover-card-effect cursor-pointer flex items-center gap-2"><span>🪷</span> <span class="p-name">महा लक्ष्मी पूजा</span></div>
+                    <div onclick="autoFillAndBook('Mundan & Janeu Sanskar')" class="custom-card p-3 rounded-xl border hover-card-effect cursor-pointer flex items-center gap-2"><span>✂️</span> <span class="p-name">मुंडन एवं जनेऊ संस्कार</span></div>
+                    <div onclick="autoFillAndBook('Kundali Milan & Vichar')" class="custom-card p-3 rounded-xl border hover-card-effect cursor-pointer flex items-center gap-2"><span>📜</span> <span class="p-name">कुंडली मिलान एवं विचार</span></div>
                 </div>
             </div>
 
             <div class="space-y-3 pt-3 border-t border-amber-500/20">
-                <span id="sub-title-2" class="text-[11px] font-bold text-amber-500 uppercase tracking-wider block">2. Pramukh Jaap Anushthan</span>
+                <span id="sub-title-2" class="text-[11px] font-bold text-amber-500 uppercase tracking-wider block">2. प्रमुख जाप अनुष्ठान</span>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
-                    <div onclick="autoFillAndBook('Maha Mrityunjaya Jaap')" class="custom-card p-3 rounded-xl border hover-card-effect cursor-pointer flex items-center gap-2"><span>📿</span> <span class="p-name">Maha Mrityunjaya Jaap</span></div>
-                    <div onclick="autoFillAndBook('Gayatri Mantra Jaap')" class="custom-card p-3 rounded-xl border hover-card-effect cursor-pointer flex items-center gap-2"><span>📿</span> <span class="p-name">Gayatri Mantra Jaap</span></div>
-                    <div onclick="autoFillAndBook('Mahamrityunjaya Anushthan')" class="custom-card p-3 rounded-xl border hover-card-effect cursor-pointer flex items-center gap-2"><span>🕉️</span> <span class="p-name">Mrityunjaya Anushthan</span></div>
-                    <div onclick="autoFillAndBook('Baglamukhi Anushthan')" class="custom-card p-3 rounded-xl border hover-card-effect cursor-pointer flex items-center gap-2"><span>⚔️</span> <span class="p-name">Baglamukhi Jaap</span></div>
+                    <div onclick="autoFillAndBook('Maha Mrityunjaya Jaap')" class="custom-card p-3 rounded-xl border hover-card-effect cursor-pointer flex items-center gap-2"><span>📿</span> <span class="p-name">महामृत्युंजय जाप</span></div>
+                    <div onclick="autoFillAndBook('Gayatri Mantra Jaap')" class="custom-card p-3 rounded-xl border hover-card-effect cursor-pointer flex items-center gap-2"><span>📿</span> <span class="p-name">गायत्री मंत्र जाप</span></div>
+                    <div onclick="autoFillAndBook('Mahamrityunjaya Anushthan')" class="custom-card p-3 rounded-xl border hover-card-effect cursor-pointer flex items-center gap-2"><span>🕉️</span> <span class="p-name">मृत्युंजय अनुष्ठान</span></div>
+                    <div onclick="autoFillAndBook('Baglamukhi Anushthan')" class="custom-card p-3 rounded-xl border hover-card-effect cursor-pointer flex items-center gap-2"><span>⚔️</span> <span class="p-name">बगलामुखी अनुष्ठान</span></div>
                 </div>
             </div>
         </div>
@@ -182,12 +176,12 @@
         <!-- PANDIT JI CONSULTATION BANNER -->
         <div class="custom-card border border-amber-500/40 rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div class="space-y-1 text-center sm:text-left">
-                <span class="bg-amber-500/20 text-amber-500 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Tatkal Samadhan</span>
-                <h3 id="consult-title" class="serif-title text-base font-bold text-amber-500 mt-1">Pandit Ji se Samadhan Paye Tatkal</h3>
-                <p id="consult-desc" class="text-xs font-light">Apne man me uth rahe kisi bhi sawal ya samasya ke liye seedha baat karein.</p>
+                <span id="consult-badge" class="bg-amber-500/20 text-amber-500 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">तत्काल समाधान</span>
+                <h3 id="consult-title" class="serif-title text-base font-bold text-amber-500 mt-1">पंडित जी से समाधान पाएं तत्काल</h3>
+                <p id="consult-desc" class="text-xs font-light">अपने मन में उठ रहे किसी भी सवाल या समस्या के लिए सीधा बात करें।</p>
             </div>
             <button onclick="autoFillAndBook('Pandit Tatkal Consultation')" id="consult-btn" class="bg-amber-500 hover:bg-amber-600 text-black font-extrabold text-xs px-5 py-3 rounded-xl shadow transition whitespace-nowrap transform hover:scale-105">
-                Tatkal Sampark Karein
+                तत्काल संपर्क करें
             </button>
         </div>
 
@@ -196,9 +190,9 @@
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
                 <div class="lg:col-span-5 space-y-6">
                     <div class="space-y-3">
-                        <p class="text-xs tracking-widest font-semibold uppercase font-serif text-amber-500">GET IN TOUCH · संपर्क</p>
-                        <h2 class="serif-title text-3xl font-bold">Have a question or a <span class="italic font-normal text-amber-500">custom puja</span> in mind?</h2>
-                        <p class="text-xs text-gray-400">Our team of learned pandits is happy to guide you through the right ritual, muhurat and samagri for any occasion.</p>
+                        <p id="contact-tag" class="text-xs tracking-widest font-semibold uppercase font-serif text-amber-500">संपर्क करें · GET IN TOUCH</p>
+                        <h2 id="contact-heading" class="serif-title text-3xl font-bold">कोई सवाल है या <span class="italic font-normal text-amber-500">कस्टम पूजा</span> कराना चाहते हैं?</h2>
+                        <p id="contact-sub" class="text-xs text-gray-400">हमारे विद्वान पंडित किसी भी अवसर के लिए सही अनुष्ठान, मुहूर्त और सामग्री चुनने में आपकी सहायता करने के लिए सदैव उपलब्ध हैं।</p>
                     </div>
 
                     <div class="space-y-3 text-xs pt-4">
@@ -209,10 +203,10 @@
                             <span>✉️</span> <span class="font-semibold text-gray-300">sewa@divyapuja.in</span>
                         </div>
                         <div class="flex items-center gap-3 text-amber-500">
-                            <span>📍</span> <span class="font-semibold text-gray-300">Varanasi, Uttar Pradesh · At your home</span>
+                            <span>📍</span> <span id="c-address" class="font-semibold text-gray-300">वाराणसी, उत्तर प्रदेश · आपके घर पर</span>
                         </div>
                         <div class="flex items-center gap-3 text-amber-500 pt-2">
-                            <span>💬</span> <a href="https://wa.me/919555674448" target="_blank" class="font-semibold text-amber-500 hover:underline">Chat on WhatsApp</a>
+                            <span>💬</span> <a href="https://wa.me/919555674448" target="_blank" class="font-semibold text-amber-500 hover:underline" id="whatsapp-link">व्हाट्सएप पर चैट करें</a>
                         </div>
                     </div>
                 </div>
@@ -221,38 +215,38 @@
                     <form id="contactForm" onsubmit="handleContactSubmit(event)" class="space-y-6">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div class="space-y-1">
-                                <label class="text-[11px] opacity-70">Your Name *</label>
-                                <input type="text" id="cName" required class="custom-input" placeholder="Aapka naam">
+                                <label id="lbl-cname" class="text-[11px] opacity-70">आपका नाम *</label>
+                                <input type="text" id="cName" required class="custom-input" placeholder="आपका पूरा नाम">
                             </div>
                             <div class="space-y-1">
-                                <label class="text-[11px] opacity-70">Phone *</label>
-                                <input type="tel" id="cPhone" required class="custom-input" placeholder="Mobile Number">
+                                <label id="lbl-cphone" class="text-[11px] opacity-70">मोबाइल नंबर *</label>
+                                <input type="tel" id="cPhone" required class="custom-input" placeholder="मोबाइल नंबर">
                             </div>
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div class="space-y-1">
-                                <label class="text-[11px] opacity-70">State (Rajya) *</label>
+                                <label id="lbl-cstate" class="text-[11px] opacity-70">राज्य (State) *</label>
                                 <select id="cState" required class="custom-input bg-transparent">
-                                    <option value="" class="bg-gray-900 text-white">Select State</option>
-                                    <option value="Uttar Pradesh" class="bg-gray-900 text-white">Uttar Pradesh (UP)</option>
-                                    <option value="Delhi" class="bg-gray-900 text-white">Delhi</option>
-                                    <option value="Madhya Pradesh" class="bg-gray-900 text-white">Madhya Pradesh (MP)</option>
-                                    <option value="Bihar" class="bg-gray-900 text-white">Bihar</option>
-                                    <option value="Maharashtra" class="bg-gray-900 text-white">Maharashtra</option>
-                                    <option value="Other" class="bg-gray-900 text-white">Other State / All India</option>
+                                    <option value="" class="bg-gray-900 text-white" id="opt-sel-state">राज्य चुनें</option>
+                                    <option value="Uttar Pradesh" class="bg-gray-900 text-white">उत्तर प्रदेश (UP)</option>
+                                    <option value="Delhi" class="bg-gray-900 text-white">दिल्ली</option>
+                                    <option value="Madhya Pradesh" class="bg-gray-900 text-white">मध्य प्रदेश (MP)</option>
+                                    <option value="Bihar" class="bg-gray-900 text-white">बिहार</option>
+                                    <option value="Maharashtra" class="bg-gray-900 text-white">महाराष्ट्र</option>
+                                    <option value="Other" class="bg-gray-900 text-white">अन्य राज्य / संपूर्ण भारत</option>
                                 </select>
                             </div>
                             <div class="space-y-1">
-                                <label class="text-[11px] opacity-70">City / Location *</label>
-                                <input type="text" id="cCity" required class="custom-input" placeholder="e.g. Varanasi, Lucknow...">
+                                <label id="lbl-ccity" class="text-[11px] opacity-70">शहर / स्थान *</label>
+                                <input type="text" id="cCity" required class="custom-input" placeholder="जैसे: वाराणसी, लखनऊ...">
                             </div>
                         </div>
                         <div class="space-y-1">
-                            <label class="text-[11px] opacity-70">Your message *</label>
-                            <textarea id="cMessage" rows="3" required class="custom-input" placeholder="Apni puja ya sawal ke bare me likhein..."></textarea>
+                            <label id="lbl-cmsg" class="text-[11px] opacity-70">आपका संदेश / सवाल *</label>
+                            <textarea id="cMessage" rows="3" required class="custom-input" placeholder="अपनी पूजा या सवाल के बारे में यहां लिखें..."></textarea>
                         </div>
-                        <button type="submit" class="bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs px-8 py-3.5 rounded-xl transition shadow-lg">
-                            Send Inquiry
+                        <button type="submit" id="btn-c-sub" class="bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs px-8 py-3.5 rounded-xl transition shadow-lg">
+                            पूछताछ भेजें
                         </button>
                     </form>
                 </div>
@@ -262,18 +256,18 @@
         <!-- REVIEWS SECTION -->
         <section id="reviews-section" class="custom-card border rounded-2xl p-6 md:p-8 space-y-8">
             <div class="text-center max-w-xl mx-auto space-y-2">
-                <h2 class="serif-title text-2xl md:text-3xl font-bold">Devotees Reviews & Opinions</h2>
+                <h2 id="rev-heading" class="serif-title text-2xl md:text-3xl font-bold">श्रद्धालुओं की समीक्षाएं एवं विचार</h2>
             </div>
 
             <div class="border-t border-amber-500/20 pt-6 max-w-xl mx-auto space-y-4">
                 <form id="reviewForm" onsubmit="submitUserReview(event)" class="space-y-4 text-xs">
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div class="space-y-1">
-                            <label class="text-[10px] opacity-70">Aapka Naam (Name) *</label>
-                            <input type="text" id="revName" required class="custom-input" placeholder="Full Name">
+                            <label id="lbl-name" class="text-[10px] opacity-70">आपका नाम *</label>
+                            <input type="text" id="revName" required class="custom-input" placeholder="पूरा नाम">
                         </div>
                         <div class="space-y-1">
-                            <label class="text-[10px] opacity-70">Rating *</label>
+                            <label id="lbl-rating" class="text-[10px] opacity-70">रेटिंग *</label>
                             <select id="revRating" class="custom-input bg-transparent">
                                 <option value="⭐⭐⭐⭐⭐ (5/5)" class="bg-gray-900 text-white">⭐⭐⭐⭐⭐ (5/5)</option>
                                 <option value="⭐⭐⭐⭐ (4/5)" class="bg-gray-900 text-white">⭐⭐⭐⭐ (4/5)</option>
@@ -283,20 +277,20 @@
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div class="space-y-1">
-                            <label class="text-[10px] opacity-70">State (Rajya) *</label>
-                            <input type="text" id="revState" required class="custom-input" placeholder="State">
+                            <label id="lbl-state" class="text-[10px] opacity-70">राज्य (State) *</label>
+                            <input type="text" id="revState" required class="custom-input" placeholder="राज्य">
                         </div>
                         <div class="space-y-1">
-                            <label class="text-[10px] opacity-70">City (Shehar) *</label>
-                            <input type="text" id="revCity" required class="custom-input" placeholder="City">
+                            <label id="lbl-city" class="text-[10px] opacity-70">शहर (City) *</label>
+                            <input type="text" id="revCity" required class="custom-input" placeholder="शहर">
                         </div>
                     </div>
                     <div class="space-y-1">
-                        <label class="text-[10px] opacity-70">Aapka Anubhav / Opinion *</label>
-                        <textarea id="revMsg" rows="2" required class="custom-input" placeholder="Apna feedback yahan likhein..."></textarea>
+                        <label id="lbl-msg" class="text-[10px] opacity-70">आपका अनुभव / विचार *</label>
+                        <textarea id="revMsg" rows="2" required class="custom-input" placeholder="अपना फीडबैक यहां लिखें..."></textarea>
                     </div>
-                    <button type="submit" class="w-full bg-amber-600 hover:bg-amber-700 text-white font-extrabold py-3 rounded-xl shadow transition">
-                        Submit Review
+                    <button type="submit" id="btn-rev-sub" class="w-full bg-amber-600 hover:bg-amber-700 text-white font-extrabold py-3 rounded-xl shadow transition">
+                        समीक्षा सबमिट करें
                     </button>
                 </form>
             </div>
@@ -305,21 +299,8 @@
 
     <!-- FOOTER -->
     <footer class="border-t border-amber-500/20 py-6 text-center text-[11px] mt-12">
-        <p>Divya Puja Sewa • Vedic Sanatan Sansthan Varanasi (Direct Booking Mode)</p>
+        <p id="footer-text">दिव्या पूजा सेवा • वैदिक सनातन संस्थान वाराणसी (प्रत्यक्ष बुकिंग मोड)</p>
     </footer>
-
-    <!-- Google Translate Script for Full Pure Translation -->
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                includedLanguages: 'hi,en',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-                autoDisplay: false
-            }, 'google_translate_element');
-        }
-    </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
     <script>
         const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzhLMwjmCuw0QGwZ3OBTyjyW1gEzU9Tdmsx8D8oodOVXVRbLypBHC6tVLIYPng9F-5h/exec";
@@ -338,7 +319,61 @@
             { name: "Midnight Slate", primary: "#64748B", darkBg: "#090D16", lightBg: "#F8FAFC", darkCard: "#111C2E", lightCard: "#FFFFFF", darkHeader: "rgba(9, 13, 22, 0.85)", lightHeader: "rgba(248, 250, 252, 0.9)", border: "#1E293B", lightBorder: "#CBD5E1" }
         ];
 
+        let currentLang = 'hi';
         let isDarkMode = true;
+
+        const translations = {
+            hi: {
+                bookNow: "Book Now",
+                marquee: "🛕 सभी प्रकार की पूजा एवं जाप के लिए नीचे दिए गए विकल्प पर क्लिक करें। बिना ऑनलाइन भुगतान के सीधे बुकिंग करें!",
+                heroTag: "वैदिक पूजा • हवन • जाप • कुंडली",
+                heroHeading: "पवित्र अनुष्ठान, पूर्ण श्रद्धा के साथ संपन्न किए जाते हैं।",
+                heroDesc: "अपने घर पर ही विद्वान पंडितों द्वारा संचालित प्रामाणिक पूजा, हवन, जाप और कुंडली अनुष्ठान बुक करें। बिना किसी भुगतान के सीधे बुकिंग करें।",
+                btnBookPuja: "पूजा बुक करें ↗", btnExplore: "सभी पूजा एवं जाप देखें",
+                secTitle1: "🌿 सभी प्रकार की पूजाएं एवं जाप",
+                secDesc1: "किसी भी पूजा या जाप पर टैप करें, विवरण अपने आप भर जाएगा और तुरंत अलर्ट चला जाएगा:",
+                subTitle1: "1. प्रमुख पूजाएं", subTitle2: "2. प्रमुख जाप अनुष्ठान",
+                consultBadge: "तत्काल समाधान",
+                consultTitle: "पंडित जी से समाधान पाएं तत्काल",
+                consultDesc: "अपने मन में उठ रहे किसी भी सवाल या समस्या के लिए सीधा बात करें।",
+                consultBtn: "तत्काल संपर्क करें",
+                contactTag: "संपर्क करें · GET IN TOUCH",
+                contactHeading: "कोई सवाल है या कस्टम पूजा कराना चाहते हैं?",
+                contactSub: "हमारे विद्वान पंडित किसी भी अवसर के लिए सही अनुष्ठान, मुहूर्त और सामग्री चुनने में आपकी सहायता करने के लिए सदैव उपलब्ध हैं।",
+                cAddress: "वाराणसी, उत्तर प्रदेश · आपके घर पर",
+                whatsappLink: "व्हाट्सएप पर चैट करें",
+                lblCName: "आपका नाम *", lblCPhone: "मोबाइल नंबर *", lblCState: "राज्य (State) *", optSelState: "राज्य चुनें", lblCCity: "शहर / स्थान *", lblCMsg: "आपका संदेश / सवाल *", btnCSub: "पूछताछ भेजें",
+                revHeading: "श्रद्धालुओं की समीक्षाएं एवं विचार",
+                lblName: "आपका नाम *", lblRating: "रेटिंग *", lblState: "राज्य (State) *", lblCity: "शहर (City) *", lblMsg: "आपका अनुभव / विचार *", btnRevSub: "समीक्षा सबमिट करें",
+                footer: "दिव्या पूजा सेवा • वैदिक सनातन संस्थान वाराणसी (प्रत्यक्ष बुकिंग मोड)",
+                mShortcutTitle: "🧭 त्वरित शॉर्टकट", mOverview: "🌿 सभी पूजा एवं जाप सारांश", mSec1: "प्रमुख पूजाएं", mSec2: "प्रमुख जाप अनुष्ठान", mContact: "📞 संपर्क एवं पूछताछ", mReviews: "⭐ श्रद्धालुओं की समीक्षाएं"
+            },
+            en: {
+                bookNow: "Book Now",
+                marquee: "🛕 Click on options below for all types of Pujas & Chants. Direct booking with zero online payment!",
+                heroTag: "VEDIC RITUALS • HAWANS • MANTRAS • HOROSCOPE",
+                heroHeading: "Sacred rituals, performed with pure devotion.",
+                heroDesc: "Book authentic Pujas, Hawans, Chants and Astrology at your home, led by verified Vedic pandits instantly.",
+                btnBookPuja: "Book a Puja ↗", btnExplore: "Explore All Services",
+                secTitle1: "🌿 All Types of Pujas & Sacred Chants",
+                secDesc1: "Tap on any Puja or Chant to auto-fill details and trigger instant admin notification:",
+                subTitle1: "1. Major Pujas", subTitle2: "2. Major Chant Rituals",
+                consultBadge: "Instant Solution",
+                consultTitle: "Instant Consultation with Pandit Ji",
+                consultDesc: "Get immediate spiritual guidance and answers for any life problems over phone.",
+                consultBtn: "Contact Instantly",
+                contactTag: "GET IN TOUCH · संपर्क",
+                contactHeading: "Have a question or a custom puja in mind?",
+                contactSub: "Our team of learned pandits is happy to guide you through the right ritual, muhurat and samagri for any occasion.",
+                cAddress: "Varanasi, Uttar Pradesh · At your home",
+                whatsappLink: "Chat on WhatsApp",
+                lblCName: "Your Name *", lblCPhone: "Phone *", lblCState: "State *", optSelState: "Select State", lblCCity: "City / Location *", lblCMsg: "Your message *", btnCSub: "Send Inquiry",
+                revHeading: "Devotees Reviews & Opinions",
+                lblName: "Your Name *", lblRating: "Rating *", lblState: "State *", lblCity: "City *", lblMsg: "Your Experience / Opinion *", btnRevSub: "Submit Review",
+                footer: "Divya Puja Sewa • Vedic Sanatan Sansthan Varanasi (Direct Booking Mode)",
+                mShortcutTitle: "🧭 Quick Shortcuts", mOverview: "🌿 All Pujas & Jaap Overview", mSec1: "Major Pujas", mSec2: "Major Chants", mContact: "📞 Contact & Inquiry", mReviews: "⭐ Devotees Reviews"
+            }
+        };
 
         function initPageSetup() {
             const randomTheme = royalThemes[Math.floor(Math.random() * royalThemes.length)];
@@ -347,7 +382,8 @@
             setInterval(() => {
                 const now = new Date();
                 const daysHi = ["रविवार (Sunday)", "सोमवार (Monday)", "मंगलवार (Tuesday)", "बुधवार (Wednesday)", "गुरुवार (Thursday)", "शुक्रवार (Friday)", "शनिवार (Saturday)"];
-                document.getElementById('dayDisplay').innerText = daysHi[now.getDay()];
+                const daysEn = ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"];
+                document.getElementById('dayDisplay').innerText = currentLang === 'hi' ? daysHi[now.getDay()] : daysEn[now.getDay()];
                 document.getElementById('timeDisplay').innerText = now.toLocaleTimeString();
             }, 1000);
         }
@@ -384,6 +420,54 @@
 
         function toggleHamburgerMenu() {
             document.getElementById('hamburgerDropdown').classList.toggle('hidden');
+        }
+
+        function changeLanguage(lang) {
+            currentLang = lang;
+            const t = translations[currentLang];
+
+            document.getElementById('book-now-btn').innerText = t.bookNow;
+            document.getElementById('marquee-text').innerText = t.marquee;
+            document.getElementById('hero-tag').innerText = t.heroTag;
+            document.getElementById('hero-heading').innerText = t.heroHeading;
+            document.getElementById('hero-desc').innerText = t.heroDesc;
+            document.getElementById('btn-book-puja').innerHTML = t.btnBookPuja + ' <span>↗</span>';
+            document.getElementById('btn-explore').innerText = t.btnExplore;
+            document.getElementById('sec-title-1').innerText = t.secTitle1;
+            document.getElementById('sec-desc-1').innerText = t.secDesc1;
+            document.getElementById('sub-title-1').innerText = t.subTitle1;
+            document.getElementById('sub-title-2').innerText = t.subTitle2;
+            document.getElementById('consult-badge').innerText = t.consultBadge;
+            document.getElementById('consult-title').innerText = t.consultTitle;
+            document.getElementById('consult-desc').innerText = t.consultDesc;
+            document.getElementById('consult-btn').innerText = t.consultBtn;
+            document.getElementById('contact-tag').innerText = t.contactTag;
+            document.getElementById('contact-heading').innerHTML = t.contactHeading;
+            document.getElementById('contact-sub').innerText = t.contactSub;
+            document.getElementById('c-address').innerText = t.cAddress;
+            document.getElementById('whatsapp-link').innerText = t.whatsappLink;
+            document.getElementById('lbl-cname').innerText = t.lblCName;
+            document.getElementById('lbl-cphone').innerText = t.lblCPhone;
+            document.getElementById('lbl-cstate').innerText = t.lblCState;
+            document.getElementById('opt-sel-state').innerText = t.optSelState;
+            document.getElementById('lbl-ccity').innerText = t.lblCCity;
+            document.getElementById('lbl-cmsg').innerText = t.lblCMsg;
+            document.getElementById('btn-c-sub').innerText = t.btnCSub;
+            document.getElementById('rev-heading').innerText = t.revHeading;
+            document.getElementById('lbl-name').innerText = t.lblName;
+            document.getElementById('lbl-rating').innerText = t.lblRating;
+            document.getElementById('lbl-state').innerText = t.lblState;
+            document.getElementById('lbl-city').innerText = t.lblCity;
+            document.getElementById('lbl-msg').innerText = t.lblMsg;
+            document.getElementById('btn-rev-sub').innerText = t.btnRevSub;
+            document.getElementById('footer-text').innerText = t.footer;
+
+            document.getElementById('m-shortcut-title').innerText = t.mShortcutTitle;
+            document.getElementById('m-overview').innerText = t.mOverview;
+            document.getElementById('m-sec1').innerText = t.mSec1;
+            document.getElementById('m-sec2').innerText = t.mSec2;
+            document.getElementById('m-contact').innerText = t.mContact;
+            document.getElementById('m-reviews').innerText = t.mReviews;
         }
 
         function autoFillAndBook(serviceName) {
@@ -423,7 +507,7 @@
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
             }).then(() => {
-                alert('Aapki enquiry safaltapurvak bhej di gayi hai!');
+                alert(currentLang === 'hi' ? 'आपकी पूछताछ सफलतापूर्वक भेज दी गई है!' : 'Your inquiry has been sent successfully!');
                 document.getElementById('contactForm').reset();
             }).catch(e => console.log(e));
         }
@@ -445,7 +529,7 @@
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
             }).then(() => {
-                alert('Aapka review safaltapurvak submit ho gaya hai!');
+                alert(currentLang === 'hi' ? 'आपका रिव्यू सफलतापूर्वक सबमिट हो गया है!' : 'Your review has been submitted successfully!');
                 document.getElementById('reviewForm').reset();
             }).catch(e => console.log(e));
         }
