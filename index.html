@@ -28,6 +28,17 @@
         body { font-family: 'Poppins', sans-serif; background-color: #0B0D17; color: #E2E8F0; }
         .serif-title { font-family: 'Cinzel', serif; }
         .glow-effect { box-shadow: 0 0 40px rgba(212, 175, 55, 0.2); }
+        
+        /* Smooth Hover Effects for Links and Interactive Cards */
+        .hover-card-effect {
+            transition: all 0.3s ease;
+        }
+        .hover-card-effect:hover {
+            border-color: #D4AF37;
+            background-color: rgba(212, 175, 55, 0.08);
+            transform: translateY(-2px);
+            color: #F3E5AB;
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between py-6 px-4">
@@ -48,20 +59,20 @@
             <p class="text-xs text-gray-400 mt-2 font-light">Varanasi ki pavitra dharti se sampurna Vedic Anushthan, Hawan, Rudrabhishek evam Puja booking</p>
         </div>
 
-        <!-- QUICK ENQUIRY / ALL PUJA OPTIONS SECTION (OLD ITEMS RETAINED) -->
+        <!-- QUICK ENQUIRY / ALL PUJA OPTIONS SECTION (WITH HOVER COLOR CHANGE) -->
         <div class="bg-brand-dark/60 border border-brand-border rounded-2xl p-4 space-y-3">
             <h3 class="text-xs font-bold text-brand-gold uppercase tracking-wider mb-2">🌿 Pramukh Anushthan & Puja Enquiries:</h3>
             <div class="grid grid-cols-2 gap-2 text-xs">
-                <div class="bg-brand-card p-2.5 rounded-xl border border-brand-border text-gray-300 flex items-center gap-2">
+                <div class="bg-brand-card p-2.5 rounded-xl border border-brand-border text-gray-300 flex items-center gap-2 hover-card-effect cursor-pointer">
                     <span>🔥</span> Hawan & Yagya
                 </div>
-                <div class="bg-brand-card p-2.5 rounded-xl border border-brand-border text-gray-300 flex items-center gap-2">
+                <div class="bg-brand-card p-2.5 rounded-xl border border-brand-border text-gray-300 flex items-center gap-2 hover-card-effect cursor-pointer">
                     <span>🕉️</span> Rudrabhishek
                 </div>
-                <div class="bg-brand-card p-2.5 rounded-xl border border-brand-border text-gray-300 flex items-center gap-2">
+                <div class="bg-brand-card p-2.5 rounded-xl border border-brand-border text-gray-300 flex items-center gap-2 hover-card-effect cursor-pointer">
                     <span>✨</span> Satyanarayan Puja
                 </div>
-                <div class="bg-brand-card p-2.5 rounded-xl border border-brand-border text-gray-300 flex items-center gap-2">
+                <div class="bg-brand-card p-2.5 rounded-xl border border-brand-border text-gray-300 flex items-center gap-2 hover-card-effect cursor-pointer">
                     <span>🛕</span> Vivah Sanskar / Shadi
                 </div>
             </div>
@@ -69,7 +80,7 @@
 
         <!-- HERO BUTTON TO BOOKING -->
         <div class="space-y-3">
-            <a href="booking.html" class="block w-full text-center bg-brand-accent text-black font-bold py-4 text-xs rounded-xl hover:bg-brand-accentHover transition shadow-lg">
+            <a href="booking.html" class="block w-full text-center bg-brand-accent text-black font-bold py-4 text-xs rounded-xl hover:bg-brand-accentHover transition shadow-lg transform hover:-translate-y-0.5">
                 ✨ Nayi Puja / Hawan / Shadi Booking Karein
             </a>
         </div>
@@ -81,7 +92,7 @@
                 <h3 class="serif-title text-base font-bold text-brand-gold mt-1">Pandit Ji se Samadhan Paye Tatkal</h3>
                 <p class="text-xs text-gray-300 font-light">Apne man me uth rahe kisi bhi sawal ya samasya ke liye seedha baat karein.</p>
             </div>
-            <button onclick="selectConsultationAndProceed()" class="bg-amber-500 hover:bg-amber-600 text-black font-extrabold text-xs px-5 py-3 rounded-xl shadow transition whitespace-nowrap">
+            <button onclick="selectConsultationAndProceed()" class="bg-amber-500 hover:bg-amber-600 text-black font-extrabold text-xs px-5 py-3 rounded-xl shadow transition whitespace-nowrap transform hover:scale-105">
                 Baat Karein (₹49)
             </button>
         </div>
