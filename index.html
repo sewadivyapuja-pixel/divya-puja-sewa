@@ -7,12 +7,14 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; transition: background-color 0.3s ease, color 0.3s ease; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; transition: background-color 0.3s ease, color 0.3s ease; scroll-behavior: smooth; }
         
         /* Dark Theme Default */
         body.dark { background-color: #0A0B10; color: #E2E8F0; }
         body.dark .custom-card { background-color: #12141C; border-color: #222638; color: #E2E8F0; }
         body.dark .header-bg { background-color: rgba(10, 11, 16, 0.85); border-color: #222638; }
+        body.dark .custom-input { background: transparent; border: none; border-bottom: 1px solid rgba(255, 255, 255, 0.2); border-radius: 0; padding: 10px 0; color: inherit; outline: none; width: 100%; font-size: 14px; transition: border-color 0.3s; }
+        body.dark .custom-input:focus { border-bottom-color: #D4AF37; }
 
         /* Light Premium Cream-Gold Theme */
         body.light { background-color: #FDFBF7; color: #1A1A1A; }
@@ -20,6 +22,8 @@
         body.light .header-bg { background-color: rgba(253, 251, 247, 0.9); border-color: #E6DCCD; }
         body.light .text-gray-400 { color: #666666 !important; }
         body.light .text-gray-100, body.light .text-gray-300 { color: #222222 !important; }
+        body.light .custom-input { background: transparent; border: none; border-bottom: 1px solid rgba(0, 0, 0, 0.2); border-radius: 0; padding: 10px 0; color: inherit; outline: none; width: 100%; font-size: 14px; transition: border-color 0.3s; }
+        body.light .custom-input:focus { border-bottom-color: #C25E38; }
 
         .serif-title { font-family: 'Cinzel', serif; }
         .ultra-glow { box-shadow: 0 0 60px rgba(212, 175, 55, 0.08); }
@@ -42,12 +46,13 @@
                     <button onclick="toggleHamburgerMenu()" class="text-amber-500 text-lg p-2 rounded-xl border border-amber-500/30 custom-card focus:outline-none hover:border-amber-500 transition flex items-center justify-center">
                         ☰
                     </button>
-                    <!-- Dropdown Content (Pujas & Contact moved here) -->
+                    <!-- Dropdown Content -->
                     <div id="hamburgerDropdown" class="hidden absolute left-0 mt-2 w-64 custom-card border rounded-2xl shadow-2xl p-4 z-50 text-xs space-y-3">
                         <div class="font-bold border-b border-amber-500/20 pb-2 text-amber-600">🧭 Navigation</div>
                         <div class="space-y-2">
                             <a href="#all-pujas" onclick="toggleHamburgerMenu()" class="block p-2 rounded hover:bg-amber-500/10 transition font-semibold" id="nav-pujas">Pujas & Jaap</a>
-                            <a href="#" onclick="toggleHamburgerMenu()" class="block p-2 rounded hover:bg-amber-500/10 transition font-semibold" id="nav-contact">Contact</a>
+                            <a href="#contact-section" onclick="toggleHamburgerMenu()" class="block p-2 rounded hover:bg-amber-500/10 transition font-semibold" id="nav-contact">Contact</a>
+                            <a href="#reviews-section" onclick="toggleHamburgerMenu()" class="block p-2 rounded hover:bg-amber-500/10 transition font-semibold">Reviews</a>
                         </div>
                     </div>
                 </div>
@@ -123,7 +128,7 @@
 
         </div>
 
-        <!-- ALL TYPES OF PUJAS & JAAP SECTION (Placed below Krishna image container area) -->
+        <!-- ALL TYPES OF PUJAS & JAAP SECTION -->
         <div id="all-pujas" class="custom-card border rounded-2xl p-6 space-y-6">
             <div>
                 <h3 id="sec-title-1" class="serif-title text-base font-bold text-amber-600">🌿 Sabhi Prakar ki Pujayein evam Jaap</h3>
@@ -166,6 +171,96 @@
                 Tatkal Sampark Karein
             </button>
         </div>
+
+        <!-- CONTACT / ENQUIRY SECTION -->
+        <section id="contact-section" class="custom-card border rounded-3xl p-8 md:p-12 space-y-10 shadow-2xl">
+            <div class="space-y-3 max-w-2xl">
+                <p class="text-xs tracking-widest font-semibold uppercase font-serif text-amber-600">GET IN TOUCH · संपर्क</p>
+                <h2 class="serif-title text-3xl md:text-4xl font-bold">Have a question or a <span class="italic font-normal text-amber-600">custom puja</span> in mind?</h2>
+                <p class="text-xs text-gray-400">Our team of learned pandits is happy to guide you through the right ritual, muhurat and samagri for any occasion.</p>
+            </div>
+
+            <form id="contactForm" onsubmit="handleContactSubmit(event)" class="space-y-6 pt-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-1">
+                        <label class="text-[11px] opacity-70">Your Name *</label>
+                        <input type="text" id="cName" required class="custom-input" placeholder="Aapka naam">
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-[11px] opacity-70">Phone *</label>
+                        <input type="tel" id="cPhone" required class="custom-input" placeholder="Mobile Number">
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-1">
+                        <label class="text-[11px] opacity-70">State (Rajya) *</label>
+                        <select id="cState" required class="custom-input bg-transparent">
+                            <option value="">Select State</option>
+                            <option value="Uttar Pradesh">Uttar Pradesh (UP)</option>
+                            <option value="Delhi">Delhi</option>
+                            <option value="Madhya Pradesh">Madhya Pradesh (MP)</option>
+                            <option value="Bihar">Bihar</option>
+                            <option value="Maharashtra">Maharashtra</option>
+                            <option value="Other">Other State / All India</option>
+                        </select>
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-[11px] opacity-70">City / Location *</label>
+                        <input type="text" id="cCity" required class="custom-input" placeholder="e.g. Varanasi, Lucknow...">
+                    </div>
+                </div>
+                <div class="space-y-1">
+                    <label class="text-[11px] opacity-70">Your message *</label>
+                    <textarea id="cMessage" rows="3" required class="custom-input" placeholder="Apni puja ya sawal ke bare me likhein..."></textarea>
+                </div>
+                <button type="submit" class="bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs px-8 py-3.5 rounded-xl transition shadow-lg">
+                    Send Inquiry
+                </button>
+            </form>
+        </section>
+
+        <!-- REVIEWS SECTION -->
+        <section id="reviews-section" class="custom-card border rounded-2xl p-6 md:p-8 space-y-8">
+            <div class="text-center max-w-xl mx-auto space-y-2">
+                <h2 class="serif-title text-2xl md:text-3xl font-bold">Devotees Reviews & Opinions</h2>
+            </div>
+
+            <div class="border-t border-amber-500/20 pt-6 max-w-xl mx-auto space-y-4">
+                <form id="reviewForm" onsubmit="submitUserReview(event)" class="space-y-4 text-xs">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="space-y-1">
+                            <label class="text-[10px] opacity-70">Aapka Naam (Name) *</label>
+                            <input type="text" id="revName" required class="custom-input" placeholder="Full Name">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-[10px] opacity-70">Rating *</label>
+                            <select id="revRating" class="custom-input bg-transparent">
+                                <option value="⭐⭐⭐⭐⭐ (5/5)">⭐⭐⭐⭐⭐ (5/5)</option>
+                                <option value="⭐⭐⭐⭐ (4/5)">⭐⭐⭐⭐ (4/5)</option>
+                                <option value="⭐⭐⭐ (3/5)">⭐⭐⭐ (3/5)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="space-y-1">
+                            <label class="text-[10px] opacity-70">State (Rajya) *</label>
+                            <input type="text" id="revState" required class="custom-input" placeholder="State">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-[10px] opacity-70">City (Shehar) *</label>
+                            <input type="text" id="revCity" required class="custom-input" placeholder="City">
+                        </div>
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-[10px] opacity-70">Aapka Anubhav / Opinion *</label>
+                        <textarea id="revMsg" rows="2" required class="custom-input" placeholder="Apna feedback yahan likhein..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-amber-600 hover:bg-amber-700 text-white font-extrabold py-3 rounded-xl shadow transition">
+                        Submit Review
+                    </button>
+                </form>
+            </div>
+        </section>
     </main>
 
     <!-- FOOTER -->
@@ -174,6 +269,7 @@
     </footer>
 
     <script>
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzhLMwjmCuw0QGwZ3OBTyjyW1gEzU9Tdmsx8D8oodOVXVRbLypBHC6tVLIYPng9F-5h/exec";
         const TELEGRAM_BOT_TOKEN = "8989054970:AAG-NMCyPNoNhpnOwG1j_naEfNy4N0tYyN8";
         const TELEGRAM_CHAT_ID = "8814734919";
         
@@ -282,6 +378,50 @@
             window.open(`https://wa.me/${ADMIN_WHATSAPP_2}?text=${waMsg}`, '_blank');
 
             window.location.href = 'booking.html';
+        }
+
+        function handleContactSubmit(event) {
+            event.preventDefault();
+            const payload = {
+                type: "enquiry",
+                name: document.getElementById('cName').value,
+                phone: document.getElementById('cPhone').value,
+                state: document.getElementById('cState').value,
+                city: document.getElementById('cCity').value,
+                message: document.getElementById('cMessage').value
+            };
+
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            }).then(() => {
+                alert('Aapki enquiry safaltapurvak bhej di gayi hai!');
+                document.getElementById('contactForm').reset();
+            }).catch(e => console.log(e));
+        }
+
+        function submitUserReview(event) {
+            event.preventDefault();
+            const payload = {
+                type: "review",
+                name: document.getElementById('revName').value,
+                rating: document.getElementById('revRating').value,
+                state: document.getElementById('revState').value,
+                city: document.getElementById('revCity').value,
+                msg: document.getElementById('revMsg').value
+            };
+
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            }).then(() => {
+                alert('Aapka review safaltapurvak submit ho gaya hai!');
+                document.getElementById('reviewForm').reset();
+            }).catch(e => console.log(e));
         }
     </script>
 </body>
