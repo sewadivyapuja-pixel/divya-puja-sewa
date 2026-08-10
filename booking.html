@@ -1,172 +1,224 @@
 <!DOCTYPE html>
-<html lang="hi" id="bookingHtmlRoot" class="dark">
+<html lang="hi" id="htmlRoot" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Divya Puja Sewa - Booking Form</title>
+    <title>Booking - Divya Puja Sewa</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0A0B10',
+                            card: '#12141C',
+                            border: '#222638',
+                            accent: '#D4AF37',
+                            rust: '#C25E38',
+                            gold: '#F3E5AB'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Cinzel', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0A0B10; color: #E2E8F0; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--theme-bg, #0A0B10); color: var(--theme-text, #E2E8F0); transition: background-color 0.4s, color 0.4s; }
         .serif-title { font-family: 'Cinzel', serif; }
-        .form-input {
-            width: 100%;
-            background: #12141C;
-            border: 1px solid #222638;
-            border-radius: 12px;
-            padding: 12px 16px;
-            color: #E2E8F0;
-            font-size: 14px;
+        .custom-input {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 0;
+            padding: 10px 0;
+            color: inherit;
             outline: none;
+            width: 100%;
+            font-size: 14px;
             transition: border-color 0.3s;
         }
-        .form-input:focus { border-color: #D4AF37; }
+        .custom-input:focus { border-bottom-color: var(--theme-color, #D4AF37); }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between py-10 px-4">
+<body id="mainBody" class="min-h-screen flex flex-col justify-between p-6">
 
-    <div class="max-w-2xl mx-auto w-full bg-[#12141C] border border-[#222638] rounded-3xl p-6 md:p-10 shadow-2xl space-y-8">
-        
-        <!-- Header -->
+    <div class="max-w-2xl mx-auto w-full bg-[#12141C] border border-[#222638] rounded-3xl p-8 shadow-2xl space-y-6 my-auto">
         <div class="text-center space-y-2">
-            <a href="index.html" class="text-amber-500 font-serif font-bold text-sm tracking-wide">← Home Par Wapas Jayein</a>
-            <h1 class="serif-title text-2xl md:text-3xl font-bold text-gray-100">Puja & Jaap Booking Form</h1>
-            <p class="text-xs text-gray-400">Apni seva ke liye nishulk/seedha anushthan anurodh darj karein.</p>
+            <a href="index.html" class="inline-block text-xs text-amber-400 hover:underline">← Home Page par wapas jayein</a>
+            <h2 class="serif-title text-2xl font-bold" style="color: var(--theme-color, #D4AF37);">Divya Puja Booking Form</h2>
+            <p class="text-xs text-gray-400">Apni seva chun kar details bharein</p>
         </div>
 
-        <!-- Booking Form -->
-        <form id=" pujaBookingForm" onsubmit="submitBooking(event)" class="space-y-5">
+        <form id="bookingForm" onsubmit="submitBooking(event)" class="space-y-6 text-xs">
             
-            <!-- Selected Service (Auto-Filled) -->
+            <!-- CHUNI GAYI PUJA / JAAP SELECTION WITH ALL CATEGORIES & WRITE YOURSELF OPTION -->
             <div class="space-y-1">
-                <label class="text-xs text-amber-400 font-semibold">Chuni Gayi Puja / Jaap (Seva)</label>
-                <input type="text" id="selectedService" readonly class="form-input bg-[#0A0B10] text-amber-300 font-bold">
+                <label class="text-[11px] opacity-70">Chuni Gayi Puja / Jaap (Seva) *</label>
+                <select id="selectedPuja" onchange="checkCustomPuja(this.value)" required class="custom-input bg-[#0A0B10]">
+                    <option value="">-- Seva / Puja Chunein --</option>
+                    <optgroup label="Pramukh Pujayein">
+                        <option value="Rudrabhishek Puja">🕉️ Rudrabhishek Puja</option>
+                        <option value="Hawan & Yagya">🔥 Hawan & Yagya</option>
+                        <option value="Satyanarayan Katha">✨ Satyanarayan Katha</option>
+                        <option value="Navgrah Shanti Puja">🪐 Navgrah Shanti Puja</option>
+                        <option value="Vivah Sanskar (Shadi)">🛕 Vivah Sanskar (Shadi)</option>
+                        <option value="Maha Lakshmi Puja">🪷 Maha Lakshmi Puja</option>
+                        <option value="Mandan & Janeu Sanskar">✂️ Mundan / Janeu</option>
+                        <option value="Kundali Milan & Vichar">📜 Kundali Milan & Vichar</option>
+                    </optgroup>
+                    <optgroup label="Jaap Anushthan">
+                        <option value="Maha Mrityunjaya Jaap">📿 Maha Mrityunjaya Jaap</option>
+                        <option value="Gayatri Mantra Jaap">📿 Gayatri Mantra Jaap</option>
+                        <option value="Mahamrityunjaya Anushthan">🕉️ Mahamrityunjaya Anushthan</option>
+                        <option value="Baglamukhi Anushthan">⚔️ Baglamukhi Anushthan</option>
+                        <option value="Pandit Tatkal Consultation">⚡ Pandit Tatkal Consultation</option>
+                    </optgroup>
+                    <option value="WRITE_YOURSELF">✍️ Write Yourself (Apne man se likhein)</option>
+                </select>
             </div>
 
-            <!-- Original & Alternative Contact Numbers -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- HIDDEN CUSTOM INPUT FIELD FOR WRITE YOURSELF -->
+            <div id="customPujaBox" class="space-y-1 hidden">
+                <label class="text-[11px] opacity-70 font-bold text-amber-400">Apni Puja / Seva ka Naam Type Karein *</label>
+                <input type="text" id="customPujaInput" class="custom-input" placeholder="Jaise: Special Durga Saptashati Paath...">
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="space-y-1">
-                    <label class="text-xs text-gray-300">Original Mobile Number *</label>
-                    <input type="tel" id="origPhone" required class="form-input" placeholder="10-digit mobile number">
+                    <label class="text-[11px] opacity-70">Original Mobile Number *</label>
+                    <input type="tel" id="bPhone" required class="custom-input" placeholder="10-digit mobile number">
                 </div>
                 <div class="space-y-1">
-                    <label class="text-xs text-gray-300">Alternative Mobile Number</label>
-                    <input type="tel5" id="altPhone" class="form-input" placeholder="Optional alternate number">
+                    <label class="text-[11px] opacity-70">Alternative Mobile Number</label>
+                    <input type="tel" id="bAltPhone" class="custom-input" placeholder="Optional alternate number">
                 </div>
             </div>
 
-            <!-- Email & Full Name -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="space-y-1">
-                    <label class="text-xs text-gray-300">Full Name *</label>
-                    <input type="text" id="fullName" required class="form-input" placeholder="Aapka pura naam">
+                    <label class="text-[11px] opacity-70">Full Name *</label>
+                    <input type="text" id="bName" required class="custom-input" placeholder="Aapka pura naam">
                 </div>
                 <div class="space-y-1">
-                    <label class="text-xs text-gray-300">Email ID *</label>
-                    <input type="email" id="emailId" required class="form-input" placeholder="your_email@gmail.com">
-                </div>
-            </div>
-
-            <!-- Date & Location -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="space-y-1">
-                    <label class="text-xs text-gray-300">Puja/Jaap Date *</label>
-                    <input type="date" id="bookingDateInput" required class="form-input">
-                </div>
-                <div class="space-y-1">
-                    <label class="text-xs text-gray-300">Address / Location *</label>
-                    <input type="text" id="addressInput" required class="form-input" placeholder="Varanasi / City, Pincode">
+                    <label class="text-[11px] opacity-70">Email ID *</label>
+                    <input type="email" id="bEmail" required class="custom-input" placeholder="your_email@gmail.com">
                 </div>
             </div>
 
-            <!-- Additional Details -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="space-y-1">
+                    <label class="text-[11px] opacity-70">Puja/Jaap Date *</label>
+                    <input type="date" id="bDate" required class="custom-input bg-[#0A0B10]">
+                </div>
+                <div class="space-y-1">
+                    <label class="text-[11px] opacity-70">Address / Location *</label>
+                    <input type="text" id="bAddress" required class="custom-input" placeholder="Varanasi / City, Pincode">
+                </div>
+            </div>
+
             <div class="space-y-1">
-                <label class="text-xs text-gray-300">Vishesh Sankalp / Samasya (Optional)</label>
-                <textarea id="userNotes" rows="2" class="form-input" placeholder="Gotra, naam ya vishesh anurodh yahan likhein..."></textarea>
+                <label class="text-[11px] opacity-70">Vishesh Sankalp / Samasya (Optional)</label>
+                <textarea id="bSankalp" rows="3" class="custom-input" placeholder="Gotra, naam ya vishesh anurodh yahan likhein..."></textarea>
             </div>
 
-            <!-- Done Button & Receipt Download Option -->
-            <div class="space-y-4 pt-4">
-                <button type="submit" class="w-full bg-amber-500 hover:bg-amber-600 text-black font-extrabold text-sm py-3.5 rounded-xl transition shadow-lg">
-                    Done (Booking Darj Karein)
-                </button>
-
-                <!-- Receipt Download Section (Hidden initially, shown after booking) -->
-                <div id="receiptSection" class="hidden text-center space-y-3 pt-2 border-t border-[#222638]">
-                    <p class="text-xs text-green-400 font-semibold">✔ Aapki Booking Safaltapurvak Ho Chuki Hai!</p>
-                    <button type="button" onclick="downloadReceipt()" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-6 py-2.5 rounded-xl transition">
-                        📥 Download Receipt (रसीद डाउनलोड करें)
-                    </button>
-                </div>
-            </div>
-
+            <button type="submit" class="w-full text-black font-extrabold py-3.5 rounded-xl shadow-lg transition transform hover:scale-105" style="background-color: #D4AF37;">
+                Confirm & Book Seva
+            </button>
         </form>
-
     </div>
-
-    <footer class="text-center text-[11px] text-gray-500 mt-8">
-        <p>Divya Puja Sewa • Vedic Sanatan Sansthan Varanasi</p>
-    </footer>
 
     <script>
         const TELEGRAM_BOT_TOKEN = "8989054970:AAG-NMCyPNoNhpnOwG1j_naEfNy4N0tYyN8";
         const TELEGRAM_CHAT_ID = "8814734919";
-        const ADMIN_WHATSAPP_1 = "919935179756";
-        const ADMIN_WHATSAPP_2 = "918382909995";
+        const ADMIN_WHATSAPP = "918382909995";
 
-        // Auto-fill service from localStorage if selected on home page
-        window.onload = function() {
-            const savedService = localStorage.getItem('bookingService') || 'Vedic Puja / Jaap Anushthan';
-            document.getElementById('selectedService').value = savedService;
-            document.getElementById('bookingDateInput.value = new Date().toISOString().split('T')[0];
-        };
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedService = localStorage.getItem('bookingService');
+            const savedDate = localStorage.getItem('bookingDate');
+
+            const selectEl = document.getElementById('selectedPuja');
+            if (savedService) {
+                let found = false;
+                for (let option of selectEl.options) {
+                    if (option.value === savedService) {
+                        selectEl.value = savedService;
+                        found = true;
+                        break;
+                    }
+                }
+                // Agar wo list me nahi hai to Write Yourself select karke custom me dal do
+                if (!found) {
+                    selectEl.value = "WRITE_YOURSELF";
+                    checkCustomPuja("WRITE_YOURSELF");
+                    document.getElementById('customPujaInput').value = savedService;
+                }
+            }
+
+            if (savedDate) {
+                // date format conversion agar zaroorat ho toh
+                try {
+                    let parts = savedDate.split('/');
+                    if (parts.length === 3) {
+                        document.getElementById('bDate').value = `${parts[2]}-${parts[1].padStart(2, '0')}-${parts[0].padStart(2, '0')}`;
+                    }
+                } catch(e) {}
+            }
+        });
+
+        function checkCustomPuja(val) {
+            const customBox = document.getElementById('customPujaBox');
+            const customInput = document.getElementById('customPujaInput');
+            if (val === 'WRITE_YOURSELF') {
+                customBox.classList.remove('hidden');
+                customInput.required = true;
+                customInput.focus();
+            } else {
+                customBox.classList.add('hidden');
+                customInput.required = false;
+                customInput.value = '';
+            }
+        }
 
         function submitBooking(event) {
             event.preventDefault();
 
-            const service = document.getElementById('selectedService').value;
-            const name = document.getElementById('fullName').value;
-            const origPhone = document.getElementById('origPhone').value;
-            const altPhone = document.getElementById('altPhone').value || 'N/A';
-            const email = document.getElementById('emailId').value;
-            const date = document.getElementById('bookingDateInput').value;
-            const address = document.getElementById('addressInput').value;
-            const notes = document.getElementById('userNotes').value || 'None';
+            let pujaName = document.getElementById('selectedPuja').value;
+            if (pujaName === 'WRITE_YOURSELF') {
+                pujaName = document.getElementById('customPujaInput').value.trim();
+                if (!pujaName) {
+                    alert('Kripya apni puja ya seva ka naam type karein!');
+                    return;
+                }
+            }
 
-            const telegramMsg = `🛕 NEW PUJA/JAAP BOOKING!\n-----------------------------------\n✨ Seva: ${service}\n👤 Name: ${name}\n📞 Mobile: ${origPhone}\n📱 Alt Mobile: ${altPhone}\n✉️ Email: ${email}\n📅 Date: ${date}\n📍 Address: ${address}\n📝 Notes: ${notes}`;
-            
-            // Send to Telegram
+            const name = document.getElementById('bName').value;
+            const phone = document.getElementById('bPhone').value;
+            const altPhone = document.getElementById('bAltPhone').value || 'N/A';
+            const email = document.getElementById('bEmail').value;
+            const date = document.getElementById('bDate').value;
+            const address = document.getElementById('bAddress').value;
+            const sankalp = document.getElementById('bSankalp').value || 'N/A';
+
+            const telegramMsg = `🛕 NEW DETAILED BOOKING SUBMITTED!\n-----------------------------------\n✨ Seva / Puja: ${pujaName}\n👤 Name: ${name}\n📞 Mobile: ${phone}\n📱 Alt Mobile: ${altPhone}\n📧 Email: ${email}\n📅 Date: ${date}\n📍 Address: ${address}\n📝 Sankalp/Gotra: ${sankalp}`;
+
             fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: telegramMsg })
-            }).catch(e => console.log("Telegram Error:", e));
+            }).catch(e => console.log(e));
 
-            const waMsg = `🛕 *NEW PUJA/JAAP BOOKING*%0A-----------------------------------%0A*Seva:* ${service}%0A*Name:* ${name}%0A*Mobile:* ${origPhone}%0A*Alt Mobile:* ${altPhone}%0A*Email:* ${email}%0A*Date:* ${date}%0A*Address:* ${address}%0A*Notes:* ${notes}`;
-            
-            // Open both WhatsApp numbers
-            window.open(`https://wa.me/${ADMIN_WHATSAPP_1}?text=${waMsg}`, '_blank');
-            window.open(`https://wa.me/${ADMIN_WHATSAPP_2}?text=${waMsg}`, '_blank');
+            const waMsg = `🛕 *NEW DETAILED BOOKING SUBMITTED*%0A-----------------------------------%0A*Seva / Puja:* ${pujaName}%0A*Name:* ${name}%0A*Mobile:* ${phone}%0A*Alt Mobile:* ${altPhone}%0A*Email:* ${email}%0A*Date:* ${date}%0A*Address:* ${address}%0A*Sankalp/Gotra:* ${sankalp}`;
+            window.open(`https://wa.me/${ADMIN_WHATSAPP}?text=${waMsg}`, '_blank');
 
-            // Show Receipt Download Option
-            document.getElementById('receiptSection').classList.remove('hidden');
-            alert('Aapki booking safaltapurvak darj ho gayi hai aur admin ko alert bhej diya gaya hai!');
-        }
-
-        function downloadReceipt() {
-            const service = document.getElementById('selectedService').value;
-            const name = document.getElementById('fullName').value;
-            const origPhone = document.getElementById('origPhone').value;
-            const date = document.getElementById('bookingDateInput').value;
-            const address = document.getElementById('addressInput').value;
-
-            const receiptContent = `=== DIVYA PUJA SEWA - BOOKING RECEIPT ===\n\nSeva: ${service}\nName: ${name}\nMobile: ${origPhone}\nDate: ${date}\nAddress: ${address}\nStatus: Confirmed (Direct Booking)\n\nVedic Sanatan Sansthan, Varanasi\n========================================`;
-            
-            const blob = new Blob([receiptContent], { type: 'text/plain;charset=utf-8' });
-            const link = document.createElement('a');
-            link.href = URL.createObjectURL(blob);
-            link.download = `Divya_Puja_Receipt_${name.replace(/\s+/g, '_')}.txt`;
-            link.click();
+            alert('Aapki booking safaltapurvak submit ho gayi hai!');
+            window.location.href = 'index.html';
         }
     </script>
 </body>
