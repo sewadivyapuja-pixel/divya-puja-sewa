@@ -55,13 +55,7 @@
 </head>
 <body id="mainBody" class="min-h-screen flex flex-col justify-between">
 
-    <!-- ======================================================= -->
-    <!-- 🎵 BACKGROUND AUDIO CODE (SIRF 1 BAAR CHALEGA) -->
-    <!-- ======================================================= -->
-    <audio autoplay src="aapke_audio_ka_link_ya_path.mp3"></audio>
-    <!-- ======================================================= -->
-
-    <!-- TOP HEADER NAVBAR WITH 3-LINE MENU, LOGO, LIVE DATE-TIME IN MIDDLE & THEME SELECTOR -->
+    <!-- HEADER NAVBAR -->
     <header id="headerBox" class="w-full border-b border-[#222638] bg-[#0A0B10]/90 backdrop-blur-md sticky top-0 z-50 px-6 py-4">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
             <div class="flex items-center gap-6">
@@ -70,35 +64,19 @@
                     <button onclick="toggleHamburgerMenu()" class="text-amber-400 text-xl p-1 rounded-lg border border-[#222638] bg-[#12141C] focus:outline-none hover:border-amber-400 transition flex items-center justify-center w-9 h-9">
                         ☰
                     </button>
-                    <!-- Dropdown Content for 3-Line Menu containing Navigation Links & Quick Shortcuts -->
+                    <!-- Dropdown Content -->
                     <div id="hamburgerDropdown" class="hidden absolute left-0 mt-2 w-72 bg-[#12141C] border border-[#222638] rounded-2xl shadow-2xl p-4 z-50 text-xs space-y-3 max-h-96 overflow-y-auto">
-                        
-                        <!-- MAIN NAVIGATION LINKS MOVED INSIDE HAMBURGER -->
                         <div class="font-bold border-b border-[#222638] pb-2 text-amber-400">🧭 Navigation</div>
                         <div class="space-y-1.5 pb-2 border-b border-[#222638]">
-                            <a href="#all-pujas" onclick="toggleHamburgerMenu()" id="nav-pujas" class="block p-2 rounded hover:bg-[#0A0B10] transition font-semibold">Pujas & Jaap</a>
-                            <a href="#contact-section" onclick="toggleHamburgerMenu()" id="nav-contact" class="block p-2 rounded hover:bg-[#0A0B10] transition font-semibold">Contact</a>
-                            <a href="#reviews-section" onclick="toggleHamburgerMenu()" id="nav-reviews" class="block p-2 rounded hover:bg-[#0A0B10] transition font-semibold">Reviews</a>
+                            <a href="#all-pujas" onclick="toggleHamburgerMenu()" class="block p-2 rounded hover:bg-[#0A0B10] transition font-semibold">Pujas & Jaap</a>
+                            <a href="#contact-section" onclick="toggleHamburgerMenu()" class="block p-2 rounded hover:bg-[#0A0B10] transition font-semibold">Contact</a>
+                            <a href="#reviews-section" onclick="toggleHamburgerMenu()" class="block p-2 rounded hover:bg-[#0A0B10] transition font-semibold">Reviews</a>
                         </div>
-
-                        <div class="font-bold border-b border-[#222638] pb-2 text-amber-400">🔥 Quick Puja & Jaap Shortcuts</div>
+                        <div class="font-bold border-b border-[#222638] pb-2 text-amber-400">🔥 Quick Puja Shortcuts</div>
                         <div class="space-y-1.5">
-                            <p class="text-[10px] uppercase font-semibold text-gray-400">Pramukh Pujayein</p>
-                            <a href="#all-pujas" onclick="toggleHamburgerMenu(); autoFillAndBook('Rudrabhishek Puja')" class="block p-2 rounded hover:bg-[#0A0B10] transition">🕉️ Rudrabhishek Puja</a>
-                            <a href="#all-pujas" onclick="toggleHamburgerMenu(); autoFillAndBook('Hawan & Yagya')" class="block p-2 rounded hover:bg-[#0A0B10] transition">🔥 Hawan & Yagya</a>
-                            <a href="#all-pujas" onclick="toggleHamburgerMenu(); autoFillAndBook('Satyanarayan Katha')" class="block p-2 rounded hover:bg-[#0A0B10] transition">✨ Satyanarayan Katha</a>
-                            <a href="#all-pujas" onclick="toggleHamburgerMenu(); autoFillAndBook('Navgrah Shanti Puja')" class="block p-2 rounded hover:bg-[#0A0B10] transition">🪐 Navgrah Shanti</a>
-                            <a href="#all-pujas" onclick="toggleHamburgerMenu(); autoFillAndBook('Vivah Sanskar (Shadi)')" class="block p-2 rounded hover:bg-[#0A0B10] transition">🛕 Vivah Sanskar (Shadi)</a>
-                            <a href="#all-pujas" onclick="toggleHamburgerMenu(); autoFillAndBook('Maha Lakshmi Puja')" class="block p-2 rounded hover:bg-[#0A0B10] transition">🪷 Maha Lakshmi Puja</a>
-                            <a href="#all-pujas" onclick="toggleHamburgerMenu(); autoFillAndBook('Mandan & Janeu Sanskar')" class="block p-2 rounded hover:bg-[#0A0B10] transition">✂️ Mundan / Janeu</a>
-                            <a href="#all-pujas" onclick="toggleHamburgerMenu(); autoFillAndBook('Kundali Milan & Vichar')" class="block p-2 rounded hover:bg-[#0A0B10] transition">📜 Kundali Vichar</a>
-                        </div>
-                        <div class="space-y-1.5 pt-2 border-t border-[#222638]">
-                            <p class="text-[10px] uppercase font-semibold text-gray-400">Jaap Anushthan</p>
-                            <a href="#all-pujas" onclick="toggleHamburgerMenu(); autoFillAndBook('Maha Mrityunjaya Jaap')" class="block p-2 rounded hover:bg-[#0A0B10] transition">📿 Maha Mrityunjaya Jaap</a>
-                            <a href="#all-pujas" onclick="toggleHamburgerMenu(); autoFillAndBook('Gayatri Mantra Jaap')" class="block p-2 rounded hover:bg-[#0A0B10] transition">📿 Gayatri Mantra Jaap</a>
-                            <a href="#all-pujas" onclick="toggleHamburgerMenu(); autoFillAndBook('Mahamrityunjaya Anushthan')" class="block p-2 rounded hover:bg-[#0A0B10] transition">🕉️ Mrityunjaya Anushthan</a>
-                            <a href="#all-pujas" onclick="toggleHamburgerMenu(); autoFillAndBook('Baglamukhi Anushthan')" class="block p-2 rounded hover:bg-[#0A0B10] transition">⚔️ Baglamukhi Jaap</a>
+                            <a href="booking.html" class="block p-2 rounded hover:bg-[#0A0B10] transition">🕉️ Rudrabhishek Puja</a>
+                            <a href="booking.html" class="block p-2 rounded hover:bg-[#0A0B10] transition">🔥 Hawan & Yagya</a>
+                            <a href="booking.html" class="block p-2 rounded hover:bg-[#0A0B10] transition">✨ Satyanarayan Katha</a>
                         </div>
                     </div>
                 </div>
@@ -107,7 +85,7 @@
                     <span>🔥</span> <span id="nav-logo-text">Divya Puja Sewa</span>
                 </a>
 
-                <!-- LIVE DATE & TIME PLACED IN THE MIDDLE OF THE HEADER -->
+                <!-- Live Date & Time -->
                 <div id="live-datetime-header" class="hidden md:flex items-center text-amber-300 text-xs font-semibold bg-[#12141C] border border-[#222638] px-3.5 py-1.5 rounded-xl tracking-wide shadow-inner">
                     <span id="datetime-display-header"></span>
                 </div>
@@ -119,40 +97,32 @@
                     <option value="1">⬛ Slate Charcoal</option>
                     <option value="2">🌲 Deep Forest Green</option>
                     <option value="3">🍷 Classic Burgundy</option>
-                    <option value="4">🟤 Warm Taupe</option>
-                    <option value="5">🔵 Soft Ice Blue</option>
-                    <option value="6">⚪ Pearl White (Light)</option>
                 </select>
 
                 <button onclick="toggleLanguage()" id="langBtn" class="text-xs border border-amber-500/40 text-amber-400 px-3 py-2 rounded-xl transition font-semibold">
                     हिंदी
                 </button>
-                <a href="booking.html" id="book-now-top-btn" class="bg-amber-600 hover:bg-amber-700 text-white text-xs font-semibold px-4 py-2 rounded-xl transition shadow-lg" style="background-color: var(--theme-color, #D4AF37);">Book Now</a>
+                <a href="booking.html" class="bg-amber-600 hover:bg-amber-700 text-white text-xs font-semibold px-4 py-2 rounded-xl transition shadow-lg" style="background-color: var(--theme-color, #D4AF37);">Book Now</a>
             </div>
         </div>
     </header>
 
     <!-- MAIN HERO SECTION -->
     <main class="max-w-6xl mx-auto w-full px-6 py-10 space-y-12">
-        
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            
             <div class="lg:col-span-7 space-y-6 text-left">
-                <p id="hero-tag" class="text-[11px] tracking-widest font-semibold uppercase font-serif" style="color: var(--theme-color, #D4AF37);">VEDIC PUJAS • HAWANS • JAAP • KUNDALI</p>
-                
-                <h1 id="hero-heading" class="serif-title text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1]">
+                <p class="text-[11px] tracking-widest font-semibold uppercase font-serif" style="color: var(--theme-color, #D4AF37);">VEDIC PUJAS • HAWANS • JAAP • KUNDALI</p>
+                <h1 class="serif-title text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1]">
                     Sacred rituals, performed with <span class="italic font-normal" style="color: var(--theme-color, #D4AF37);">pure devotion</span>
                 </h1>
-
-                <p id="hero-desc" class="text-xs md:text-sm font-light leading-relaxed opacity-85">
+                <p class="text-xs md:text-sm font-light leading-relaxed opacity-85">
                     Book authentic Pujas, Hawans, Jaap and Kundali rituals at your home across all states in India, led by learned pandits. Direct booking without online payment.
                 </p>
-
                 <div class="flex flex-wrap items-center gap-4 pt-2">
-                    <a href="booking.html" id="btn-book-puja" class="text-white font-medium text-xs px-6 py-3.5 rounded-xl transition shadow-lg flex items-center gap-2" style="background-color: var(--theme-color, #D4AF37);">
+                    <a href="booking.html" class="text-white font-medium text-xs px-6 py-3.5 rounded-xl transition shadow-lg flex items-center gap-2" style="background-color: var(--theme-color, #D4AF37);">
                         Book a Puja <span>↗</span>
                     </a>
-                    <a href="#all-pujas" id="btn-explore" class="border border-[#222638] font-medium text-xs px-6 py-3.5 rounded-xl transition">
+                    <a href="#all-pujas" class="border border-[#222638] font-medium text-xs px-6 py-3.5 rounded-xl transition">
                         Explore All Pujas & Jaap
                     </a>
                 </div>
@@ -161,146 +131,36 @@
             <div class="lg:col-span-5 flex flex-col items-center">
                 <div class="relative w-full max-w-xs md:max-w-sm rounded-t-[140px] overflow-hidden border border-[#222638] bg-[#12141C] shadow-2xl ultra-glow">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10"></div>
-                    <img src="https://images.unsplash.com/photo-1609825488882-3a691c33ac0d?q=80&w=1000&auto=format&fit=crop" alt="Lord Krishna Statue" class="w-full h-[420px] object-cover object-top opacity-90 hover:scale-105 transition duration-700">
+                    <img src="https://images.unsplash.com/photo-1609825488882-3a691c33ac0d?q=80&w=1000&auto=format&fit=crop" alt="Lord Krishna" class="w-full h-[420px] object-cover object-top opacity-90">
                     <div class="absolute bottom-6 left-0 right-0 z-20 text-center">
-                        <span id="krishna-text-label" class="serif-title text-xs tracking-wider font-bold" style="color: var(--theme-color, #D4AF37);">जय श्री कृष्ण</span>
-                    </div>
-                </div>
-
-                <!-- MOVING NOTIFICATION BAR (MARQUEE) PLACED UNDER KRISHNA IMAGE -->
-                <div class="w-full mt-4">
-                    <div class="theme-card border border-[#222638] rounded-xl py-4 px-3 overflow-hidden bg-[#12141C] w-full shadow-lg">
-                        <marquee id="marquee-text" behavior="scroll" direction="left" scrollamount="5" class="text-xs font-semibold text-amber-400 text-left">
-                            🛕 Sabhi prakar ki Puja evam Jaap ke liye niche diye gaye option par click karein. Bina payment ke seedha booking karein! All India Pandit Seva Available.
-                        </marquee>
+                        <span class="serif-title text-xs tracking-wider font-bold" style="color: var(--theme-color, #D4AF37);">जय श्री कृष्ण</span>
                     </div>
                 </div>
             </div>
-
         </div>
 
-        <!-- ALL TYPES OF PUJAS & JAAP SECTION -->
-        <div id="all-pujas" class="theme-card border border-[#222638] rounded-2xl p-6 space-y-6 bg-[#12141C]">
-            <div>
-                <h3 id="sec-title-1" class="serif-title text-base font-bold" style="color: var(--theme-color, #D4AF37);">🌿 Sabhi Prakar ki Pujayein evam Jaap</h3>
-                <p id="sec-desc-1" class="text-xs opacity-80 mt-1">Kisi bhi Puja ya Jaap par tap karein, detail apne aap bhar jayegi aur turant alert chala jayega:</p>
-            </div>
-
-            <div class="space-y-3">
-                <span id="sub-title-1" class="text-[11px] font-bold uppercase tracking-wider block" style="color: var(--theme-color, #D4AF37);">1. Pramukh Pujayein</span>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
-                    <div onclick="autoFillAndBook('Rudrabhishek Puja')" class="bg-[#0A0B10] p-3 rounded-xl border border-[#222638] flex items-center gap-2 hover-card-effect cursor-pointer"><span>🕉️</span> Rudrabhishek Puja</div>
-                    <div onclick="autoFillAndBook('Hawan & Yagya')" class="bg-[#0A0B10] p-3 rounded-xl border border-[#222638] flex items-center gap-2 hover-card-effect cursor-pointer"><span>🔥</span> Hawan & Yagya</div>
-                    <div onclick="autoFillAndBook('Satyanarayan Katha')" class="bg-[#0A0B10] p-3 rounded-xl border border-[#222638] flex items-center gap-2 hover-card-effect cursor-pointer"><span>✨</span> Satyanarayan Katha</div>
-                    <div onclick="autoFillAndBook('Navgrah Shanti Puja')" class="bg-[#0A0B10] p-3 rounded-xl border border-[#222638] flex items-center gap-2 hover-card-effect cursor-pointer"><span>🪐</span> Navgrah Shanti</div>
-                    <div onclick="autoFillAndBook('Vivah Sanskar (Shadi)')" class="bg-[#0A0B10] p-3 rounded-xl border border-[#222638] flex items-center gap-2 hover-card-effect cursor-pointer"><span>🛕</span> Vivah Sanskar (Shadi)</div>
-                    <div onclick="autoFillAndBook('Maha Lakshmi Puja')" class="bg-[#0A0B10] p-3 rounded-xl border border-[#222638] flex items-center gap-2 hover-card-effect cursor-pointer"><span>🪷</span> Maha Lakshmi Puja</div>
-                    <div onclick="autoFillAndBook('Mandan & Janeu Sanskar')" class="bg-[#0A0B10] p-3 rounded-xl border border-[#222638] flex items-center gap-2 hover-card-effect cursor-pointer"><span>✂️</span> Mundan / Janeu</div>
-                    <div onclick="autoFillAndBook('Kundali Milan & Vichar')" class="bg-[#0A0B10] p-3 rounded-xl border border-[#222638] flex items-center gap-2 hover-card-effect cursor-pointer"><span>📜</span> Kundali Vichar</div>
-                </div>
-            </div>
-
-            <div class="space-y-3 pt-3 border-t border-[#222638]">
-                <span id="sub-title-2" class="text-[11px] font-bold uppercase tracking-wider block" style="color: var(--theme-color, #D4AF37);">2. Pramukh Jaap Anushthan</span>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
-                    <div onclick="autoFillAndBook('Maha Mrityunjaya Jaap')" class="bg-[#0A0B10] p-3 rounded-xl border border-[#222638] flex items-center gap-2 hover-card-effect cursor-pointer"><span>📿</span> Maha Mrityunjaya Jaap</div>
-                    <div onclick="autoFillAndBook('Gayatri Mantra Jaap')" class="bg-[#0A0B10] p-3 rounded-xl border border-[#222638] flex items-center gap-2 hover-card-effect cursor-pointer"><span>📿</span> Gayatri Mantra Jaap</div>
-                    <div onclick="autoFillAndBook('Mahamrityunjaya Anushthan')" class="bg-[#0A0B10] p-3 rounded-xl border border-[#222638] flex items-center gap-2 hover-card-effect cursor-pointer"><span>🕉️</span> Mrityunjaya Anushthan</div>
-                    <div onclick="autoFillAndBook('Baglamukhi Anushthan')" class="bg-[#0A0B10] p-3 rounded-xl border border-[#222638] flex items-center gap-2 hover-card-effect cursor-pointer"><span>⚔️</span> Baglamukhi Jaap</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- WHATSAPP INSTANT CHAT BANNER -->
-        <div class="border rounded-2xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4 bg-gradient-to-r from-emerald-950/50 via-[#12141C] to-[#12141C] border-emerald-500/40 shadow-xl">
-            <div class="flex items-center gap-4 text-center sm:text-left">
-                <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 flex items-center justify-center text-emerald-400 text-2xl shrink-0">
-                    💬
-                </div>
-                <div>
-                    <span id="wa-badge-text" class="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 uppercase tracking-wider">Live Support</span>
-                    <h3 id="wa-title" class="serif-title text-base font-bold text-gray-100 mt-1">Need Immediate Assistance?</h3>
-                    <p id="wa-desc" class="text-xs text-gray-400">Chat directly with our team on WhatsApp for quick answers and custom ritual inquiries.</p>
-                </div>
-            </div>
-            <button onclick="openWhatsAppChat()" id="wa-btn-text" class="bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs px-6 py-3 rounded-xl shadow-lg transition whitespace-nowrap transform hover:scale-105 flex items-center gap-2">
-                <span>💬</span> Chat on WhatsApp Now
-            </button>
-        </div>
-
-        <!-- 3 SECONDS AUTO-CHANGING POSTS / CAROUSEL SECTION (VIDEO & IMAGE) -->
-        <div class="border border-amber-500/30 rounded-2xl p-6 bg-[#12141C] shadow-2xl space-y-4">
-            <div>
-                <span id="post-media-badge" class="text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider bg-amber-500/20 text-amber-400">Post's & Media</span>
-                <h3 class="serif-title text-base font-bold mt-1 text-amber-400">✨ Divya Anushthan & Darshan Updates</h3>
-            </div>
-
-            <!-- Carousel Frame -->
-            <div class="relative w-full h-64 sm:h-80 rounded-xl overflow-hidden border border-[#222638] bg-black">
-                <div id="carouselContainer" class="w-full h-full relative">
-                    <!-- Slides will be injected dynamically via JavaScript -->
-                </div>
-            </div>
-        </div>
-
-        <!-- PANDIT JI CONSULTATION BANNER (TATKAL SAMADHAN) -->
-        <div class="border border-amber-500/30 rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#12141C]">
-            <div class="space-y-1 text-center sm:text-left">
-                <span id="tatkal-badge" class="text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider" style="background-color: rgba(212, 175, 55, 0.2); color: var(--theme-color, #D4AF37);">Tatkal Samadhan</span>
-                <h3 id="consult-title" class="serif-title text-base font-bold mt-1" style="color: var(--theme-color, #D4AF37);">Pandit Ji se Samadhan Paye Tatkal</h3>
-                <p id="consult-desc" class="text-xs opacity-85">Apne man me uth rahe kisi bhi sawal ya samasya ke liye seedha baat karein.</p>
-            </div>
-            <button onclick="autoFillAndBook('Pandit Tatkal Consultation')" id="consult-btn" class="text-black font-extrabold text-xs px-5 py-3 rounded-xl shadow transition whitespace-nowrap transform hover:scale-105" style="background-color: var(--theme-color, #D4AF37);">
-                Tatkal Sampark Karein
-            </button>
-        </div>
-
-        <!-- GET IN TOUCH / CONTACT SECTION -->
+        <!-- CONTACT SECTION -->
         <section id="contact-section" class="theme-card border border-[#222638] rounded-3xl p-8 md:p-12 space-y-10 shadow-2xl bg-[#12141C]">
             <div class="space-y-3 max-w-2xl">
-                <p id="contact-top-tag" class="text-xs tracking-widest font-semibold uppercase font-serif" style="color: var(--theme-color, #D4AF37);">GET IN TOUCH · संपर्क</p>
-                <h2 id="contact-main-heading" class="serif-title text-3xl md:text-4xl font-bold">Have a question or a <span class="italic font-normal" style="color: var(--theme-color, #D4AF37);">custom puja</span> in mind?</h2>
-                <p id="contact-sub-desc" class="text-xs md:text-sm opacity-80">Our team of learned pandits is happy to guide you through the right ritual, muhurat and samagri for any occasion across All India.</p>
+                <p class="text-xs tracking-widest font-semibold uppercase font-serif" style="color: var(--theme-color, #D4AF37);">GET IN TOUCH · संपर्क</p>
+                <h2 class="serif-title text-3xl md:text-4xl font-bold">Have a question or a <span class="italic font-normal" style="color: var(--theme-color, #D4AF37);">custom puja</span> in mind?</h2>
             </div>
 
-            <!-- Contact Info Details -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 text-xs font-medium">
-                <div class="space-y-1">
-                    <p id="info-helpline" class="text-[10px] uppercase font-bold tracking-wider" style="color: var(--theme-color, #D4AF37);">Helpline Numbers</p>
-                    <p class="font-bold">+91 99351 79756</p>
-                    <p class="font-bold">+91 83829 09995</p>
-                </div>
-                <div class="space-y-1">
-                    <p id="info-email" class="text-[10px] uppercase font-bold tracking-wider" style="color: var(--theme-color, #D4AF37);">Email Address</p>
-                    <p class="font-bold">sewadivyapuja@gmail.com</p>
-                </div>
-                <div class="space-y-1">
-                    <p id="info-location" class="text-[10px] uppercase font-bold tracking-wider" style="color: var(--theme-color, #D4AF37);">Location / Coverage</p>
-                    <p class="font-bold">📍 State: Uttar Pradesh (Varanasi)</p>
-                    <p id="info-all-india" class="text-[11px] opacity-75">🌍 Available All Over India</p>
-                </div>
-                <div class="space-y-1 cursor-pointer hover:opacity-80 transition" onclick="openWhatsAppChat()">
-                    <p id="info-instant-chat" class="text-[10px] uppercase font-bold tracking-wider" style="color: var(--theme-color, #D4AF37);">Instant Chat</p>
-                    <p class="font-bold" style="color: var(--theme-color, #D4AF37);">💬 Chat on WhatsApp</p>
-                </div>
-            </div>
-
-            <!-- Enquiry Form -->
             <form id="contactForm" onsubmit="handleContactSubmit(event)" class="space-y-6 pt-4">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="space-y-1">
-                        <label id="label-name" class="text-[11px] opacity-70">Your Name *</label>
+                        <label class="text-[11px] opacity-70">Your Name *</label>
                         <input type="text" id="cName" required class="custom-input" placeholder="Aapka naam">
                     </div>
                     <div class="space-y-1">
-                        <label id="label-phone" class="text-[11px] opacity-70">Phone *</label>
+                        <label class="text-[11px] opacity-70">Phone *</label>
                         <input type="tel" id="cPhone" required class="custom-input" placeholder="Mobile Number">
                     </div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="space-y-1">
-                        <label id="label-state" class="text-[11px] opacity-70">State (Rajya) *</label>
-                        <select id="cState" onchange="updateCitiesForContact(this.value)" required class="custom-input bg-[#0A0B10]">
+                        <label class="text-[11px] opacity-70">State (Rajya) *</label>
+                        <select id="cState" required class="custom-input bg-[#0A0B10]">
                             <option value="">Select State</option>
                             <option value="Uttar Pradesh">Uttar Pradesh (UP)</option>
                             <option value="Delhi">Delhi</option>
@@ -311,494 +171,127 @@
                         </select>
                     </div>
                     <div class="space-y-1">
-                        <label id="label-city" class="text-[11px] opacity-70">City / Location *</label>
+                        <label class="text-[11px] opacity-70">City / Location *</label>
                         <input type="text" id="cCity" required class="custom-input" placeholder="e.g. Varanasi, Lucknow...">
                     </div>
                 </div>
                 <div class="space-y-1">
-                    <label id="label-message" class="text-[11px] opacity-70">Your message *</label>
+                    <label class="text-[11px] opacity-70">Your message *</label>
                     <textarea id="cMessage" rows="3" required class="custom-input" placeholder="Apni puja ya sawal ke bare me likhein..."></textarea>
                 </div>
-                <button type="submit" id="btn-submit-inquiry" class="text-black font-bold text-xs px-8 py-3.5 rounded-xl transition shadow-lg transform hover:scale-105" style="background-color: var(--theme-color, #D4AF37);">
+                <button type="submit" class="text-black font-bold text-xs px-8 py-3.5 rounded-xl transition shadow-lg" style="background-color: var(--theme-color, #D4AF37);">
                     Send Inquiry
                 </button>
             </form>
         </section>
 
-        <!-- CUSTOMER REVIEWS & OPINION WRITING SECTION -->
+        <!-- REVIEWS SECTION -->
         <section id="reviews-section" class="theme-card border border-[#222638] rounded-2xl p-6 md:p-8 space-y-8 bg-[#12141C]">
             <div class="text-center max-w-xl mx-auto space-y-2">
-                <p id="rev-top-tag" class="text-xs tracking-widest font-semibold uppercase font-serif" style="color: var(--theme-color, #D4AF37);">TESTIMONIALS • भक्त अनुभव</p>
-                <h2 id="rev-main-title" class="serif-title text-2xl md:text-3xl font-bold">Devotees Reviews & Opinions</h2>
-                <p id="rev-sub-desc" class="text-xs opacity-80">Apna anubhav ya vichar state aur city ke sath yahan share karein.</p>
-            </div>
-
-            <!-- Existing Reviews Grid -->
-            <div id="reviewsContainer" class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
-                <div class="bg-[#0A0B10] p-5 rounded-2xl border border-[#222638] space-y-3">
-                    <div class="text-amber-400 text-sm">⭐⭐⭐⭐⭐</div>
-                    <p class="opacity-85 italic">"Humne ghar par Rudrabhishek karwaya tha. Pandit ji bahut vidwan the aur saari vidhi pure niyam se ki. Bahut shanti mili."</p>
-                    <p class="font-bold" style="color: var(--theme-color, #D4AF37);">— Rajesh Mishra <span class="opacity-75 font-normal">(Uttar Pradesh, Varanasi)</span></p>
-                </div>
-                <div class="bg-[#0A0B10] p-5 rounded-2xl border border-[#222638] space-y-3">
-                    <div class="text-amber-400 text-sm">⭐⭐⭐⭐⭐</div>
-                    <p class="opacity-85 italic">"Satyanarayan Katha ke liye pandit ji samay par aaye aur poori samagri ke sath anushthan sampann kiya. Excellent service!"</p>
-                    <p class="font-bold" style="color: var(--theme-color, #D4AF37);">— Priya Sharma <span class="opacity-75 font-normal">(Delhi, New Delhi)</span></p>
-                </div>
-                <div class="bg-[#0A0B10] p-5 rounded-2xl border border-[#222638] space-y-3">
-                    <div class="text-amber-400 text-sm">⭐⭐⭐⭐⭐</div>
-                    <p class="opacity-85 italic">"Kundali vichar aur tatkal samadhan ke liye contact kiya tha. Bahut hi sateek margdarshan mila Pandit ji se."</p>
-                    <p class="font-bold" style="color: var(--theme-color, #D4AF37);">— Amit Dubey <span class="opacity-75 font-normal">(Uttar Pradesh, Prayagraj)</span></p>
-                </div>
+                <h2 class="serif-title text-2xl md:text-3xl font-bold">Devotees Reviews & Opinions</h2>
             </div>
 
             <!-- Write a Review Form -->
             <div class="border-t border-[#222638] pt-6 max-w-xl mx-auto space-y-4">
-                <h3 id="rev-form-title" class="serif-title text-sm font-bold text-center" style="color: var(--theme-color, #D4AF37);">Apna Review / Opinion Alag-Alag Fields me Likhein</h3>
                 <form id="reviewForm" onsubmit="submitUserReview(event)" class="space-y-4 text-xs">
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div class="space-y-1">
-                            <label id="label-rev-name" class="text-[10px] opacity-70">Aapka Naam (Name) *</label>
+                            <label class="text-[10px] opacity-70">Aapka Naam (Name) *</label>
                             <input type="text" id="revName" required class="custom-input" placeholder="Full Name">
                         </div>
                         <div class="space-y-1">
-                            <label id="label-rev-rating" class="text-[10px] opacity-70">Rating *</label>
+                            <label class="text-[10px] opacity-70">Rating *</label>
                             <select id="revRating" class="custom-input bg-[#0A0B10]">
-                                <option value="⭐⭐⭐⭐⭐">5 Stars (⭐⭐⭐⭐⭐)</option>
-                                <option value="⭐⭐⭐⭐">4 Stars (⭐⭐⭐⭐)</option>
-                                <option value="⭐⭐⭐">3 Stars (⭐⭐⭐)</option>
+                                <option value="⭐⭐⭐⭐⭐ (5/5)">⭐⭐⭐⭐⭐ (5/5)</option>
+                                <option value="⭐⭐⭐⭐ (4/5)">⭐⭐⭐⭐ (4/5)</option>
+                                <option value="⭐⭐⭐ (3/5)">⭐⭐⭐ (3/5)</option>
                             </select>
                         </div>
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div class="space-y-1">
-                            <label id="label-rev-state" class="text-[10px] opacity-70">State (Rajya) *</label>
-                            <select id="revState" required class="custom-input bg-[#0A0B10]">
-                                <option value="">Select State</option>
-                                <option value="Uttar Pradesh">Uttar Pradesh</option>
-                                <option value="Delhi">Delhi</option>
-                                <option value="Madhya Pradesh">Madhya Pradesh</option>
-                                <option value="Bihar">Bihar</option>
-                                <option value="Maharashtra">Maharashtra</option>
-                                <option value="Other">Other State / All India</option>
-                            </select>
+                            <label class="text-[10px] opacity-70">State (Rajya) *</label>
+                            <input type="text" id="revState" required class="custom-input" placeholder="State">
                         </div>
                         <div class="space-y-1">
-                            <label id="label-rev-city" class="text-[10px] opacity-70">City (Shehar) *</label>
-                            <input type="text" id="revCity" required class="custom-input" placeholder="e.g. Varanasi">
+                            <label class="text-[10px] opacity-70">City (Shehar) *</label>
+                            <input type="text" id="revCity" required class="custom-input" placeholder="City">
                         </div>
                     </div>
                     <div class="space-y-1">
-                        <label id="label-rev-msg" class="text-[10px] opacity-70">Aapka Anubhav / Opinion *</label>
-                        <textarea id="revMsg" rows="2" required class="custom-input" placeholder="Apna anubhav yahan likhein..."></textarea>
+                        <label class="text-[10px] opacity-70">Aapka Anubhav / Opinion *</label>
+                        <textarea id="revMsg" rows="2" required class="custom-input" placeholder="Apna feedback yahan likhein..."></textarea>
                     </div>
-                    <button type="submit" id="btn-submit-review" class="w-full text-black font-extrabold py-3 rounded-xl shadow transition" style="background-color: var(--theme-color, #D4AF37);">
+                    <button type="submit" class="w-full text-black font-extrabold py-3 rounded-xl shadow transition" style="background-color: var(--theme-color, #D4AF37);">
                         Submit Review
                     </button>
                 </form>
             </div>
         </section>
-
     </main>
 
     <footer class="border-t border-[#222638] py-6 text-center text-[11px] opacity-70 mt-12">
-        <p id="footer-text">Divya Puja Sewa • Vedic Sanatan Sansthan Varanasi • All India Coverage</p>
+        <p>Divya Puja Sewa • Vedic Sanatan Sansthan Varanasi • All India Coverage</p>
     </footer>
 
     <script>
-        const themes = [
-            { name: "Midnight Navy", color: "#D4AF37", bg: "#0A0B10", card: "#12141C", text: "#E2E8F0" },
-            { name: "Slate Charcoal", color: "#94A3B8", bg: "#0F172A", card: "#1E293B", text: "#F8FAFC" },
-            { name: "Deep Forest", color: "#34D399", bg: "#061A14", card: "#0E2921", text: "#ECFDF5" },
-            { name: "Classic Burgundy", color: "#F87171", bg: "#1A0909", card: "#2B1212", text: "#FEF2F2" },
-            { name: "Warm Taupe", color: "#D97706", bg: "#1C1917", card: "#292524", text: "#FAFAF9" },
-            { name: "Soft Ice Blue", color: "#38BDF8", bg: "#082F49", card: "#0C4A6E", text: "#F0F9FF" },
-            { name: "Pearl White", color: "#B45309", bg: "#FAFAF9", card: "#FFFFFF", text: "#1C1917" }
-        ];
-
-        function changeTheme(index) {
-            const t = themes[index];
-            document.documentElement.style.setProperty('--theme-color', t.color);
-            document.documentElement.style.setProperty('--theme-bg', t.bg);
-            document.documentElement.style.setProperty('--theme-text', t.text);
-
-            const body = document.getElementById('mainBody');
-            body.style.backgroundColor = t.bg;
-            body.style.color = t.text;
-        }
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzhLMwjmCuw0QGwZ3OBTyjyW1gEzU9Tdmsx8D8oodOVXVRbLypBHC6tVLIYPng9F-5h/exec";
 
         function toggleHamburgerMenu() {
             const dropdown = document.getElementById('hamburgerDropdown');
             dropdown.classList.toggle('hidden');
         }
 
-        // CAROUSEL POSTS DATA (Supports both Image and Video URLs)
-        const carouselPosts = [
-            {
-                type: "image",
-                url: "https://images.unsplash.com/photo-1609825488882-3a691c33ac0d?q=80&w=1000&auto=format&fit=crop",
-                title: "Rudrabhishek & Maha Mrityunjaya Anushthan",
-                desc: "Book direct Vedic rituals at your home with experienced pandits."
-            },
-            {
-                type: "video",
-                url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-                title: "Live Hawan & Yagya Darshan",
-                desc: "Witness pure sacred fire rituals performed with authentic mantras."
-            },
-            {
-                type: "image",
-                url: "https://images.unsplash.com/photo-1590073844006-33379778ae09?q=80&w=1000&auto=format&fit=crop",
-                title: "Satyanarayan Katha & Puja",
-                desc: "Invite prosperity and peace into your home."
-            },
-            {
-                type: "video",
-                url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
-                title: "Special Vedic Mantra Jaap Anushthan",
-                desc: "Dedicated chanting for health, wealth and spiritual harmony."
-            }
-        ];
-
-        let currentSlideIndex = 0;
-
-        function initCarousel() {
-            const container = document.getElementById('carouselContainer');
-            container.innerHTML = '';
-
-            carouselPosts.forEach((post, index) => {
-                const slide = document.createElement('div');
-                slide.className = `absolute inset-0 w-full h-full transition-opacity duration-700 ease-in-out ${index === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0'}`;
-                slide.setAttribute('data-slide-index', index);
-
-                let mediaElement = '';
-                if (post.type === 'video') {
-                    mediaElement = `<video src="${post.url}" class="w-full h-full object-cover" autoplay muted loop playsinline></video>`;
-                } else {
-                    mediaElement = `<img src="${post.url}" alt="${post.title}" class="w-full h-full object-cover">`;
-                }
-
-                slide.innerHTML = `
-                    <div class="relative w-full h-full">
-                        ${mediaElement}
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                        <div class="absolute bottom-4 left-4 right-4 z-20 space-y-1">
-                            <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-amber-500 text-black uppercase">${post.type.toUpperCase()}</span>
-                            <h4 class="serif-title text-sm md:text-base font-bold text-white">${post.title}</h4>
-                            <p class="text-xs text-gray-300">${post.desc}</p>
-                        </div>
-                    </div>
-                `;
-                container.appendChild(slide);
-            });
-
-            setInterval(nextSlide, 3000);
+        function updateDateTimeHeader() {
+            const now = new Date();
+            const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+            document.getElementById('datetime-display-header').innerText = now.toLocaleDateString('hi-IN', options);
         }
+        setInterval(updateDateTimeHeader, 1000);
+        updateDateTimeHeader();
 
-        function nextSlide() {
-            const slides = document.querySelectorAll('#carouselContainer > div');
-            if (slides.length === 0) return;
+        function handleContactSubmit(event) {
+            event.preventDefault();
+            const payload = {
+                type: "enquiry",
+                name: document.getElementById('cName').value,
+                phone: document.getElementById('cPhone').value,
+                state: document.getElementById('cState').value,
+                city: document.getElementById('cCity').value,
+                message: document.getElementById('cMessage').value
+            };
 
-            slides[currentSlideIndex].classList.remove('opacity-100', 'z-10');
-            slides[currentSlideIndex].classList.add('opacity-0', 'z-0');
-
-            currentSlideIndex = (currentSlideIndex + 1) % slides.length;
-
-            slides[currentSlideIndex].classList.remove('opacity-0', 'z-0');
-            slides[currentSlideIndex].classList.add('opacity-100', 'z-10');
-        }
-
-        window.addEventListener('DOMContentLoaded', initCarousel);
-
-        const TELEGRAM_BOT_TOKEN = "8989054970:AAG-NMCyPNoNhpnOwG1j_naEfNy4N0tYyN8";
-        const TELEGRAM_CHAT_ID = "8814734919";
-        const ADMIN_WHATSAPP = "918382909995";
-
-        function updateCitiesForContact(state) {
-            const cityInput = document.getElementById('cCity');
-            if (state === 'Uttar Pradesh') {
-                cityInput.placeholder = currentLang === 'hi' ? 'उदा. वाराणसी, लखनऊ...' : 'e.g. Varanasi, Lucknow...';
-            } else if (state === 'Delhi') {
-                cityInput.placeholder = currentLang === 'hi' ? 'उदा. नई दिल्ली...' : 'e.g. New Delhi...';
-            } else {
-                cityInput.placeholder = currentLang === 'hi' ? 'अपना शहर दर्ज करें' : 'Enter your city / location';
-            }
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            }).then(() => {
+                alert('Aapki enquiry safaltapurvak bhej di gayi hai!');
+                document.getElementById('contactForm').reset();
+            }).catch(e => console.log(e));
         }
 
         function submitUserReview(event) {
             event.preventDefault();
-            const name = document.getElementById('revName').value;
-            const rating = document.getElementById('revRating').value;
-            const state = document.getElementById('revState').value;
-            const city = document.getElementById('revCity').value;
-            const msg = document.getElementById('revMsg').value;
-
-            const container = document.getElementById('reviewsContainer');
-            const newRevCard = document.createElement('div');
-            newRevCard.className = "bg-[#0A0B10] p-5 rounded-2xl border border-[#222638] space-y-3 shadow-md";
-            newRevCard.innerHTML = `
-                <div class="text-amber-400 text-sm">${rating}</div>
-                <p class="opacity-85 italic">"${msg}"</p>
-                <p class="font-bold" style="color: var(--theme-color, #D4AF37);">— ${name} <span class="opacity-75 font-normal">(${state}, ${city})</span></p>
-            `;
-            container.prepend(newRevCard);
-
-            const revText = `⭐ NEW CUSTOMER REVIEW!\n-----------------------------------\n👤 Name: ${name}\n📍 Location: ${city}, ${state}\n⭐ Rating: ${rating}\n💬 Opinion: ${msg}`;
-            fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: revText })
-            }).catch(e => console.log(e));
-
-            alert(currentLang === 'hi' ? 'आपका रिव्यू सफलतापूर्वक जोड़ दिया गया है!' : 'Aapka review safaltapurvak jodd diya gaya hai!');
-            document.getElementById('reviewForm').reset();
-        }
-
-        function handleContactSubmit(event) {
-            event.preventDefault();
-            const name = document.getElementById('cName').value;
-            const phone = document.getElementById('cPhone').value;
-            const state = document.getElementById('cState').value;
-            const city = document.getElementById('cCity').value;
-            const message = document.getElementById('cMessage').value;
-
-            const telegramMsg = `📩 NEW WEBSITE ENQUIRY!\n-----------------------------------\n👤 Name: ${name}\n📞 Phone: ${phone}\n📍 Location: ${city}, ${state}\n💬 Message: ${message}`;
-            
-            fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: telegramMsg })
-            }).catch(e => console.log(e));
-
-            const waMsg = `📩 *NEW WEBSITE ENQUIRY*%0A-----------------------------------%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Location:* ${city}, ${state}%0A*Message:* ${message}`;
-            window.open(`https://wa.me/${ADMIN_WHATSAPP}?text=${waMsg}`, '_blank');
-
-            alert(currentLang === 'hi' ? 'आपकी enquiry सफलतापूर्वक भेज दी गई है!' : 'Aapki enquiry safaltapurvak bhej di gayi hai!');
-            document.getElementById('contactForm').reset();
-        }
-
-        function openWhatsAppChat() {
-            const chatMsg = "🚨 *DIRECT CHAT CLICK*%0A-----------------------------------%0A*Status:* User clicked on WhatsApp chat link (All India Service).";
-            fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: "🚨 DIRECT CHAT CLICKED ON WEBSITE!" })
-            }).catch(e => console.log(e));
-
-            window.open(`https://wa.me/${ADMIN_WHATSAPP}?text=${chatMsg}`, '_blank');
-        }
-
-        let currentLang = 'hi';
-        const translations = {
-            hi: {
-                navLogo: "दिव्य पूजा सेवा",
-                navPujas: "पूजा और जाप",
-                navContact: "संपर्क",
-                navReviews: "समीक्षाएं",
-                bookNowTop: "बुक नाउ",
-                langBtn: "English",
-                marquee: "🛕 सभी प्रकार की पूजा एवं जाप के लिए नीचे दिए गए विकल्प पर क्लिक करें। बिना पेमेंट के सीधा बुकिंग करें! ऑल इंडिया पंडित सेवा उपलब्ध।",
-                heroTag: "वैदिक पूजा • हवन • जाप • कुंडली",
-                heroHeading: 'पवित्र अनुष्ठान, <span>शुद्ध भक्ति</span> के साथ संपन्न',
-                heroDesc: "भारत के सभी राज्यों में आपके घर पर योग्य पंडितों द्वारा प्रामाणिक पूजा, हवन, जाप और कुंडली अनुष्ठान बुक करें। बिना ऑनलाइन पेमेंट के सीधी बुकिंग।",
-                btnBookPuja: "पूजा बुक करें ↗",
-                btnExplore: "सभी पूजा और जाप देखें",
-                krishnaLabel: "जय श्री कृष्ण",
-                waBadge: "लाइव सपोर्ट",
-                waTitle: "तुरंत सहायता चाहिए?",
-                waDesc: "शीघ्र उत्तर और कस्टम अनुष्ठान पूछताछ के लिए व्हाट्सएप पर हमारी टीम से सीधे चैट करें।",
-                waBtn: "व्हाट्सएप पर चैट करें",
-                tatkalBadge: "तत्काल समाधान",
-                consultTitle: "पंडित जी से समाधान पाएं तत्काल",
-                consultDesc: "अपने मन में उठ रहे किसी भी सवाल या समस्या के लिए सीधा बात करें।",
-                consultBtn: "तत्काल संपर्क करें",
-                postMediaBadge: "Post's & Media",
-                contactTopTag: "संपर्क करें",
-                contactMainHeading: 'कोई सवाल है या मन में कोई <span class="italic font-normal" style="color: var(--theme-color, #D4AF37);">कस्टम पूजा</span> है?',
-                contactSubDesc: "हमारे विद्वान पंडितों की टीम ऑल इंडिया किसी भी अवसर पर सही अनुष्ठान, मुहूर्त और सामग्री के बारे में आपका मार्गदर्शन करने में प्रसन्न है।",
-                infoHelpline: "हेल्पलाइन नंबर",
-                infoEmail: "ईमेल पता",
-                infoLocation: "लोकेशन / कवरेज",
-                infoAllIndia: "🌍 ऑल इंडिया उपलब्ध",
-                infoInstantChat: "इंस्टेंट चैट",
-                labelName: "आपका नाम *",
-                labelPhone: "फ़ोन नंबर *",
-                labelState: "राज्य (State) *",
-                labelCity: "शहर / लोकेशन *",
-                labelMessage: "आपका संदेश *",
-                btnSubmitInquiry: "इक्वारी भेजें",
-                revTopTag: "भक्त अनुभव",
-                revMainTitle: "भक्तों की समीक्षाएं और विचार",
-                revSubDesc: "अपना अनुभव या विचार राज्य और शहर के साथ यहां शेयर करें।",
-                revFormTitle: "अपना रिव्यू / ओपिनियन अलग-अलग फील्ड्स में लिखें",
-                labelRevName: "आपका नाम (Name) *",
-                labelRevRating: "रेटिंग *",
-                labelRevState: "राज्य (State) *",
-                labelRevCity: "शहर (City) *",
-                labelRevMsg: "आपका अनुभव / विचार *",
-                btnSubmitReview: "रिव्यू सबमिट करें",
-                footerText: "दिव्य पूजा सेवा • वैदिक सनातन संस्थान वाराणसी • ऑल इंडिया कवरेज"
-            },
-            en: {
-                navLogo: "Divya Puja Sewa",
-                navPujas: "Pujas & Jaap",
-                navContact: "Contact",
-                navReviews: "Reviews",
-                bookNowTop: "Book Now",
-                langBtn: "हिंदी",
-                marquee: "🛕 Sabhi prakar ki Puja evam Jaap ke liye niche diye gaye option par click karein. Bina payment ke seedha booking karein! All India Pandit Seva Available.",
-                heroTag: "VEDIC PUJAS • HAWANS • JAAP • KUNDALI",
-                heroHeading: 'Sacred rituals, performed with <span class="italic font-normal" style="color: var(--theme-color, #D4AF37);">pure devotion</span>',
-                heroDesc: "Book authentic Pujas, Hawans, Jaap and Kundali rituals at your home across all states in India, led by learned pandits. Direct booking without online payment.",
-                btnBookPuja: "Book a Puja ↗",
-                btnExplore: "Explore All Pujas & Jaap",
-                krishnaLabel: "जय श्री कृष्ण",
-                waBadge: "LIVE SUPPORT",
-                waTitle: "Need Immediate Assistance?",
-                waDesc: "Chat directly with our team on WhatsApp for quick answers and custom ritual inquiries.",
-                waBtn: "Chat on WhatsApp Now",
-                tatkalBadge: "Tatkal Samadhan",
-                consultTitle: "Pandit Ji se Samadhan Paye Tatkal",
-                consultDesc: "Apne man me uth rahe kisi bhi sawal ya samasya ke liye seedha baat karein.",
-                consultBtn: "Tatkal Sampark Karein",
-                postMediaBadge: "Post's & Media",
-                contactTopTag: "GET IN TOUCH · संपर्क",
-                contactMainHeading: 'Have a question or a <span class="italic font-normal" style="color: var(--theme-color, #D4AF37);">custom puja</span> in mind?',
-                contactSubDesc: "Our team of learned pandits is happy to guide you through the right ritual, muhurat and samagri for any occasion across All India.",
-                infoHelpline: "Helpline Numbers",
-                infoEmail: "Email Address",
-                infoLocation: "Location / Coverage",
-                infoAllIndia: "🌍 Available All Over India",
-                infoInstantChat: "Instant Chat",
-                labelName: "Your Name *",
-                labelPhone: "Phone *",
-                labelState: "State (Rajya) *",
-                labelCity: "City / Location *",
-                labelMessage: "Your message *",
-                btnSubmitInquiry: "Send Inquiry",
-                revTopTag: "TESTIMONIALS • भक्त अनुभव",
-                revMainTitle: "Devotees Reviews & Opinions",
-                revSubDesc: "Apna anubhav ya vichar state aur city ke sath yahan share karein.",
-                revFormTitle: "Apna Review / Opinion Alag-Alag Fields me Likhein",
-                labelRevName: "Aapka Naam (Name) *",
-                labelRevRating: "Rating *",
-                labelRevState: "State (Rajya) *",
-                labelRevCity: "City (Shehar) *",
-                labelRevMsg: "Aapka Anubhav / Opinion *",
-                btnSubmitReview: "Submit Review",
-                footerText: "Divya Puja Sewa • Vedic Sanatan Sansthan Varanasi • All India Coverage"
-            }
-        };
-
-        function toggleLanguage() {
-            currentLang = currentLang === 'hi' ? 'en' : 'hi';
-            const t = translations[currentLang];
-
-            document.getElementById('nav-logo-text').innerText = t.navLogo;
-            document.getElementById('nav-pujas').innerText = t.navPujas;
-            document.getElementById('nav-contact').innerText = t.navContact;
-            document.getElementById('nav-reviews').innerText = t.navReviews;
-            document.getElementById('book-now-top-btn').innerText = t.bookNowTop;
-            document.getElementById('langBtn').innerText = t.langBtn;
-            document.getElementById('marquee-text').innerText = t.marquee;
-            document.getElementById('hero-tag').innerText = t.heroTag;
-            document.getElementById('hero-heading').innerHTML = t.heroHeading;
-            document.getElementById('hero-desc').innerText = t.heroDesc;
-            document.getElementById('btn-book-puja').innerHTML = t.btnBookPuja;
-            document.getElementById('btn-explore').innerText = t.btnExplore;
-            document.getElementById('krishna-text-label').innerText = t.krishnaLabel;
-
-            document.getElementById('sec-title-1').innerText = t.secTitle1;
-            document.getElementById('sec-desc-1').innerText = t.secDesc1;
-            document.getElementById('sub-title-1').innerText = t.subTitle1;
-            document.getElementById('sub-title-2').innerText = t.subTitle2;
-            document.getElementById('wa-badge-text').innerText = t.waBadge;
-            document.getElementById('wa-title').innerText = t.waTitle;
-            document.getElementById('wa-desc').innerText = t.waDesc;
-            document.getElementById('wa-btn-text').innerHTML = `<span>💬</span> ${t.waBtn}`;
-            document.getElementById('tatkal-badge').innerText = t.tatkalBadge;
-            document.getElementById('consult-title').innerText = t.consultTitle;
-            document.getElementById('consult-desc').innerText = t.consultDesc;
-            document.getElementById('consult-btn').innerText = t.consultBtn;
-            document.getElementById('post-media-badge').innerText = t.postMediaBadge;
-            document.getElementById('contact-top-tag').innerText = t.contactTopTag;
-            document.getElementById('contact-main-heading').innerHTML = t.contactMainHeading;
-            document.getElementById('contact-sub-desc').innerText = t.contactSubDesc;
-            document.getElementById('info-helpline').innerText = t.infoHelpline;
-            document.getElementById('info-email').innerText = t.infoEmail;
-            document.getElementById('info-location').innerText = t.infoLocation;
-            document.getElementById('info-all-india').innerText = t.infoAllIndia;
-            document.getElementById('info-instant-chat').innerText = t.infoInstantChat;
-            document.getElementById('label-name').innerText = t.labelName;
-            document.getElementById('label-phone').innerText = t.labelPhone;
-            document.getElementById('label-state').innerText = t.labelState;
-            document.getElementById('label-city').innerText = t.labelCity;
-            document.getElementById('label-message').innerText = t.labelMessage;
-            document.getElementById('btn-submit-inquiry').innerText = t.btnSubmitInquiry;
-            document.getElementById('rev-top-tag').innerText = t.revTopTag;
-            document.getElementById('rev-main-title').innerText = t.revMainTitle;
-            document.getElementById('rev-sub-desc').innerText = t.revSubDesc;
-            document.getElementById('rev-form-title').innerText = t.revFormTitle;
-            document.getElementById('label-rev-name').innerText = t.labelRevName;
-            document.getElementById('label-rev-rating').innerText = t.labelRevRating;
-            document.getElementById('label-rev-state').innerText = t.labelRevState;
-            document.getElementById('label-rev-city').innerText = t.labelRevCity;
-            document.getElementById('label-rev-msg').innerText = t.labelRevMsg;
-            document.getElementById('btn-submit-review').innerText = t.btnSubmitReview;
-            document.getElementById('footer-text').innerText = t.footerText;
-
-            updateDateTime();
-        }
-
-        function toHindiDigits(str) {
-            const hindiDigits = {'0':'०', '1':'१', '2':'२', '3':'३', '4':'४', '5':'५', '6':'६', '7':'७', '8':'८', '9':'९'};
-            return str.replace(/[0-9]/g, match => hindiDigits[match]);
-        }
-
-        function updateDateTime() {
-            const now = new Date();
-            let locale = currentLang === 'hi' ? 'hi-IN' : 'en-US';
-            
-            const options = { 
-                weekday: 'long', 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric', 
-                hour: '2-digit', 
-                minute: '2-digit', 
-                second: '2-digit',
-                hour12: true
+            const payload = {
+                type: "review",
+                name: document.getElementById('revName').value,
+                rating: document.getElementById('revRating').value,
+                state: document.getElementById('revState').value,
+                city: document.getElementById('revCity').value,
+                msg: document.getElementById('revMsg').value
             };
 
-            let formattedDate = now.toLocaleString(locale, options);
-
-            if (currentLang === 'hi') {
-                formattedDate = toHindiDigits(formattedDate);
-            }
-
-            const dispHeader = document.getElementById('datetime-display-header');
-            if (dispHeader) dispHeader.innerText = formattedDate;
-        }
-
-        setInterval(updateDateTime, 1000);
-        updateDateTime();
-
-        function autoFillAndBook(serviceName) {
-            localStorage.setItem('bookingService', serviceName);
-            localStorage.setItem('bookingDate', new Date().toLocaleDateString());
-
-            const telegramMsg = `🚨 NEW DIRECT ENQUIRY / BOOKING!\n-----------------------------------\n🛕 Seva / Jaap: ${serviceName}\n📍 Mode: Direct (All India)\n⏰ Status: Instant Alert`;
-            
-            fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+            fetch(GOOGLE_SCRIPT_URL, {
                 method: 'POST',
+                mode: 'no-cors',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: telegramMsg })
+                body: JSON.stringify(payload)
+            }).then(() => {
+                alert('Aapka review safaltapurvak submit ho gaya hai!');
+                document.getElementById('reviewForm').reset();
             }).catch(e => console.log(e));
-
-            const waMsg = `🚨 *NEW DIRECT ENQUIRY / BOOKING*%0A-----------------------------------%0A*Seva / Jaap:* ${serviceName}%0A*Mode:* Direct (All India)%0A*Status:* Instant Alert`;
-            window.open(`https://wa.me/${ADMIN_WHATSAPP}?text=${waMsg}`, '_blank');
-
-            window.location.href = 'booking.html';
         }
     </script>
 </body>
