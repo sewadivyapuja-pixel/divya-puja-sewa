@@ -35,7 +35,7 @@
         }
     </style>
 </head>
-<body class="dark min-h-screen flex flex-col justify-between">
+<body class="dark min-h-screen flex flex-col justify-between" onload="initRealTimeClock()">
 
     <!-- TOP HEADER NAVBAR -->
     <header id="headerBox" class="header-bg w-full border-b backdrop-blur-md sticky top-0 z-50 px-6 py-4">
@@ -63,6 +63,12 @@
                 </a>
             </div>
 
+            <!-- TOP MIDDLE: LIVE TIME & DAY NAME -->
+            <div id="liveClockBox" class="hidden md:flex flex-col items-center text-center text-xs font-semibold text-amber-500 tracking-wider">
+                <span id="dayDisplay" class="font-serif">SOMWAR</span>
+                <span id="timeDisplay" class="text-[11px] opacity-90">00:00:00 AM</span>
+            </div>
+
             <!-- Right Actions -->
             <div class="flex items-center gap-3">
                 <!-- Theme Toggle Button -->
@@ -70,24 +76,13 @@
                     ☀️ Light
                 </button>
 
-                <!-- Language Translate Button -->
-                <button onclick="toggleLanguage()" id="langBtn" class="text-xs border border-amber-500/40 px-3 py-2 rounded-xl hover:border-amber-500 transition font-semibold text-amber-600">
-                    हिंदी
-                </button>
+                <!-- Full Hindi Google Translate Widget Element -->
+                <div id="google_translate_element" class="scale-90 origin-right"></div>
 
                 <a href="booking.html" id="book-now-btn" class="bg-amber-600 hover:bg-amber-700 text-white text-xs font-semibold px-4 py-2 rounded-xl transition shadow-lg">Book Now</a>
             </div>
         </div>
     </header>
-
-    <!-- MOVING NOTIFICATION BAR (MARQUEE) -->
-    <div class="max-w-6xl mx-auto w-full px-6 mt-6">
-        <div class="custom-card border rounded-xl py-2 px-3 overflow-hidden whitespace-nowrap">
-            <marquee id="marquee-text" behavior="scroll" direction="left" scrollamount="5" class="text-xs text-amber-600 font-semibold">
-                🛕 Sabhi prakar ki Puja evam Jaap ke liye niche diye gaye option par click karein. Bina payment ke seedha booking karein!
-            </marquee>
-        </div>
-    </div>
 
     <!-- MAIN HERO SECTION -->
     <main class="max-w-6xl mx-auto w-full px-6 py-10 space-y-12">
@@ -126,6 +121,15 @@
                 </div>
             </div>
 
+        </div>
+
+        <!-- MOVING NOTIFICATION BAR (MARQUEE) -->
+        <div class="w-full">
+            <div class="custom-card border rounded-xl py-2 px-3 overflow-hidden whitespace-nowrap shadow-md">
+                <marquee id="marquee-text" behavior="scroll" direction="left" scrollamount="5" class="text-xs text-amber-600 font-semibold">
+                    🛕 Sabhi prakar ki Puja evam Jaap ke liye niche diye gaye option par click karein. Bina payment ke seedha booking karein!
+                </marquee>
+            </div>
         </div>
 
         <!-- ALL TYPES OF PUJAS & JAAP SECTION -->
@@ -268,6 +272,18 @@
         <p id="footer-text">Divya Puja Sewa • Vedic Sanatan Sansthan Varanasi (Direct Booking Mode)</p>
     </footer>
 
+    <!-- Google Translate Script for Full Hindi Translation -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'hi,en',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
     <script>
         const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzhLMwjmCuw0QGwZ3OBTyjyW1gEzU9Tdmsx8D8oodOVXVRbLypBHC6tVLIYPng9F-5h/exec";
         const TELEGRAM_BOT_TOKEN = "8989054970:AAG-NMCyPNoNhpnOwG1j_naEfNy4N0tYyN8";
@@ -276,42 +292,14 @@
         const ADMIN_WHATSAPP_1 = "919555674448";
         const ADMIN_WHATSAPP_2 = "919935179756";
 
-        let currentLang = 'hi';
-
-        const translations = {
-            hi: {
-                navPujas: "Pujas & Jaap", navContact: "Contact",
-                bookNow: "Book Now", themeLight: "☀️ Light", themeDark: "🌙 Dark", langBtn: "English",
-                marquee: "🛕 Sabhi prakar ki Puja evam Jaap ke liye niche diye gaye option par click karein. Bina payment ke seedha booking karein!",
-                heroTag: "VEDIC PUJAS • HAWANS • JAAP • KUNDALI",
-                heroHeading: 'Sacred rituals, performed with <span class="italic font-normal text-amber-600">pure devotion</span>',
-                heroDesc: "Book authentic Pujas, Hawans, Jaap and Kundali rituals at your home, led by learned pandits. Direct booking without payment.",
-                btnBookPuja: "Book a Puja ↗", btnExplore: "Explore All Pujas & Jaap",
-                secTitle1: "🌿 Sabhi Prakar ki Pujayein evam Jaap",
-                secDesc1: "Kisi bhi Puja ya Jaap par tap karein, detail apne aap bhar jayegi aur turant alert chala jayega:",
-                subTitle1: "1. Pramukh Pujayein", subTitle2: "2. Pramukh Jaap Anushthan",
-                consultTitle: "Pandit Ji se Samadhan Paye Tatkal",
-                consultDesc: "Apne man me uth rahe kisi bhi sawal ya samasya ke liye seedha baat karein.",
-                consultBtn: "Tatkal Sampark Karein",
-                footer: "Divya Puja Sewa • Vedic Sanatan Sansthan Varanasi (Direct Booking Mode)"
-            },
-            en: {
-                navPujas: "Pujas & Chants", navContact: "Contact",
-                bookNow: "Book Now", themeLight: "☀️ Light", themeDark: "🌙 Dark", langBtn: "हिंदी",
-                marquee: "🛕 Click on options below for all types of Pujas & Chants. Direct booking with zero online payment!",
-                heroTag: "VEDIC RITUALS • HAWANS • MANTRAS • HOROSCOPE",
-                heroHeading: 'Sacred rituals, performed with <span class="italic font-normal text-amber-600">pure devotion</span>',
-                heroDesc: "Book authentic Pujas, Hawans, Chants and Astrology at your home, led by verified Vedic pandits instantly.",
-                btnBookPuja: "Book a Puja ↗", btnExplore: "Explore All Services",
-                secTitle1: "🌿 All Types of Pujas & Sacred Chants",
-                secDesc1: "Tap on any Puja or Chant to auto-fill details and trigger instant admin notification:",
-                subTitle1: "1. Major Pujas", subTitle2: "2. Major Chant Rituals",
-                consultTitle: "Instant Consultation with Pandit Ji",
-                consultDesc: "Get immediate spiritual guidance and answers for any life problems over phone.",
-                consultBtn: "Contact Instantly",
-                footer: "Divya Puja Sewa • Vedic Sanatan Sansthan Varanasi (Direct Booking Mode)"
-            }
-        };
+        function initRealTimeClock() {
+            setInterval(() => {
+                const now = new Date();
+                const daysHi = ["रविवार (Sunday)", "सोमवार (Monday)", "मंगलवार (Tuesday)", "बुधवार (Wednesday)", "गुरुवार (Thursday)", "शुक्रवार (Friday)", "शनिवार (Saturday)"];
+                document.getElementById('dayDisplay').innerText = daysHi[now.getDay()];
+                document.getElementById('timeDisplay').innerText = now.toLocaleTimeString();
+            }, 1000);
+        }
 
         function toggleHamburgerMenu() {
             const dropdown = document.getElementById('hamburgerDropdown');
@@ -334,30 +322,6 @@
                 root.classList.add('dark');
                 themeBtn.innerText = '☀️ Light';
             }
-        }
-
-        function toggleLanguage() {
-            currentLang = currentLang === 'hi' ? 'en' : 'hi';
-            const t = translations[currentLang];
-
-            document.getElementById('nav-pujas').innerText = t.navPujas;
-            document.getElementById('nav-contact').innerText = t.navContact;
-            document.getElementById('book-now-btn').innerText = t.bookNow;
-            document.getElementById('langBtn').innerText = t.langBtn;
-            document.getElementById('marquee-text').innerText = t.marquee;
-            document.getElementById('hero-tag').innerText = t.heroTag;
-            document.getElementById('hero-heading').innerHTML = t.heroHeading;
-            document.getElementById('hero-desc').innerText = t.heroDesc;
-            document.getElementById('btn-book-puja').innerHTML = t.btnBookPuja;
-            document.getElementById('btn-explore').innerText = t.btnExplore;
-            document.getElementById('sec-title-1').innerText = t.secTitle1;
-            document.getElementById('sec-desc-1').innerText = t.secDesc1;
-            document.getElementById('sub-title-1').innerText = t.subTitle1;
-            document.getElementById('sub-title-2').innerText = t.subTitle2;
-            document.getElementById('consult-title').innerText = t.consultTitle;
-            document.getElementById('consult-desc').innerText = t.consultDesc;
-            document.getElementById('consult-btn').innerText = t.consultBtn;
-            document.getElementById('footer-text').innerText = t.footer;
         }
 
         function autoFillAndBook(serviceName) {
@@ -410,7 +374,7 @@
                 rating: document.getElementById('revRating').value,
                 state: document.getElementById('revState').value,
                 city: document.getElementById('revCity').value,
-                msg: document.getElementById('revMsg').value
+                msg: document.getElementById('revMsg'].value
             };
 
             fetch(GOOGLE_SCRIPT_URL, {
