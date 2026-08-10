@@ -87,35 +87,9 @@
         </div>
     </header>
 
-    <!-- MOVING NOTIFICATION BAR (MARQUEE) -->
-    <div class="max-w-6xl mx-auto w-full px-6 mt-6">
-        <div class="theme-card border border-[#222638] rounded-xl py-2 px-3 overflow-hidden whitespace-nowrap bg-[#12141C]">
-            <marquee id="marquee-text" behavior="scroll" direction="left" scrollamount="5" class="text-xs font-semibold text-amber-400">
-                🛕 Sabhi prakar ki Puja evam Jaap ke liye niche diye gaye option par click karein. Bina payment ke seedha booking karein!
-            </marquee>
-        </div>
-    </div>
-
     <!-- MAIN HERO SECTION -->
     <main class="max-w-6xl mx-auto w-full px-6 py-10 space-y-12">
         
-        <!-- UNIQUE TOP INSTANT CHAT BANNER -->
-        <div class="border rounded-2xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4 bg-gradient-to-r from-emerald-950/50 via-[#12141C] to-[#12141C] border-emerald-500/40 shadow-xl">
-            <div class="flex items-center gap-4 text-center sm:text-left">
-                <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 flex items-center justify-center text-emerald-400 text-2xl shrink-0">
-                    💬
-                </div>
-                <div>
-                    <span class="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 uppercase tracking-wider">Live Support</span>
-                    <h3 class="serif-title text-base font-bold text-gray-100 mt-1">Need Immediate Assistance?</h3>
-                    <p class="text-xs text-gray-400">Chat directly with our team on WhatsApp for quick answers and custom ritual inquiries.</p>
-                </div>
-            </div>
-            <button onclick="openWhatsAppChat()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs px-6 py-3 rounded-xl shadow-lg transition whitespace-nowrap transform hover:scale-105 flex items-center gap-2">
-                <span>💬</span> Chat on WhatsApp Now
-            </button>
-        </div>
-
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
             <div class="lg:col-span-7 space-y-6 text-left">
@@ -139,12 +113,21 @@
                 </div>
             </div>
 
-            <div class="lg:col-span-5 flex justify-center">
+            <div class="lg:col-span-5 flex flex-col items-center">
                 <div class="relative w-full max-w-xs md:max-w-sm rounded-t-[140px] overflow-hidden border border-[#222638] bg-[#12141C] shadow-2xl ultra-glow">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10"></div>
                     <img src="https://images.unsplash.com/photo-1609825488882-3a691c33ac0d?q=80&w=1000&auto=format&fit=crop" alt="Lord Krishna Statue" class="w-full h-[420px] object-cover object-top opacity-90 hover:scale-105 transition duration-700">
                     <div class="absolute bottom-6 left-0 right-0 z-20 text-center">
                         <span class="serif-title text-xs tracking-wider font-bold" style="color: var(--theme-color, #D4AF37);">जय श्री कृष्ण</span>
+                    </div>
+                </div>
+
+                <!-- MOVING NOTIFICATION BAR (MARQUEE) MOVED RIGHT BELOW JAI SHRI KRISHNA -->
+                <div class="w-full mt-4">
+                    <div class="theme-card border border-[#222638] rounded-xl py-2 px-3 overflow-hidden whitespace-nowrap bg-[#12141C]">
+                        <marquee id="marquee-text" behavior="scroll" direction="left" scrollamount="5" class="text-xs font-semibold text-amber-400">
+                            🛕 Sabhi prakar ki Puja evam Jaap ke liye niche diye gaye option par click karein. Bina payment ke seedha booking karein!
+                        </marquee>
                     </div>
                 </div>
             </div>
@@ -183,7 +166,24 @@
             </div>
         </div>
 
-        <!-- PANDIT JI CONSULTATION BANNER -->
+        <!-- WHATSAPP INSTANT CHAT BANNER MOVED RIGHT ABOVE TATKAL SAMADHAN -->
+        <div class="border rounded-2xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4 bg-gradient-to-r from-emerald-950/50 via-[#12141C] to-[#12141C] border-emerald-500/40 shadow-xl">
+            <div class="flex items-center gap-4 text-center sm:text-left">
+                <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 flex items-center justify-center text-emerald-400 text-2xl shrink-0">
+                    💬
+                </div>
+                <div>
+                    <span class="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 uppercase tracking-wider">Live Support</span>
+                    <h3 class="serif-title text-base font-bold text-gray-100 mt-1">Need Immediate Assistance?</h3>
+                    <p class="text-xs text-gray-400">Chat directly with our team on WhatsApp for quick answers and custom ritual inquiries.</p>
+                </div>
+            </div>
+            <button onclick="openWhatsAppChat()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs px-6 py-3 rounded-xl shadow-lg transition whitespace-nowrap transform hover:scale-105 flex items-center gap-2">
+                <span>💬</span> Chat on WhatsApp Now
+            </button>
+        </div>
+
+        <!-- PANDIT JI CONSULTATION BANNER (TATKAL SAMADHAN) -->
         <div class="border border-amber-500/30 rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#12141C]">
             <div class="space-y-1 text-center sm:text-left">
                 <span class="text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider" style="background-color: rgba(212, 175, 55, 0.2); color: var(--theme-color, #D4AF37);">Tatkal Samadhan</span>
@@ -250,7 +250,7 @@
             </form>
         </section>
 
-        <!-- CUSTOMER REVIEWS & OPINION WRITING SECTION (MOVED TO BOTTOM) -->
+        <!-- CUSTOMER REVIEWS & OPINION WRITING SECTION -->
         <section id="reviews-section" class="theme-card border border-[#222638] rounded-2xl p-6 md:p-8 space-y-8 bg-[#12141C]">
             <div class="text-center max-w-xl mx-auto space-y-2">
                 <p class="text-xs tracking-widest font-semibold uppercase font-serif" style="color: var(--theme-color, #D4AF37);">TESTIMONIALS • भक्त अनुभव</p>
