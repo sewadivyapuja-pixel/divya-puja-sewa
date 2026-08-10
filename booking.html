@@ -137,7 +137,6 @@
     </div>
 
     <script>
-        // Aapka Web App URL yahan properly set hai
         const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxBTpQJKeo2u1RhlbIz8sWSZFJd3VHtby5_uRYgkKLvKz8AlaGXicycDr3yb72h2VvR/exec";
         const ADMIN_WHATSAPP = "918382909995";
 
@@ -199,7 +198,7 @@
                 sankalp: document.getElementById('bSankalp').value || 'N/A'
             };
 
-            // Google Sheet aur Telegram par data bhejne ke liye request
+            // Google Sheet aur Telegram par data bhejne ke liye
             fetch(GOOGLE_SCRIPT_URL, {
                 method: 'POST',
                 mode: 'no-cors',
@@ -210,8 +209,8 @@
                 window.location.href = 'index.html';
             }).catch(e => console.log(e));
 
-            // WhatsApp par bhi alert bhejne ke liye
-            const waMsg = `🛕 *NEW BOOKING*%0A*Seva:* ${pujaName}%0A*Name:* ${payload.name}%0A*Mobile:* ${payload.phone}%0A*Date:* ${payload.date}`;
+            // WhatsApp par ab Name, Mobile, Date, Address sabhi details jayengi
+            const waMsg = `🛕 *NEW DETAILED BOOKING*%0A✨ *Seva:* ${pujaName}%0A👤 *Name:* ${payload.name}%0A📞 *Mobile:* ${payload.phone}%0A📅 *Date:* ${payload.date}%0A📍 *Address:* ${payload.address}%0A💬 *Sankalp:* ${payload.sankalp}`;
             window.open(`https://wa.me/${ADMIN_WHATSAPP}?text=${waMsg}`, '_blank');
         }
     </script>
