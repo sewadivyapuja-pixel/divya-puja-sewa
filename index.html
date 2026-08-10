@@ -7,77 +7,88 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; transition: background-color 0.3s ease, color 0.3s ease; scroll-behavior: smooth; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; transition: background-color 0.4s ease, color 0.4s ease; scroll-behavior: smooth; }
         
-        /* Dark Theme Default */
-        body.dark { background-color: #0A0B10; color: #E2E8F0; }
-        body.dark .custom-card { background-color: #12141C; border-color: #222638; color: #E2E8F0; }
-        body.dark .header-bg { background-color: rgba(10, 11, 16, 0.85); border-color: #222638; }
-        body.dark .custom-input { background: transparent; border: none; border-bottom: 1px solid rgba(255, 255, 255, 0.2); border-radius: 0; padding: 10px 0; color: inherit; outline: none; width: 100%; font-size: 14px; transition: border-color 0.3s; }
-        body.dark .custom-input:focus { border-bottom-color: #D4AF37; }
-
-        /* Light Premium Cream-Gold Theme */
-        body.light { background-color: #FDFBF7; color: #1A1A1A; }
-        body.light .custom-card { background-color: #FFFFFF; border-color: #E6DCCD; color: #2C2C2C; box-shadow: 0 10px 30px rgba(212, 175, 55, 0.08); }
-        body.light .header-bg { background-color: rgba(253, 251, 247, 0.9); border-color: #E6DCCD; }
-        body.light .text-gray-400 { color: #666666 !important; }
-        body.light .text-gray-100, body.light .text-gray-300 { color: #222222 !important; }
-        body.light .custom-input { background: transparent; border: none; border-bottom: 1px solid rgba(0, 0, 0, 0.2); border-radius: 0; padding: 10px 0; color: inherit; outline: none; width: 100%; font-size: 14px; transition: border-color 0.3s; }
-        body.light .custom-input:focus { border-bottom-color: #C25E38; }
-
         .serif-title { font-family: 'Cinzel', serif; }
         .ultra-glow { box-shadow: 0 0 60px rgba(212, 175, 55, 0.08); }
         .hover-card-effect { transition: all 0.3s ease; }
         .hover-card-effect:hover {
-            border-color: #D4AF37;
+            border-color: var(--theme-primary);
             background-color: rgba(212, 175, 55, 0.06);
             transform: translateY(-2px);
         }
+
+        .custom-input { background: transparent; border: none; border-bottom: 1px solid rgba(255, 255, 255, 0.2); border-radius: 0; padding: 10px 0; color: inherit; outline: none; width: 100%; font-size: 14px; transition: border-color 0.3s; }
+        .custom-input:focus { border-bottom-color: var(--theme-primary); }
     </style>
 </head>
-<body class="dark min-h-screen flex flex-col justify-between" onload="initRealTimeClock()">
+<body class="min-h-screen flex flex-col justify-between" onload="initPageSetup()">
 
     <!-- TOP HEADER NAVBAR -->
-    <header id="headerBox" class="header-bg w-full border-b backdrop-blur-md sticky top-0 z-50 px-6 py-4">
+    <header id="headerBox" class="w-full border-b backdrop-blur-md sticky top-0 z-50 px-6 py-4 transition-colors duration-500">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
             <div class="flex items-center gap-4">
-                <!-- 3-Line Hamburger Menu Button -->
+                <!-- 3-Line Hamburger Menu with Full Shortcuts -->
                 <div class="relative">
-                    <button onclick="toggleHamburgerMenu()" class="text-amber-500 text-lg p-2 rounded-xl border border-amber-500/30 custom-card focus:outline-none hover:border-amber-500 transition flex items-center justify-center">
+                    <button onclick="toggleHamburgerMenu()" class="text-lg p-2 rounded-xl border border-amber-500/30 custom-card focus:outline-none hover:border-amber-500 transition flex items-center justify-center text-amber-500">
                         ☰
                     </button>
-                    <!-- Dropdown Content -->
-                    <div id="hamburgerDropdown" class="hidden absolute left-0 mt-2 w-64 custom-card border rounded-2xl shadow-2xl p-4 z-50 text-xs space-y-3">
-                        <div class="font-bold border-b border-amber-500/20 pb-2 text-amber-600">🧭 Navigation</div>
-                        <div class="space-y-2">
-                            <a href="#all-pujas" onclick="toggleHamburgerMenu()" class="block p-2 rounded hover:bg-amber-500/10 transition font-semibold" id="nav-pujas">Pujas & Jaap</a>
-                            <a href="#contact-section" onclick="toggleHamburgerMenu()" class="block p-2 rounded hover:bg-amber-500/10 transition font-semibold" id="nav-contact">Contact</a>
-                            <a href="#reviews-section" onclick="toggleHamburgerMenu()" class="block p-2 rounded hover:bg-amber-500/10 transition font-semibold">Reviews</a>
+                    <!-- Dropdown Shortcuts List -->
+                    <div id="hamburgerDropdown" class="hidden absolute left-0 mt-2 w-72 custom-card border rounded-2xl shadow-2xl p-4 z-50 text-xs space-y-3 max-h-[80vh] overflow-y-auto">
+                        <div class="font-bold border-b border-amber-500/20 pb-2 text-amber-600 flex justify-between items-center">
+                            <span>🧭 Quick Shortcuts</span>
+                            <span onclick="toggleHamburgerMenu()" class="cursor-pointer text-sm">✕</span>
+                        </div>
+                        <div class="space-y-1">
+                            <a href="#all-pujas" onclick="toggleHamburgerMenu()" class="block p-2 rounded hover:bg-amber-500/10 transition font-semibold">🌿 All Pujas & Jaap Overview</a>
+                            <div class="text-[10px] uppercase font-bold text-amber-600 pt-2 pb-1">Pramukh Pujayein</div>
+                            <a href="#all-pujas" onclick="autoFillAndBook('Rudrabhishek Puja')" class="block p-1.5 pl-3 rounded hover:bg-amber-500/10 transition">🕉️ Rudrabhishek Puja</a>
+                            <a href="#all-pujas" onclick="autoFillAndBook('Hawan & Yagya')" class="block p-1.5 pl-3 rounded hover:bg-amber-500/10 transition">🔥 Hawan & Yagya</a>
+                            <a href="#all-pujas" onclick="autoFillAndBook('Satyanarayan Katha')" class="block p-1.5 pl-3 rounded hover:bg-amber-500/10 transition">✨ Satyanarayan Katha</a>
+                            <a href="#all-pujas" onclick="autoFillAndBook('Navgrah Shanti Puja')" class="block p-1.5 pl-3 rounded hover:bg-amber-500/10 transition">🪐 Navgrah Shanti Puja</a>
+                            <a href="#all-pujas" onclick="autoFillAndBook('Vivah Sanskar (Shadi)')" class="block p-1.5 pl-3 rounded hover:bg-amber-500/10 transition">🛕 Vivah Sanskar (Shadi)</a>
+                            <a href="#all-pujas" onclick="autoFillAndBook('Maha Lakshmi Puja')" class="block p-1.5 pl-3 rounded hover:bg-amber-500/10 transition">🪷 Maha Lakshmi Puja</a>
+                            <a href="#all-pujas" onclick="autoFillAndBook('Mundan & Janeu Sanskar')" class="block p-1.5 pl-3 rounded hover:bg-amber-500/10 transition">✂️ Mundan & Janeu Sanskar</a>
+                            <a href="#all-pujas" onclick="autoFillAndBook('Kundali Milan & Vichar')" class="block p-1.5 pl-3 rounded hover:bg-amber-500/10 transition">📜 Kundali Milan & Vichar</a>
+                            
+                            <div class="text-[10px] uppercase font-bold text-amber-600 pt-2 pb-1">Pramukh Jaap Anushthan</div>
+                            <a href="#all-pujas" onclick="autoFillAndBook('Maha Mrityunjaya Jaap')" class="block p-1.5 pl-3 rounded hover:bg-amber-500/10 transition">📿 Maha Mrityunjaya Jaap</a>
+                            <a href="#all-pujas" onclick="autoFillAndBook('Gayatri Mantra Jaap')" class="block p-1.5 pl-3 rounded hover:bg-amber-500/10 transition">📿 Gayatri Mantra Jaap</a>
+                            <a href="#all-pujas" onclick="autoFillAndBook('Mahamrityunjaya Anushthan')" class="block p-1.5 pl-3 rounded hover:bg-amber-500/10 transition">🕉️ Mahamrityunjaya Anushthan</a>
+                            <a href="#all-pujas" onclick="autoFillAndBook('Baglamukhi Anushthan')" class="block p-1.5 pl-3 rounded hover:bg-amber-500/10 transition">⚔️ Baglamukhi Anushthan</a>
+                            
+                            <div class="border-t border-amber-500/20 pt-2 mt-2 space-y-1">
+                                <a href="#contact-section" onclick="toggleHamburgerMenu()" class="block p-2 rounded hover:bg-amber-500/10 transition font-semibold">📞 Contact & Inquiry</a>
+                                <a href="#reviews-section" onclick="toggleHamburgerMenu()" class="block p-2 rounded hover:bg-amber-500/10 transition font-semibold">⭐ Devotees Reviews</a>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Logo -->
-                <a href="#" class="flex items-center gap-2 text-amber-600 font-serif font-bold text-base tracking-wide">
+                <a href="#" class="flex items-center gap-2 font-serif font-bold text-base tracking-wide text-amber-500">
                     <span>🔥</span> <span id="logo-text">Divya Puja Sewa</span>
                 </a>
             </div>
 
-            <!-- TOP MIDDLE: LIVE TIME & DAY NAME -->
-            <div id="liveClockBox" class="hidden md:flex flex-col items-center text-center text-xs font-semibold text-amber-500 tracking-wider">
-                <span id="dayDisplay" class="font-serif">SOMWAR</span>
+            <!-- TOP CENTER: LIVE RUNNING TIME & DAY -->
+            <div id="liveClockBox" class="flex flex-col items-center text-center text-xs font-semibold tracking-wider text-amber-500">
+                <span id="dayDisplay" class="font-serif uppercase">SOMWAR</span>
                 <span id="timeDisplay" class="text-[11px] opacity-90">00:00:00 AM</span>
             </div>
 
-            <!-- Right Actions -->
-            <div class="flex items-center gap-3">
+            <!-- Right Actions: Translate, Theme & Book Now -->
+            <div class="flex items-center gap-2 sm:gap-3">
+                <!-- 2 Option Translate Dropdown (Hindi / English) -->
+                <select id="langSelect" onchange="changeLanguage(this.value)" class="text-xs border border-amber-500/40 rounded-xl px-2 py-2 bg-transparent font-semibold text-amber-500 focus:outline-none cursor-pointer">
+                    <option value="hi" class="bg-gray-900 text-white">🇮🇳 हिंदी</option>
+                    <option value="en" class="bg-gray-900 text-white">🇬🇧 English</option>
+                </select>
+
                 <!-- Theme Toggle Button -->
-                <button onclick="toggleTheme()" id="themeBtn" class="text-xs border px-3 py-2 rounded-xl transition border-amber-500/40 hover:border-amber-500">
+                <button onclick="toggleThemeMode()" id="themeModeBtn" class="text-xs border px-3 py-2 rounded-xl transition border-amber-500/40 hover:border-amber-500 text-amber-500 font-semibold">
                     ☀️ Light
                 </button>
-
-                <!-- Full Hindi Google Translate Widget Element -->
-                <div id="google_translate_element" class="scale-90 origin-right"></div>
 
                 <a href="booking.html" id="book-now-btn" class="bg-amber-600 hover:bg-amber-700 text-white text-xs font-semibold px-4 py-2 rounded-xl transition shadow-lg">Book Now</a>
             </div>
@@ -88,12 +99,12 @@
     <main class="max-w-6xl mx-auto w-full px-6 py-10 space-y-12">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
 
-            <!-- LEFT SIDE: TEXT & BUTTONS (7 Columns) -->
+            <!-- LEFT SIDE: TEXT & BUTTONS -->
             <div class="lg:col-span-7 space-y-6 text-left">
-                <p id="hero-tag" class="text-[11px] tracking-widest text-amber-600 font-semibold uppercase font-serif">VEDIC PUJAS • HAWANS • JAAP • KUNDALI</p>
+                <p id="hero-tag" class="text-[11px] tracking-widest text-amber-500 font-semibold uppercase font-serif">VEDIC PUJAS • HAWANS • JAAP • KUNDALI</p>
                 
                 <h1 id="hero-heading" class="serif-title text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1]">
-                    Sacred rituals, performed with <span class="italic font-normal text-amber-600">pure devotion</span>
+                    Sacred rituals, performed with <span class="italic font-normal text-amber-500">pure devotion</span>
                 </h1>
 
                 <p id="hero-desc" class="text-xs md:text-sm font-light leading-relaxed">
@@ -110,7 +121,7 @@
                 </div>
             </div>
 
-            <!-- RIGHT SIDE: LORD KRISHNA ARCH IMAGE (5 Columns) -->
+            <!-- RIGHT SIDE: LORD KRISHNA ARCH IMAGE -->
             <div class="lg:col-span-5 flex justify-center">
                 <div class="relative w-full max-w-xs md:max-w-sm rounded-t-[140px] overflow-hidden border border-amber-500/30 custom-card shadow-2xl ultra-glow">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10"></div>
@@ -126,7 +137,7 @@
         <!-- MOVING NOTIFICATION BAR (MARQUEE) -->
         <div class="w-full">
             <div class="custom-card border rounded-xl py-2 px-3 overflow-hidden whitespace-nowrap shadow-md">
-                <marquee id="marquee-text" behavior="scroll" direction="left" scrollamount="5" class="text-xs text-amber-600 font-semibold">
+                <marquee id="marquee-text" behavior="scroll" direction="left" scrollamount="5" class="text-xs text-amber-500 font-semibold">
                     🛕 Sabhi prakar ki Puja evam Jaap ke liye niche diye gaye option par click karein. Bina payment ke seedha booking karein!
                 </marquee>
             </div>
@@ -135,12 +146,12 @@
         <!-- ALL TYPES OF PUJAS & JAAP SECTION -->
         <div id="all-pujas" class="custom-card border rounded-2xl p-6 space-y-6">
             <div>
-                <h3 id="sec-title-1" class="serif-title text-base font-bold text-amber-600">🌿 Sabhi Prakar ki Pujayein evam Jaap</h3>
+                <h3 id="sec-title-1" class="serif-title text-base font-bold text-amber-500">🌿 Sabhi Prakar ki Pujayein evam Jaap</h3>
                 <p id="sec-desc-1" class="text-xs mt-1">Kisi bhi Puja ya Jaap par tap karein, detail apne aap bhar jayegi aur turant alert chala jayega:</p>
             </div>
 
             <div class="space-y-3">
-                <span id="sub-title-1" class="text-[11px] font-bold text-amber-600 uppercase tracking-wider block">1. Pramukh Pujayein</span>
+                <span id="sub-title-1" class="text-[11px] font-bold text-amber-500 uppercase tracking-wider block">1. Pramukh Pujayein</span>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
                     <div onclick="autoFillAndBook('Rudrabhishek Puja')" class="custom-card p-3 rounded-xl border hover-card-effect cursor-pointer flex items-center gap-2"><span>🕉️</span> <span class="p-name">Rudrabhishek Puja</span></div>
                     <div onclick="autoFillAndBook('Hawan & Yagya')" class="custom-card p-3 rounded-xl border hover-card-effect cursor-pointer flex items-center gap-2"><span>🔥</span> <span class="p-name">Hawan & Yagya</span></div>
@@ -154,7 +165,7 @@
             </div>
 
             <div class="space-y-3 pt-3 border-t border-amber-500/20">
-                <span id="sub-title-2" class="text-[11px] font-bold text-amber-600 uppercase tracking-wider block">2. Pramukh Jaap Anushthan</span>
+                <span id="sub-title-2" class="text-[11px] font-bold text-amber-500 uppercase tracking-wider block">2. Pramukh Jaap Anushthan</span>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
                     <div onclick="autoFillAndBook('Maha Mrityunjaya Jaap')" class="custom-card p-3 rounded-xl border hover-card-effect cursor-pointer flex items-center gap-2"><span>📿</span> <span class="p-name">Maha Mrityunjaya Jaap</span></div>
                     <div onclick="autoFillAndBook('Gayatri Mantra Jaap')" class="custom-card p-3 rounded-xl border hover-card-effect cursor-pointer flex items-center gap-2"><span>📿</span> <span class="p-name">Gayatri Mantra Jaap</span></div>
@@ -167,8 +178,8 @@
         <!-- PANDIT JI CONSULTATION BANNER -->
         <div class="custom-card border border-amber-500/40 rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div class="space-y-1 text-center sm:text-left">
-                <span class="bg-amber-500/20 text-amber-600 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Tatkal Samadhan</span>
-                <h3 id="consult-title" class="serif-title text-base font-bold text-amber-600 mt-1">Pandit Ji se Samadhan Paye Tatkal</h3>
+                <span class="bg-amber-500/20 text-amber-500 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Tatkal Samadhan</span>
+                <h3 id="consult-title" class="serif-title text-base font-bold text-amber-500 mt-1">Pandit Ji se Samadhan Paye Tatkal</h3>
                 <p id="consult-desc" class="text-xs font-light">Apne man me uth rahe kisi bhi sawal ya samasya ke liye seedha baat karein.</p>
             </div>
             <button onclick="autoFillAndBook('Pandit Tatkal Consultation')" id="consult-btn" class="bg-amber-500 hover:bg-amber-600 text-black font-extrabold text-xs px-5 py-3 rounded-xl shadow transition whitespace-nowrap transform hover:scale-105">
@@ -176,14 +187,13 @@
             </button>
         </div>
 
-        <!-- CONTACT / ENQUIRY SECTION (COMPLETE WITH INFO & FORM) -->
+        <!-- CONTACT / ENQUIRY SECTION -->
         <section id="contact-section" class="custom-card border rounded-3xl p-8 md:p-12 space-y-10 shadow-2xl">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
-                <!-- Left Info Area -->
                 <div class="lg:col-span-5 space-y-6">
                     <div class="space-y-3">
-                        <p class="text-xs tracking-widest font-semibold uppercase font-serif text-amber-600">GET IN TOUCH · संपर्क</p>
-                        <h2 class="serif-title text-3xl font-bold">Have a question or a <span class="italic font-normal text-amber-600">custom puja</span> in mind?</h2>
+                        <p class="text-xs tracking-widest font-semibold uppercase font-serif text-amber-500">GET IN TOUCH · संपर्क</p>
+                        <h2 class="serif-title text-3xl font-bold">Have a question or a <span class="italic font-normal text-amber-500">custom puja</span> in mind?</h2>
                         <p class="text-xs text-gray-400">Our team of learned pandits is happy to guide you through the right ritual, muhurat and samagri for any occasion.</p>
                     </div>
 
@@ -198,12 +208,11 @@
                             <span>📍</span> <span class="font-semibold text-gray-300">Varanasi, Uttar Pradesh · At your home</span>
                         </div>
                         <div class="flex items-center gap-3 text-amber-500 pt-2">
-                            <span>💬</span> <a href="https://wa.me/919555674448" target="_blank" class="font-semibold text-amber-600 hover:underline">Chat on WhatsApp</a>
+                            <span>💬</span> <a href="https://wa.me/919555674448" target="_blank" class="font-semibold text-amber-500 hover:underline">Chat on WhatsApp</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Right Form Area -->
                 <div class="lg:col-span-7">
                     <form id="contactForm" onsubmit="handleContactSubmit(event)" class="space-y-6">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -220,13 +229,13 @@
                             <div class="space-y-1">
                                 <label class="text-[11px] opacity-70">State (Rajya) *</label>
                                 <select id="cState" required class="custom-input bg-transparent">
-                                    <option value="">Select State</option>
-                                    <option value="Uttar Pradesh">Uttar Pradesh (UP)</option>
-                                    <option value="Delhi">Delhi</option>
-                                    <option value="Madhya Pradesh">Madhya Pradesh (MP)</option>
-                                    <option value="Bihar">Bihar</option>
-                                    <option value="Maharashtra">Maharashtra</option>
-                                    <option value="Other">Other State / All India</option>
+                                    <option value="" class="bg-gray-900 text-white">Select State</option>
+                                    <option value="Uttar Pradesh" class="bg-gray-900 text-white">Uttar Pradesh (UP)</option>
+                                    <option value="Delhi" class="bg-gray-900 text-white">Delhi</option>
+                                    <option value="Madhya Pradesh" class="bg-gray-900 text-white">Madhya Pradesh (MP)</option>
+                                    <option value="Bihar" class="bg-gray-900 text-white">Bihar</option>
+                                    <option value="Maharashtra" class="bg-gray-900 text-white">Maharashtra</option>
+                                    <option value="Other" class="bg-gray-900 text-white">Other State / All India</option>
                                 </select>
                             </div>
                             <div class="space-y-1">
@@ -249,40 +258,40 @@
         <!-- REVIEWS SECTION -->
         <section id="reviews-section" class="custom-card border rounded-2xl p-6 md:p-8 space-y-8">
             <div class="text-center max-w-xl mx-auto space-y-2">
-                <h2 class="serif-title text-2xl md:text-3xl font-bold">Devotees Reviews & Opinions</h2>
+                <h2 id="rev-heading" class="serif-title text-2xl md:text-3xl font-bold">Devotees Reviews & Opinions</h2>
             </div>
 
             <div class="border-t border-amber-500/20 pt-6 max-w-xl mx-auto space-y-4">
                 <form id="reviewForm" onsubmit="submitUserReview(event)" class="space-y-4 text-xs">
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div class="space-y-1">
-                            <label class="text-[10px] opacity-70">Aapka Naam (Name) *</label>
+                            <label id="lbl-name" class="text-[10px] opacity-70">Aapka Naam (Name) *</label>
                             <input type="text" id="revName" required class="custom-input" placeholder="Full Name">
                         </div>
                         <div class="space-y-1">
-                            <label class="text-[10px] opacity-70">Rating *</label>
+                            <label id="lbl-rating" class="text-[10px] opacity-70">Rating *</label>
                             <select id="revRating" class="custom-input bg-transparent">
-                                <option value="⭐⭐⭐⭐⭐ (5/5)">⭐⭐⭐⭐⭐ (5/5)</option>
-                                <option value="⭐⭐⭐⭐ (4/5)">⭐⭐⭐⭐ (4/5)</option>
-                                <option value="⭐⭐⭐ (3/5)">⭐⭐⭐ (3/5)</option>
+                                <option value="⭐⭐⭐⭐⭐ (5/5)" class="bg-gray-900 text-white">⭐⭐⭐⭐⭐ (5/5)</option>
+                                <option value="⭐⭐⭐⭐ (4/5)" class="bg-gray-900 text-white">⭐⭐⭐⭐ (4/5)</option>
+                                <option value="⭐⭐⭐ (3/5)" class="bg-gray-900 text-white">⭐⭐⭐ (3/5)</option>
                             </select>
                         </div>
                     </div>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div class="space-y-1">
-                            <label class="text-[10px] opacity-70">State (Rajya) *</label>
+                            <label id="lbl-state" class="text-[10px] opacity-70">State (Rajya) *</label>
                             <input type="text" id="revState" required class="custom-input" placeholder="State">
                         </div>
                         <div class="space-y-1">
-                            <label class="text-[10px] opacity-70">City (Shehar) *</label>
+                            <label id="lbl-city" class="text-[10px] opacity-70">City (Shehar) *</label>
                             <input type="text" id="revCity" required class="custom-input" placeholder="City">
                         </div>
                     </div>
                     <div class="space-y-1">
-                        <label class="text-[10px] opacity-70">Aapka Anubhav / Opinion *</label>
+                        <label id="lbl-msg" class="text-[10px] opacity-70">Aapka Anubhav / Opinion *</label>
                         <textarea id="revMsg" rows="2" required class="custom-input" placeholder="Apna feedback yahan likhein..."></textarea>
                     </div>
-                    <button type="submit" class="w-full bg-amber-600 hover:bg-amber-700 text-white font-extrabold py-3 rounded-xl shadow transition">
+                    <button type="submit" id="btn-rev-sub" class="w-full bg-amber-600 hover:bg-amber-700 text-white font-extrabold py-3 rounded-xl shadow transition">
                         Submit Review
                     </button>
                 </form>
@@ -295,56 +304,151 @@
         <p id="footer-text">Divya Puja Sewa • Vedic Sanatan Sansthan Varanasi (Direct Booking Mode)</p>
     </footer>
 
-    <!-- Google Translate Script for Full Hindi Translation -->
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                includedLanguages: 'hi,en',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-            }, 'google_translate_element');
-        }
-    </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
     <script>
         const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzhLMwjmCuw0QGwZ3OBTyjyW1gEzU9Tdmsx8D8oodOVXVRbLypBHC6tVLIYPng9F-5h/exec";
         const TELEGRAM_BOT_TOKEN = "8989054970:AAG-NMCyPNoNhpnOwG1j_naEfNy4N0tYyN8";
         const TELEGRAM_CHAT_ID = "8814734919";
-        
         const ADMIN_WHATSAPP_1 = "919555674448";
         const ADMIN_WHATSAPP_2 = "919935179756";
 
-        function initRealTimeClock() {
+        // 7 Royal Professional Themes Color Palettes
+        const royalThemes = [
+            { name: "Royal Gold", primary: "#D4AF37", darkBg: "#0A0B10", lightBg: "#FDFBF7", darkCard: "#12141C", lightCard: "#FFFFFF", darkHeader: "rgba(10, 11, 16, 0.85)", lightHeader: "rgba(253, 251, 247, 0.9)", border: "#222638", lightBorder: "#E6DCCD" },
+            { name: "Mystic Sapphire", primary: "#3B82F6", darkBg: "#090D16", lightBg: "#F4F7FC", darkCard: "#111827", lightCard: "#FFFFFF", darkHeader: "rgba(9, 13, 22, 0.85)", lightHeader: "rgba(244, 247, 252, 0.9)", border: "#1F293D", lightBorder: "#D1DBE8" },
+            { name: "Emerald Divine", primary: "#10B981", darkBg: "#06130D", lightBg: "#F0FDF4", darkCard: "#0F2218", lightCard: "#FFFFFF", darkHeader: "rgba(6, 19, 13, 0.85)", lightHeader: "rgba(240, 253, 244, 0.9)", border: "#163826", lightBorder: "#C6EED4" },
+            { name: "Royal Crimson", primary: "#EF4444", darkBg: "#140808", lightBg: "#FEF2F2", darkCard: "#221010", lightCard: "#FFFFFF", darkHeader: "rgba(20, 8, 8, 0.85)", lightHeader: "rgba(254, 242, 242, 0.9)", border: "#3B1B1B", lightBorder: "#FCA5A5" },
+            { name: "Deep Amethyst", primary: "#A855F7", darkBg: "#110816", lightBg: "#FAF5FF", darkCard: "#1C1024", lightCard: "#FFFFFF", darkHeader: "rgba(17, 8, 22, 0.85)", lightHeader: "rgba(250, 245, 255, 0.9)", border: "#2E1A3D", lightBorder: "#E9D5FF" },
+            { name: "Imperial Bronze", primary: "#D97706", darkBg: "#140D05", lightBg: "#FFFBEB", darkCard: "#21160B", lightCard: "#FFFFFF", darkHeader: "rgba(20, 13, 5, 0.85)", lightHeader: "rgba(255, 251, 235, 0.9)", border: "#3A2612", lightBorder: "#FDE68A" },
+            { name: "Midnight Slate", primary: "#64748B", darkBg: "#090D16", lightBg: "#F8FAFC", darkCard: "#111C2E", lightCard: "#FFFFFF", darkHeader: "rgba(9, 13, 22, 0.85)", lightHeader: "rgba(248, 250, 252, 0.9)", border: "#1E293B", lightBorder: "#CBD5E1" }
+        ];
+
+        let currentLang = 'hi';
+        let isDarkMode = true;
+
+        const translations = {
+            hi: {
+                navPujas: "Pujas & Jaap", navContact: "Contact",
+                bookNow: "Book Now", themeLight: "☀️ Light", themeDark: "🌙 Dark",
+                marquee: "🛕 Sabhi prakar ki Puja evam Jaap ke liye niche diye gaye option par click karein. Bina payment ke seedha booking karein!",
+                heroTag: "VEDIC PUJAS • HAWANS • JAAP • KUNDALI",
+                heroHeading: 'Sacred rituals, performed with <span class="italic font-normal">pure devotion</span>',
+                heroDesc: "Book authentic Pujas, Hawans, Jaap and Kundali rituals at your home, led by learned pandits. Direct booking without payment.",
+                btnBookPuja: "Book a Puja ↗", btnExplore: "Explore All Pujas & Jaap",
+                secTitle1: "🌿 Sabhi Prakar ki Pujayein evam Jaap",
+                secDesc1: "Kisi bhi Puja ya Jaap par tap karein, detail apne aap bhar jayegi aur turant alert chala jayega:",
+                subTitle1: "1. Pramukh Pujayein", subTitle2: "2. Pramukh Jaap Anushthan",
+                consultTitle: "Pandit Ji se Samadhan Paye Tatkal",
+                consultDesc: "Apne man me uth rahe kisi bhi sawal ya samasya ke liye seedha baat karein.",
+                consultBtn: "Tatkal Sampark Karein",
+                revHeading: "Devotees Reviews & Opinions",
+                lblName: "Aapka Naam (Name) *", lblRating: "Rating *", lblState: "State (Rajya) *", lblCity: "City (Shehar) *", lblMsg: "Aapka Anubhav / Opinion *", btnRevSub: "Submit Review",
+                footer: "Divya Puja Sewa • Vedic Sanatan Sansthan Varanasi (Direct Booking Mode)"
+            },
+            en: {
+                navPujas: "Pujas & Chants", navContact: "Contact",
+                bookNow: "Book Now", themeLight: "☀️ Light", themeDark: "🌙 Dark",
+                marquee: "🛕 Click on options below for all types of Pujas & Chants. Direct booking with zero online payment!",
+                heroTag: "VEDIC RITUALS • HAWANS • MANTRAS • HOROSCOPE",
+                heroHeading: 'Sacred rituals, performed with <span class="italic font-normal">pure devotion</span>',
+                heroDesc: "Book authentic Pujas, Hawans, Chants and Astrology at your home, led by verified Vedic pandits instantly.",
+                btnBookPuja: "Book a Puja ↗", btnExplore: "Explore All Services",
+                secTitle1: "🌿 All Types of Pujas & Sacred Chants",
+                secDesc1: "Tap on any Puja or Chant to auto-fill details and trigger instant admin notification:",
+                subTitle1: "1. Major Pujas", subTitle2: "2. Major Chant Rituals",
+                consultTitle: "Instant Consultation with Pandit Ji",
+                consultDesc: "Get immediate spiritual guidance and answers for any life problems over phone.",
+                consultBtn: "Contact Instantly",
+                revHeading: "Devotees Reviews & Opinions",
+                lblName: "Your Name *", lblRating: "Rating *", lblState: "State *", lblCity: "City *", lblMsg: "Your Experience / Opinion *", btnRevSub: "Submit Review",
+                footer: "Divya Puja Sewa • Vedic Sanatan Sansthan Varanasi (Direct Booking Mode)"
+            }
+        };
+
+        function initPageSetup() {
+            // Randomly select one of the 7 Royal Themes on every refresh
+            const randomTheme = royalThemes[Math.floor(Math.random() * royalThemes.length)];
+            applyThemePalette(randomTheme, isDarkMode);
+
+            // Start Live Clock
             setInterval(() => {
                 const now = new Date();
-                const daysHi = ["रविवार (Sunday)", "सोमवार (Monday)", "मंगलवार (Tuesday)", "बुधवार (Wednesday)", "गुरुवार (Thursday)", "शुक्रवार (Friday)", "शनिवार (Saturday)"];
+                const daysHi = ["RAVIWAR (Sunday)", "SOMWAR (Monday)", "MANGALWAR (Tuesday)", "BUDHWAR (Wednesday)", "GURUWAR (Thursday)", "SHUKRAWAR (Friday)", "SHANIWAR (Saturday)"];
                 document.getElementById('dayDisplay').innerText = daysHi[now.getDay()];
                 document.getElementById('timeDisplay').innerText = now.toLocaleTimeString();
             }, 1000);
         }
 
-        function toggleHamburgerMenu() {
-            const dropdown = document.getElementById('hamburgerDropdown');
-            dropdown.classList.toggle('hidden');
+        function applyThemePalette(theme, dark) {
+            document.documentElement.style.setProperty('--theme-primary', theme.primary);
+            const body = document.body;
+            
+            if (dark) {
+                body.style.backgroundColor = theme.darkBg;
+                body.style.color = '#E2E8F0';
+                document.getElementById('headerBox').style.backgroundColor = theme.darkHeader;
+                document.getElementById('headerBox').style.borderColor = theme.border;
+            } else {
+                body.style.backgroundColor = theme.lightBg;
+                body.style.color = '#1A1A1A';
+                document.getElementById('headerBox').style.backgroundColor = theme.lightHeader;
+                document.getElementById('headerBox').style.borderColor = theme.lightBorder;
+            }
+
+            // Apply card and element styling dynamically
+            document.querySelectorAll('.custom-card').forEach(card => {
+                card.style.backgroundColor = dark ? theme.darkCard : theme.lightCard;
+                card.style.borderColor = dark ? theme.border : theme.lightBorder;
+                card.style.color = dark ? '#E2E8F0' : '#2C2C2C';
+            });
+
+            // Apply primary theme color to highlights
+            document.querySelectorAll('.text-amber-500, .text-amber-600').forEach(el => {
+                el.style.color = theme.primary;
+            });
+            document.querySelectorAll('.bg-amber-600').forEach(el => {
+                el.style.backgroundColor = theme.primary;
+            });
         }
 
-        function toggleTheme() {
-            const root = document.getElementById('htmlRoot');
-            const body = document.body;
-            const themeBtn = document.getElementById('themeBtn');
+        function toggleThemeMode() {
+            isDarkMode = !isDarkMode;
+            const themeBtn = document.getElementById('themeModeBtn');
+            themeBtn.innerText = isDarkMode ? '☀️ Light' : '🌙 Dark';
+            // Re-apply current random palette with toggled mode
+            const randomTheme = royalThemes[0]; // keeps active
+            applyThemePalette(randomTheme, isDarkMode);
+        }
 
-            if (body.classList.contains('dark')) {
-                body.classList.remove('dark');
-                body.classList.add('light');
-                root.classList.remove('dark');
-                themeBtn.innerText = '🌙 Dark';
-            } else {
-                body.classList.remove('light');
-                body.classList.add('dark');
-                root.classList.add('dark');
-                themeBtn.innerText = '☀️ Light';
-            }
+        function toggleHamburgerMenu() {
+            document.getElementById('hamburgerDropdown').classList.toggle('hidden');
+        }
+
+        function changeLanguage(lang) {
+            currentLang = lang;
+            const t = translations[currentLang];
+
+            document.getElementById('book-now-btn').innerText = t.bookNow;
+            document.getElementById('marquee-text').innerText = t.marquee;
+            document.getElementById('hero-tag').innerText = t.heroTag;
+            document.getElementById('hero-heading').innerHTML = t.heroHeading;
+            document.getElementById('hero-desc').innerText = t.heroDesc;
+            document.getElementById('btn-book-puja').innerHTML = t.btnBookPuja;
+            document.getElementById('btn-explore').innerText = t.btnExplore;
+            document.getElementById('sec-title-1').innerText = t.secTitle1;
+            document.getElementById('sec-desc-1').innerText = t.secDesc1;
+            document.getElementById('sub-title-1').innerText = t.subTitle1;
+            document.getElementById('sub-title-2').innerText = t.subTitle2;
+            document.getElementById('consult-title').innerText = t.consultTitle;
+            document.getElementById('consult-desc').innerText = t.consultDesc;
+            document.getElementById('consult-btn').innerText = t.consultBtn;
+            document.getElementById('rev-heading').innerText = t.revHeading;
+            document.getElementById('lbl-name').innerText = t.lblName;
+            document.getElementById('lbl-rating').innerText = t.lblRating;
+            document.getElementById('lbl-state').innerText = t.lblState;
+            document.getElementById('lbl-city').innerText = t.lblCity;
+            document.getElementById('lbl-msg').innerText = t.lblMsg;
+            document.getElementById('btn-rev-sub').innerText = t.btnRevSub;
+            document.getElementById('footer-text').innerText = t.footer;
         }
 
         function autoFillAndBook(serviceName) {
