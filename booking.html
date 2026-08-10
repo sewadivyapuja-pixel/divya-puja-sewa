@@ -137,6 +137,7 @@
     </div>
 
     <script>
+        // Naya Web App URL yahan set kar diya gaya hai
         const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxBTpQJKeo2u1RhlbIz8sWSZFJd3VHtby5_uRYgkKLvKz8AlaGXicycDr3yb72h2VvR/exec";
         const ADMIN_WHATSAPP = "918382909995";
 
@@ -209,7 +210,7 @@
                 window.location.href = 'index.html';
             }).catch(e => console.log(e));
 
-            // WhatsApp par ab Name, Mobile, Date, Address sabhi details jayengi
+            // WhatsApp par detailed alert bhejne ke liye
             const waMsg = `🛕 *NEW DETAILED BOOKING*%0A✨ *Seva:* ${pujaName}%0A👤 *Name:* ${payload.name}%0A📞 *Mobile:* ${payload.phone}%0A📅 *Date:* ${payload.date}%0A📍 *Address:* ${payload.address}%0A💬 *Sankalp:* ${payload.sankalp}`;
             window.open(`https://wa.me/${ADMIN_WHATSAPP}?text=${waMsg}`, '_blank');
         }
