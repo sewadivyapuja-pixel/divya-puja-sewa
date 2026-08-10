@@ -30,7 +30,7 @@
         }
     </script>
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; transition: background-color 0.5s ease, color 0.5s ease; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; transition: background-color 0.5s ease, color 0.5s ease; scroll-behavior: smooth; }
         .serif-title { font-family: 'Cinzel', serif; }
         .ultra-glow { box-shadow: 0 0 60px rgba(var(--theme-rgb), 0.15); }
         .hover-card-effect { transition: all 0.3s ease; }
@@ -49,9 +49,10 @@
                 <span>🔥</span> <span id="logo-text">Divya Puja Sewa</span>
             </a>
 
+            <!-- Working Navigation Links -->
             <nav class="hidden md:flex items-center gap-8 text-xs font-medium">
                 <a href="#all-pujas" id="nav-pujas" class="transition hover:opacity-75">Pujas & Jaap</a>
-                <a href="#" id="nav-contact" class="transition hover:opacity-75">Contact</a>
+                <a href="javascript:void(0);" onclick="openContactOptions()" id="nav-contact" class="transition hover:opacity-75">Contact</a>
             </nav>
 
             <div class="flex items-center gap-3">
@@ -112,7 +113,7 @@
         </div>
 
         <!-- ALL TYPES OF PUJAS & JAAP SECTION -->
-        <div id="allPujasCard" class="border rounded-2xl p-6 space-y-6 transition-colors duration-500">
+        <div id="all-pujas" class="border rounded-2xl p-6 space-y-6 transition-colors duration-500" style="background-color: var(--theme-card);">
             <div>
                 <h3 id="sec-title-1" class="serif-title text-base font-bold" style="color: var(--theme-color);">🌿 Sabhi Prakar ki Pujayein evam Jaap</h3>
                 <p id="sec-desc-1" class="text-xs mt-1 opacity-80">Kisi bhi Puja ya Jaap par tap karein, detail apne aap bhar jayegi aur turant alert chala jayega:</p>
@@ -144,7 +145,7 @@
         </div>
 
         <!-- PANDIT JI CONSULTATION BANNER -->
-        <div id="consultCard" class="border rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4 transition-colors duration-500" style="border-color: var(--theme-color);">
+        <div id="consultCard" class="border rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4 transition-colors duration-500" style="border-color: var(--theme-color); background-color: var(--theme-card);">
             <div class="space-y-1 text-center sm:text-left">
                 <span class="text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider" style="background-color: var(--theme-bg-trans); color: var(--theme-color);">Tatkal Samadhan</span>
                 <h3 id="consult-title" class="serif-title text-base font-bold mt-1" style="color: var(--theme-color);">Pandit Ji se Samadhan Paye Tatkal</h3>
@@ -162,7 +163,6 @@
     </footer>
 
     <script>
-        // Unlimited Multi-Color Professional Themes (Har refresh par ek naya vibrant professional color aayega)
         const professionalThemes = [
             { name: "Royal Gold", color: "#D4AF37", rgb: "212, 175, 55", bg: "#0B0D17", card: "#15192B", border: "#2A304D", text: "#E2E8F0" },
             { name: "Emerald Mystic", color: "#10B981", rgb: "16, 185, 129", bg: "#061A14", card: "#0E2921", border: "#1B4D3E", text: "#E2E8F0" },
@@ -180,6 +180,7 @@
             document.documentElement.style.setProperty('--theme-color', randomTheme.color);
             document.documentElement.style.setProperty('--theme-rgb', randomTheme.rgb);
             document.documentElement.style.setProperty('--theme-bg-trans', `rgba(${randomTheme.rgb}, 0.2)`);
+            document.documentElement.style.setProperty('--theme-card', randomTheme.card);
 
             const body = document.getElementById('mainBody');
             body.style.backgroundColor = randomTheme.bg;
@@ -192,8 +193,8 @@
             document.getElementById('marqueeCard').style.borderColor = randomTheme.border;
 
             document.getElementById('imageCard').style.backgroundColor = randomTheme.card;
-            document.getElementById('allPujasCard').style.backgroundColor = randomTheme.card;
-            document.getElementById('allPujasCard').style.borderColor = randomTheme.border;
+            document.getElementById('all-pujas').style.backgroundColor = randomTheme.card;
+            document.getElementById('all-pujas').style.borderColor = randomTheme.border;
 
             document.getElementById('consultCard').style.backgroundColor = randomTheme.card;
             document.getElementById('consultCard').style.borderColor = randomTheme.border;
@@ -210,9 +211,24 @@
         const TELEGRAM_BOT_TOKEN = "8989054970:AAG-NMCyPNoNhpnOwG1j_naEfNy4N0tYyN8";
         const TELEGRAM_CHAT_ID = "8814734919";
         
-        // Both WhatsApp Numbers added
         const ADMIN_WHATSAPP_1 = "919935179756";
         const ADMIN_WHATSAPP_2 = "918382909995";
+
+        // Contact Button Handler (Sends direct alert and opens both WhatsApp + Telegram link)
+        function openContactOptions() {
+            const contactMsg = "🚨 *DIRECT CONTACT / INQUIRY*%0A-----------------------------------%0A*Status:* User clicked on Contact button on website.";
+            
+            // Send Telegram Alert
+            fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: "🚨 DIRECT CONTACT CLICKED ON WEBSITE!" })
+            }).catch(e => console.log("Telegram Error:", e));
+
+            // Open Both WhatsApp Numbers
+            window.open(`https://wa.me/${ADMIN_WHATSAPP_1}?text=${contactMsg}`, '_blank');
+            window.open(`https://wa.me/${ADMIN_WHATSAPP_2}?text=${contactMsg}`, '_blank');
+        }
 
         let currentLang = 'hi';
 
@@ -281,7 +297,6 @@
 
             const telegramMsg = `🚨 NEW DIRECT ENQUIRY / BOOKING!\n-----------------------------------\n🛕 Seva / Jaap: ${serviceName}\n📍 Mode: Direct (No Payment Required)\n⏰ Status: Instant Alert`;
             
-            // Send to Telegram
             fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -290,9 +305,7 @@
 
             const waMsg = `🚨 *NEW DIRECT ENQUIRY / BOOKING*%0A-----------------------------------%0A*Seva / Jaap:* ${serviceName}%0A*Mode:* Direct (No Payment Required)%0A*Status:* Instant Alert`;
             
-            // Open WhatsApp 1
             window.open(`https://wa.me/${ADMIN_WHATSAPP_1}?text=${waMsg}`, '_blank');
-            // Open WhatsApp 2
             window.open(`https://wa.me/${ADMIN_WHATSAPP_2}?text=${waMsg}`, '_blank');
 
             window.location.href = 'booking.html';
