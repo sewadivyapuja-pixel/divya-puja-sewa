@@ -55,17 +55,54 @@
 </head>
 <body id="mainBody" class="min-h-screen flex flex-col justify-between">
 
+    <!-- ======================================================= -->
+    <!-- 🎵 BACKGROUND AUDIO CODE (SIRF 1 BAAR CHALEGA) -->
+    <!-- ======================================================= -->
+    <audio autoplay src="aapke_audio_ka_link_ya_path.mp3"></audio>
+    <!-- ======================================================= -->
+
     <!-- 1. EKDAM TOP PAR LIVE DATE & TIME -->
     <div id="live-datetime" class="w-full bg-[#1c2541] text-amber-300 text-center py-2 text-xs font-bold border-b border-[#222638] tracking-wide">
         <span id="datetime-display"></span>
     </div>
 
-    <!-- TOP HEADER NAVBAR WITH THEME SELECTOR -->
+    <!-- TOP HEADER NAVBAR WITH 3-LINE MENU & THEME SELECTOR -->
     <header id="headerBox" class="w-full border-b border-[#222638] bg-[#0A0B10]/90 backdrop-blur-md sticky top-0 z-50 px-6 py-4">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
-            <a href="#" class="flex items-center gap-2 font-serif font-bold text-base tracking-wide" style="color: var(--theme-color, #D4AF37);">
-                <span>🔥</span> <span id="nav-logo-text">Divya Puja Sewa</span>
-            </a>
+            <div class="flex items-center gap-4">
+                <!-- 3-Line Hamburger Menu Button -->
+                <div class="relative">
+                    <button onclick="toggleHamburgerMenu()" class="text-amber-400 text-xl p-1 rounded-lg border border-[#222638] bg-[#12141C] focus:outline-none hover:border-amber-400 transition flex items-center justify-center w-9 h-9">
+                        ☰
+                    </button>
+                    <!-- Dropdown Content for 3-Line Menu containing all Pujas & Shortcuts -->
+                    <div id="hamburgerDropdown" class="hidden absolute left-0 mt-2 w-72 bg-[#12141C] border border-[#222638] rounded-2xl shadow-2xl p-4 z-50 text-xs space-y-3 max-h-96 overflow-y-auto">
+                        <div class="font-bold border-b border-[#222638] pb-2 text-amber-400">🔥 Quick Puja & Jaap Shortcuts</div>
+                        <div class="space-y-1.5">
+                            <p class="text-[10px] uppercase font-semibold text-gray-400">Pramukh Pujayein</p>
+                            <a href="#all-pujas" onclick="toggleHamburgerMenu(); autoFillAndBook('Rudrabhishek Puja')" class="block p-2 rounded hover:bg-[#0A0B10] transition">🕉️ Rudrabhishek Puja</a>
+                            <a href="#all-pujas" onclick="toggleHamburgerMenu(); autoFillAndBook('Hawan & Yagya')" class="block p-2 rounded hover:bg-[#0A0B10] transition">🔥 Hawan & Yagya</a>
+                            <a href="#all-pujas" onclick="toggleHamburgerMenu(); autoFillAndBook('Satyanarayan Katha')" class="block p-2 rounded hover:bg-[#0A0B10] transition">✨ Satyanarayan Katha</a>
+                            <a href="#all-pujas" onclick="toggleHamburgerMenu(); autoFillAndBook('Navgrah Shanti Puja')" class="block p-2 rounded hover:bg-[#0A0B10] transition">🪐 Navgrah Shanti</a>
+                            <a href="#all-pujas" onclick="toggleHamburgerMenu(); autoFillAndBook('Vivah Sanskar (Shadi)')" class="block p-2 rounded hover:bg-[#0A0B10] transition">🛕 Vivah Sanskar (Shadi)</a>
+                            <a href="#all-pujas" onclick="toggleHamburgerMenu(); autoFillAndBook('Maha Lakshmi Puja')" class="block p-2 rounded hover:bg-[#0A0B10] transition">🪷 Maha Lakshmi Puja</a>
+                            <a href="#all-pujas" onclick="toggleHamburgerMenu(); autoFillAndBook('Mandan & Janeu Sanskar')" class="block p-2 rounded hover:bg-[#0A0B10] transition">✂️ Mundan / Janeu</a>
+                            <a href="#all-pujas" onclick="toggleHamburgerMenu(); autoFillAndBook('Kundali Milan & Vichar')" class="block p-2 rounded hover:bg-[#0A0B10] transition">📜 Kundali Vichar</a>
+                        </div>
+                        <div class="space-y-1.5 pt-2 border-t border-[#222638]">
+                            <p class="text-[10px] uppercase font-semibold text-gray-400">Jaap Anushthan</p>
+                            <a href="#all-pujas" onclick="toggleHamburgerMenu(); autoFillAndBook('Maha Mrityunjaya Jaap')" class="block p-2 rounded hover:bg-[#0A0B10] transition">📿 Maha Mrityunjaya Jaap</a>
+                            <a href="#all-pujas" onclick="toggleHamburgerMenu(); autoFillAndBook('Gayatri Mantra Jaap')" class="block p-2 rounded hover:bg-[#0A0B10] transition">📿 Gayatri Mantra Jaap</a>
+                            <a href="#all-pujas" onclick="toggleHamburgerMenu(); autoFillAndBook('Mahamrityunjaya Anushthan')" class="block p-2 rounded hover:bg-[#0A0B10] transition">🕉️ Mrityunjaya Anushthan</a>
+                            <a href="#all-pujas" onclick="toggleHamburgerMenu(); autoFillAndBook('Baglamukhi Anushthan')" class="block p-2 rounded hover:bg-[#0A0B10] transition">⚔️ Baglamukhi Jaap</a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#" class="flex items-center gap-2 font-serif font-bold text-base tracking-wide" style="color: var(--theme-color, #D4AF37);">
+                    <span>🔥</span> <span id="nav-logo-text">Divya Puja Sewa</span>
+                </a>
+            </div>
 
             <nav class="hidden md:flex items-center gap-6 text-xs font-medium text-gray-300">
                 <a href="#all-pujas" id="nav-pujas" class="hover:opacity-80 transition">Pujas & Jaap</a>
@@ -127,10 +164,10 @@
                     </div>
                 </div>
 
-                <!-- MOVING NOTIFICATION BAR (MARQUEE) RIGHT BELOW SHRI KRISHNA IMAGE -->
+                <!-- LEFT ALIGNED MOVING NOTIFICATION BAR (MARQUEE) -->
                 <div class="w-full mt-4">
-                    <div class="theme-card border border-[#222638] rounded-xl py-2 px-3 overflow-hidden whitespace-nowrap bg-[#12141C]">
-                        <marquee id="marquee-text" behavior="scroll" direction="left" scrollamount="5" class="text-xs font-semibold text-amber-400">
+                    <div class="theme-card border border-[#222638] rounded-xl py-2 px-3 overflow-hidden bg-[#12141C]">
+                        <marquee id="marquee-text" behavior="scroll" direction="left" scrollamount="5" class="text-xs font-semibold text-amber-400 text-left">
                             🛕 Sabhi prakar ki Puja evam Jaap ke liye niche diye gaye option par click karein. Bina payment ke seedha booking karein! All India Pandit Seva Available.
                         </marquee>
                     </div>
@@ -171,7 +208,7 @@
             </div>
         </div>
 
-        <!-- WHATSAPP INSTANT CHAT BANNER RIGHT ABOVE TATKAL SAMADHAN -->
+        <!-- WHATSAPP INSTANT CHAT BANNER -->
         <div class="border rounded-2xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4 bg-gradient-to-r from-emerald-950/50 via-[#12141C] to-[#12141C] border-emerald-500/40 shadow-xl">
             <div class="flex items-center gap-4 text-center sm:text-left">
                 <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 flex items-center justify-center text-emerald-400 text-2xl shrink-0">
@@ -186,6 +223,27 @@
             <button onclick="openWhatsAppChat()" id="wa-btn-text" class="bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs px-6 py-3 rounded-xl shadow-lg transition whitespace-nowrap transform hover:scale-105 flex items-center gap-2">
                 <span>💬</span> Chat on WhatsApp Now
             </button>
+        </div>
+
+        <!-- 3 SECONDS AUTO-CHANGING POSTS / CAROUSEL SECTION (VIDEO & IMAGE) -->
+        <div class="border border-amber-500/30 rounded-2xl p-6 bg-[#12141C] shadow-2xl space-y-4">
+            <div class="flex items-center justify-between">
+                <div>
+                    <span class="text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider bg-amber-500/20 text-amber-400">Live Posts & Media</span>
+                    <h3 class="serif-title text-base font-bold mt-1 text-amber-400">✨ Divya Anushthan & Darshan Updates</h3>
+                </div>
+                <div class="flex gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+                    <span class="text-[10px] text-gray-400">Auto-changes every 3s</span>
+                </div>
+            </div>
+
+            <!-- Carousel Frame -->
+            <div class="relative w-full h-64 sm:h-80 rounded-xl overflow-hidden border border-[#222638] bg-black">
+                <div id="carouselContainer" class="w-full h-full relative">
+                    <!-- Slides will be injected dynamically via JavaScript -->
+                </div>
+            </div>
         </div>
 
         <!-- PANDIT JI CONSULTATION BANNER (TATKAL SAMADHAN) -->
@@ -208,7 +266,7 @@
                 <p id="contact-sub-desc" class="text-xs md:text-sm opacity-80">Our team of learned pandits is happy to guide you through the right ritual, muhurat and samagri for any occasion across All India.</p>
             </div>
 
-            <!-- Contact Info Details with State & All India Location Filter Hierarchy -->
+            <!-- Contact Info Details -->
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 text-xs font-medium">
                 <div class="space-y-1">
                     <p id="info-helpline" class="text-[10px] uppercase font-bold tracking-wider" style="color: var(--theme-color, #D4AF37);">Helpline Numbers</p>
@@ -297,7 +355,7 @@
                 </div>
             </div>
 
-            <!-- Write a Review Form with Separate Fields for Name, State, City, Rating & Opinion -->
+            <!-- Write a Review Form -->
             <div class="border-t border-[#222638] pt-6 max-w-xl mx-auto space-y-4">
                 <h3 id="rev-form-title" class="serif-title text-sm font-bold text-center" style="color: var(--theme-color, #D4AF37);">Apna Review / Opinion Alag-Alag Fields me Likhein</h3>
                 <form id="reviewForm" onsubmit="submitUserReview(event)" class="space-y-4 text-xs">
@@ -372,6 +430,90 @@
             body.style.color = t.text;
         }
 
+        function toggleHamburgerMenu() {
+            const dropdown = document.getElementById('hamburgerDropdown');
+            dropdown.classList.toggle('hidden');
+        }
+
+        // CAROUSEL POSTS DATA (Supports both Image and Video URLs)
+        const carouselPosts = [
+            {
+                type: "image",
+                url: "https://images.unsplash.com/photo-1609825488882-3a691c33ac0d?q=80&w=1000&auto=format&fit=crop",
+                title: "Rudrabhishek & Maha Mrityunjaya Anushthan",
+                desc: "Book direct Vedic rituals at your home with experienced pandits."
+            },
+            {
+                type: "video",
+                url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+                title: "Live Hawan & Yagya Darshan",
+                desc: "Witness pure sacred fire rituals performed with authentic mantras."
+            },
+            {
+                type: "image",
+                url: "https://images.unsplash.com/photo-1590073844006-33379778ae09?q=80&w=1000&auto=format&fit=crop",
+                title: "Satyanarayan Katha & Puja",
+                desc: "Invite prosperity and peace into your home."
+            },
+            {
+                type: "video",
+                url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+                title: "Special Vedic Mantra Jaap Anushthan",
+                desc: "Dedicated chanting for health, wealth and spiritual harmony."
+            }
+        ];
+
+        let currentSlideIndex = 0;
+
+        function initCarousel() {
+            const container = document.getElementById('carouselContainer');
+            container.innerHTML = '';
+
+            carouselPosts.forEach((post, index) => {
+                const slide = document.createElement('div');
+                slide.className = `absolute inset-0 w-full h-full transition-opacity duration-700 ease-in-out ${index === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0'}`;
+                slide.setAttribute('data-slide-index', index);
+
+                let mediaElement = '';
+                if (post.type === 'video') {
+                    mediaElement = `<video src="${post.url}" class="w-full h-full object-cover" autoplay muted loop playsinline></video>`;
+                } else {
+                    mediaElement = `<img src="${post.url}" alt="${post.title}" class="w-full h-full object-cover">`;
+                }
+
+                slide.innerHTML = `
+                    <div class="relative w-full h-full">
+                        ${mediaElement}
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 right-4 z-20 space-y-1">
+                            <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-amber-500 text-black uppercase">${post.type.toUpperCase()}</span>
+                            <h4 class="serif-title text-sm md:text-base font-bold text-white">${post.title}</h4>
+                            <p class="text-xs text-gray-300">${post.desc}</p>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(slide);
+            });
+
+            // Start 3 second interval
+            setInterval(nextSlide, 3000);
+        }
+
+        function nextSlide() {
+            const slides = document.querySelectorAll('#carouselContainer > div');
+            if (slides.length === 0) return;
+
+            slides[currentSlideIndex].classList.remove('opacity-100', 'z-10');
+            slides[currentSlideIndex].classList.add('opacity-0', 'z-0');
+
+            currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+
+            slides[currentSlideIndex].classList.remove('opacity-0', 'z-0');
+            slides[currentSlideIndex].classList.add('opacity-100', 'z-10');
+        }
+
+        window.addEventListener('DOMContentLoaded', initCarousel);
+
         const TELEGRAM_BOT_TOKEN = "8989054970:AAG-NMCyPNoNhpnOwG1j_naEfNy4N0tYyN8";
         const TELEGRAM_CHAT_ID = "8814734919";
         const ADMIN_WHATSAPP = "918382909995";
@@ -422,7 +564,6 @@
             const phone = document.getElementById('cPhone').value;
             const state = document.getElementById('cState').value;
             const city = document.getElementById('cCity').value;
-            const email = 'sewadivyapuja@gmail.com';
             const message = document.getElementById('cMessage').value;
 
             const telegramMsg = `📩 NEW WEBSITE ENQUIRY!\n-----------------------------------\n👤 Name: ${name}\n📞 Phone: ${phone}\n📍 Location: ${city}, ${state}\n💬 Message: ${message}`;
