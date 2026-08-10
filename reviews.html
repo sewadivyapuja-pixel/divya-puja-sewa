@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="hi" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews - Divya Puja Sewa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0A0B10; color: #E2E8F0; }
+        .serif-title { font-family: 'Cinzel', serif; }
+        .custom-input {
+            background: #12141C;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 12px 14px;
+            color: #ffffff;
+            outline: none;
+            width: 100%;
+            font-size: 14px;
+        }
+        .custom-input:focus { border-color: #D4AF37; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between p-6">
+    <div class="max-w-xl mx-auto w-full bg-[#12141C] border border-[#222638] rounded-3xl p-8 shadow-2xl space-y-6 my-auto">
+        <div class="text-center space-y-2">
+            <a href="index.html" class="text-xs text-amber-400 hover:underline">← Home Page par wapas jayein</a>
+            <h2 class="serif-title text-2xl font-bold text-amber-400">Share Your Experience</h2>
+            <p class="text-xs text-gray-400">Apna anubhav hamare sath share karein</p>
+        </div>
+
+        <form id="reviewForm" onsubmit="submitReview(event)" class="space-y-4 text-xs">
+            <div>
+                <label class="text-[11px] opacity-70">Full Name *</label>
+                <input type="text" id="rName" required class="custom-input" placeholder="Aapka naam">
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="text-[11px] opacity-70">Rating (1 to 5 Stars) *</label>
+                    <select id="rRating" required class="custom-input">
+                        <option value="⭐⭐⭐⭐⭐ (5/5)">⭐⭐⭐⭐⭐ (5/5)</option>
+                        <option value="⭐⭐⭐⭐ (4/5)">⭐⭐⭐⭐ (4/5)</option>
+                        <option value="⭐⭐⭐ (3/5)">⭐⭐⭐ (3/5)</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="text-[11px] opacity-70">State *</label>
+                    <input type="text" id="rState" required class="custom-input" placeholder="State">
+                </div>
+            </div>
+            <div>
+                <label class="text-[11px] opacity-70">City *</label>
+                <input type="text" id="rCity" required class="custom-input" placeholder="City">
+            </div>
+            <div>
+                <label class="text-[11px] opacity-70">Your Review / Message *</label>
+                <textarea id="rMsg" rows="3" required class="custom-input" placeholder="Apna feedback yahan likhein..."></textarea>
+            </div>
+            <button type="submit" class="w-full text-black font-extrabold py-3.5 rounded-xl bg-[#D4AF37] hover:scale-105 transition">
+                Submit Review
+            </button>
+        </form>
+    </div>
+
+    <script>
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxBTpQJKeo2u1RhlbIz8sWSZFJd3VHtby5_uRYgkKLvKz8AlaGXicycDr3yb72h2VvR/exec";
+
+        function submitReview(event) {
+            event.preventDefault();
+            const payload = {
+                type: "review",
+                name: document.getElementById('rName').value,
+                rating: document.getElementById('rRating').value,
+                state: document.getElementById('rState').value,
+                city: document.getElementById('rCity').value,
+                msg: document.getElementById('rMsg').value
+            };
+
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            }).then(() => {
+                alert('Aapka review safaltapurvak submit ho gaya hai!');
+                window.location.href = 'index.html';
+            }).catch(e => console.log(e));
+        }
+    </script>
+</body>
+</html>
