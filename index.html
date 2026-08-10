@@ -30,13 +30,12 @@
         }
     </script>
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0A0B10; color: #E2E8F0; scroll-behavior: smooth; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--theme-bg, #0A0B10); color: var(--theme-text, #E2E8F0); transition: background-color 0.4s, color 0.4s; scroll-behavior: smooth; }
         .serif-title { font-family: 'Cinzel', serif; }
-        .ultra-glow { box-shadow: 0 0 60px rgba(212, 175, 55, 0.08); }
+        .ultra-glow { box-shadow: 0 0 50px rgba(212, 175, 55, 0.1); }
         .hover-card-effect { transition: all 0.3s ease; }
         .hover-card-effect:hover {
-            border-color: #D4AF37;
-            background-color: rgba(212, 175, 55, 0.05);
+            border-color: var(--theme-color, #D4AF37);
             transform: translateY(-2px);
         }
         .custom-input {
@@ -45,43 +44,54 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 0;
             padding: 10px 0;
-            color: #E2E8F0;
+            color: inherit;
             outline: none;
             width: 100%;
             font-size: 14px;
             transition: border-color 0.3s;
         }
-        .custom-input:focus { border-bottom-color: #D4AF37; }
+        .custom-input:focus { border-bottom-color: var(--theme-color, #D4AF37); }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between">
+<body id="mainBody" class="min-h-screen flex flex-col justify-between">
 
-    <!-- TOP HEADER NAVBAR -->
-    <header class="w-full border-b border-[#222638] bg-[#0A0B10]/90 backdrop-blur-md sticky top-0 z-50 px-6 py-4">
+    <!-- TOP HEADER NAVBAR WITH THEME SELECTOR -->
+    <header id="headerBox" class="w-full border-b border-[#222638] bg-[#0A0B10]/90 backdrop-blur-md sticky top-0 z-50 px-6 py-4">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
-            <a href="#" class="flex items-center gap-2 text-amber-500 font-serif font-bold text-base tracking-wide">
+            <a href="#" class="flex items-center gap-2 font-serif font-bold text-base tracking-wide" style="color: var(--theme-color, #D4AF37);">
                 <span>🔥</span> Divya Puja Sewa
             </a>
 
-            <nav class="hidden md:flex items-center gap-8 text-xs font-medium text-gray-300">
-                <a href="#all-pujas" class="hover:text-amber-400 transition">Pujas & Jaap</a>
-                <a href="#reviews-section" class="hover:text-amber-400 transition">Reviews</a>
-                <a href="#contact-section" class="hover:text-amber-400 transition">Contact</a>
+            <nav class="hidden md:flex items-center gap-6 text-xs font-medium text-gray-300">
+                <a href="#all-pujas" class="hover:opacity-80 transition">Pujas & Jaap</a>
+                <a href="#reviews-section" class="hover:opacity-80 transition">Reviews</a>
+                <a href="#contact-section" class="hover:opacity-80 transition">Contact</a>
             </nav>
 
             <div class="flex items-center gap-3">
+                <!-- Professional 7-Color Theme Selector Dropdown -->
+                <select id="themeSelector" onchange="changeTheme(this.value)" class="text-xs bg-[#12141C] border border-[#222638] px-2.5 py-2 rounded-xl text-gray-300 outline-none cursor-pointer">
+                    <option value="0">🌙 Midnight Navy (Dark)</option>
+                    <option value="1">⬛ Slate Charcoal</option>
+                    <option value="2">🌲 Deep Forest Green</option>
+                    <option value="3">🍷 Classic Burgundy</option>
+                    <option value="4">🟤 Warm Taupe</option>
+                    <option value="5">🔵 Soft Ice Blue</option>
+                    <option value="6">⚪ Pearl White (Light)</option>
+                </select>
+
                 <button onclick="toggleLanguage()" id="langBtn" class="text-xs border border-amber-500/40 text-amber-400 px-3 py-2 rounded-xl transition font-semibold">
                     हिंदी
                 </button>
-                <a href="booking.html" class="bg-amber-600 hover:bg-amber-700 text-white text-xs font-semibold px-4 py-2 rounded-xl transition shadow-lg">Book Now</a>
+                <a href="booking.html" class="bg-amber-600 hover:bg-amber-700 text-white text-xs font-semibold px-4 py-2 rounded-xl transition shadow-lg" style="background-color: var(--theme-color, #D4AF37);">Book Now</a>
             </div>
         </div>
     </header>
 
     <!-- MOVING NOTIFICATION BAR (MARQUEE) -->
     <div class="max-w-6xl mx-auto w-full px-6 mt-6">
-        <div class="bg-[#12141C] border border-[#222638] rounded-xl py-2 px-3 overflow-hidden whitespace-nowrap">
-            <marquee id="marquee-text" behavior="scroll" direction="left" scrollamount="5" class="text-xs text-amber-400 font-semibold">
+        <div class="theme-card border border-[#222638] rounded-xl py-2 px-3 overflow-hidden whitespace-nowrap bg-[#12141C]">
+            <marquee id="marquee-text" behavior="scroll" direction="left" scrollamount="5" class="text-xs font-semibold text-amber-400">
                 🛕 Sabhi prakar ki Puja evam Jaap ke liye niche diye gaye option par click karein. Bina payment ke seedha booking karein!
             </marquee>
         </div>
@@ -93,21 +103,21 @@
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
             <div class="lg:col-span-7 space-y-6 text-left">
-                <p id="hero-tag" class="text-[11px] tracking-widest text-amber-500 font-semibold uppercase font-serif">VEDIC PUJAS • HAWANS • JAAP • KUNDALI</p>
+                <p id="hero-tag" class="text-[11px] tracking-widest font-semibold uppercase font-serif" style="color: var(--theme-color, #D4AF37);">VEDIC PUJAS • HAWANS • JAAP • KUNDALI</p>
                 
-                <h1 id="hero-heading" class="serif-title text-4xl md:text-5xl lg:text-6xl font-bold text-gray-100 leading-[1.1]">
-                    Sacred rituals, performed with <span class="italic font-normal text-amber-500">pure devotion</span>
+                <h1 id="hero-heading" class="serif-title text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1]">
+                    Sacred rituals, performed with <span class="italic font-normal" style="color: var(--theme-color, #D4AF37);">pure devotion</span>
                 </h1>
 
-                <p id="hero-desc" class="text-xs md:text-sm text-gray-400 font-light leading-relaxed">
+                <p id="hero-desc" class="text-xs md:text-sm font-light leading-relaxed opacity-85">
                     Book authentic Pujas, Hawans, Jaap and Kundali rituals at your home, led by learned pandits. Direct booking without payment.
                 </p>
 
                 <div class="flex flex-wrap items-center gap-4 pt-2">
-                    <a href="booking.html" id="btn-book-puja" class="bg-amber-600 hover:bg-amber-700 text-white font-medium text-xs px-6 py-3.5 rounded-xl transition shadow-lg flex items-center gap-2">
+                    <a href="booking.html" id="btn-book-puja" class="text-white font-medium text-xs px-6 py-3.5 rounded-xl transition shadow-lg flex items-center gap-2" style="background-color: var(--theme-color, #D4AF37);">
                         Book a Puja <span>↗</span>
                     </a>
-                    <a href="#all-pujas" id="btn-explore" class="border border-[#222638] hover:border-amber-500 text-gray-300 font-medium text-xs px-6 py-3.5 rounded-xl transition">
+                    <a href="#all-pujas" id="btn-explore" class="border border-[#222638] font-medium text-xs px-6 py-3.5 rounded-xl transition">
                         Explore All Pujas & Jaap
                     </a>
                 </div>
@@ -115,10 +125,10 @@
 
             <div class="lg:col-span-5 flex justify-center">
                 <div class="relative w-full max-w-xs md:max-w-sm rounded-t-[140px] overflow-hidden border border-[#222638] bg-[#12141C] shadow-2xl ultra-glow">
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#0A0B10] via-transparent to-transparent z-10"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10"></div>
                     <img src="https://images.unsplash.com/photo-1609825488882-3a691c33ac0d?q=80&w=1000&auto=format&fit=crop" alt="Lord Krishna Statue" class="w-full h-[420px] object-cover object-top opacity-90 hover:scale-105 transition duration-700">
                     <div class="absolute bottom-6 left-0 right-0 z-20 text-center">
-                        <span class="serif-title text-xs text-amber-400 tracking-wider font-bold">जय श्री कृष्ण</span>
+                        <span class="serif-title text-xs tracking-wider font-bold" style="color: var(--theme-color, #D4AF37);">जय श्री कृष्ण</span>
                     </div>
                 </div>
             </div>
@@ -126,127 +136,146 @@
         </div>
 
         <!-- ALL TYPES OF PUJAS & JAAP SECTION -->
-        <div id="all-pujas" class="bg-[#12141C] border border-[#222638] rounded-2xl p-6 space-y-6">
+        <div id="all-pujas" class="theme-card border border-[#222638] rounded-2xl p-6 space-y-6 bg-[#12141C]">
             <div>
-                <h3 id="sec-title-1" class="serif-title text-base font-bold text-amber-500">🌿 Sabhi Prakar ki Pujayein evam Jaap</h3>
-                <p id="sec-desc-1" class="text-xs text-gray-400 mt-1">Kisi bhi Puja ya Jaap par tap karein, detail apne aap bhar jayegi aur turant alert chala jayega:</p>
+                <h3 id="sec-title-1" class="serif-title text-base font-bold" style="color: var(--theme-color, #D4AF37);">🌿 Sabhi Prakar ki Pujayein evam Jaap</h3>
+                <p id="sec-desc-1" class="text-xs opacity-80 mt-1">Kisi bhi Puja ya Jaap par tap karein, detail apne aap bhar jayegi aur turant alert chala jayega:</p>
             </div>
 
             <div class="space-y-3">
-                <span id="sub-title-1" class="text-[11px] font-bold text-amber-500 uppercase tracking-wider block">1. Pramukh Pujayein</span>
+                <span id="sub-title-1" class="text-[11px] font-bold uppercase tracking-wider block" style="color: var(--theme-color, #D4AF37);">1. Pramukh Pujayein</span>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
-                    <div onclick="autoFillAndBook('Rudrabhishek Puja')" class="bg-[#0A0B10] p-3 rounded-xl border border-[#222638] text-gray-300 flex items-center gap-2 hover-card-effect cursor-pointer"><span>🕉️</span> Rudrabhishek Puja</div>
-                    <div onclick="autoFillAndBook('Hawan & Yagya')" class="bg-[#0A0B10] p-3 rounded-xl border border-[#222638] text-gray-300 flex items-center gap-2 hover-card-effect cursor-pointer"><span>🔥</span> Hawan & Yagya</div>
-                    <div onclick="autoFillAndBook('Satyanarayan Katha')" class="bg-[#0A0B10] p-3 rounded-xl border border-[#222638] text-gray-300 flex items-center gap-2 hover-card-effect cursor-pointer"><span>✨</span> Satyanarayan Katha</div>
-                    <div onclick="autoFillAndBook('Navgrah Shanti Puja')" class="bg-[#0A0B10] p-3 rounded-xl border border-[#222638] text-gray-300 flex items-center gap-2 hover-card-effect cursor-pointer"><span>🪐</span> Navgrah Shanti</div>
-                    <div onclick="autoFillAndBook('Vivah Sanskar (Shadi)')" class="bg-[#0A0B10] p-3 rounded-xl border border-[#222638] text-gray-300 flex items-center gap-2 hover-card-effect cursor-pointer"><span>🛕</span> Vivah Sanskar (Shadi)</div>
-                    <div onclick="autoFillAndBook('Maha Lakshmi Puja')" class="bg-[#0A0B10] p-3 rounded-xl border border-[#222638] text-gray-300 flex items-center gap-2 hover-card-effect cursor-pointer"><span>🪷</span> Maha Lakshmi Puja</div>
-                    <div onclick="autoFillAndBook('Mandan & Janeu Sanskar')" class="bg-[#0A0B10] p-3 rounded-xl border border-[#222638] text-gray-300 flex items-center gap-2 hover-card-effect cursor-pointer"><span>✂️</span> Mundan / Janeu</div>
-                    <div onclick="autoFillAndBook('Kundali Milan & Vichar')" class="bg-[#0A0B10] p-3 rounded-xl border border-[#222638] text-gray-300 flex items-center gap-2 hover-card-effect cursor-pointer"><span>📜</span> Kundali Vichar</div>
+                    <div onclick="autoFillAndBook('Rudrabhishek Puja')" class="bg-[#0A0B10] p-3 rounded-xl border border-[#222638] flex items-center gap-2 hover-card-effect cursor-pointer"><span>🕉️</span> Rudrabhishek Puja</div>
+                    <div onclick="autoFillAndBook('Hawan & Yagya')" class="bg-[#0A0B10] p-3 rounded-xl border border-[#222638] flex items-center gap-2 hover-card-effect cursor-pointer"><span>🔥</span> Hawan & Yagya</div>
+                    <div onclick="autoFillAndBook('Satyanarayan Katha')" class="bg-[#0A0B10] p-3 rounded-xl border border-[#222638] flex items-center gap-2 hover-card-effect cursor-pointer"><span>✨</span> Satyanarayan Katha</div>
+                    <div onclick="autoFillAndBook('Navgrah Shanti Puja')" class="bg-[#0A0B10] p-3 rounded-xl border border-[#222638] flex items-center gap-2 hover-card-effect cursor-pointer"><span>🪐</span> Navgrah Shanti</div>
+                    <div onclick="autoFillAndBook('Vivah Sanskar (Shadi)')" class="bg-[#0A0B10] p-3 rounded-xl border border-[#222638] flex items-center gap-2 hover-card-effect cursor-pointer"><span>🛕</span> Vivah Sanskar (Shadi)</div>
+                    <div onclick="autoFillAndBook('Maha Lakshmi Puja')" class="bg-[#0A0B10] p-3 rounded-xl border border-[#222638] flex items-center gap-2 hover-card-effect cursor-pointer"><span>🪷</span> Maha Lakshmi Puja</div>
+                    <div onclick="autoFillAndBook('Mandan & Janeu Sanskar')" class="bg-[#0A0B10] p-3 rounded-xl border border-[#222638] flex items-center gap-2 hover-card-effect cursor-pointer"><span>✂️</span> Mundan / Janeu</div>
+                    <div onclick="autoFillAndBook('Kundali Milan & Vichar')" class="bg-[#0A0B10] p-3 rounded-xl border border-[#222638] flex items-center gap-2 hover-card-effect cursor-pointer"><span>📜</span> Kundali Vichar</div>
                 </div>
             </div>
 
             <div class="space-y-3 pt-3 border-t border-[#222638]">
-                <span id="sub-title-2" class="text-[11px] font-bold text-amber-500 uppercase tracking-wider block">2. Pramukh Jaap Anushthan</span>
+                <span id="sub-title-2" class="text-[11px] font-bold uppercase tracking-wider block" style="color: var(--theme-color, #D4AF37);">2. Pramukh Jaap Anushthan</span>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
-                    <div onclick="autoFillAndBook('Maha Mrityunjaya Jaap')" class="bg-[#0A0B10] p-3 rounded-xl border border-[#222638] text-gray-300 flex items-center gap-2 hover-card-effect cursor-pointer"><span>📿</span> Maha Mrityunjaya Jaap</div>
-                    <div onclick="autoFillAndBook('Gayatri Mantra Jaap')" class="bg-[#0A0B10] p-3 rounded-xl border border-[#222638] text-gray-300 flex items-center gap-2 hover-card-effect cursor-pointer"><span>📿</span> Gayatri Mantra Jaap</div>
-                    <div onclick="autoFillAndBook('Mahamrityunjaya Anushthan')" class="bg-[#0A0B10] p-3 rounded-xl border border-[#222638] text-gray-300 flex items-center gap-2 hover-card-effect cursor-pointer"><span>🕉️</span> Mrityunjaya Anushthan</div>
-                    <div onclick="autoFillAndBook('Baglamukhi Anushthan')" class="bg-[#0A0B10] p-3 rounded-xl border border-[#222638] text-gray-300 flex items-center gap-2 hover-card-effect cursor-pointer"><span>⚔️</span> Baglamukhi Jaap</div>
+                    <div onclick="autoFillAndBook('Maha Mrityunjaya Jaap')" class="bg-[#0A0B10] p-3 rounded-xl border border-[#222638] flex items-center gap-2 hover-card-effect cursor-pointer"><span>📿</span> Maha Mrityunjaya Jaap</div>
+                    <div onclick="autoFillAndBook('Gayatri Mantra Jaap')" class="bg-[#0A0B10] p-3 rounded-xl border border-[#222638] flex items-center gap-2 hover-card-effect cursor-pointer"><span>📿</span> Gayatri Mantra Jaap</div>
+                    <div onclick="autoFillAndBook('Mahamrityunjaya Anushthan')" class="bg-[#0A0B10] p-3 rounded-xl border border-[#222638] flex items-center gap-2 hover-card-effect cursor-pointer"><span>🕉️</span> Mrityunjaya Anushthan</div>
+                    <div onclick="autoFillAndBook('Baglamukhi Anushthan')" class="bg-[#0A0B10] p-3 rounded-xl border border-[#222638] flex items-center gap-2 hover-card-effect cursor-pointer"><span>⚔️</span> Baglamukhi Jaap</div>
                 </div>
             </div>
         </div>
 
         <!-- PANDIT JI CONSULTATION BANNER -->
-        <div class="bg-gradient-to-r from-amber-950/40 to-[#12141C] border border-amber-500/30 rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="border border-amber-500/30 rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#12141C]">
             <div class="space-y-1 text-center sm:text-left">
-                <span class="bg-amber-500/20 text-amber-400 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Tatkal Samadhan</span>
-                <h3 id="consult-title" class="serif-title text-base font-bold text-amber-400 mt-1">Pandit Ji se Samadhan Paye Tatkal</h3>
-                <p id="consult-desc" class="text-xs text-gray-300 font-light">Apne man me uth rahe kisi bhi sawal ya samasya ke liye seedha baat karein.</p>
+                <span class="text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider" style="background-color: rgba(212, 175, 55, 0.2); color: var(--theme-color, #D4AF37);">Tatkal Samadhan</span>
+                <h3 id="consult-title" class="serif-title text-base font-bold mt-1" style="color: var(--theme-color, #D4AF37);">Pandit Ji se Samadhan Paye Tatkal</h3>
+                <p id="consult-desc" class="text-xs opacity-85">Apne man me uth rahe kisi bhi sawal ya samasya ke liye seedha baat karein.</p>
             </div>
-            <button onclick="autoFillAndBook('Pandit Tatkal Consultation')" id="consult-btn" class="bg-amber-500 hover:bg-amber-600 text-black font-extrabold text-xs px-5 py-3 rounded-xl shadow transition whitespace-nowrap transform hover:scale-105">
+            <button onclick="autoFillAndBook('Pandit Tatkal Consultation')" id="consult-btn" class="text-black font-extrabold text-xs px-5 py-3 rounded-xl shadow transition whitespace-nowrap transform hover:scale-105" style="background-color: var(--theme-color, #D4AF37);">
                 Tatkal Sampark Karein
             </button>
         </div>
 
-        <!-- CUSTOMER REVIEWS SECTION -->
-        <section id="reviews-section" class="bg-[#12141C] border border-[#222638] rounded-2xl p-6 md:p-8 space-y-6">
+        <!-- CUSTOMER REVIEWS & OPINION WRITING SECTION -->
+        <section id="reviews-section" class="theme-card border border-[#222638] rounded-2xl p-6 md:p-8 space-y-8 bg-[#12141C]">
             <div class="text-center max-w-xl mx-auto space-y-2">
-                <p class="text-xs tracking-widest text-amber-500 font-semibold uppercase font-serif">TESTIMONIALS • भक्त अनुभव</p>
-                <h2 class="serif-title text-2xl md:text-3xl font-bold text-gray-100">What Our Devotees Say</h2>
-                <p class="text-xs text-gray-400">Hamare madhyam se karwayi gayi pujayon par bhakto ke vishwas aur anubhav.</p>
+                <p class="text-xs tracking-widest font-semibold uppercase font-serif" style="color: var(--theme-color, #D4AF37);">TESTIMONIALS • भक्त अनुभव</p>
+                <h2 class="serif-title text-2xl md:text-3xl font-bold">Devotees Reviews & Opinions</h2>
+                <p class="text-xs opacity-80">Apna anubhav ya vichar yahan share karein.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+            <!-- Existing Reviews Grid -->
+            <div id="reviewsContainer" class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
                 <div class="bg-[#0A0B10] p-5 rounded-2xl border border-[#222638] space-y-3">
                     <div class="text-amber-400 text-sm">⭐⭐⭐⭐⭐</div>
-                    <p class="text-gray-300 font-light italic">"Humne ghar par Rudrabhishek karwaya tha. Pandit ji bahut vidwan the aur saari vidhi pure niyam se ki. Bahut shanti mili."</p>
-                    <p class="text-amber-500 font-bold">— Rajesh Mishra, Varanasi</p>
+                    <p class="opacity-85 italic">"Humne ghar par Rudrabhishek karwaya tha. Pandit ji bahut vidwan the aur saari vidhi pure niyam se ki. Bahut shanti mili."</p>
+                    <p class="font-bold" style="color: var(--theme-color, #D4AF37);">— Rajesh Mishra, Varanasi</p>
                 </div>
                 <div class="bg-[#0A0B10] p-5 rounded-2xl border border-[#222638] space-y-3">
                     <div class="text-amber-400 text-sm">⭐⭐⭐⭐⭐</div>
-                    <p class="text-gray-300 font-light italic">"Satyanarayan Katha ke liye pandit ji samay par aaye aur poori samagri ke sath anushthan sampann kiya. Excellent service!"</p>
-                    <p class="text-amber-500 font-bold">— Priya Sharma, Delhi</p>
+                    <p class="opacity-85 italic">"Satyanarayan Katha ke liye pandit ji samay par aaye aur poori samagri ke sath anushthan sampann kiya. Excellent service!"</p>
+                    <p class="font-bold" style="color: var(--theme-color, #D4AF37);">— Priya Sharma, Delhi</p>
                 </div>
                 <div class="bg-[#0A0B10] p-5 rounded-2xl border border-[#222638] space-y-3">
                     <div class="text-amber-400 text-sm">⭐⭐⭐⭐⭐</div>
-                    <p class="text-gray-300 font-light italic">"Kundali vichar aur tatkal samadhan ke liye contact kiya tha. Bahut hi sateek margdarshan mila Pandit ji se."</p>
-                    <p class="text-amber-500 font-bold">— Amit Dubey, Prayagraj</p>
+                    <p class="opacity-85 italic">"Kundali vichar aur tatkal samadhan ke liye contact kiya tha. Bahut hi sateek margdarshan mila Pandit ji se."</p>
+                    <p class="font-bold" style="color: var(--theme-color, #D4AF37);">— Amit Dubey, Prayagraj</p>
                 </div>
+            </div>
+
+            <!-- Write a Review Form -->
+            <div class="border-t border-[#222638] pt-6 max-w-xl mx-auto space-y-4">
+                <h3 class="serif-title text-sm font-bold text-center" style="color: var(--theme-color, #D4AF37);">Apna Review / Opinion Likhein</h3>
+                <form id="reviewForm" onsubmit="submitUserReview(event)" class="space-y-4 text-xs">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <input type="text" id="revName" required class="custom-input" placeholder="Aapka Naam & City">
+                        <select id="revRating" class="custom-input bg-[#0A0B10]">
+                            <option value="⭐⭐⭐⭐⭐">5 Stars (⭐⭐⭐⭐⭐)</option>
+                            <option value="⭐⭐⭐⭐">4 Stars (⭐⭐⭐⭐)</option>
+                            <option value="⭐⭐⭐">3 Stars (⭐⭐⭐)</option>
+                        </select>
+                    </div>
+                    <textarea id="revMsg" rows="2" required class="custom-input" placeholder="Apna anubhav yahan likhein..."></textarea>
+                    <button type="submit" class="w-full text-black font-extrabold py-3 rounded-xl shadow transition" style="background-color: var(--theme-color, #D4AF37);">
+                        Submit Review
+                    </button>
+                </form>
             </div>
         </section>
 
-        <!-- GET IN TOUCH / CONTACT SECTION (As per your reference image) -->
-        <section id="contact-section" class="bg-[#12141C] border border-[#222638] rounded-3xl p-8 md:p-12 space-y-10 shadow-2xl">
+        <!-- GET IN TOUCH / CONTACT SECTION -->
+        <section id="contact-section" class="theme-card border border-[#222638] rounded-3xl p-8 md:p-12 space-y-10 shadow-2xl bg-[#12141C]">
             <div class="space-y-3 max-w-2xl">
-                <p class="text-xs tracking-widest text-amber-500 font-semibold uppercase font-serif">GET IN TOUCH · संपर्क</p>
-                <h2 class="serif-title text-3xl md:text-4xl font-bold text-gray-100">Have a question or a <span class="italic font-normal text-amber-500">custom puja</span> in mind?</h2>
-                <p class="text-xs md:text-sm text-gray-400 font-light">Our team of learned pandits is happy to guide you through the right ritual, muhurat and samagri for any occasion.</p>
+                <p class="text-xs tracking-widest font-semibold uppercase font-serif" style="color: var(--theme-color, #D4AF37);">GET IN TOUCH · संपर्क</p>
+                <h2 class="serif-title text-3xl md:text-4xl font-bold">Have a question or a <span class="italic font-normal" style="color: var(--theme-color, #D4AF37);">custom puja</span> in mind?</h2>
+                <p class="text-xs md:text-sm opacity-80">Our team of learned pandits is happy to guide you through the right ritual, muhurat and samagri for any occasion.</p>
             </div>
 
-            <!-- Contact Info Details (Two Phone Numbers + Email + Varanasi Location) -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 text-xs font-medium text-gray-300">
+            <!-- Contact Info Details (Updated with sewadivyapuja@gmail.com) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 text-xs font-medium">
                 <div class="space-y-1">
-                    <p class="text-amber-500 text-[10px] uppercase font-bold tracking-wider">Helpline Numbers</p>
-                    <p class="font-bold text-gray-100">+91 99351 79756</p>
-                    <p class="font-bold text-gray-100">+91 83829 09995</p>
+                    <p class="text-[10px] uppercase font-bold tracking-wider" style="color: var(--theme-color, #D4AF37);">Helpline Numbers</p>
+                    <p class="font-bold">+91 99351 79756</p>
+                    <p class="font-bold">+91 83829 09995</p>
                 </div>
                 <div class="space-y-1">
-                    <p class="text-amber-500 text-[10px] uppercase font-bold tracking-wider">Email Addresses</p>
-                    <p class="font-bold text-gray-100">sewa@divyapuja.in</p>
-                    <p class="font-bold text-gray-100">info@divyapuja.in</p>
+                    <p class="text-[10px] uppercase font-bold tracking-wider" style="color: var(--theme-color, #D4AF37);">Email Address</p>
+                    <p class="font-bold">sewadivyapuja@gmail.com</p>
                 </div>
                 <div class="space-y-1">
-                    <p class="text-amber-500 text-[10px] uppercase font-bold tracking-wider">Location</p>
-                    <p class="font-bold text-gray-100">📍 Varanasi · At your home</p>
+                    <p class="text-[10px] uppercase font-bold tracking-wider" style="color: var(--theme-color, #D4AF37);">Location</p>
+                    <p class="font-bold">📍 Varanasi · At your home</p>
                 </div>
                 <div class="space-y-1 cursor-pointer hover:opacity-80 transition" onclick="openWhatsAppChat()">
-                    <p class="text-amber-500 text-[10px] uppercase font-bold tracking-wider">Instant Chat</p>
-                    <p class="font-bold text-amber-400">💬 Chat on WhatsApp</p>
+                    <p class="text-[10px] uppercase font-bold tracking-wider" style="color: var(--theme-color, #D4AF37);">Instant Chat</p>
+                    <p class="font-bold" style="color: var(--theme-color, #D4AF37);">💬 Chat on WhatsApp</p>
                 </div>
             </div>
 
-            <!-- Enquiry Form (Sends to Telegram and 8382909995 WhatsApp) -->
+            <!-- Enquiry Form -->
             <form id="contactForm" onsubmit="handleContactSubmit(event)" class="space-y-6 pt-4">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="space-y-1">
-                        <label class="text-[11px] text-gray-400">Your Name *</label>
+                        <label class="text-[11px] opacity-70">Your Name *</label>
                         <input type="text" id="cName" required class="custom-input" placeholder="Aapka naam">
                     </div>
                     <div class="space-y-1">
-                        <label class="text-[11px] text-gray-400">Phone *</label>
+                        <label class="text-[11px] opacity-70">Phone *</label>
                         <input type="tel" id="cPhone" required class="custom-input" placeholder="Mobile Number">
                     </div>
                 </div>
                 <div class="space-y-1">
-                    <label class="text-[11px] text-gray-400">Email (Optional)</label>
-                    <input type="email" id="cEmail" class="custom-input" placeholder="Your Email Address">
+                    <label class="text-[11px] opacity-70">Email (Optional)</label>
+                    <input type="email" id="cEmail" class="custom-input" placeholder="sewadivyapuja@gmail.com">
                 </div>
                 <div class="space-y-1">
-                    <label class="text-[11px] text-gray-400">Your message *</label>
+                    <label class="text-[11px] opacity-70">Your message *</label>
                     <textarea id="cMessage" rows="3" required class="custom-input" placeholder="Apni puja ya sawal ke bare me likhein..."></textarea>
                 </div>
-                <button type="submit" class="bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs px-8 py-3.5 rounded-xl transition shadow-lg transform hover:scale-105">
+                <button type="submit" class="text-black font-bold text-xs px-8 py-3.5 rounded-xl transition shadow-lg transform hover:scale-105" style="background-color: var(--theme-color, #D4AF37);">
                     Send Inquiry
                 </button>
             </form>
@@ -254,66 +283,104 @@
 
     </main>
 
-    <footer class="border-t border-[#222638] py-6 text-center text-[11px] text-gray-500 mt-12">
+    <footer class="border-t border-[#222638] py-6 text-center text-[11px] opacity-70 mt-12">
         <p>Divya Puja Sewa • Vedic Sanatan Sansthan Varanasi</p>
     </footer>
 
     <script>
+        const themes = [
+            { name: "Midnight Navy", color: "#D4AF37", bg: "#0A0B10", card: "#12141C", text: "#E2E8F0" },
+            { name: "Slate Charcoal", color: "#94A3B8", bg: "#0F172A", card: "#1E293B", text: "#F8FAFC" },
+            { name: "Deep Forest", color: "#34D399", bg: "#061A14", card: "#0E2921", text: "#ECFDF5" },
+            { name: "Classic Burgundy", color: "#F87171", bg: "#1A0909", card: "#2B1212", text: "#FEF2F2" },
+            { name: "Warm Taupe", color: "#D97706", bg: "#1C1917", card: "#292524", text: "#FAFAF9" },
+            { name: "Soft Ice Blue", color: "#38BDF8", bg: "#082F49", card: "#0C4A6E", text: "#F0F9FF" },
+            { name: "Pearl White", color: "#B45309", bg: "#FAFAF9", card: "#FFFFFF", text: "#1C1917" }
+        ];
+
+        function changeTheme(index) {
+            const t = themes[index];
+            document.documentElement.style.setProperty('--theme-color', t.color);
+            document.documentElement.style.setProperty('--theme-bg', t.bg);
+            document.documentElement.style.setProperty('--theme-text', t.text);
+
+            const body = document.getElementById('mainBody');
+            body.style.backgroundColor = t.bg;
+            body.style.color = t.text;
+        }
+
         const TELEGRAM_BOT_TOKEN = "8989054970:AAG-NMCyPNoNhpnOwG1j_naEfNy4N0tYyN8";
         const TELEGRAM_CHAT_ID = "8814734919";
-        
-        // Designated WhatsApp number for enquiry as requested
         const ADMIN_WHATSAPP = "918382909995";
 
-        // Enquiry Form Handler
+        function submitUserReview(event) {
+            event.preventDefault();
+            const name = document.getElementById('revName').value;
+            const rating = document.getElementById('revRating').value;
+            const msg = document.getElementById('revMsg').value;
+
+            const container = document.getElementById('reviewsContainer');
+            const newRevCard = document.createElement('div');
+            newRevCard.className = "bg-[#0A0B10] p-5 rounded-2xl border border-[#222638] space-y-3 shadow-md";
+            newRevCard.innerHTML = `
+                <div class="text-amber-400 text-sm">${rating}</div>
+                <p class="opacity-85 italic">"${msg}"</p>
+                <p class="font-bold" style="color: var(--theme-color, #D4AF37);">— ${name}</p>
+            `;
+            container.prepend(newRevCard);
+
+            const revText = `⭐ NEW CUSTOMER REVIEW!\n-----------------------------------\n👤 Name: ${name}\n⭐ Rating: ${rating}\n💬 Opinion: ${msg}`;
+            fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: revText })
+            }).catch(e => console.log(e));
+
+            alert('Aapka review safaltapurvak jodd diya gaya hai!');
+            document.getElementById('reviewForm').reset();
+        }
+
         function handleContactSubmit(event) {
             event.preventDefault();
-
             const name = document.getElementById('cName').value;
             const phone = document.getElementById('cPhone').value;
-            const email = document.getElementById('cEmail').value || 'Not Provided';
+            const email = document.getElementById('cEmail').value || 'sewadivyapuja@gmail.com';
             const message = document.getElementById('cMessage').value;
 
             const telegramMsg = `📩 NEW WEBSITE ENQUIRY!\n-----------------------------------\n👤 Name: ${name}\n📞 Phone: ${phone}\n✉️ Email: ${email}\n💬 Message: ${message}`;
             
-            // Send to Telegram
             fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: telegramMsg })
-            }).catch(e => console.log("Telegram Error:", e));
+            }).catch(e => console.log(e));
 
             const waMsg = `📩 *NEW WEBSITE ENQUIRY*%0A-----------------------------------%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Email:* ${email}%0A*Message:* ${message}`;
-            
-            // Open WhatsApp (8382909995)
             window.open(`https://wa.me/${ADMIN_WHATSAPP}?text=${waMsg}`, '_blank');
 
             alert('Aapki enquiry safaltapurvak bhej di gayi hai!');
             document.getElementById('contactForm').reset();
         }
 
-        // Quick WhatsApp Chat click handler
         function openWhatsAppChat() {
             const chatMsg = "🚨 *DIRECT CHAT CLICK*%0A-----------------------------------%0A*Status:* User clicked on WhatsApp chat link.";
-            
             fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: "🚨 DIRECT CHAT CLICKED ON WEBSITE!" })
-            }).catch(e => console.log("Telegram Error:", e));
+            }).catch(e => console.log(e));
 
             window.open(`https://wa.me/${ADMIN_WHATSAPP}?text=${chatMsg}`, '_blank');
         }
 
         let currentLang = 'hi';
-
         const translations = {
             hi: {
                 navPujas: "Pujas & Jaap", navContact: "Contact",
                 bookNow: "Book Now", langBtn: "English",
                 marquee: "🛕 Sabhi prakar ki Puja evam Jaap ke liye niche diye gaye option par click karein. Bina payment ke seedha booking karein!",
                 heroTag: "VEDIC PUJAS • HAWANS • JAAP • KUNDALI",
-                heroHeading: 'Sacred rituals, performed with <span class="italic font-normal text-amber-500">pure devotion</span>',
+                heroHeading: 'Sacred rituals, performed with <span class="italic font-normal" style="color: var(--theme-color, #D4AF37);">pure devotion</span>',
                 heroDesc: "Book authentic Pujas, Hawans, Jaap and Kundali rituals at your home, led by learned pandits. Direct booking without payment.",
                 btnBookPuja: "Book a Puja ↗", btnExplore: "Explore All Pujas & Jaap",
                 secTitle1: "🌿 Sabhi Prakar ki Pujayein evam Jaap",
@@ -328,7 +395,7 @@
                 bookNow: "Book Now", langBtn: "हिंदी",
                 marquee: "🛕 Click on options below for all types of Pujas & Chants. Direct booking with zero online payment!",
                 heroTag: "VEDIC RITUALS • HAWANS • MANTRAS • HOROSCOPE",
-                heroHeading: 'Sacred rituals, performed with <span class="italic font-normal text-amber-500">pure devotion</span>',
+                heroHeading: 'Sacred rituals, performed with <span class="italic font-normal" style="color: var(--theme-color, #D4AF37);">pure devotion</span>',
                 heroDesc: "Book authentic Pujas, Hawans, Chants and Astrology at your home, led by verified Vedic pandits instantly.",
                 btnBookPuja: "Book a Puja ↗", btnExplore: "Explore All Services",
                 secTitle1: "🌿 All Types of Pujas & Sacred Chants",
@@ -373,7 +440,7 @@
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: telegramMsg })
-            }).catch(e => console.log("Telegram Error:", e));
+            }).catch(e => console.log(e));
 
             const waMsg = `🚨 *NEW DIRECT ENQUIRY / BOOKING*%0A-----------------------------------%0A*Seva / Jaap:* ${serviceName}%0A*Mode:* Direct%0A*Status:* Instant Alert`;
             window.open(`https://wa.me/${ADMIN_WHATSAPP}?text=${waMsg}`, '_blank');
