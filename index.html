@@ -1,92 +1,143 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="hi" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Divya Puja Sewa - Home (8K Ultra HD)</title>
+    <title>Divya Puja Sewa - Sacred Rituals</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
                         brand: {
-                            dark: '#0B0D17',
-                            card: '#15192B',
-                            border: '#2A304D',
+                            dark: '#0A0B10',
+                            card: '#12141C',
+                            border: '#222638',
                             accent: '#D4AF37',
-                            accentHover: '#B59226',
+                            rust: '#C25E38',
                             gold: '#F3E5AB'
                         }
+                    },
+                    fontFamily: {
+                        serif: ['Cinzel', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif']
                     }
                 }
             }
         }
     </script>
     <style>
-        body { font-family: 'Poppins', sans-serif; background-color: #0B0D17; color: #E2E8F0; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0A0B10; color: #E2E8F0; }
         .serif-title { font-family: 'Cinzel', serif; }
-        .glow-effect { box-shadow: 0 0 40px rgba(212, 175, 55, 0.2); }
-        
-        /* Smooth Hover Effects for Links and Interactive Cards */
-        .hover-card-effect {
-            transition: all 0.3s ease;
-        }
+        .ultra-glow { box-shadow: 0 0 60px rgba(212, 175, 55, 0.08); }
+        .hover-card-effect { transition: all 0.3s ease; }
         .hover-card-effect:hover {
             border-color: #D4AF37;
-            background-color: rgba(212, 175, 55, 0.08);
+            background-color: rgba(212, 175, 55, 0.06);
             transform: translateY(-2px);
-            color: #F3E5AB;
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between py-6 px-4">
+<body class="min-h-screen flex flex-col justify-between">
+
+    <!-- TOP HEADER NAVBAR (As per your design) -->
+    <header class="w-full border-b border-brand-border/60 bg-brand-dark/80 backdrop-blur-md sticky top-0 z-50 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-2 text-brand-gold font-serif font-bold text-base tracking-wide">
+                <span class="text-amber-500">🔥</span> Divya Puja Sewa
+            </a>
+
+            <!-- Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 text-xs text-gray-400 font-medium">
+                <a href="#" class="hover:text-brand-gold transition">Pujas</a>
+                <a href="#" class="hover:text-brand-gold transition">How It Works</a>
+                <a href="#" class="hover:text-brand-gold transition">Deities</a>
+                <a href="#" class="hover:text-brand-gold transition">Contact</a>
+            </nav>
+
+            <!-- Right Actions -->
+            <div class="flex items-center gap-4">
+                <button class="text-xs text-gray-300 border border-brand-border px-3 py-1.5 rounded-lg hover:border-brand-accent transition">हिंदी</button>
+                <a href="booking.html" class="bg-amber-600 hover:bg-amber-700 text-white text-xs font-semibold px-4 py-2 rounded-xl transition shadow-lg">Book Now</a>
+            </div>
+        </div>
+    </header>
 
     <!-- MOVING NOTIFICATION BAR (MARQUEE) -->
-    <div class="max-w-2xl mx-auto w-full bg-amber-500/10 border border-amber-500/30 rounded-xl py-2 px-3 mb-4 overflow-hidden whitespace-nowrap">
-        <marquee behavior="scroll" direction="left" scrollamount="5" class="text-xs text-amber-300 font-semibold">
-            🛕 Pandit ji se samadhan paye tatkal! Kisi bhi samasya ke liye abhi matra ₹49 mein direct phone par consult karein. | Hawan, Rudrabhishek, Shadi aur Anushthan booking ke liye niche click karein.
-        </marquee>
+    <div class="max-w-4xl mx-auto w-full px-4 mt-6">
+        <div class="bg-amber-500/10 border border-amber-500/30 rounded-xl py-2 px-3 overflow-hidden whitespace-nowrap">
+            <marquee behavior="scroll" direction="left" scrollamount="5" class="text-xs text-amber-300 font-semibold">
+                🛕 Pandit ji se samadhan paye tatkal! Kisi bhi samasya ke liye abhi matra ₹49 mein direct phone par consult karein. | Hawan, Rudrabhishek, Shadi aur Anushthan booking ke liye niche click karein.
+            </marquee>
+        </div>
     </div>
 
-    <!-- MAIN CONTAINER -->
-    <div class="max-w-2xl mx-auto w-full bg-brand-card border border-brand-border rounded-3xl p-6 md:p-10 glow-effect shadow-2xl space-y-6">
+    <!-- MAIN HERO SECTION -->
+    <main class="max-w-4xl mx-auto w-full px-4 py-10 space-y-12">
         
-        <div class="text-center">
-            <span class="text-[10px] bg-brand-accent/20 text-brand-gold font-bold px-3 py-1 rounded-full uppercase tracking-widest border border-brand-accent/30">✨ 8K Ultra HD Vedic Experience</span>
-            <h1 class="serif-title text-3xl font-extrabold text-brand-gold mt-3">🛕 Divya Puja Sewa</h1>
-            <p class="text-xs text-gray-400 mt-2 font-light">Varanasi ki pavitra dharti se sampurna Vedic Anushthan, Hawan, Rudrabhishek evam Puja booking</p>
+        <div class="space-y-6 text-left max-w-2xl">
+            <!-- Sub-heading tag -->
+            <p class="text-[11px] tracking-widest text-amber-500 font-semibold uppercase font-serif">VEDIC PUJAS • HAWANS • JAAP</p>
+            
+            <!-- Main Heading -->
+            <h1 class="serif-title text-4xl md:text-5xl lg:text-6xl font-bold text-gray-100 leading-[1.1]">
+                Sacred rituals, performed with <span class="italic font-normal text-amber-600">pure devotion</span>
+            </h1>
+
+            <!-- Description -->
+            <p class="text-xs md:text-sm text-gray-400 font-light leading-relaxed">
+                Book authentic Pujas, Hawans and Jaap at your home, led by learned pandits. Secure your date with just 40% advance.
+            </p>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-wrap items-center gap-4 pt-2">
+                <a href="booking.html" class="bg-amber-600 hover:bg-amber-700 text-white font-medium text-xs px-6 py-3.5 rounded-xl transition shadow-lg flex items-center gap-2">
+                    Book a Puja <span>↗</span>
+                </a>
+                <a href="#rituals" class="border border-brand-border hover:border-brand-accent text-gray-300 font-medium text-xs px-6 py-3.5 rounded-xl transition">
+                    Explore Rituals
+                </a>
+            </div>
         </div>
 
-        <!-- QUICK ENQUIRY / ALL PUJA OPTIONS SECTION (WITH HOVER COLOR CHANGE) -->
-        <div class="bg-brand-dark/60 border border-brand-border rounded-2xl p-4 space-y-3">
-            <h3 class="text-xs font-bold text-brand-gold uppercase tracking-wider mb-2">🌿 Pramukh Anushthan & Puja Enquiries:</h3>
-            <div class="grid grid-cols-2 gap-2 text-xs">
-                <div class="bg-brand-card p-2.5 rounded-xl border border-brand-border text-gray-300 flex items-center gap-2 hover-card-effect cursor-pointer">
-                    <span>🔥</span> Hawan & Yagya
-                </div>
-                <div class="bg-brand-card p-2.5 rounded-xl border border-brand-border text-gray-300 flex items-center gap-2 hover-card-effect cursor-pointer">
-                    <span>🕉️</span> Rudrabhishek
-                </div>
-                <div class="bg-brand-card p-2.5 rounded-xl border border-brand-border text-gray-300 flex items-center gap-2 hover-card-effect cursor-pointer">
-                    <span>✨</span> Satyanarayan Puja
-                </div>
-                <div class="bg-brand-card p-2.5 rounded-xl border border-brand-border text-gray-300 flex items-center gap-2 hover-card-effect cursor-pointer">
-                    <span>🛕</span> Vivah Sanskar / Shadi
+        <!-- LORD KRISHNA ARCH IMAGE CONTAINER (As in your image) -->
+        <div class="flex justify-center pt-6">
+            <div class="relative w-full max-w-md rounded-t-[140px] overflow-hidden border border-brand-border/80 bg-brand-card shadow-2xl ultra-glow">
+                <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent z-10"></div>
+                <!-- Placeholder / High Quality Image of Krishna Statue -->
+                <img src="https://images.unsplash.com/photo-1609825488882-3a691c33ac0d?q=80&w=1000&auto=format&fit=crop" alt="Lord Krishna Statue" class="w-full h-[450px] object-cover object-top opacity-90 hover:scale-105 transition duration-700">
+                
+                <div class="absolute bottom-6 left-0 right-0 z-20 text-center">
+                    <span class="serif-title text-sm text-amber-400 tracking-wider font-bold">जय श्री कृष्ण</span>
                 </div>
             </div>
         </div>
 
-        <!-- HERO BUTTON TO BOOKING -->
-        <div class="space-y-3">
-            <a href="booking.html" class="block w-full text-center bg-brand-accent text-black font-bold py-4 text-xs rounded-xl hover:bg-brand-accentHover transition shadow-lg transform hover:-translate-y-0.5">
-                ✨ Nayi Puja / Hawan / Shadi Booking Karein
-            </a>
+        <!-- QUICK ENQUIRY / ALL PUJA OPTIONS SECTION -->
+        <div id="rituals" class="bg-brand-card border border-brand-border rounded-2xl p-6 space-y-4">
+            <h3 class="text-xs font-bold text-brand-gold uppercase tracking-wider mb-3">🌿 Pramukh Anushthan & Puja Enquiries:</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
+                <div class="bg-brand-dark p-3 rounded-xl border border-brand-border text-gray-300 flex items-center gap-2 hover-card-effect cursor-pointer">
+                    <span>🔥</span> Hawan & Yagya
+                </div>
+                <div class="bg-brand-dark p-3 rounded-xl border border-brand-border text-gray-300 flex items-center gap-2 hover-card-effect cursor-pointer">
+                    <span>🕉️</span> Rudrabhishek
+                </div>
+                <div class="bg-brand-dark p-3 rounded-xl border border-brand-border text-gray-300 flex items-center gap-2 hover-card-effect cursor-pointer">
+                    <span>✨</span> Satyanarayan
+                </div>
+                <div class="bg-brand-dark p-3 rounded-xl border border-brand-border text-gray-300 flex items-center gap-2 hover-card-effect cursor-pointer">
+                    <span>🛕</span> Vivah Sanskar
+                </div>
+            </div>
         </div>
 
         <!-- PANDIT JI CONSULTATION BANNER (₹49 FEATURE) -->
-        <div class="bg-gradient-to-r from-amber-950/60 to-brand-dark border border-amber-500/40 rounded-2xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="bg-gradient-to-r from-amber-950/40 to-brand-card border border-amber-500/30 rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div class="space-y-1 text-center sm:text-left">
                 <span class="bg-amber-500/20 text-amber-300 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Tatkal Samadhan</span>
                 <h3 class="serif-title text-base font-bold text-brand-gold mt-1">Pandit Ji se Samadhan Paye Tatkal</h3>
@@ -97,12 +148,12 @@
             </button>
         </div>
 
-    </div>
+    </main>
 
     <!-- FOOTER -->
-    <div class="text-center text-[11px] text-gray-500 pb-2 mt-6">
-        <p>Divya Puja Sewa • Vedic Sanatan Sansthan Varanasi (8K Quality)</p>
-    </div>
+    <footer class="border-t border-brand-border/60 py-6 text-center text-[11px] text-gray-500 mt-12">
+        <p>Divya Puja Sewa • Vedic Sanatan Sansthan Varanasi (16K Ultra HD Experience)</p>
+    </footer>
 
     <script>
         function selectConsultationAndProceed() {
