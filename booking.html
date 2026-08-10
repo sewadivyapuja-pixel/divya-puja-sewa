@@ -6,29 +6,6 @@
     <title>Booking - Divya Puja Sewa</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            dark: '#0A0B10',
-                            card: '#12141C',
-                            border: '#222638',
-                            accent: '#D4AF37',
-                            rust: '#C25E38',
-                            gold: '#F3E5AB'
-                        }
-                    },
-                    fontFamily: {
-                        serif: ['Cinzel', 'serif'],
-                        sans: ['Plus Jakarta Sans', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0A0B10; color: #E2E8F0; }
         .serif-title { font-family: 'Cinzel', serif; }
@@ -41,125 +18,82 @@
             outline: none;
             width: 100%;
             font-size: 14px;
-            transition: border-color 0.3s;
         }
         .custom-input:focus { border-color: #D4AF37; }
-        select.custom-input option {
-            background-color: #12141C;
-            color: #ffffff;
-            padding: 10px;
-        }
+        select.custom-input option { background-color: #12141C; color: #ffffff; padding: 10px; }
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between p-6">
-
     <div class="max-w-2xl mx-auto w-full bg-[#12141C] border border-[#222638] rounded-3xl p-8 shadow-2xl space-y-6 my-auto">
         <div class="text-center space-y-2">
-            <a href="index.html" class="inline-block text-xs text-amber-400 hover:underline">← Home Page par wapas jayein</a>
+            <a href="index.html" class="text-xs text-amber-400 hover:underline">← Home Page par wapas jayein</a>
             <h2 class="serif-title text-2xl font-bold text-amber-400">Divya Puja Booking Form</h2>
-            <p class="text-xs text-gray-400">Apni seva chun kar details bharein</p>
         </div>
 
         <form id="bookingForm" onsubmit="submitBooking(event)" class="space-y-6 text-xs">
-            
             <div class="space-y-1">
                 <label class="text-[11px] font-semibold text-amber-400">Chuni Gayi Puja / Jaap (Seva) *</label>
                 <select id="selectedPuja" onchange="checkCustomPuja(this.value)" required class="custom-input">
                     <option value="" disabled selected>-- Seva / Puja Chunein --</option>
-                    <optgroup label="Pramukh Pujayein">
-                        <option value="Rudrabhishek Puja">🕉️ Rudrabhishek Puja</option>
-                        <option value="Hawan & Yagya">🔥 Hawan & Yagya</option>
-                        <option value="Satyanarayan Katha">✨ Satyanarayan Katha</option>
-                        <option value="Navgrah Shanti Puja">🪐 Navgrah Shanti Puja</option>
-                        <option value="Vivah Sanskar (Shadi)">🛕 Vivah Sanskar (Shadi)</option>
-                        <option value="Maha Lakshmi Puja">🪷 Maha Lakshmi Puja</option>
-                        <option value="Mandan & Janeu Sanskar">✂️ Mundan / Janeu</option>
-                        <option value="Kundali Milan & Vichar">📜 Kundali Milan & Vichar</option>
-                    </optgroup>
-                    <optgroup label="Jaap Anushthan">
-                        <option value="Maha Mrityunjaya Jaap">📿 Maha Mrityunjaya Jaap</option>
-                        <option value="Gayatri Mantra Jaap">📿 Gayatri Mantra Jaap</option>
-                        <option value="Mahamrityunjaya Anushthan">🕉️ Mahamrityunjaya Anushthan</option>
-                        <option value="Baglamukhi Anushthan">⚔️ Baglamukhi Jaap</option>
-                        <option value="Pandit Tatkal Consultation">⚡ Pandit Tatkal Consultation</option>
-                    </optgroup>
-                    <option value="WRITE_YOURSELF">✍️ Write Yourself (Apne man se likhein)</option>
+                    <option value="Rudrabhishek Puja">Rudrabhishek Puja</option>
+                    <option value="Hawan & Yagya">Hawan & Yagya</option>
+                    <option value="Satyanarayan Katha">Satyanarayan Katha</option>
+                    <option value="WRITE_YOURSELF">Write Yourself (Apne man se likhein)</option>
                 </select>
             </div>
 
             <div id="customPujaBox" class="space-y-1 hidden">
-                <label class="text-[11px] font-bold text-amber-400">Apni Puja / Seva ka Naam Type Karein *</label>
+                <label class="text-[11px] font-bold text-amber-400">Apni Puja ka Naam Type Karein *</label>
                 <input type="text" id="customPujaInput" class="custom-input" placeholder="Jaise: Special Durga Saptashati Paath...">
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="space-y-1">
-                    <label class="text-[11px] opacity-70">Original Mobile Number *</label>
+                <div>
+                    <label class="text-[11px] opacity-70">Mobile Number *</label>
                     <input type="tel" id="bPhone" required class="custom-input" placeholder="10-digit mobile number">
                 </div>
-                <div class="space-y-1">
+                <div>
                     <label class="text-[11px] opacity-70">Alternative Mobile Number</label>
                     <input type="tel" id="bAltPhone" class="custom-input" placeholder="Optional alternate number">
                 </div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="space-y-1">
+                <div>
                     <label class="text-[11px] opacity-70">Full Name *</label>
                     <input type="text" id="bName" required class="custom-input" placeholder="Aapka pura naam">
                 </div>
-                <div class="space-y-1">
+                <div>
                     <label class="text-[11px] opacity-70">Email ID *</label>
                     <input type="email" id="bEmail" required class="custom-input" placeholder="your_email@gmail.com">
                 </div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="space-y-1">
+                <div>
                     <label class="text-[11px] opacity-70">Puja/Jaap Date *</label>
                     <input type="date" id="bDate" required class="custom-input">
                 </div>
-                <div class="space-y-1">
+                <div>
                     <label class="text-[11px] opacity-70">Address / Location *</label>
-                    <input type="text" id="bAddress" required class="custom-input" placeholder="Varanasi / City, Pincode">
+                    <input type="text" id="bAddress" required class="custom-input" placeholder="Varanasi / City">
                 </div>
             </div>
 
-            <div class="space-y-1">
-                <label class="text-[11px] opacity-70">Vishesh Sankalp / Samasya (Optional)</label>
-                <textarea id="bSankalp" rows="3" class="custom-input" placeholder="Gotra, naam ya vishesh anurodh yahan likhein..."></textarea>
+            <div>
+                <label class="text-[11px] opacity-70">Vishesh Sankalp (Optional)</label>
+                <textarea id="bSankalp" rows="3" class="custom-input" placeholder="Gotra, naam..."></textarea>
             </div>
 
-            <button type="submit" class="w-full text-black font-extrabold py-3.5 rounded-xl shadow-lg transition transform hover:scale-105 bg-[#D4AF37]">
+            <button type="submit" class="w-full text-black font-extrabold py-3.5 rounded-xl bg-[#D4AF37]">
                 Confirm & Book Seva
             </button>
         </form>
     </div>
 
     <script>
-        // Aapka naya Web App URL yahan update kar diya gaya hai
-        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxBTpQJKeo2u1RhlbIz8sWSZFJd3VHtby5_uRYgkKLvKz8AlaGXicycDr3yb72h2VvR/exec";
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwk7bscggnxVkOpMx1yQ0lItFwWgx6SJ-tS_VGdcqioqAdPp17jXWc9ICV4_Y_zjoTc/exec";
         const ADMIN_WHATSAPP = "918382909995";
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const savedService = localStorage.getItem('bookingService');
-            const selectEl = document.getElementById('selectedPuja');
-            if (savedService) {
-                let found = false;
-                for (let option of selectEl.options) {
-                    if (option.value === savedService) {
-                        selectEl.value = savedService;
-                        found = true;
-                        break;
-                    }
-                }
-                if (!found) {
-                    selectEl.value = "WRITE_YOURSELF";
-                    checkCustomPuja("WRITE_YOURSELF");
-                    document.getElementById('customPujaInput').value = savedService;
-                }
-            }
-        });
 
         function checkCustomPuja(val) {
             const customBox = document.getElementById('customPujaBox');
@@ -167,7 +101,6 @@
             if (val === 'WRITE_YOURSELF') {
                 customBox.classList.remove('hidden');
                 customInput.required = true;
-                customInput.focus();
             } else {
                 customBox.classList.add('hidden');
                 customInput.required = false;
@@ -177,14 +110,9 @@
 
         function submitBooking(event) {
             event.preventDefault();
-
             let pujaName = document.getElementById('selectedPuja').value;
             if (pujaName === 'WRITE_YOURSELF') {
                 pujaName = document.getElementById('customPujaInput').value.trim();
-                if (!pujaName) {
-                    alert('Kripya apni puja ya seva ka naam type karein!');
-                    return;
-                }
             }
 
             const payload = {
@@ -199,7 +127,6 @@
                 sankalp: document.getElementById('bSankalp').value || 'N/A'
             };
 
-            // Google Sheet aur Telegram par data bhejne ke liye
             fetch(GOOGLE_SCRIPT_URL, {
                 method: 'POST',
                 mode: 'no-cors',
@@ -210,8 +137,7 @@
                 window.location.href = 'index.html';
             }).catch(e => console.log(e));
 
-            // WhatsApp par detailed alert bhejne ke liye
-            const waMsg = `🛕 *NEW DETAILED BOOKING*%0A✨ *Seva:* ${pujaName}%0A👤 *Name:* ${payload.name}%0A📞 *Mobile:* ${payload.phone}%0A📅 *Date:* ${payload.date}%0A📍 *Address:* ${payload.address}%0A💬 *Sankalp:* ${payload.sankalp}`;
+            const waMsg = `🛕 *NEW BOOKING*%0A✨ *Seva:* ${pujaName}%0A👤 *Name:* ${payload.name}%0A📞 *Mobile:* ${payload.phone}%0A📅 *Date:* ${payload.date}`;
             window.open(`https://wa.me/${ADMIN_WHATSAPP}?text=${waMsg}`, '_blank');
         }
     </script>
