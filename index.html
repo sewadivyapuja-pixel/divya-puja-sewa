@@ -176,51 +176,74 @@
             </button>
         </div>
 
-        <!-- CONTACT / ENQUIRY SECTION -->
+        <!-- CONTACT / ENQUIRY SECTION (COMPLETE WITH INFO & FORM) -->
         <section id="contact-section" class="custom-card border rounded-3xl p-8 md:p-12 space-y-10 shadow-2xl">
-            <div class="space-y-3 max-w-2xl">
-                <p class="text-xs tracking-widest font-semibold uppercase font-serif text-amber-600">GET IN TOUCH · संपर्क</p>
-                <h2 class="serif-title text-3xl md:text-4xl font-bold">Have a question or a <span class="italic font-normal text-amber-600">custom puja</span> in mind?</h2>
-                <p class="text-xs text-gray-400">Our team of learned pandits is happy to guide you through the right ritual, muhurat and samagri for any occasion.</p>
-            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+                <!-- Left Info Area -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="space-y-3">
+                        <p class="text-xs tracking-widest font-semibold uppercase font-serif text-amber-600">GET IN TOUCH · संपर्क</p>
+                        <h2 class="serif-title text-3xl font-bold">Have a question or a <span class="italic font-normal text-amber-600">custom puja</span> in mind?</h2>
+                        <p class="text-xs text-gray-400">Our team of learned pandits is happy to guide you through the right ritual, muhurat and samagri for any occasion.</p>
+                    </div>
 
-            <form id="contactForm" onsubmit="handleContactSubmit(event)" class="space-y-6 pt-4">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="space-y-1">
-                        <label class="text-[11px] opacity-70">Your Name *</label>
-                        <input type="text" id="cName" required class="custom-input" placeholder="Aapka naam">
-                    </div>
-                    <div class="space-y-1">
-                        <label class="text-[11px] opacity-70">Phone *</label>
-                        <input type="tel" id="cPhone" required class="custom-input" placeholder="Mobile Number">
-                    </div>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="space-y-1">
-                        <label class="text-[11px] opacity-70">State (Rajya) *</label>
-                        <select id="cState" required class="custom-input bg-transparent">
-                            <option value="">Select State</option>
-                            <option value="Uttar Pradesh">Uttar Pradesh (UP)</option>
-                            <option value="Delhi">Delhi</option>
-                            <option value="Madhya Pradesh">Madhya Pradesh (MP)</option>
-                            <option value="Bihar">Bihar</option>
-                            <option value="Maharashtra">Maharashtra</option>
-                            <option value="Other">Other State / All India</option>
-                        </select>
-                    </div>
-                    <div class="space-y-1">
-                        <label class="text-[11px] opacity-70">City / Location *</label>
-                        <input type="text" id="cCity" required class="custom-input" placeholder="e.g. Varanasi, Lucknow...">
+                    <div class="space-y-3 text-xs pt-4">
+                        <div class="flex items-center gap-3 text-amber-500">
+                            <span>📞</span> <span class="font-semibold text-gray-300">+91 95556 74448</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-amber-500">
+                            <span>✉️</span> <span class="font-semibold text-gray-300">sewa@divyapuja.in</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-amber-500">
+                            <span>📍</span> <span class="font-semibold text-gray-300">Varanasi, Uttar Pradesh · At your home</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-amber-500 pt-2">
+                            <span>💬</span> <a href="https://wa.me/919555674448" target="_blank" class="font-semibold text-amber-600 hover:underline">Chat on WhatsApp</a>
+                        </div>
                     </div>
                 </div>
-                <div class="space-y-1">
-                    <label class="text-[11px] opacity-70">Your message *</label>
-                    <textarea id="cMessage" rows="3" required class="custom-input" placeholder="Apni puja ya sawal ke bare me likhein..."></textarea>
+
+                <!-- Right Form Area -->
+                <div class="lg:col-span-7">
+                    <form id="contactForm" onsubmit="handleContactSubmit(event)" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="space-y-1">
+                                <label class="text-[11px] opacity-70">Your Name *</label>
+                                <input type="text" id="cName" required class="custom-input" placeholder="Aapka naam">
+                            </div>
+                            <div class="space-y-1">
+                                <label class="text-[11px] opacity-70">Phone *</label>
+                                <input type="tel" id="cPhone" required class="custom-input" placeholder="Mobile Number">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="space-y-1">
+                                <label class="text-[11px] opacity-70">State (Rajya) *</label>
+                                <select id="cState" required class="custom-input bg-transparent">
+                                    <option value="">Select State</option>
+                                    <option value="Uttar Pradesh">Uttar Pradesh (UP)</option>
+                                    <option value="Delhi">Delhi</option>
+                                    <option value="Madhya Pradesh">Madhya Pradesh (MP)</option>
+                                    <option value="Bihar">Bihar</option>
+                                    <option value="Maharashtra">Maharashtra</option>
+                                    <option value="Other">Other State / All India</option>
+                                </select>
+                            </div>
+                            <div class="space-y-1">
+                                <label class="text-[11px] opacity-70">City / Location *</label>
+                                <input type="text" id="cCity" required class="custom-input" placeholder="e.g. Varanasi, Lucknow...">
+                            </div>
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-[11px] opacity-70">Your message *</label>
+                            <textarea id="cMessage" rows="3" required class="custom-input" placeholder="Apni puja ya sawal ke bare me likhein..."></textarea>
+                        </div>
+                        <button type="submit" class="bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs px-8 py-3.5 rounded-xl transition shadow-lg">
+                            Send Inquiry
+                        </button>
+                    </form>
                 </div>
-                <button type="submit" class="bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs px-8 py-3.5 rounded-xl transition shadow-lg">
-                    Send Inquiry
-                </button>
-            </form>
+            </div>
         </section>
 
         <!-- REVIEWS SECTION -->
@@ -374,7 +397,7 @@
                 rating: document.getElementById('revRating').value,
                 state: document.getElementById('revState').value,
                 city: document.getElementById('revCity').value,
-                msg: document.getElementById('revMsg'].value
+                msg: document.getElementById('revMsg').value
             };
 
             fetch(GOOGLE_SCRIPT_URL, {
