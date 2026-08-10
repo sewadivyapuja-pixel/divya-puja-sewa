@@ -27,7 +27,6 @@
         <div class="text-center space-y-2">
             <a href="index.html" class="text-xs text-amber-400 hover:underline">← Home Page par wapas jayein</a>
             <h2 class="serif-title text-2xl font-bold text-amber-400">General Enquiry</h2>
-            <p class="text-xs text-gray-400">Apna sawal ya sandesh humein bhejein</p>
         </div>
 
         <form id="enquiryForm" onsubmit="submitEnquiry(event)" class="space-y-4 text-xs">
@@ -42,25 +41,25 @@
                 </div>
                 <div>
                     <label class="text-[11px] opacity-70">State *</label>
-                    <input type="text" id="eState" required class="custom-input" placeholder="Jaise: Uttar Pradesh">
+                    <input type="text" id="eState" required class="custom-input" placeholder="State">
                 </div>
             </div>
             <div>
                 <label class="text-[11px] opacity-70">City *</label>
-                <input type="text" id="eCity" required class="custom-input" placeholder="Jaise: Varanasi">
+                <input type="text" id="eCity" required class="custom-input" placeholder="City">
             </div>
             <div>
                 <label class="text-[11px] opacity-70">Message / Question *</label>
                 <textarea id="eMessage" rows="3" required class="custom-input" placeholder="Apna sawal yahan likhein..."></textarea>
             </div>
-            <button type="submit" class="w-full text-black font-extrabold py-3.5 rounded-xl bg-[#D4AF37] hover:scale-105 transition">
+            <button type="submit" class="w-full text-black font-extrabold py-3.5 rounded-xl bg-[#D4AF37]">
                 Send Enquiry
             </button>
         </form>
     </div>
 
     <script>
-        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxBTpQJKeo2u1RhlbIz8sWSZFJd3VHtby5_uRYgkKLvKz8AlaGXicycDr3yb72h2VvR/exec";
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwk7bscggnxVkOpMx1yQ0lItFwWgx6SJ-tS_VGdcqioqAdPp17jXWc9ICV4_Y_zjoTc/exec";
 
         function submitEnquiry(event) {
             event.preventDefault();
