@@ -70,8 +70,13 @@
                     <button onclick="toggleHamburgerMenu()" class="text-amber-400 text-xl p-1 rounded-lg border border-[#222638] bg-[#12141C] focus:outline-none hover:border-amber-400 transition flex items-center justify-center w-9 h-9">
                         ☰
                     </button>
-                    <!-- Dropdown Content for 3-Line Menu containing all Pujas & Shortcuts -->
+                    <!-- Dropdown Content for 3-Line Menu containing all Pujas, Shortcuts & LIVE DATE/TIME -->
                     <div id="hamburgerDropdown" class="hidden absolute left-0 mt-2 w-72 bg-[#12141C] border border-[#222638] rounded-2xl shadow-2xl p-4 z-50 text-xs space-y-3 max-h-96 overflow-y-auto">
+                        <!-- LIVE DATE & TIME PLACED AT THE VERY TOP INSIDE THE 3-LINE MENU -->
+                        <div id="live-datetime" class="w-full text-amber-300 text-center py-2 text-[11px] font-bold border-b border-[#222638] tracking-wide bg-[#0A0B10] rounded-xl">
+                            <span id="datetime-display"></span>
+                        </div>
+
                         <div class="font-bold border-b border-[#222638] pb-2 text-amber-400">🔥 Quick Puja & Jaap Shortcuts</div>
                         <div class="space-y-1.5">
                             <p class="text-[10px] uppercase font-semibold text-gray-400">Pramukh Pujayein</p>
@@ -98,9 +103,9 @@
                     <span>🔥</span> <span id="nav-logo-text">Divya Puja Sewa</span>
                 </a>
 
-                <!-- LIVE DATE & TIME PLACED RIGHT BESIDE THE LOGO (MIDDLE OF HEADER) -->
-                <div id="live-datetime" class="hidden lg:flex items-center text-amber-300 text-xs font-semibold bg-[#12141C] border border-[#222638] px-3 py-1.5 rounded-xl tracking-wide">
-                    <span id="datetime-display"></span>
+                <!-- LIVE DATE & TIME PLACED RIGHT BESIDE THE LOGO IN HEADER (MIDDLE) -->
+                <div id="live-datetime-header" class="hidden lg:flex items-center text-amber-300 text-xs font-semibold bg-[#12141C] border border-[#222638] px-3 py-1.5 rounded-xl tracking-wide">
+                    <span id="datetime-display-header"></span>
                 </div>
 
                 <!-- NAVIGATION LINKS -->
@@ -834,7 +839,11 @@
                 formattedDate = toHindiDigits(formattedDate);
             }
 
-            document.getElementById('datetime-display').innerText = formattedDate;
+            // Update both locations (Hamburger menu top & Header middle)
+            const dispMenu = document.getElementById('datetime-display');
+            const dispHeader = document.getElementById('datetime-display-header');
+            if (dispMenu) dispMenu.innerText = formattedDate;
+            if (dispHeader) dispHeader.innerText = formattedDate;
         }
 
         function updatePanchang() {
@@ -850,7 +859,7 @@
                 document.getElementById('next-hindu-festival').innerText = tithisHi[nextIndex];
             } else {
                 document.getElementById('current-hindu-tithi').innerText = tithisEn[index];
-                document.getElementById('next-hindu-festival').innerText = tithisEn[nextIndex];
+                document.getElementById('next-hindu-festival').innerText = tithisEn[index];
             }
         }
 
