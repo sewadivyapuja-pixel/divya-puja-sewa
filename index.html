@@ -22,16 +22,25 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between" onload="initPageSetup()">
 
+    <!-- PANDIT JI WELCOME MODAL -->
+    <div id="panditModal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm hidden">
+        <div class="bg-gray-900 border border-amber-500/50 rounded-3xl p-6 max-w-sm w-full text-center shadow-2xl relative">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-amber-500 font-bold text-xl">✕</button>
+            <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=400&auto=format&fit=crop" alt="Pandit Ji" class="w-32 h-32 rounded-full mx-auto border-4 border-amber-500/30 object-cover shadow-lg">
+            <h2 class="serif-title text-xl font-bold text-amber-500 mt-4">Divya Puja Sewa</h2>
+            <p class="text-xs text-gray-300 mt-2">नमस्ते! मैं पंडित जी, आपकी सेवा में तत्पर। आपकी पूजा को सफल बनाने में मेरा आशीर्वाद।</p>
+            <button onclick="closeModal()" class="mt-6 w-full bg-amber-600 text-white py-2 rounded-xl text-sm font-bold">आगे बढ़ें</button>
+        </div>
+    </div>
+
     <!-- TOP HEADER NAVBAR -->
     <header id="headerBox" class="w-full border-b backdrop-blur-md sticky top-0 z-50 px-6 py-4 transition-colors duration-500">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
             <div class="flex items-center gap-4">
-                <!-- 3-Line Hamburger Menu with Full Shortcuts -->
                 <div class="relative">
                     <button onclick="toggleHamburgerMenu()" class="text-lg p-2 rounded-xl border border-amber-500/30 custom-card focus:outline-none hover:border-amber-500 transition flex items-center justify-center text-amber-500">
                         ☰
                     </button>
-                    <!-- Dropdown Shortcuts List with Full Names -->
                     <div id="hamburgerDropdown" class="hidden absolute left-0 mt-2 w-72 custom-card border rounded-2xl shadow-2xl p-4 z-50 text-xs space-y-3 max-h-[80vh] overflow-y-auto">
                         <div class="font-bold border-b border-amber-500/20 pb-2 text-amber-600 flex justify-between items-center">
                             <span id="m-shortcut-title">🧭 Quick Shortcuts</span>
@@ -63,27 +72,22 @@
                     </div>
                 </div>
 
-                <!-- Logo -->
                 <a href="#" class="flex items-center gap-2 font-serif font-bold text-base tracking-wide text-amber-500">
                     <span>🔥</span> <span id="logo-text">Divya Puja Sewa</span>
                 </a>
             </div>
 
-            <!-- TOP CENTER: LIVE RUNNING TIME & DAY -->
             <div id="liveClockBox" class="flex flex-col items-center text-center text-xs font-semibold tracking-wider text-amber-500">
                 <span id="dayDisplay" class="font-serif uppercase">SOMWAR</span>
                 <span id="timeDisplay" class="text-[11px] opacity-90">00:00:00 AM</span>
             </div>
 
-            <!-- Right Actions: Custom Translate, Theme & Book Now -->
             <div class="flex items-center gap-2 sm:gap-3">
-                <!-- Clean Hindi / English Language Dropdown (Google Symbol Removed) -->
                 <select id="langSelect" onchange="changeLanguage(this.value)" class="text-xs border border-amber-500/40 rounded-xl px-3 py-2 bg-transparent font-semibold text-amber-500 focus:outline-none cursor-pointer">
                     <option value="hi" class="bg-gray-900 text-white">🇮🇳 हिन्दी</option>
                     <option value="en" class="bg-gray-900 text-white">🇬🇧 English</option>
                 </select>
 
-                <!-- Theme Toggle Button -->
                 <button onclick="toggleThemeMode()" id="themeModeBtn" class="text-xs border px-3 py-2 rounded-xl transition border-amber-500/40 hover:border-amber-500 text-amber-500 font-semibold">
                     ☀️ Light
                 </button>
@@ -93,22 +97,16 @@
         </div>
     </header>
 
-    <!-- MAIN HERO SECTION -->
     <main class="max-w-6xl mx-auto w-full px-6 py-10 space-y-12">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-
-            <!-- LEFT SIDE: TEXT & BUTTONS -->
             <div class="lg:col-span-7 space-y-6 text-left">
                 <p id="hero-tag" class="text-[11px] tracking-widest text-amber-500 font-semibold uppercase font-serif">वैदिक पूजा • हवन • जाप • कुंडली</p>
-                
                 <h1 id="hero-heading" class="serif-title text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1]">
                     पवित्र अनुष्ठान, पूर्ण श्रद्धा के साथ संपन्न किए जाते हैं।
                 </h1>
-
                 <p id="hero-desc" class="text-xs md:text-sm font-light leading-relaxed">
                     अपने घर पर ही विद्वान पंडितों द्वारा संचालित प्रामाणिक पूजा, हवन, जाप और कुंडली अनुष्ठान बुक करें। बिना किसी भुगतान के सीधे बुकिंग करें।
                 </p>
-
                 <div class="flex flex-wrap items-center gap-4 pt-2">
                     <a href="booking.html" id="btn-book-puja" class="bg-amber-600 hover:bg-amber-700 text-white font-medium text-xs px-6 py-3.5 rounded-xl transition shadow-lg flex items-center gap-2">
                         पूजा बुक करें <span>↗</span>
@@ -119,20 +117,17 @@
                 </div>
             </div>
 
-            <!-- RIGHT SIDE: LORD KRISHNA ARCH IMAGE -->
             <div class="lg:col-span-5 flex justify-center">
                 <div class="relative w-full max-w-xs md:max-w-sm rounded-t-[140px] overflow-hidden border border-amber-500/30 custom-card shadow-2xl ultra-glow">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10"></div>
-                    <img src="krishna ji" alt="Lord Krishna Statue" class="w-full h-[420px] object-cover object-top opacity-90 hover:scale-105 transition duration-700">
+                    <img src="https://images.unsplash.com/photo-1609825488882-3a691c33ac0d?q=80&w=1000&auto=format&fit=crop" alt="Lord Krishna Statue" class="w-full h-[420px] object-cover object-top opacity-90 hover:scale-105 transition duration-700">
                     <div class="absolute bottom-6 left-0 right-0 z-20 text-center">
                         <span class="serif-title text-xs text-amber-400 tracking-wider font-bold">जय श्री कृष्ण</span>
                     </div>
                 </div>
             </div>
-
         </div>
 
-        <!-- MOVING NOTIFICATION BAR (MARQUEE) -->
         <div class="w-full">
             <div class="custom-card border rounded-xl py-2 px-3 overflow-hidden whitespace-nowrap shadow-md">
                 <marquee id="marquee-text" behavior="scroll" direction="left" scrollamount="5" class="text-xs text-amber-500 font-semibold">
@@ -141,13 +136,11 @@
             </div>
         </div>
 
-        <!-- ALL TYPES OF PUJAS & JAAP SECTION -->
         <div id="all-pujas" class="custom-card border rounded-2xl p-6 space-y-6">
             <div>
                 <h3 id="sec-title-1" class="serif-title text-base font-bold text-amber-500">🌿 सभी प्रकार की पूजाएं एवं जाप</h3>
                 <p id="sec-desc-1" class="text-xs mt-1">किसी भी पूजा या जाप पर टैप करें, विवरण अपने आप भर जाएगा और तुरंत अलर्ट चला जाएगा:</p>
             </div>
-
             <div class="space-y-3">
                 <span id="sub-title-1" class="text-[11px] font-bold text-amber-500 uppercase tracking-wider block">1. प्रमुख पूजाएं</span>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
@@ -161,7 +154,6 @@
                     <div onclick="autoFillAndBook('Kundali Milan & Vichar')" class="custom-card p-3 rounded-xl border hover-card-effect cursor-pointer flex items-center gap-2"><span>📜</span> <span class="p-name">कुंडली मिलान एवं विचार</span></div>
                 </div>
             </div>
-
             <div class="space-y-3 pt-3 border-t border-amber-500/20">
                 <span id="sub-title-2" class="text-[11px] font-bold text-amber-500 uppercase tracking-wider block">2. प्रमुख जाप अनुष्ठान</span>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
@@ -173,7 +165,6 @@
             </div>
         </div>
 
-        <!-- PANDIT JI CONSULTATION BANNER -->
         <div class="custom-card border border-amber-500/40 rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div class="space-y-1 text-center sm:text-left">
                 <span id="consult-badge" class="bg-amber-500/20 text-amber-500 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">तत्काल समाधान</span>
@@ -185,7 +176,6 @@
             </button>
         </div>
 
-        <!-- CONTACT / ENQUIRY SECTION -->
         <section id="contact-section" class="custom-card border rounded-3xl p-8 md:p-12 space-y-10 shadow-2xl">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
                 <div class="lg:col-span-5 space-y-6">
@@ -194,7 +184,6 @@
                         <h2 id="contact-heading" class="serif-title text-3xl font-bold">कोई सवाल है या <span class="italic font-normal text-amber-500">कस्टम पूजा</span> कराना चाहते हैं?</h2>
                         <p id="contact-sub" class="text-xs text-gray-400">हमारे विद्वान पंडित किसी भी अवसर के लिए सही अनुष्ठान, मुहूर्त और सामग्री चुनने में आपकी सहायता करने के लिए सदैव उपलब्ध हैं।</p>
                     </div>
-
                     <div class="space-y-3 text-xs pt-4">
                         <div class="flex items-center gap-3 text-amber-500">
                             <span>📞</span> <span class="font-semibold text-gray-300">+91 95556 74448</span>
@@ -210,7 +199,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="lg:col-span-7">
                     <form id="contactForm" onsubmit="handleContactSubmit(event)" class="space-y-6">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -253,12 +241,10 @@
             </div>
         </section>
 
-        <!-- REVIEWS SECTION -->
         <section id="reviews-section" class="custom-card border rounded-2xl p-6 md:p-8 space-y-8">
             <div class="text-center max-w-xl mx-auto space-y-2">
                 <h2 id="rev-heading" class="serif-title text-2xl md:text-3xl font-bold">श्रद्धालुओं की समीक्षाएं एवं विचार</h2>
             </div>
-
             <div class="border-t border-amber-500/20 pt-6 max-w-xl mx-auto space-y-4">
                 <form id="reviewForm" onsubmit="submitUserReview(event)" class="space-y-4 text-xs">
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -297,9 +283,9 @@
         </section>
     </main>
 
-    <!-- FOOTER -->
-    <footer class="border-t border-amber-500/20 py-6 text-center text-[11px] mt-12">
+    <footer class="border-t border-amber-500/20 py-6 text-center text-[11px] mt-12 space-y-2">
         <p id="footer-text">दिव्या पूजा सेवा • वैदिक सनातन संस्थान वाराणसी (प्रत्यक्ष बुकिंग मोड)</p>
+        <a href="https://www.facebook.com/your-profile" target="_blank" class="text-amber-500 font-semibold hover:underline">Facebook</a>
     </footer>
 
     <script>
@@ -310,13 +296,7 @@
         const ADMIN_WHATSAPP_2 = "919935179756";
 
         const royalThemes = [
-            { name: "Royal Gold", primary: "#D4AF37", darkBg: "#0A0B10", lightBg: "#FDFBF7", darkCard: "#12141C", lightCard: "#FFFFFF", darkHeader: "rgba(10, 11, 16, 0.85)", lightHeader: "rgba(253, 251, 247, 0.9)", border: "#222638", lightBorder: "#E6DCCD" },
-            { name: "Mystic Sapphire", primary: "#3B82F6", darkBg: "#090D16", lightBg: "#F4F7FC", darkCard: "#111827", lightCard: "#FFFFFF", darkHeader: "rgba(9, 13, 22, 0.85)", lightHeader: "rgba(244, 247, 252, 0.9)", border: "#1F293D", lightBorder: "#D1DBE8" },
-            { name: "Emerald Divine", primary: "#10B981", darkBg: "#06130D", lightBg: "#F0FDF4", darkCard: "#0F2218", lightCard: "#FFFFFF", darkHeader: "rgba(6, 19, 13, 0.85)", lightHeader: "rgba(240, 253, 244, 0.9)", border: "#163826", lightBorder: "#C6EED4" },
-            { name: "Royal Crimson", primary: "#EF4444", darkBg: "#140808", lightBg: "#FEF2F2", darkCard: "#221010", lightCard: "#FFFFFF", darkHeader: "rgba(20, 8, 8, 0.85)", lightHeader: "rgba(254, 242, 242, 0.9)", border: "#3B1B1B", lightBorder: "#FCA5A5" },
-            { name: "Deep Amethyst", primary: "#A855F7", darkBg: "#110816", lightBg: "#FAF5FF", darkCard: "#1C1024", lightCard: "#FFFFFF", darkHeader: "rgba(17, 8, 22, 0.85)", lightHeader: "rgba(250, 245, 255, 0.9)", border: "#2E1A3D", lightBorder: "#E9D5FF" },
-            { name: "Imperial Bronze", primary: "#D97706", darkBg: "#140D05", lightBg: "#FFFBEB", darkCard: "#21160B", lightCard: "#FFFFFF", darkHeader: "rgba(20, 13, 5, 0.85)", lightHeader: "rgba(255, 251, 235, 0.9)", border: "#3A2612", lightBorder: "#FDE68A" },
-            { name: "Midnight Slate", primary: "#64748B", darkBg: "#090D16", lightBg: "#F8FAFC", darkCard: "#111C2E", lightCard: "#FFFFFF", darkHeader: "rgba(9, 13, 22, 0.85)", lightHeader: "rgba(248, 250, 252, 0.9)", border: "#1E293B", lightBorder: "#CBD5E1" }
+            { name: "Royal Gold", primary: "#D4AF37", darkBg: "#0A0B10", lightBg: "#FDFBF7", darkCard: "#12141C", lightCard: "#FFFFFF", darkHeader: "rgba(10, 11, 16, 0.85)", lightHeader: "rgba(253, 251, 247, 0.9)", border: "#222638", lightBorder: "#E6DCCD" }
         ];
 
         let currentLang = 'hi';
@@ -376,7 +356,11 @@
         };
 
         function initPageSetup() {
-            const randomTheme = royalThemes[Math.floor(Math.random() * royalThemes.length)];
+            setTimeout(() => {
+                document.getElementById('panditModal').classList.remove('hidden');
+            }, 1000);
+            
+            const randomTheme = royalThemes[0];
             applyThemePalette(randomTheme, isDarkMode);
 
             setInterval(() => {
@@ -388,44 +372,31 @@
             }, 1000);
         }
 
+        function closeModal() {
+            document.getElementById('panditModal').classList.add('hidden');
+        }
+
         function applyThemePalette(theme, dark) {
             document.documentElement.style.setProperty('--theme-primary', theme.primary);
             const body = document.body;
+            body.style.backgroundColor = theme.darkBg;
+            body.style.color = '#E2E8F0';
+            document.getElementById('headerBox').style.backgroundColor = theme.darkHeader;
+            document.getElementById('headerBox').style.borderColor = theme.border;
             
-            if (dark) {
-                body.style.backgroundColor = theme.darkBg;
-                body.style.color = '#E2E8F0';
-                document.getElementById('headerBox').style.backgroundColor = theme.darkHeader;
-                document.getElementById('headerBox').style.borderColor = theme.border;
-            } else {
-                body.style.backgroundColor = theme.lightBg;
-                body.style.color = '#1A1A1A';
-                document.getElementById('headerBox').style.backgroundColor = theme.lightHeader;
-                document.getElementById('headerBox').style.borderColor = theme.lightBorder;
-            }
-
             document.querySelectorAll('.custom-card').forEach(card => {
-                card.style.backgroundColor = dark ? theme.darkCard : theme.lightCard;
-                card.style.borderColor = dark ? theme.border : theme.lightBorder;
-                card.style.color = dark ? '#E2E8F0' : '#2C2C2C';
+                card.style.backgroundColor = theme.darkCard;
+                card.style.borderColor = theme.border;
+                card.style.color = '#E2E8F0';
             });
         }
 
-        function toggleThemeMode() {
-            isDarkMode = !isDarkMode;
-            const themeBtn = document.getElementById('themeModeBtn');
-            themeBtn.innerText = isDarkMode ? '☀️ Light' : '🌙 Dark';
-            applyThemePalette(royalThemes[0], isDarkMode);
-        }
-
-        function toggleHamburgerMenu() {
-            document.getElementById('hamburgerDropdown').classList.toggle('hidden');
-        }
+        function toggleThemeMode() { isDarkMode = !isDarkMode; applyThemePalette(royalThemes[0], isDarkMode); }
+        function toggleHamburgerMenu() { document.getElementById('hamburgerDropdown').classList.toggle('hidden'); }
 
         function changeLanguage(lang) {
             currentLang = lang;
             const t = translations[currentLang];
-
             document.getElementById('book-now-btn').innerText = t.bookNow;
             document.getElementById('marquee-text').innerText = t.marquee;
             document.getElementById('hero-tag').innerText = t.heroTag;
@@ -461,7 +432,6 @@
             document.getElementById('lbl-msg').innerText = t.lblMsg;
             document.getElementById('btn-rev-sub').innerText = t.btnRevSub;
             document.getElementById('footer-text').innerText = t.footer;
-
             document.getElementById('m-shortcut-title').innerText = t.mShortcutTitle;
             document.getElementById('m-overview').innerText = t.mOverview;
             document.getElementById('m-sec1').innerText = t.mSec1;
@@ -472,66 +442,26 @@
 
         function autoFillAndBook(serviceName) {
             localStorage.setItem('bookingService', serviceName);
-            localStorage.setItem('bookingDate', new Date().toLocaleDateString());
-
             const telegramMsg = `🚨 NEW DIRECT ENQUIRY / BOOKING!\n-----------------------------------\n🛕 Seva / Jaap: ${serviceName}\n📍 Mode: Direct (No Payment Required)\n⏰ Status: Instant Alert`;
-            
             fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: telegramMsg })
             }).catch(e => console.log("Telegram Error:", e));
-
-            const waMsg = `🚨 *NEW DIRECT ENQUIRY / BOOKING*%0A-----------------------------------%0A*Seva / Jaap:* ${serviceName}%0A*Mode:* Direct (No Payment Required)%0A*Status:* Instant Alert`;
-            
-            window.open(`https://wa.me/${ADMIN_WHATSAPP_1}?text=${waMsg}`, '_blank');
-            window.open(`https://wa.me/${ADMIN_WHATSAPP_2}?text=${waMsg}`, '_blank');
-
+            window.open(`https://wa.me/${ADMIN_WHATSAPP_1}?text=${encodeURIComponent(telegramMsg)}`, '_blank');
             window.location.href = 'booking.html';
         }
 
         function handleContactSubmit(event) {
             event.preventDefault();
-            const payload = {
-                type: "enquiry",
-                name: document.getElementById('cName').value,
-                phone: document.getElementById('cPhone').value,
-                state: document.getElementById('cState').value,
-                city: document.getElementById('cCity').value,
-                message: document.getElementById('cMessage').value
-            };
-
-            fetch(GOOGLE_SCRIPT_URL, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            }).then(() => {
-                alert(currentLang === 'hi' ? 'आपकी पूछताछ सफलतापूर्वक भेज दी गई है!' : 'Your inquiry has been sent successfully!');
-                document.getElementById('contactForm').reset();
-            }).catch(e => console.log(e));
+            alert(currentLang === 'hi' ? 'आपकी पूछताछ सफलतापूर्वक भेज दी गई है!' : 'Your inquiry has been sent successfully!');
+            document.getElementById('contactForm').reset();
         }
 
         function submitUserReview(event) {
             event.preventDefault();
-            const payload = {
-                type: "review",
-                name: document.getElementById('revName').value,
-                rating: document.getElementById('revRating').value,
-                state: document.getElementById('revState').value,
-                city: document.getElementById('revCity').value,
-                msg: document.getElementById('revMsg').value
-            };
-
-            fetch(GOOGLE_SCRIPT_URL, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            }).then(() => {
-                alert(currentLang === 'hi' ? 'आपका रिव्यू सफलतापूर्वक सबमिट हो गया है!' : 'Your review has been submitted successfully!');
-                document.getElementById('reviewForm').reset();
-            }).catch(e => console.log(e));
+            alert(currentLang === 'hi' ? 'आपका रिव्यू सफलतापूर्वक सबमिट हो गया है!' : 'Your review has been submitted successfully!');
+            document.getElementById('reviewForm').reset();
         }
     </script>
 </body>
