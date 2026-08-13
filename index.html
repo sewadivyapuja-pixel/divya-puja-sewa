@@ -345,7 +345,7 @@
                 contactTag: "GET IN TOUCH · संपर्क",
                 contactHeading: "Have a question or a custom puja in mind?",
                 contactSub: "Our team of learned pandits is happy to guide you through the right ritual, muhurat and samagri for any occasion.",
-                cAddress: "Varanasi, Uttar Pradesh · At your home",
+                cAddress: "Varanasi, Uttar Pradesh · Also avaliable in your city",
                 whatsappLink: "Chat on WhatsApp",
                 lblCName: "Your Name *", lblCPhone: "Phone *", lblCState: "State *", optSelState: "Select State", lblCCity: "City / Location *", lblCMsg: "Your message *", btnCSub: "Send Inquiry",
                 revHeading: "Devotees Reviews & Opinions",
@@ -365,7 +365,7 @@
 
             setInterval(() => {
                 const now = new Date();
-                const daysHi = ["रविवार (Sunday)", "सोमवार (Monday)", "मंगलवार (Tuesday)", "बुधवार (Wednesday)", "गुरुवार (Thursday)", "शुक्रवार (Friday)", "शनिवार (Saturday)"];
+                const daysHi = ["रविवार ", "सोमवार" , "मंगलवार , "बुधवार ", "गुरुवार ", "शुक्रवार", "शनिवार"];
                 const daysEn = ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"];
                 document.getElementById('dayDisplay').innerText = currentLang === 'hi' ? daysHi[now.getDay()] : daysEn[now.getDay()];
                 document.getElementById('timeDisplay').innerText = now.toLocaleTimeString();
