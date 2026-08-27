@@ -283,9 +283,13 @@
         </section>
     </main>
 
+    <!-- FOOTER WITH AUTOMATIC LIVE VISITOR COUNTER -->
     <footer class="border-t border-amber-500/20 py-6 text-center text-[11px] mt-12 space-y-2">
         <p id="footer-text">दिव्या पूजा सेवा • वैदिक सनातन संस्थान वाराणसी (प्रत्यक्ष बुकिंग मोड)</p>
         <a href="https://www.facebook.com/share/1BCGVP6fB4/" target="_blank" class="text-amber-500 font-semibold hover:underline">Facebook</a>
+        
+        <!-- Yahan visitor count add kiya gaya hai -->
+        <p class="text-amber-400 font-semibold mt-2">visit people :- <span id="visitorCount">100</span></p>
     </footer>
 
     <script>
@@ -370,6 +374,16 @@
                 document.getElementById('dayDisplay').innerText = currentLang === 'hi' ? daysHi[now.getDay()] : daysEn[now.getDay()];
                 document.getElementById('timeDisplay').innerText = now.toLocaleTimeString();
             }, 1000);
+
+            // Automatic Visitor Counter Logic
+            let visits = localStorage.getItem("totalVisits");
+            if (!visits) {
+                visits = 100; // Shuruat 100 se hogi
+            } else {
+                visits = parseInt(visits) + 1; // Jab bhi page refresh/visit hoga, count badhega
+            }
+            localStorage.setItem("totalVisits", visits);
+            document.getElementById("visitorCount").innerText = visits.toLocaleString();
         }
 
         function closeModal() {
