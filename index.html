@@ -327,9 +327,10 @@
                 <button onclick="openQrModal()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs py-3 rounded-xl shadow transition">
                     Donate
                 </button>
-                <button onclick="autoFillAndBook('Join DPS')" class="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs py-3 rounded-xl shadow transition">
+                <!-- पहला 'Join DPS' बटन जो अब सीधे WhatsApp Channel लिंक पर ले जाएगा -->
+                <a href="https://whatsapp.com/channel/0029VbDeVTfKwqSRlK8yqY0j" target="_blank" class="block w-full text-center bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs py-3 rounded-xl shadow transition">
                     Join DPS
-                </button>
+                </a>
                 <button onclick="autoFillAndBook('Events')" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold text-xs py-3 rounded-xl shadow transition">
                     Events
                 </button>
@@ -356,10 +357,11 @@
             <span class="text-lg font-bold">₹</span>
             <span class="text-[10px] font-semibold mt-0.5">Donate</span>
         </button>
-        <button onclick="autoFillAndBook('Join DPS')" class="flex flex-col items-center text-amber-500 hover:text-white transition">
+        <!-- दूसरा 'Join DPS' बटन (फिक्सड नेविगेशन बार वाला) जो अब सीधे WhatsApp Channel लिंक पर ले जाएगा -->
+        <a href="https://whatsapp.com/channel/0029VbDeVTfKwqSRlK8yqY0j" target="_blank" class="flex flex-col items-center text-amber-500 hover:text-white transition">
             <span class="text-lg">🤝</span>
             <span class="text-[10px] font-semibold mt-0.5">Join DPS</span>
-        </button>
+        </a>
         <button onclick="toggleHamburgerMenu()" class="flex flex-col items-center text-amber-500 hover:text-white transition">
             <span class="text-lg">☰</span>
             <span class="text-[10px] font-semibold mt-0.5">Menu</span>
