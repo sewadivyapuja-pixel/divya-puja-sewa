@@ -2,12 +2,21 @@
 <html lang="hi" id="htmlRoot" class="dark">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title id="t-title">Divya Puja Sewa - Sacred Rituals</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; transition: background-color 0.4s ease, color 0.4s ease; scroll-behavior: smooth; padding-bottom: 70px; }
+        * { box-sizing: border-box; }
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            transition: background-color 0.4s ease, color 0.4s ease; 
+            scroll-behavior: smooth; 
+            padding-bottom: 70px; 
+            overflow-x: hidden; 
+            margin: 0;
+            width: 100%;
+        }
         .serif-title { font-family: 'Cinzel', serif; }
         .ultra-glow { box-shadow: 0 0 60px rgba(212, 175, 55, 0.08); }
         .hover-card-effect { transition: all 0.3s ease; }
@@ -38,22 +47,21 @@
         <div class="bg-gray-900 border border-amber-500/50 rounded-3xl p-6 max-w-xs w-full text-center shadow-2xl relative">
             <button onclick="closeQrModal()" class="absolute top-3 right-3 text-amber-500 font-bold text-lg">✕</button>
             <h3 class="serif-title text-base font-bold text-amber-500 mb-3">Scan QR Code to Donate</h3>
-            <!-- यहाँ अपनी QR कोड इमेज का सही path दें जैसे src="1000384954.jpg" -->
             <img src="AccountQRCodeIndian Bank - 4274_LIGHT_THEME.png" alt="Scanner QR Code" class="w-48 h-48 mx-auto rounded-xl border-2 border-amber-500/40 object-cover shadow-lg bg-white p-2">
             <p class="text-[11px] text-gray-300 mt-3">सहयोग के लिए धन्यवाद!</p>
             <button onclick="closeQrModal()" class="mt-4 w-full bg-amber-600 text-white py-2 rounded-xl text-xs font-bold">बंद करें</button>
         </div>
     </div>
 
-    <!-- TOP HEADER NAVBAR -->
-    <header id="headerBox" class="w-full border-b backdrop-blur-md sticky top-0 z-50 px-6 py-4 transition-colors duration-500">
-        <div class="max-w-7xl mx-auto flex items-center justify-between">
-            <div class="flex items-center gap-4">
+    <!-- TOP HEADER NAVBAR (Fully Responsive Fix) -->
+    <header id="headerBox" class="w-full border-b backdrop-blur-md sticky top-0 z-50 px-3 sm:px-6 py-3 transition-colors duration-500">
+        <div class="max-w-7xl mx-auto flex items-center justify-between gap-2">
+            <div class="flex items-center gap-2 sm:gap-3">
                 <div class="relative">
-                    <button onclick="toggleHamburgerMenu()" class="text-lg p-2 rounded-xl border border-amber-500/30 custom-card focus:outline-none hover:border-amber-500 transition flex items-center justify-center text-amber-500">
+                    <button onclick="toggleHamburgerMenu()" class="text-base sm:text-lg p-2 rounded-xl border border-amber-500/35 custom-card focus:outline-none hover:border-amber-500 transition flex items-center justify-center text-amber-500">
                         ☰
                     </button>
-                    <div id="hamburgerDropdown" class="hidden absolute left-0 mt-2 w-72 custom-card border rounded-2xl shadow-2xl p-4 z-50 text-xs space-y-3 max-h-[80vh] overflow-y-auto">
+                    <div id="hamburgerDropdown" class="hidden absolute left-0 mt-2 w-64 sm:w-72 custom-card border rounded-2xl shadow-2xl p-4 z-50 text-xs space-y-3 max-h-[80vh] overflow-y-auto">
                         <div class="font-bold border-b border-amber-500/20 pb-2 text-amber-600 flex justify-between items-center">
                             <span id="m-shortcut-title">🧭 Quick Shortcuts</span>
                             <span onclick="toggleHamburgerMenu()" class="cursor-pointer text-sm">✕</span>
@@ -85,55 +93,56 @@
                     </div>
                 </div>
 
-                <a href="#" class="flex items-center gap-2 font-serif font-bold text-base tracking-wide text-amber-500">
+                <a href="#" class="flex items-center gap-1.5 font-serif font-bold text-xs sm:text-sm tracking-tight text-amber-500 truncate max-w-[110px] sm:max-w-none">
                     <span>🔥</span> <span id="logo-text">Divya Puja Sewa</span>
                 </a>
             </div>
 
-            <div id="liveClockBox" class="flex flex-col items-center text-center text-xs font-semibold tracking-wider text-amber-500">
+            <!-- Live Clock (Hidden on very small screens to save space, visible on sm+) -->
+            <div id="liveClockBox" class="hidden sm:flex flex-col items-center text-center text-xs font-semibold tracking-wider text-amber-500">
                 <span id="dayDisplay" class="font-serif uppercase">SOMWAR</span>
-                <span id="timeDisplay" class="text-[11px] opacity-90">00:00:00 AM</span>
+                <span id="timeDisplay" class="text-[10px] opacity-90">00:00:00 AM</span>
             </div>
 
-            <div class="flex items-center gap-2 sm:gap-3">
-                <select id="langSelect" onchange="changeLanguage(this.value)" class="text-xs border border-amber-500/40 rounded-xl px-3 py-2 bg-transparent font-semibold text-amber-500 focus:outline-none cursor-pointer">
-                    <option value="hi" class="bg-gray-900 text-white">🇮🇳 हिन्दी</option>
-                    <option value="en" class="bg-gray-900 text-white">🇬🇧 English</option>
+            <div class="flex items-center gap-1.5 sm:gap-2">
+                <select id="langSelect" onchange="changeLanguage(this.value)" class="text-[11px] sm:text-xs border border-amber-500/40 rounded-lg sm:rounded-xl px-1.5 sm:px-3 py-1.5 bg-transparent font-semibold text-amber-500 focus:outline-none cursor-pointer">
+                    <option value="hi" class="bg-gray-900 text-white">हिन्दी</option>
+                    <option value="en" class="bg-gray-900 text-white">English</option>
                 </select>
 
-                <button onclick="toggleThemeMode()" id="themeModeBtn" class="text-xs border px-3 py-2 rounded-xl transition border-amber-500/40 hover:border-amber-500 text-amber-500 font-semibold">
+                <button onclick="toggleThemeMode()" id="themeModeBtn" class="hidden md:inline-block text-xs border px-3 py-1.5 rounded-xl transition border-amber-500/40 hover:border-amber-500 text-amber-500 font-semibold">
                     ☀️ Light
                 </button>
 
-                <a href="booking.html" id="book-now-btn" class="bg-amber-600 hover:bg-amber-700 text-white text-xs font-semibold px-4 py-2 rounded-xl transition shadow-lg">Book Now</a>
+                <a href="booking.html" id="book-now-btn" class="bg-amber-600 hover:bg-amber-700 text-white text-[11px] sm:text-xs font-semibold px-3 sm:px-4 py-2 rounded-xl transition shadow-lg whitespace-nowrap">Book Now</a>
             </div>
         </div>
     </header>
 
-    <main class="max-w-6xl mx-auto w-full px-6 py-10 space-y-12">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            <div class="lg:col-span-7 space-y-6 text-left">
-                <p id="hero-tag" class="text-[11px] tracking-widest text-amber-500 font-semibold uppercase font-serif">वैदिक पूजा • हवन • जाप • कुंडली</p>
-                <h1 id="hero-heading" class="serif-title text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1]">
+    <main class="max-w-6xl mx-auto w-full px-4 sm:px-6 py-6 sm:py-10 space-y-10 overflow-hidden">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-7 space-y-5 text-left">
+                <p id="hero-tag" class="text-[10px] sm:text-[11px] tracking-widest text-amber-500 font-semibold uppercase font-serif">वैदिक पूजा • हवन • जाप • कुंडली</p>
+                <h1 id="hero-heading" class="serif-title text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.15]">
                     पवित्र अनुष्ठान, पूर्ण श्रद्धा के साथ संपन्न किए जाते हैं।
                 </h1>
-                <p id="hero-desc" class="text-xs md:text-sm font-light leading-relaxed">
+                <p id="hero-desc" class="text-xs sm:text-sm font-light leading-relaxed">
                     अपने घर पर ही विद्वान पंडितों द्वारा संचालित प्रामाणिक पूजा, हवन, जाप और कुंडली अनुष्ठान बुक करें। बिना किसी भुगतान के सीधे बुकिंग करें।
                 </p>
-                <div class="flex flex-wrap items-center gap-4 pt-2">
-                    <a href="booking.html" id="btn-book-puja" class="bg-amber-600 hover:bg-amber-700 text-white font-medium text-xs px-6 py-3.5 rounded-xl transition shadow-lg flex items-center gap-2">
+                <div class="flex flex-wrap items-center gap-3 pt-2">
+                    <a href="booking.html" id="btn-book-puja" class="bg-amber-600 hover:bg-amber-700 text-white font-medium text-xs px-5 sm:px-6 py-3 rounded-xl transition shadow-lg flex items-center gap-2">
                         पूजा बुक करें <span>↗</span>
                     </a>
-                    <a href="#all-pujas" id="btn-explore" class="custom-card border text-xs font-medium px-6 py-3.5 rounded-xl transition">
+                    <a href="#all-pujas" id="btn-explore" class="custom-card border text-xs font-medium px-5 sm:px-6 py-3 rounded-xl transition">
                         सभी पूजा एवं जाप देखें
                     </a>
                 </div>
             </div>
 
             <div class="lg:col-span-5 flex justify-center">
-                <div class="relative w-full max-w-xs md:max-w-sm rounded-t-[140px] overflow-hidden border border-amber-500/30 custom-card shadow-2xl ultra-glow">
+                <div class="relative w-full max-w-[260px] sm:max-w-xs md:max-w-sm rounded-t-[120px] sm:rounded-t-[140px] overflow-hidden border border-amber-500/30 custom-card shadow-2xl ultra-glow">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10"></div>
-                    <img src="krishna ji" alt="Lord Krishna Statue" class="w-full h-[420px] object-cover object-top opacity-90 hover:scale-105 transition duration-700">
+                    <img src="krishna ji" alt="Lord Krishna Statue" class="w-full h-[360px] sm:h-[420px] object-cover object-top opacity-90">
                     <div class="absolute bottom-6 left-0 right-0 z-20 text-center">
                         <span class="serif-title text-xs text-amber-400 tracking-wider font-bold">जय श्री कृष्ण</span>
                     </div>
@@ -142,21 +151,21 @@
         </div>
 
         <!-- PANDIT JI PROFILE SECTION -->
-        <section id="pandit-profile" class="bg-gray-900 border border-amber-500/30 rounded-3xl p-6 md:p-8 space-y-6 shadow-xl max-w-4xl mx-auto">
-            <div class="flex flex-col md:flex-row items-center gap-6">
-                <img src="main image.jpeg" alt="Pandit Balmiki Mishra" class="w-36 h-36 rounded-2xl object-cover border-2 border-amber-500/40 shadow-lg flex-shrink-0">
-                <div class="space-y-3 text-left">
+        <section id="pandit-profile" class="bg-gray-900 border border-amber-500/30 rounded-3xl p-5 sm:p-8 space-y-5 shadow-xl max-w-4xl mx-auto">
+            <div class="flex flex-col md:flex-row items-center gap-5 text-center md:text-left">
+                <img src="main image.jpeg" alt="Pandit Balmiki Mishra" class="w-32 h-32 sm:w-36 sm:h-36 rounded-2xl object-cover border-2 border-amber-500/40 shadow-lg flex-shrink-0 mx-auto">
+                <div class="space-y-3">
                     <div class="inline-block bg-amber-500/10 text-amber-500 text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-widest border border-amber-500/30">
                         प्रधान आचार्य एवं पुरोहित
                     </div>
-                    <h2 class="font-serif text-2xl font-bold text-amber-500">पंडित बाल्मीकि मिश्रा जी (वाराणसी)</h2>
+                    <h2 class="font-serif text-xl sm:text-2xl font-bold text-amber-500">पंडित बाल्मीकि मिश्रा जी (वाराणसी)</h2>
                     <p class="text-xs text-gray-300 leading-relaxed">
                         वाराणसी के प्रतिष्ठित वैदिक विद्वान पंडित बाल्मीकि मिश्रा जी पिछले कई वर्षों से सनातन धर्म के विभिन्न संस्कारों, रुद्राभिषेक, महामृत्युंजय जाप, हवन, सत्यनारायण कथा और ज्योतिषीय अनुष्ठानों को पूर्ण विधि-विधान और मंत्रोच्चार के साथ संपन्न कराते आ रहे हैं। आपका उद्देश्य हर घर में सुख-शांति और सकारात्मक ऊर्जा का संचार करना है।
                     </p>
-                    <div class="flex flex-wrap gap-4 text-xs font-semibold text-amber-400 pt-1">
+                    <div class="flex flex-wrap justify-center md:justify-start gap-3 text-xs font-semibold text-amber-400 pt-1">
                         <span>🛕 अनुभवी वैदिक आचार्य</span>
                         <span>•</span>
-                        <span>📍 मूल निवास: वाराणसी, उत्तर प्रदेश</span>
+                        <span>📍 मूल निवास: वाराणसी</span>
                     </div>
                 </div>
             </div>
@@ -170,14 +179,14 @@
             </div>
         </div>
 
-        <div id="all-pujas" class="custom-card border rounded-2xl p-6 space-y-6">
+        <div id="all-pujas" class="custom-card border rounded-2xl p-5 sm:p-6 space-y-6">
             <div>
                 <h3 id="sec-title-1" class="serif-title text-base font-bold text-amber-500">🌿 सभी प्रकार की पूजाएं एवं जाप</h3>
                 <p id="sec-desc-1" class="text-xs mt-1">किसी भी पूजा या जाप पर टैप करें, विवरण अपने आप भर जाएगा और तुरंत अलर्ट चला जाएगा:</p>
             </div>
             <div class="space-y-3">
                 <span id="sub-title-1" class="text-[11px] font-bold text-amber-500 uppercase tracking-wider block">1. प्रमुख पूजाएं</span>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 text-xs">
                     <div onclick="autoFillAndBook('Rudrabhishek Puja')" class="custom-card p-3 rounded-xl border hover-card-effect cursor-pointer flex items-center gap-2"><span>🕉️</span> <span class="p-name">रुद्राभिषेक पूजा</span></div>
                     <div onclick="autoFillAndBook('Hawan & Yagya')" class="custom-card p-3 rounded-xl border hover-card-effect cursor-pointer flex items-center gap-2"><span>🔥</span> <span class="p-name">हवन एवं यज्ञ</span></div>
                     <div onclick="autoFillAndBook('Satyanarayan Katha')" class="custom-card p-3 rounded-xl border hover-card-effect cursor-pointer flex items-center gap-2"><span>✨</span> <span class="p-name">सत्यनारायण कथा</span></div>
@@ -190,7 +199,7 @@
             </div>
             <div class="space-y-3 pt-3 border-t border-amber-500/20">
                 <span id="sub-title-2" class="text-[11px] font-bold text-amber-500 uppercase tracking-wider block">2. प्रमुख जाप अनुष्ठान</span>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 text-xs">
                     <div onclick="autoFillAndBook('Maha Mrityunjaya Jaap')" class="custom-card p-3 rounded-xl border hover-card-effect cursor-pointer flex items-center gap-2"><span>📿</span> <span class="p-name">महामृत्युंजय जाप</span></div>
                     <div onclick="autoFillAndBook('Gayatri Mantra Jaap')" class="custom-card p-3 rounded-xl border hover-card-effect cursor-pointer flex items-center gap-2"><span>📿</span> <span class="p-name">गायत्री मंत्र जाप</span></div>
                     <div onclick="autoFillAndBook('Mahamrityunjaya Anushthan')" class="custom-card p-3 rounded-xl border hover-card-effect cursor-pointer flex items-center gap-2"><span>🕉️</span> <span class="p-name">मृत्युंजय अनुष्ठान</span></div>
@@ -199,28 +208,28 @@
             </div>
         </div>
 
-        <div class="custom-card border border-amber-500/40 rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div class="space-y-1 text-center sm:text-left">
+        <div class="custom-card border border-amber-500/40 rounded-2xl p-5 sm:p-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+            <div class="space-y-1">
                 <span id="consult-badge" class="bg-amber-500/20 text-amber-500 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">तत्काल समाधान</span>
                 <h3 id="consult-title" class="serif-title text-base font-bold text-amber-500 mt-1">पंडित बाल्मीकि मिश्रा जी से समाधान पाएं तत्काल</h3>
                 <p id="consult-desc" class="text-xs font-light">अपने मन में उठ रहे किसी भी सवाल या समस्या के लिए सीधा बात करें।</p>
             </div>
-            <button onclick="autoFillAndBook('Pandit Tatkal Consultation')" id="consult-btn" class="bg-amber-500 hover:bg-amber-600 text-black font-extrabold text-xs px-5 py-3 rounded-xl shadow transition whitespace-nowrap transform hover:scale-105">
+            <button onclick="autoFillAndBook('Pandit Tatkal Consultation')" id="consult-btn" class="bg-amber-500 hover:bg-amber-600 text-black font-extrabold text-xs px-5 py-3 rounded-xl shadow transition whitespace-nowrap">
                 तत्काल संपर्क करें
             </button>
         </div>
 
-        <section id="contact-section" class="custom-card border rounded-3xl p-8 md:p-12 space-y-10 shadow-2xl">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
-                <div class="lg:col-span-5 space-y-6">
-                    <div class="space-y-3">
+        <section id="contact-section" class="custom-card border rounded-3xl p-6 sm:p-10 space-y-8 shadow-2xl">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <div class="lg:col-span-5 space-y-5">
+                    <div class="space-y-2">
                         <p id="contact-tag" class="text-xs tracking-widest font-semibold uppercase font-serif text-amber-500">संपर्क करें · GET IN TOUCH</p>
-                        <h2 id="contact-heading" class="serif-title text-3xl font-bold">कोई सवाल है या <span class="italic font-normal text-amber-500">कस्टम पूजा</span> कराना चाहते हैं?</h2>
+                        <h2 id="contact-heading" class="serif-title text-2xl sm:text-3xl font-bold">कोई सवाल है या <span class="italic font-normal text-amber-500">कस्टम पूजा</span> कराना चाहते हैं?</h2>
                         <p id="contact-sub" class="text-xs text-gray-400">हमारे विद्वान पंडित किसी भी अवसर के लिए सही अनुष्ठान, मुहूर्त और सामग्री चुनने में आपकी सहायता करने के लिए सदैव उपलब्ध हैं।</p>
                     </div>
-                    <div class="space-y-3 text-xs pt-4">
+                    <div class="space-y-3 text-xs pt-2">
                         <div class="flex items-center gap-3 text-amber-500">
-                            <span>📞</span> <span class="font-semibold text-gray-300">+91 95556 74448,+91 99351 79756</span>
+                            <span>📞</span> <span class="font-semibold text-gray-300">+91 95556 74448, +91 99351 79756</span>
                         </div>
                         <div class="flex items-center gap-3 text-amber-500">
                             <span>✉️</span> <span class="font-semibold text-gray-300">sewa@divyapuja.in</span>
@@ -228,14 +237,14 @@
                         <div class="flex items-center gap-3 text-amber-500">
                             <span>📍</span> <span id="c-address" class="font-semibold text-gray-300">वाराणसी, उत्तर प्रदेश · आपके घर पर</span>
                         </div>
-                        <div class="flex items-center gap-3 text-amber-500 pt-2">
+                        <div class="flex items-center gap-3 text-amber-500 pt-1">
                             <span>💬</span> <a href="https://wa.me/919555674448" target="_blank" class="font-semibold text-amber-500 hover:underline" id="whatsapp-link">व्हाट्सएप पर चैट करें</a>
                         </div>
                     </div>
                 </div>
                 <div class="lg:col-span-7">
-                    <form id="contactForm" onsubmit="handleContactSubmit(event)" class="space-y-6">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <form id="contactForm" onsubmit="handleContactSubmit(event)" class="space-y-5">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                             <div class="space-y-1">
                                 <label id="lbl-cname" class="text-[11px] opacity-70">आपका नाम *</label>
                                 <input type="text" id="cName" required class="custom-input" placeholder="आपका पूरा नाम">
@@ -245,7 +254,7 @@
                                 <input type="tel" id="cPhone" required class="custom-input" placeholder="मोबाइल नंबर">
                             </div>
                         </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                             <div class="space-y-1">
                                 <label id="lbl-cstate" class="text-[11px] opacity-70">राज्य (State) *</label>
                                 <select id="cState" required class="custom-input bg-transparent">
@@ -267,7 +276,7 @@
                             <label id="lbl-cmsg" class="text-[11px] opacity-70">आपका संदेश / सवाल *</label>
                             <textarea id="cMessage" rows="3" required class="custom-input" placeholder="अपनी पूजा या सवाल के बारे में यहां लिखें..."></textarea>
                         </div>
-                        <button type="submit" id="btn-c-sub" class="bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs px-8 py-3.5 rounded-xl transition shadow-lg">
+                        <button type="submit" id="btn-c-sub" class="bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs px-7 py-3 rounded-xl transition shadow-lg w-full sm:w-auto">
                             पूछताछ भेजें
                         </button>
                     </form>
@@ -275,11 +284,11 @@
             </div>
         </section>
 
-        <section id="reviews-section" class="custom-card border rounded-2xl p-6 md:p-8 space-y-8">
-            <div class="text-center max-w-xl mx-auto space-y-2">
-                <h2 id="rev-heading" class="serif-title text-2xl md:text-3xl font-bold">श्रद्धालुओं की समीक्षाएं एवं विचार</h2>
+        <section id="reviews-section" class="custom-card border rounded-2xl p-6 sm:p-8 space-y-6 max-w-xl mx-auto">
+            <div class="text-center space-y-1">
+                <h2 id="rev-heading" class="serif-title text-xl sm:text-2xl font-bold">श्रद्धालुओं की समीक्षाएं एवं विचार</h2>
             </div>
-            <div class="border-t border-amber-500/20 pt-6 max-w-xl mx-auto space-y-4">
+            <div class="border-t border-amber-500/20 pt-5 space-y-4">
                 <form id="reviewForm" onsubmit="submitUserReview(event)" class="space-y-4 text-xs">
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div class="space-y-1">
@@ -316,18 +325,17 @@
             </div>
         </section>
 
-        <!-- SCAN FOR DONATE SECTION (Placed at the very end before footer as requested) -->
-        <section class="max-w-md mx-auto custom-card border border-amber-500/40 rounded-3xl p-6 md:p-8 text-center space-y-6 shadow-2xl">
-            <h3 class="serif-title text-lg md:text-xl font-bold text-amber-500 tracking-wide">Scan For Donate</h3>
-            <div class="bg-white p-4 rounded-2xl inline-block border-2 border-amber-500/40 shadow-md">
-                <!-- अपनी QR कोड इमेज का पाथ यहाँ दें (उदा. src="1000384954.jpg") -->
-                <img src="AccountQRCodeIndian Bank - 4274_LIGHT_THEME.png" alt="Scanner QR" class="w-44 h-44 rounded-xl object-cover mx-auto">
+        <!-- SCAN FOR DONATE SECTION -->
+        <section class="max-w-md mx-auto custom-card border border-amber-500/40 rounded-3xl p-6 text-center space-y-5 shadow-2xl">
+            <h3 class="serif-title text-lg font-bold text-amber-500 tracking-wide">Scan For Donate</h3>
+            <div class="bg-white p-3 rounded-2xl inline-block border-2 border-amber-500/40 shadow-md">
+                <img src="AccountQRCodeIndian Bank - 4274_LIGHT_THEME.png" alt="Scanner QR" class="w-40 h-40 rounded-xl object-cover mx-auto">
             </div>
-            <div class="space-y-3 pt-2">
+            <div class="space-y-2.5 pt-1">
                 <button onclick="openQrModal()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs py-3 rounded-xl shadow transition">
                     Donate
                 </button>
-                <!-- पहला 'Join DPS' बटन जो अब सीधे WhatsApp Channel लिंक पर ले जाएगा -->
+                <!-- Join DPS Button 1 linked to WhatsApp Channel -->
                 <a href="https://whatsapp.com/channel/0029VbDeVTfKwqSRlK8yqY0j" target="_blank" class="block w-full text-center bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs py-3 rounded-xl shadow transition">
                     Join DPS
                 </a>
@@ -338,33 +346,33 @@
         </section>
     </main>
 
-    <footer class="border-t border-amber-500/20 py-6 text-center text-[11px] mt-12 space-y-2">
+    <footer class="border-t border-amber-500/20 py-6 text-center text-[11px] mt-10 space-y-2 px-4">
         <p id="footer-text">दिव्या पूजा सेवा • वैदिक सनातन संस्थान वाराणसी (प्रत्यक्ष बुकिंग मोड)</p>
         <a href="https://www.facebook.com/share/1BCGVP6fB4/" target="_blank" class="text-amber-500 font-semibold hover:underline">Facebook</a>
     </footer>
 
-    <!-- BOTTOM FIXED NAVIGATION BAR (Share, Home, Donate, Join DPS, Menu) -->
-    <nav class="fixed bottom-0 left-0 right-0 bg-gray-900 border-t border-amber-500/30 py-2 px-4 z-40 flex justify-around items-center text-center shadow-2xl">
-        <button onclick="shareWebsite()" class="flex flex-col items-center text-amber-500 hover:text-white transition">
-            <span class="text-lg">📤</span>
-            <span class="text-[10px] font-semibold mt-0.5">Share</span>
+    <!-- BOTTOM FIXED NAVIGATION BAR -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-gray-900 border-t border-amber-500/30 py-2 px-2 z-40 flex justify-around items-center text-center shadow-2xl max-w-full">
+        <button onclick="shareWebsite()" class="flex flex-col items-center text-amber-500 hover:text-white transition px-2">
+            <span class="text-base sm:text-lg">📤</span>
+            <span class="text-[9px] sm:text-[10px] font-semibold mt-0.5">Share</span>
         </button>
-        <a href="#" class="flex flex-col items-center text-amber-500 hover:text-white transition">
-            <span class="text-lg">🏠</span>
-            <span class="text-[10px] font-semibold mt-0.5">Home</span>
+        <a href="#" class="flex flex-col items-center text-amber-500 hover:text-white transition px-2">
+            <span class="text-base sm:text-lg">🏠</span>
+            <span class="text-[9px] sm:text-[10px] font-semibold mt-0.5">Home</span>
         </a>
-        <button onclick="openQrModal()" class="flex flex-col items-center text-amber-500 hover:text-white transition">
-            <span class="text-lg font-bold">₹</span>
-            <span class="text-[10px] font-semibold mt-0.5">Donate</span>
+        <button onclick="openQrModal()" class="flex flex-col items-center text-amber-500 hover:text-white transition px-2">
+            <span class="text-base sm:text-lg font-bold">₹</span>
+            <span class="text-[9px] sm:text-[10px] font-semibold mt-0.5">Donate</span>
         </button>
-        <!-- दूसरा 'Join DPS' बटन (फिक्सड नेविगेशन बार वाला) जो अब सीधे WhatsApp Channel लिंक पर ले जाएगा -->
-        <a href="https://whatsapp.com/channel/0029VbDeVTfKwqSRlK8yqY0j" target="_blank" class="flex flex-col items-center text-amber-500 hover:text-white transition">
-            <span class="text-lg">🤝</span>
-            <span class="text-[10px] font-semibold mt-0.5">Join DPS</span>
+        <!-- Join DPS Button 2 in Navigation Bar linked to WhatsApp Channel -->
+        <a href="https://whatsapp.com/channel/0029VbDeVTfKwqSRlK8yqY0j" target="_blank" class="flex flex-col items-center text-amber-500 hover:text-white transition px-2">
+            <span class="text-base sm:text-lg">🤝</span>
+            <span class="text-[9px] sm:text-[10px] font-semibold mt-0.5">Join DPS</span>
         </a>
-        <button onclick="toggleHamburgerMenu()" class="flex flex-col items-center text-amber-500 hover:text-white transition">
-            <span class="text-lg">☰</span>
-            <span class="text-[10px] font-semibold mt-0.5">Menu</span>
+        <button onclick="toggleHamburgerMenu()" class="flex flex-col items-center text-amber-500 hover:text-white transition px-2">
+            <span class="text-base sm:text-lg">☰</span>
+            <span class="text-[9px] sm:text-[10px] font-semibold mt-0.5">Menu</span>
         </button>
     </nav>
 
